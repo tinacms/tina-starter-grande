@@ -21,18 +21,42 @@ export const Page = ({ children }) => {
       <GlobalStyles />
       <Layout>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <main>{children}</main>
+        <main>
+          <Wrapper>{children}</Wrapper>
+        </main>
         <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <Wrapper>
+            © {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </Wrapper>
         </footer>
       </Layout>
     </ThemeProvider>
   )
 }
 
-export const Layout = styled.div``
+export const Layout = styled.div`
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+
+  ${Header} {
+    flex: 0 0 auto;
+  }
+  main {
+    flex: 1 0 auto;
+  }
+  footer {
+    flex: 0 0 auto;
+  }
+`
+
+export const Wrapper = styled.div`
+  max-width: 700px;
+  margin: 0 auto;
+`
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

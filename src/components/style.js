@@ -103,4 +103,23 @@ export const Reset = css`
 
 export const GlobalStyles = createGlobalStyle`
   ${Reset}
+
+  html {
+    font-size: 125%;
+    font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.5;
+    color: #111111;
+    background-color: #F3F3F3;
+  }
+
+  h1, h2, h3, h4, h5, h6, ul, ol, p {
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
 `
