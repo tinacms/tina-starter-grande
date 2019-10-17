@@ -20,69 +20,84 @@ export const color = {
 }
 
 export const Reset = css`
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-
-  ul[class],
-  ol[class] {
-    padding: 0;
-  }
-
+  /*! minireset.css v0.0.5 | MIT License | github.com/jgthms/minireset.css */
+  html,
   body,
+  p,
+  ol,
+  ul,
+  li,
+  dl,
+  dt,
+  dd,
+  blockquote,
+  figure,
+  fieldset,
+  legend,
+  textarea,
+  pre,
+  iframe,
+  hr,
   h1,
   h2,
   h3,
   h4,
-  p,
-  ul[class],
-  ol[class],
-  li,
-  figure,
-  figcaption,
-  blockquote,
-  dl,
-  dd {
+  h5,
+  h6 {
     margin: 0;
+    padding: 0;
   }
 
-  body {
-    min-height: 100vh;
-    scroll-behavior: smooth;
-    text-rendering: optimizeSpeed;
-    line-height: 1.5;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 100%;
+    font-weight: normal;
   }
 
-  ul[class],
-  ol[class] {
+  ul {
     list-style: none;
   }
 
-  a:not([class]) {
-    text-decoration-skip-ink: auto;
-  }
-
-  img {
-    max-width: 100%;
-    display: block;
-  }
-
-  input,
   button,
-  textarea,
-  select {
-    font: inherit;
+  input,
+  select,
+  textarea {
+    margin: 0;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
+  html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  img,
+  video {
+    height: auto;
+    max-width: 100%;
+  }
+
+  iframe {
+    border: 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  td,
+  th {
+    padding: 0;
+    text-align: left;
   }
 `
 
