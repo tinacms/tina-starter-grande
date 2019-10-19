@@ -1,22 +1,25 @@
 import React from "react"
 import styled, { createGlobalStyle, css } from "styled-components"
+import { tint, shade, transparentize } from "polished"
 
-export const Theme = {
+export const ThemeLight = {
   color: {
-    primary: {
-      light: "#2296FE",
-      medium: "#0084ff",
-      dark: "#0574E4",
-    },
+    primary: "#006341",
+    foreground: "#111111",
+    background: "#F3F3F3",
+    link: "#006341",
   },
+  easing: "cubic-bezier(0.215, 0.610, 0.355, 1.000)",
 }
 
-function primary(value = "medium") {
-  return props => props.theme.color["primary"][value]
-}
-
-export const color = {
-  primary: primary,
+export const ThemeDark = {
+  color: {
+    primary: "#006341",
+    foreground: "#F3F3F3",
+    background: "#111111",
+    link: "#006341",
+  },
+  easing: "cubic-bezier(0.215, 0.610, 0.355, 1.000)",
 }
 
 export const Reset = css`
@@ -101,25 +104,48 @@ export const Reset = css`
   }
 `
 
-export const GlobalStyles = createGlobalStyle`
-  ${Reset}
+export const CreateGlobalStyles = theme => createGlobalStyle`
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
-  html {
-    font-size: 125%;
-    font-family: -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
-    line-height: 1.5;
-    color: #111111;
-    background-color: #F3F3F3;
-  }
+${Reset}
 
-  h1, h2, h3, h4, h5, h6, ul, ol, p {
-    margin-bottom: 1rem;
-  }
+html {
+  font-size: 125%;
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  color: ${theme.color.foreground};
+  background-color: ${theme.color.background};
+}
 
-  h2 {
-    font-size: 2rem;
+h1, h2, h3, h4, h5, h6, ul, ol, p {
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  word-spacing: 1px;
+  font-weight: 700;
+}
+
+a, a:visited {
+  color: ${theme.color.link};
+  text-decoration-color: ${transparentize(0.75, theme.color.link)};
+  transition: all 150ms ${theme.easing};
+  &:hover {
+    color: ${tint(7, theme.color.link)};
+    text-decoration-color: ${transparentize(0.5, theme.color.link)};
   }
+  &:focus {
+    color: ${tint(0.1, theme.color.link)};
+    text-decoration-color: ${theme.color.link};
+  }
+  &:active {
+    color: ${shade(0.1, theme.color.link)};
+    text-decoration-color: ${theme.color.link};
+  }
+}
 `

@@ -1,11 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Page } from "../components/page"
-import { Image } from "../components/image"
+import { Site } from "../components/site"
 import { SEO } from "../components/seo"
 
 const IndexPage = () => (
-  <Page>
+  <Site>
     <SEO title="Home" />
     <h2>Hi people</h2>
     <p>
@@ -14,7 +13,7 @@ const IndexPage = () => (
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
     <Link to="/page-2/">Go to page 2</Link>
-  </Page>
+  </Site>
 )
 
 export default IndexPage

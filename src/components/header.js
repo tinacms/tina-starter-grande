@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import { Wrapper } from "./page"
+import { Wrapper } from "./site"
 import styled from "styled-components"
 
 export const Header = styled(({ siteTitle, ...styleProps }) => (
