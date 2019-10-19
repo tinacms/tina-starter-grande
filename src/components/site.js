@@ -86,6 +86,7 @@ const DarkModeToggle = styled.button`
   border: 0;
   background: transparent;
   color: inherit;
+  cursor: pointer;
 
   svg {
     position: absolute;
@@ -95,11 +96,14 @@ const DarkModeToggle = styled.button`
     height: 1.5rem;
     fill: currentColor;
     transition: all 150ms ${props => props.theme.easing};
+    transform-origin: 50% 50%;
     &:first-child {
       opacity: 0;
+      transform: rotate(-90deg);
     }
     &:last-child {
       opacity: 1;
+      transform: rotate(0deg);
     }
   }
 
@@ -113,9 +117,11 @@ const DarkModeToggle = styled.button`
       svg {
         &:first-child {
           opacity: 1;
+          transform: rotate(0deg);
         }
         &:last-child {
           opacity: 0;
+          transform: rotate(90deg);
         }
       }
     `};
