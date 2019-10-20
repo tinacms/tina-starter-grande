@@ -1,12 +1,14 @@
 import React from "react"
 import styled, { createGlobalStyle, css } from "styled-components"
-import { tint, shade, transparentize } from "polished"
+import { mix, tint, shade, transparentize } from "polished"
 
 export const ThemeLight = {
   color: {
+    black: "#111111",
+    white: "#F9F9F9",
     primary: "#006341",
     foreground: "#111111",
-    background: "#F3F3F3",
+    background: "#F9F9F9",
     link: "#006341",
   },
   easing: "cubic-bezier(0.215, 0.610, 0.355, 1.000)",
@@ -14,8 +16,10 @@ export const ThemeLight = {
 
 export const ThemeDark = {
   color: {
+    black: "#111111",
+    white: "#F9F9F9",
     primary: "#006341",
-    foreground: "#F3F3F3",
+    foreground: "#F9F9F9",
     background: "#111111",
     link: "#006341",
   },
@@ -117,7 +121,7 @@ html {
   "Droid Sans", "Helvetica Neue", sans-serif;
   line-height: 1.5;
   color: ${theme.color.foreground};
-  background-color: ${theme.color.background};
+  background-color: ${mix(0.9, theme.color.background, theme.color.primary)};
 }
 
 h1, h2, h3, h4, h5, h6, ul, ol, p {
@@ -129,6 +133,16 @@ h2 {
   text-transform: uppercase;
   word-spacing: 1px;
   font-weight: 700;
+}
+
+h3 {
+  font-size: 1.4rem;
+  word-spacing: 1px;
+  font-weight: 700;
+}
+
+ul, ol {
+  padding-left: 1rem;;
 }
 
 a, a:visited {
