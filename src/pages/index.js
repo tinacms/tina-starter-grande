@@ -8,6 +8,8 @@ const IndexPage = () => (
     <SEO title="Home" />
     <h2>HTML Ipsum Presents</h2>
 
+    <hr />
+
     <p>
       <strong>Pellentesque habitant morbi tristique</strong> senectus et netus
       et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat

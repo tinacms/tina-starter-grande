@@ -2,28 +2,37 @@ import React from "react"
 import styled, { createGlobalStyle, css } from "styled-components"
 import { mix, tint, shade, transparentize } from "polished"
 
-export const ThemeLight = {
+const BaseTheme = {
   color: {
     black: "#111111",
     white: "#F9F9F9",
     primary: "#006341",
-    foreground: "#111111",
-    background: "#F9F9F9",
-    link: "#006341",
   },
   easing: "cubic-bezier(0.215, 0.610, 0.355, 1.000)",
 }
 
+export const ThemeLight = {
+  color: {
+    black: BaseTheme.color.black,
+    white: BaseTheme.color.white,
+    primary: BaseTheme.color.primary,
+    foreground: BaseTheme.color.black,
+    background: BaseTheme.color.white,
+    link: BaseTheme.color.primary,
+  },
+  easing: BaseTheme.easing,
+}
+
 export const ThemeDark = {
   color: {
-    black: "#111111",
-    white: "#F9F9F9",
-    primary: "#006341",
-    foreground: "#F9F9F9",
-    background: "#111111",
-    link: "#006341",
+    black: BaseTheme.color.black,
+    white: BaseTheme.color.white,
+    primary: BaseTheme.color.primary,
+    foreground: BaseTheme.color.white,
+    background: BaseTheme.color.black,
+    link: BaseTheme.color.primary,
   },
-  easing: "cubic-bezier(0.215, 0.610, 0.355, 1.000)",
+  easing: BaseTheme.easing,
 }
 
 export const Reset = css`
@@ -128,24 +137,50 @@ h1, h2, h3, h4, h5, h6, ul, ol, p {
   margin-bottom: 1rem;
 }
 
-h2 {
+h2:not([class]) {
   font-size: 1.8rem;
   text-transform: uppercase;
   word-spacing: 1px;
   font-weight: 700;
 }
 
-h3 {
+h3:not([class]) {
   font-size: 1.4rem;
   word-spacing: 1px;
   font-weight: 700;
 }
 
-ul, ol {
-  padding-left: 1rem;;
+ul:not([class]), ol:not([class]) {
+  padding-left: 1rem;
 }
 
-a, a:visited {
+ol:not([class]) {
+  counter-reset: counter;
+  list-style: none;
+  li:not([class]) {
+    counter-increment: counter;
+    &:before {
+      content: counter(counter) " –";
+      color: ${theme.color.primary};
+      font-weight: bold;
+      margin-right: 0.25rem;
+    }
+  }
+}
+
+ul:not([class]) {
+  list-style-type: none;
+  li:not([class]) {
+    &:before {
+      content: "–";
+      color: ${theme.color.primary};
+      font-weight: bold;
+      margin-right: 0.25rem;
+    }
+  }
+}
+
+a:not([class]), a:not([class]):visited {
   color: ${theme.color.link};
   text-decoration-color: ${transparentize(0.75, theme.color.link)};
   transition: all 150ms ${theme.easing};
@@ -161,5 +196,14 @@ a, a:visited {
     color: ${shade(0.1, theme.color.link)};
     text-decoration-color: ${theme.color.link};
   }
+}
+
+hr:not([class]) {
+  width: 35%;
+  min-width: 10rem;
+  max-width: 100%;
+  border: none;
+  margin: 1.5rem 0;
+  border-top: 2px solid ${transparentize(0.9, theme.color.foreground)};
 }
 `
