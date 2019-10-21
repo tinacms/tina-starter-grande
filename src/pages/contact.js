@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import { Site } from "../components/site"
 import { SEO } from "../components/seo"
 import styled, { css } from "styled-components"
+import { Button } from "../components/ui"
 import { mix, tint, shade, transparentize } from "polished"
 
 const Contact = () => (
@@ -63,9 +64,9 @@ const Contact = () => (
       </FormField>
 
       <FormField>
-        <button type="submit" value="Submit">
+        <Button primary type="submit" value="Submit">
           Submit
-        </button>
+        </Button>
       </FormField>
     </Form>
   </Site>
@@ -80,7 +81,7 @@ export const Form = styled.form`
   grid-gap: 1rem;
   justify-items: stretch;
 
-  @media (min-width: ${props => props.theme.breakpoints.small}) {
+  @media (min-width: ${props => props.theme.breakpoints.medium}) {
     grid-template-columns: 1fr 1fr;
   }
 `
@@ -119,6 +120,9 @@ export const FormField = styled.div`
   ${p =>
     p.wide &&
     css`
-      flex-grow: 1;
+      @media (min-width: ${props => props.theme.breakpoints.medium}) {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
     `};
 `
