@@ -109,7 +109,7 @@ export const Banner = styled.div`
   position: relative;
   border-radius: ${props => props.theme.radius.small}
     ${props => props.theme.radius.small} 0 0;
-  overflow: hidden;
+  overflow: visible;
   flex: 0 0 auto !important;
   padding: 2rem 2rem;
 
@@ -123,19 +123,6 @@ export const Banner = styled.div`
 
   > * {
     margin: 0;
-  }
-
-  img {
-    margin: 0;
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    object-fit: cover;
-    z-index: -1;
   }
 
   & + ${Paper} {
@@ -154,6 +141,22 @@ export const Banner = styled.div`
 
       @media (min-width: ${props => props.theme.breakpoints.large}) {
         padding: 8rem 4rem 3rem 4rem;
+      }
+    `};
+
+  ${p =>
+    p.underline &&
+    css`
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -1px;
+        width: 35%;
+        min-width: 10rem;
+        max-width: 100%;
+        height: 2px;
+        background-color: ${props => props.theme.color.secondary};
       }
     `};
 `
@@ -178,5 +181,28 @@ export const BannerText = styled.div`
       background-color: ${props => props.theme.color.background};
       z-index: -1;
     }
+  }
+`
+
+export const BannerImage = styled.div`
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -1;
+
+  img {
+    margin: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    object-fit: cover;
   }
 `
