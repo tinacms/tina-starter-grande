@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "tina-grande",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A configurable starter for Gatsby & Tina",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Scott Byrne <scott.byrne@forestry.io>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.16.1",
@@ -40,9 +40,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/spbyrne/tina-grande.git"
   }
 }
