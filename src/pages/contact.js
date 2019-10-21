@@ -1,12 +1,12 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Site, Button, Paper } from "../components/site"
+import { Paper, Button } from "../components/style"
 import { SEO } from "../components/seo"
 import styled, { css } from "styled-components"
 import { mix, tint, shade, transparentize } from "polished"
 
 const Contact = () => (
-  <Site>
+  <>
     <SEO title="Contact" />
     <Paper>
       <h2>Contact Us</h2>
@@ -70,7 +70,7 @@ const Contact = () => (
         </FormField>
       </Form>
     </Paper>
-  </Site>
+  </>
 )
 
 export default Contact

@@ -1,25 +1,12 @@
 import React from "react"
 import { Link } from "gatsby"
-import {
-  Site,
-  Paper,
-  Banner,
-  BannerText,
-  BannerImage,
-} from "../components/site"
+import Layout from "../components/layout"
+import { Paper } from "../components/style"
 import { SEO } from "../components/seo"
 
 const Home = () => (
-  <Site>
+  <>
     <SEO title="Home" />
-    {/* <Banner big underline>
-      <BannerImage>
-        <img src="https://source.unsplash.com/klub_Ke-268/880x283" alt="" />
-      </BannerImage>
-      <BannerText>
-        <h2>Instant Frappuccino</h2>
-      </BannerText>
-    </Banner> */}
     <Paper>
       <p>
         <h2>Instant Frappuccino</h2>
@@ -51,7 +38,7 @@ const Home = () => (
         Vivamus pretium ornare est.
       </p>
     </Paper>
-  </Site>
+  </>
 )
 
 export default Home
