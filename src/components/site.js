@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider, css } from "styled-components"
 import { GlobalStyles, ThemeLight, ThemeDark } from "./style"
 import { Header } from "./header"
-import { Wrapper } from "./ui"
+import { Wrapper, Paper } from "./ui"
 import { mix, tint, shade, transparentize } from "polished"
 
 export const Site = ({ children }) => {
@@ -32,16 +32,14 @@ export const Site = ({ children }) => {
             isDarkMode={isDarkMode}
             setIsDarkMode={setIsDarkMode}
           />
-          <HeroImage>
+          <BackgroundImage>
             <img
               src="https://source.unsplash.com/tKN1WXrzQ3s/1680x600"
               alt=""
             />
-          </HeroImage>
+          </BackgroundImage>
           <Main>
-            <Wrapper>
-              <Paper>{children}</Paper>
-            </Wrapper>
+            <Wrapper>{children}</Wrapper>
           </Main>
           <Footer>
             <Wrapper>
@@ -57,24 +55,7 @@ export const Site = ({ children }) => {
   )
 }
 
-export const Paper = styled.div`
-  background-color: ${props => props.theme.color.background};
-  border: 1px solid
-    ${props =>
-      mix(0.93, props.theme.color.background, props.theme.color.foreground)};
-  padding: 2rem 2rem;
-  border-radius: ${props => props.theme.radius.small};
-
-  @media (min-width: ${props => props.theme.breakpoints.small}) {
-    padding: 2.5rem 3rem;
-  }
-
-  @media (min-width: ${props => props.theme.breakpoints.large}) {
-    padding: 3rem 4rem;
-  }
-`
-
-export const HeroImage = styled.div`
+export const BackgroundImage = styled.div`
   position: absolute;
   width: 100%;
   height: 18rem;

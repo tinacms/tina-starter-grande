@@ -5,70 +5,73 @@ import { SEO } from "../components/seo"
 import styled, { css } from "styled-components"
 import { Button } from "../components/ui"
 import { mix, tint, shade, transparentize } from "polished"
+import { Paper } from "../components/ui"
 
 const Contact = () => (
   <Site>
     <SEO title="Contact" />
-    <h2>Contact Us</h2>
-    <hr />
+    <Paper>
+      <h2>Contact Us</h2>
+      <hr />
 
-    <Form name="contact" method="POST" data-netlify="true">
-      <FormField>
-        <label for="name">Name</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          autocorrect="off"
-          autocomplete="name"
-        />
-      </FormField>
+      <Form name="contact" method="POST" data-netlify="true">
+        <FormField>
+          <label for="name">Name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autocorrect="off"
+            autocomplete="name"
+          />
+        </FormField>
 
-      <FormField>
-        <label for="company">Company</label>
-        <input
-          id="company"
-          name="company"
-          type="text"
-          autocorrect="off"
-          autocomplete="organization"
-        />
-      </FormField>
+        <FormField>
+          <label for="company">Company</label>
+          <input
+            id="company"
+            name="company"
+            type="text"
+            autocorrect="off"
+            autocomplete="organization"
+          />
+        </FormField>
 
-      <FormField>
-        <label for="email">E-Mail</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          autocapitalize="off"
-          autocorrect="off"
-          autocomplete="email"
-        />
-      </FormField>
+        <FormField>
+          <label for="email">E-Mail</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocapitalize="off"
+            autocorrect="off"
+            autocomplete="email"
+          />
+        </FormField>
 
-      <FormField>
-        <label for="tel">Phone</label>
-        <input
-          id="tel"
-          name="tel"
-          type="tel"
-          autocorrect="off"
-          autocomplete="tel"
-        />
-      </FormField>
+        <FormField>
+          <label for="tel">Phone</label>
+          <input
+            id="tel"
+            name="tel"
+            type="tel"
+            autocorrect="off"
+            autocomplete="tel"
+          />
+        </FormField>
 
-      <FormField wide>
-        <label for="message">Message</label>
-        <textarea cols="40" rows="5" name="message" id="message"></textarea>
-      </FormField>
+        <FormField wide>
+          <label for="message">Message</label>
+          <textarea cols="40" rows="5" name="message" id="message"></textarea>
+        </FormField>
 
-      <FormField>
-        <Button primary type="submit" value="Submit">
-          Submit
-        </Button>
-      </FormField>
-    </Form>
+        <FormField>
+          <Button primary type="submit" value="Submit">
+            Submit
+          </Button>
+        </FormField>
+      </Form>
+    </Paper>
   </Site>
 )
 
