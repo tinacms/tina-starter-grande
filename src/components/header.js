@@ -40,7 +40,7 @@ export const Header = styled(
   position: absolute;
   width: 100%;
   top: 0;
-  background-color: ${props => transparentize(0.8, props.theme.color.black)};
+  background-color: ${props => transparentize(0.95, props.theme.color.black)};
   border-top: 6px solid ${props => props.theme.color.primary};
   box-shadow: inset 0 -1px 0 ${props => transparentize(0.9, props.theme.color.white)},
     0 1px 0 ${props => transparentize(0.9, props.theme.color.black)};
@@ -63,6 +63,7 @@ export const NavLink = styled(props => (
   line-height: 3rem;
   padding: 0 0.75rem;
   display: block;
+  position: relative;
   text-align: center;
   text-transform: uppercase;
   font-size: 0.8rem;
@@ -70,15 +71,36 @@ export const NavLink = styled(props => (
   text-decoration: none;
   color: ${p => p.theme.color.white} !important;
   opacity: 0.5;
+  overflow: hidden;
   transition: all 150ms ${p => p.theme.easing};
 
-  &:hover {
-    opacity: 1;
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: ${props => props.theme.color.primary};
+    transform: translate3d(0, 100%, 0);
+    transition: all 150ms ${props => props.theme.easing};
   }
 
+  &:hover {
+    &:after {
+      opacity: 0.3;
+    }
+  }
+
+  &:hover,
+  &:active,
   &.active {
     opacity: 1;
-    box-shadow: inset 0 -4px 0 ${p => p.theme.color.primary};
+
+    &:after {
+      transform: translate3d(0, 0, 0);
+    }
   }
 `
 

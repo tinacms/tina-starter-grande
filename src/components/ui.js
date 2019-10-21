@@ -7,5 +7,9 @@ export const Wrapper = styled.div`
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
+
+  @media (min-width: ${props => props.theme.breakpoints.small}) {
+    padding: 0 2rem;
+  }
 `

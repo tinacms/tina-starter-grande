@@ -4,11 +4,17 @@ import { mix, tint, shade, transparentize } from "polished"
 
 const BaseTheme = {
   color: {
-    black: "#111111",
-    white: "#F9F9F9",
-    primary: "#006341",
+    black: "#131110",
+    white: "#f7f7f7",
+    primary: "#007043",
+    secondary: "#C4B069",
   },
   easing: "cubic-bezier(0.215, 0.610, 0.355, 1.000)",
+  breakpoints: {
+    small: "600px",
+    medium: "1200px",
+    large: "1600px",
+  },
 }
 
 export const ThemeLight = {
@@ -16,23 +22,27 @@ export const ThemeLight = {
     black: BaseTheme.color.black,
     white: BaseTheme.color.white,
     primary: BaseTheme.color.primary,
+    secondary: BaseTheme.color.secondary,
     foreground: BaseTheme.color.black,
     background: BaseTheme.color.white,
-    link: BaseTheme.color.primary,
+    link: BaseTheme.color.secondary,
   },
   easing: BaseTheme.easing,
+  breakpoints: BaseTheme.breakpoints,
 }
 
 export const ThemeDark = {
   color: {
     black: BaseTheme.color.black,
-    white: BaseTheme.color.white,
+    white: mix(0.7, BaseTheme.color.white, BaseTheme.color.secondary),
     primary: BaseTheme.color.primary,
-    foreground: BaseTheme.color.white,
+    secondary: BaseTheme.color.secondary,
+    foreground: mix(0.7, BaseTheme.color.white, BaseTheme.color.secondary),
     background: BaseTheme.color.black,
-    link: BaseTheme.color.primary,
+    link: BaseTheme.color.secondary,
   },
   easing: BaseTheme.easing,
+  breakpoints: BaseTheme.breakpoints,
 }
 
 export const Reset = css`
@@ -130,7 +140,16 @@ html {
   "Droid Sans", "Helvetica Neue", sans-serif;
   line-height: 1.5;
   color: ${theme.color.foreground};
-  background-color: ${mix(0.9, theme.color.background, theme.color.primary)};
+  background-color: ${mix(
+    0.95,
+    theme.color.background,
+    theme.color.foreground
+  )};
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6, ul, ol, p {
@@ -139,6 +158,7 @@ h1, h2, h3, h4, h5, h6, ul, ol, p {
 
 h2:not([class]) {
   font-size: 1.8rem;
+  line-height: 1.2;
   text-transform: uppercase;
   word-spacing: 1px;
   font-weight: 700;
@@ -204,6 +224,6 @@ hr:not([class]) {
   max-width: 100%;
   border: none;
   margin: 1.5rem 0;
-  border-top: 2px solid ${transparentize(0.9, theme.color.foreground)};
+  border-top: 2px solid ${theme.color.secondary};
 }
 `

@@ -5,7 +5,7 @@ import styled, { ThemeProvider, css } from "styled-components"
 import { CreateGlobalStyles, ThemeLight, ThemeDark } from "./style"
 import { Header } from "./header"
 import { Wrapper } from "./ui"
-import { tint, shade, transparentize } from "polished"
+import { mix, tint, shade, transparentize } from "polished"
 
 export const Site = ({ children }) => {
   const stored = localStorage.getItem("isDarkMode")
@@ -35,13 +35,13 @@ export const Site = ({ children }) => {
           />
           <HeroImage>
             <img
-              src="https://source.unsplash.com/tKN1WXrzQ3s/1680x360"
+              src="https://source.unsplash.com/tKN1WXrzQ3s/1680x600"
               alt=""
             />
           </HeroImage>
           <Main>
             <Wrapper>
-              <PageWrapper>{children}</PageWrapper>
+              <Paper>{children}</Paper>
             </Wrapper>
           </Main>
           <Footer>
@@ -57,11 +57,21 @@ export const Site = ({ children }) => {
   )
 }
 
-export const PageWrapper = styled.div`
+export const Paper = styled.div`
   background-color: ${props => props.theme.color.background};
-  padding: 2rem 3rem;
-  margin-bottom: 0rem;
+  border: 1px solid
+    ${props =>
+      mix(0.93, props.theme.color.background, props.theme.color.foreground)};
+  padding: 2rem 2rem;
   border-radius: 3px;
+
+  @media (min-width: ${props => props.theme.breakpoints.small}) {
+    padding: 2.5rem 3rem;
+  }
+
+  @media (min-width: ${props => props.theme.breakpoints.large}) {
+    padding: 3rem 4rem;
+  }
 `
 
 export const HeroImage = styled.div`
@@ -69,7 +79,18 @@ export const HeroImage = styled.div`
   width: 100%;
   height: 18rem;
   z-index: -1;
-  background-color: ${props => transparentize(0.1, props.theme.color.black)};
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${props => transparentize(0.3, props.theme.color.black)};
+  }
+
   img {
     position: absolute;
     width: 100%;
@@ -78,7 +99,6 @@ export const HeroImage = styled.div`
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
     object-fit: cover;
-    opacity: 0.3;
   }
 `
 
@@ -87,7 +107,7 @@ export const Footer = styled.footer`
   line-height: 3rem;
   height: 3rem;
   background-color: ${props =>
-    transparentize(0.95, props.theme.color.foreground)};
+    transparentize(0.97, props.theme.color.foreground)};
   border-top: 1px solid
     ${props => transparentize(0.95, props.theme.color.foreground)};
 `
@@ -120,7 +140,7 @@ export const Main = styled.main`
     flex-direction: column;
     align-items: stretch;
   }
-  ${PageWrapper} {
+  ${Paper} {
     flex: 1 0 auto;
   }
 `

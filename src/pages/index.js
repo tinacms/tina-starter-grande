@@ -6,7 +6,7 @@ import { SEO } from "../components/seo"
 const IndexPage = () => (
   <Site>
     <SEO title="Home" />
-    <h2>HTML Ipsum Presents</h2>
+    <h2>Instant Frappuccino</h2>
 
     <hr />
 
@@ -23,7 +23,7 @@ const IndexPage = () => (
       Ut felis.
     </p>
 
-    <h3>Header Level 3</h3>
+    <h3>Aromatic Caramelization</h3>
 
     <ol>
       <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
