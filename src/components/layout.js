@@ -7,7 +7,8 @@ import { Header } from "./header"
 import { Footer } from "./footer"
 
 const Layout = ({ children }) => {
-  const stored = localStorage.getItem("isDarkMode")
+  const stored =
+    typeof window !== "undefined" ? localStorage.getItem("isDarkMode") : false
   const [isDarkMode, setIsDarkMode] = useState(stored === "true" ? true : false)
   const Theme = isDarkMode ? ThemeDark : ThemeLight
 
