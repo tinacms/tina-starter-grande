@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 import { ThemeLight, ThemeDark } from "./theme"
@@ -10,7 +10,9 @@ const Layout = ({ children }) => {
   const stored =
     typeof window !== "undefined" ? localStorage.getItem("isDarkMode") : false
   const [isDarkMode, setIsDarkMode] = useState(stored === "true" ? true : false)
-  const Theme = isDarkMode ? ThemeDark : ThemeLight
+  const Theme = useMemo(() => (isDarkMode ? ThemeDark : ThemeLight), [
+    isDarkMode,
+  ])
 
   const data = useStaticQuery(graphql`
     query SiteQuery {
