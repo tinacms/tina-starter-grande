@@ -321,7 +321,9 @@ export const DarkModeToggle = styled(
       <button
         onClick={() => {
           setIsDarkMode(!isDarkMode)
-          localStorage.setItem("isDarkMode", !isDarkMode)
+          if (typeof window !== "undefined") {
+            localStorage.setItem("isDarkMode", !isDarkMode)
+          }
         }}
         isDarkMode={isDarkMode}
         {...styleProps}
