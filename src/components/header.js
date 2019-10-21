@@ -22,6 +22,9 @@ export const Header = styled(
           <NavItem>
             <NavLink to="/blog">blog</NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink to="/contact">contact</NavLink>
+          </NavItem>
           <DarkModeToggle
             onClick={() => {
               setIsDarkMode(!isDarkMode)
@@ -48,7 +51,7 @@ export const Header = styled(
 
 export const Navbar = styled.ul`
   display: flex;
-  align-items: center;
+  align-items: stretch;
   flex: 0 0 auto;
   margin: 0;
 `
@@ -87,7 +90,7 @@ export const NavLink = styled(props => (
     transition: all 150ms ${props => props.theme.easing};
   }
 
-  &:hover {
+  &:hover:not(.active) {
     &:after {
       opacity: 0.3;
     }
@@ -135,7 +138,6 @@ const HeaderWrapper = styled(Wrapper)`
 const DarkModeToggle = styled.button`
   position: relative;
   width: 1.5rem;
-  height: 1.5rem;
   padding: 0;
   border: 0;
   background: transparent;
@@ -145,10 +147,10 @@ const DarkModeToggle = styled.button`
   color: ${props => props.theme.color.white};
   svg {
     position: absolute;
-    top: 0;
+    top: calc(50% - 0.75rem);
     left: 0;
     width: 1.5rem;
-    height: 1.5rem;
+    height: auto;
     fill: currentColor;
     transition: all 150ms ${props => props.theme.easing};
     transform-origin: 50% 50%;

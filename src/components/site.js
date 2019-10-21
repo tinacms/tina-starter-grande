@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider, css } from "styled-components"
-import { CreateGlobalStyles, ThemeLight, ThemeDark } from "./style"
+import { GlobalStyles, ThemeLight, ThemeDark } from "./style"
 import { Header } from "./header"
 import { Wrapper } from "./ui"
 import { mix, tint, shade, transparentize } from "polished"
@@ -11,7 +11,6 @@ export const Site = ({ children }) => {
   const stored = localStorage.getItem("isDarkMode")
   const [isDarkMode, setIsDarkMode] = useState(stored === "true" ? true : false)
   const Theme = isDarkMode ? ThemeDark : ThemeLight
-  const GlobalStyles = CreateGlobalStyles(Theme)
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -26,7 +25,7 @@ export const Site = ({ children }) => {
   return (
     <ThemeProvider theme={Theme}>
       <>
-        <GlobalStyles theme={Theme} />
+        <GlobalStyles />
         <Layout>
           <Header
             siteTitle={data.site.siteMetadata.title}
@@ -63,7 +62,7 @@ export const Paper = styled.div`
     ${props =>
       mix(0.93, props.theme.color.background, props.theme.color.foreground)};
   padding: 2rem 2rem;
-  border-radius: 3px;
+  border-radius: ${props => props.theme.radius.small};
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
     padding: 2.5rem 3rem;
@@ -108,11 +107,12 @@ export const Footer = styled.footer`
   height: 3rem;
   background-color: ${props =>
     transparentize(0.97, props.theme.color.foreground)};
-  border-top: 1px solid
+  box-shadow: inset 0 1px 0
     ${props => transparentize(0.95, props.theme.color.foreground)};
 `
 
 export const Layout = styled.div`
+  position: relative;
   display: flex;
   min-height: 100vh;
   flex-direction: column;

@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { Site } from "../components/site"
 import { SEO } from "../components/seo"
 
-const IndexPage = () => (
+const Home = () => (
   <Site>
     <SEO title="Home" />
     <h2>Instant Frappuccino</h2>
@@ -49,4 +49,4 @@ const IndexPage = () => (
   </Site>
 )
 
-export default IndexPage
+export default Home
