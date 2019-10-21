@@ -1,8 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Site } from "../components/site"
+import { Site, Paper } from "../components/site"
 import { SEO } from "../components/seo"
-import { Paper } from "../components/ui"
 
 const Blog = () => (
   <Site>

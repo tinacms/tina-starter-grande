@@ -1,11 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Site } from "../components/site"
+import { Site, Button, Paper } from "../components/site"
 import { SEO } from "../components/seo"
 import styled, { css } from "styled-components"
-import { Button } from "../components/ui"
 import { mix, tint, shade, transparentize } from "polished"
-import { Paper } from "../components/ui"
 
 const Contact = () => (
   <Site>

@@ -1,22 +1,29 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Site } from "../components/site"
+import {
+  Site,
+  Paper,
+  Banner,
+  BannerText,
+  BannerImage,
+} from "../components/site"
 import { SEO } from "../components/seo"
-import { Paper, Banner, BannerText, BannerImage } from "../components/ui"
 
 const Home = () => (
   <Site>
     <SEO title="Home" />
-    <Banner big underline>
+    {/* <Banner big underline>
       <BannerImage>
         <img src="https://source.unsplash.com/klub_Ke-268/880x283" alt="" />
       </BannerImage>
       <BannerText>
         <h2>Instant Frappuccino</h2>
       </BannerText>
-    </Banner>
+    </Banner> */}
     <Paper>
       <p>
+        <h2>Instant Frappuccino</h2>
+        <hr />
         <strong>Pellentesque habitant morbi tristique</strong> senectus et netus
         et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat
         vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet

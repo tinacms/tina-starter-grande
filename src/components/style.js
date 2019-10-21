@@ -133,8 +133,6 @@ export const Reset = css`
 `
 
 export const GlobalStyles = createGlobalStyle`
-  @import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
-
   ${Reset}
 
   html {
