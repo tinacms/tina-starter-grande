@@ -45,9 +45,10 @@ export const Site = ({ children }) => {
           </Main>
           <Footer>
             <Wrapper>
-              © {new Date().getFullYear()}, Built with
+              © {new Date().getFullYear()} – Built with
               {` `}
-              <a href="https://www.gatsbyjs.org">Gatsby</a>
+              <a href="https://www.gatsbyjs.org">Gatsby</a> by{" "}
+              <a href="https://www.forestry.io">Forestry.io</a>
             </Wrapper>
           </Footer>
         </Layout>
@@ -104,6 +105,7 @@ export const HeroImage = styled.div`
 export const Footer = styled.footer`
   font-size: 0.8rem;
   line-height: 3rem;
+  text-align: center;
   height: 3rem;
   background-color: ${props =>
     transparentize(0.97, props.theme.color.foreground)};

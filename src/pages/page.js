@@ -3,9 +3,9 @@ import { Link } from "gatsby"
 import { Site } from "../components/site"
 import { SEO } from "../components/seo"
 
-const Home = () => (
+const Page = () => (
   <Site>
-    <SEO title="Home" />
+    <SEO title="Page" />
     <h2>Instant Frappuccino</h2>
 
     <hr />
@@ -22,7 +22,22 @@ const Home = () => (
       enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis.
       Ut felis.
     </p>
+
+    <h3>Aromatic Caramelization</h3>
+
+    <ol>
+      <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+      <li>Aliquam tincidunt mauris eu risus.</li>
+    </ol>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna.
+      Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida.
+      Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est
+      malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium
+      ornare est.
+    </p>
   </Site>
 )
 
-export default Home
+export default Page

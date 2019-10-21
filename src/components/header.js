@@ -20,6 +20,9 @@ export const Header = styled(
             <NavLink to="/">home</NavLink>
           </NavItem>
           <NavItem>
+            <NavLink to="/page">page</NavLink>
+          </NavItem>
+          <NavItem>
             <NavLink to="/blog">blog</NavLink>
           </NavItem>
           <NavItem>
