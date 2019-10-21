@@ -110,6 +110,7 @@ export const FormField = styled.div`
   textarea {
     line-height: 1.5;
     padding: 0.5rem;
+    resize: vertical;
   }
 
   label {

@@ -25,7 +25,7 @@ export const Button = styled.button`
   border-radius: ${props => props.theme.radius.small};
   border: none;
   transition: all 150ms ${props => props.theme.easing};
-  color: ${props => props.theme.color.background};
+  color: ${props => props.theme.color.white};
   background-color: ${props => transparentize(0.8, props.theme.color.black)};
   border-bottom: 3px solid
     ${props => transparentize(0.8, props.theme.color.black)};
@@ -84,6 +84,6 @@ export const Button = styled.button`
     p.primary &&
     css`
       background-color: ${props => props.theme.color.primary};
-      color: ${props => props.theme.color.background};
+      color: ${props => props.theme.color.white};
     `};
 `
