@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "gatsby"
-import Layout from "../components/layout"
 import { Paper, Image } from "../components/style"
 import { SEO } from "../components/seo"
 import { useStaticQuery, graphql } from "gatsby"
@@ -19,7 +18,7 @@ const Home = () => {
   `)
 
   return (
-    <Layout>
+    <>
       <SEO title="Home" />
       <Paper>
         <h2>Instant Frappuccino</h2>
@@ -55,7 +54,7 @@ const Home = () => {
           quam. Vivamus pretium ornare est.
         </p>
       </Paper>
-    </Layout>
+    </>
   )
 }
 

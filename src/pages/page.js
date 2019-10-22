@@ -1,12 +1,11 @@
 import React from "react"
 import { Paper } from "../components/style"
 import { SEO } from "../components/seo"
-import Layout from "../components/layout"
 import { useStaticQuery, graphql } from "gatsby"
 
 const Page = () => {
   return (
-    <Layout>
+    <>
       <SEO title="Page" />
       <Paper>
         <h2>Aromatic Caramelization</h2>
@@ -54,7 +53,7 @@ const Page = () => {
           pulvinar facilisis. Ut felis.
         </p>
       </Paper>
-    </Layout>
+    </>
   )
 }
 
