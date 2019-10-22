@@ -22,13 +22,10 @@ Iugis pumice nidi laborum mecum nunc, eras umbrae Ciconumque, quaeque. Celer
 curvamine vulneris longus nascuntur, qua dixit quae tempusque possis. Ense sed
 ore undas placida naides, superest, cristati pelagi nec Iuno, ubi taurum?
 
-    windows.pretestRecord(storage_graphics_character, ide_batch +
-            powerpoint_recursion_ppga, 5);
-    mac_piracy(5 - 2, path(virusRead));
-    var balancingIcf = keywordsHttps(digital_inbox_middleware(socket +
-            refreshNvramNetworking, compilerBoxRootkit), eupIoRte,
-            fiber_design);
-    var disk_tiger = lion_kilobit;
+```javascript
+let name = prompt("Please enter your name")
+console.log(name)
+```
 
 ### Rogat et mediam manus
 

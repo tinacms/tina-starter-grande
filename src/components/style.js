@@ -88,6 +88,125 @@ export const Reset = css`
   }
 `
 
+export const PrismTheme = css`
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color: ${props => props.theme.color.white};
+    font-family: "Hack", Monaco, "Courier New", Courier, monospace;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    tab-size: 4;
+    hyphens: none;
+    border-radius: 0 ${props => props.theme.radius.small}
+      ${props => props.theme.radius.small} 0;
+    background-color: #272822;
+  }
+
+  code[class*="language-"] {
+    padding: 0 0.25rem;
+    font-size: 0.9em;
+    display: inline-block;
+    border-radius: ${props => props.theme.radius.small};
+  }
+
+  pre[class*="language-"] {
+    border-radius: 0 ${props => props.theme.radius.small}
+      ${props => props.theme.radius.small} 0;
+    padding: 1em;
+    margin: 0.5em 0;
+    overflow: auto;
+    border-radius: 0.3em;
+    font-size: 0.9em;
+    padding: 1rem 1.5rem;
+
+    code {
+      display: block;
+      font-size: 1em;
+      padding: 0;
+      border-radius: 0;
+      border: none;
+      background-color: transparent;
+    }
+  }
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #778090;
+  }
+
+  .token.punctuation {
+    color: #f8f8f2;
+  }
+
+  .namespace {
+    opacity: 0.7;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: #f92672;
+  }
+
+  .token.boolean,
+  .token.number {
+    color: #ae81ff;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: #a6e22e;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string,
+  .token.variable {
+    color: #f8f8f2;
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.function {
+    color: #e6db74;
+  }
+
+  .token.keyword {
+    color: #f92672;
+  }
+
+  .token.regex,
+  .token.important {
+    color: #fd971f;
+  }
+
+  .token.important,
+  .token.bold {
+    font-weight: bold;
+  }
+  .token.italic {
+    font-style: italic;
+  }
+
+  .token.entity {
+    cursor: help;
+  }
+`
+
 export const GlobalStyles = createGlobalStyle`
   ${Reset}
 
@@ -116,6 +235,8 @@ export const GlobalStyles = createGlobalStyle`
     min-width: 440px;
   }
 
+  ${PrismTheme}
+
   blockquote {
     font-size: 1.2rem;
     padding: 1rem 1.5rem;
@@ -133,40 +254,6 @@ export const GlobalStyles = createGlobalStyle`
     &:not(:last-child) {
       margin-bottom: 1.6rem;
     }
-  }
-
-  pre {
-    font-size: 0.9em;
-    padding: 1rem 1.5rem;
-    border-radius: 0 ${props => props.theme.radius.small} ${props =>
-  props.theme.radius.small} 0;
-    border: 1px solid
-      ${props => transparentize(0.95, props.theme.color.foreground)};
-    background-color: ${props =>
-      transparentize(0.95, props.theme.color.foreground)};
-    code {
-      border: none;
-      border-radius: none;
-      background-color: transparent;
-    }
-    &:not(:first-child) {
-      margin-top: 1.6rem;
-    }
-    &:not(:last-child) {
-      margin-bottom: 1.6rem;
-    }
-  }
-
-  code {
-    font-family: "Hack", Monaco, "Courier New", Courier, monospace;
-    font-size: 0.9em;
-    display: inline-block;
-    padding: 0 0.25rem;
-    border-radius: ${props => props.theme.radius.small};
-    border: 1px solid
-      ${props => transparentize(0.95, props.theme.color.foreground)};
-    background-color: ${props =>
-      transparentize(0.95, props.theme.color.foreground)};
   }
 
   p:not([class]) {
@@ -497,12 +584,16 @@ export const Image = styled(Img)``
 
 export const Paper = styled.div`
   background-color: ${props => props.theme.color.background};
-  border: 1px solid
-    ${props =>
-      mix(0.93, props.theme.color.background, props.theme.color.foreground)};
   border-radius: ${props => props.theme.radius.small};
-  box-shadow: 0 0.5rem 1rem -0.5rem ${props => transparentize(0.9, props.theme.color.black)};
+  box-shadow: inset 0 0 0 1px
+      ${props =>
+        mix(0.93, props.theme.color.background, props.theme.color.foreground)},
+    0 0.5rem 1rem -0.5rem ${props => transparentize(0.9, props.theme.color.black)};
   padding: 1.5rem 2rem;
+
+  > *:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
     padding: 2.5rem 3rem;
@@ -514,6 +605,7 @@ export const Paper = styled.div`
 
   ${Image}, .gatsby-resp-image-wrapper {
     margin: 1.5rem -2rem !important;
+    overflow: hidden;
 
     @media (min-width: ${props => props.theme.breakpoints.small}) {
       margin: 2.5rem -3rem !important;
@@ -521,6 +613,26 @@ export const Paper = styled.div`
 
     @media (min-width: ${props => props.theme.breakpoints.large}) {
       margin: 3.5rem -4rem !important;
+    }
+  }
+
+  > *:first-child {
+    ${Image}, .gatsby-resp-image-wrapper {
+      margin-top: -1.5rem !important;
+      border-radius: ${props => props.theme.radius.small}
+        ${props => props.theme.radius.small} 0 0;
+
+      @media (min-width: ${props => props.theme.breakpoints.small}) {
+        margin-top: -2.5rem !important;
+        border-radius: ${props => props.theme.radius.small}
+          ${props => props.theme.radius.small} 0 0;
+      }
+
+      @media (min-width: ${props => props.theme.breakpoints.large}) {
+        margin-top: -3.5rem !important;
+        border-radius: ${props => props.theme.radius.small}
+          ${props => props.theme.radius.small} 0 0;
+      }
     }
   }
 `
