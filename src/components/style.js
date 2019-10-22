@@ -117,9 +117,38 @@ export const GlobalStyles = createGlobalStyle`
     min-width: 440px;
   }
 
-  p {
-    font-size: 1rem;
-    line-height: 1.6;
+  blockquote {
+    font-size: 1.3rem;
+    padding: 1rem 1.5rem;
+    border-radius: ${props => props.theme.radius.small};
+    border: 1px solid
+      ${props => transparentize(0.95, props.theme.color.foreground)};
+    border-left: 6px solid ${props => props.theme.color.primary};
+    background-color: ${props =>
+      transparentize(0.95, props.theme.color.foreground)};
+    &:not(:first-child) {
+      margin-top: 1.6rem;
+    }
+    &:not(:last-child) {
+      margin-bottom: 1.6rem;
+    }
+  }
+
+  code {
+    font-family: "Hack", Monaco, "Courier New", Courier, monospace;
+    font-size: 0.9em;
+    display: inline-block;
+    padding: 0 0.25rem;
+    border-radius: ${props => props.theme.radius.small};
+    border: 1px solid
+      ${props => transparentize(0.95, props.theme.color.foreground)};
+    background-color: ${props =>
+      transparentize(0.95, props.theme.color.foreground)};
+  }
+
+  p:not([class]) {
+    font-size: 1em;
+    line-height: 1.7;
   }
 
   h1,
@@ -131,11 +160,17 @@ export const GlobalStyles = createGlobalStyle`
   ul,
   ol,
   p {
-    margin-bottom: 1rem;
+    &:not(:last-child):not([class]) {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  li:not(:last-child):not([class]) {
+    margin-bottom: 0.5rem;
   }
 
   h2:not([class]) {
-    font-size: 1.8rem;
+    font-size: 1.8em;
     line-height: 1.2;
     text-transform: uppercase;
     word-spacing: 1px;
@@ -143,14 +178,14 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   h3:not([class]) {
-    font-size: 1.4rem;
+    font-size: 1.4em;
     word-spacing: 1px;
     font-weight: 700;
   }
 
   ul:not([class]),
   ol:not([class]) {
-    padding-left: 1rem;
+    padding-left: 1em;
   }
 
   ol:not([class]) {
@@ -186,13 +221,16 @@ export const GlobalStyles = createGlobalStyle`
       transparentize(0.75, props.theme.color.link)};
     transition: all 150ms ${props => props.theme.easing};
     &:hover {
-      color: ${props => tint(7, props.theme.color.link)};
+      color: ${props => shade(0.1, props.theme.color.link)};
       text-decoration-color: ${props =>
         transparentize(0.5, props.theme.color.link)};
     }
     &:focus {
-      color: ${props => tint(0.1, props.theme.color.link)};
+      color: ${props => shade(0.1, props.theme.color.link)};
       text-decoration-color: ${props => props.theme.color.link};
+      outline: none;
+      background-color: ${props =>
+        transparentize(0.95, props.theme.color.foreground)};
     }
     &:active {
       color: ${props => shade(0.1, props.theme.color.link)};
@@ -205,7 +243,7 @@ export const GlobalStyles = createGlobalStyle`
     min-width: 10rem;
     max-width: 100%;
     border: none;
-    margin: 1.5rem 0;
+    margin: 1.6rem 0;
     border-top: 2px solid ${props => props.theme.color.secondary};
   }
 `
@@ -320,17 +358,7 @@ export const HeaderWrapper = styled(Wrapper)`
 export const DarkModeToggle = styled(
   ({ setIsDarkMode, isDarkMode, setTheme, ...styleProps }) => {
     return (
-      <button
-        onClick={() => {
-          setIsDarkMode(!isDarkMode)
-          setTheme(isDarkMode ? ThemeDark : ThemeLight)
-          if (typeof window !== "undefined") {
-            localStorage.setItem("isDarkMode", !isDarkMode)
-          }
-        }}
-        isDarkMode={isDarkMode}
-        {...styleProps}
-      >
+      <button {...styleProps}>
         <Sun />
         <Moon />
       </button>
@@ -346,6 +374,9 @@ export const DarkModeToggle = styled(
   cursor: pointer;
   margin-left: 1rem;
   color: ${props => props.theme.color.white};
+  opacity: 0.5;
+  overflow: hidden;
+  transition: all 150ms ${p => p.theme.easing};
   svg {
     position: absolute;
     top: calc(50% - 0.75rem);
@@ -367,6 +398,10 @@ export const DarkModeToggle = styled(
 
   &:focus {
     outline: none;
+  }
+
+  &:hover {
+    opacity: 1;
   }
 
   ${props =>
@@ -402,7 +437,7 @@ export const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${props => props.theme.color.black};
-  opacity: 0.65;
+  opacity: 0.7;
 `
 
 export const StyledFooter = styled.footer`
@@ -434,24 +469,37 @@ export const Page = styled.div`
   }
 `
 
+export const Image = styled(Img)``
+
 export const Paper = styled.div`
   background-color: ${props => props.theme.color.background};
   border: 1px solid
     ${props =>
       mix(0.93, props.theme.color.background, props.theme.color.foreground)};
-  padding: 2rem 2rem;
+  padding: 2rem;
   border-radius: ${props => props.theme.radius.small};
+  box-shadow: 0 0.5rem 1rem -0.5rem ${props => transparentize(0.9, props.theme.color.black)};
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
-    padding: 2.5rem 3rem;
+    padding: 3rem;
   }
 
   @media (min-width: ${props => props.theme.breakpoints.large}) {
-    padding: 3rem 4rem;
+    padding: 4rem;
+  }
+
+  ${Image} {
+    margin: 2rem -2rem;
+
+    @media (min-width: ${props => props.theme.breakpoints.small}) {
+      margin: 3rem -3rem;
+    }
+
+    @media (min-width: ${props => props.theme.breakpoints.large}) {
+      margin: 4rem -4rem;
+    }
   }
 `
-
-export const Image = styled(Img)``
 
 export const Main = styled.main`
   padding: 6rem 0 4rem 0;

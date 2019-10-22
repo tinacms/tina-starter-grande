@@ -79,7 +79,7 @@ export const Form = styled.form`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  grid-gap: 1rem;
+  grid-gap: 1.5rem;
   justify-items: stretch;
 
   @media (min-width: ${props => props.theme.breakpoints.medium}) {
