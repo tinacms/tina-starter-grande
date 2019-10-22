@@ -4,8 +4,7 @@ import { Paper } from "../components/style"
 import { SEO } from "../components/seo"
 
 export default function Page({ data }) {
-  const { markdownRemark } = data
-  const { frontmatter, html } = markdownRemark
+  const { frontmatter, html } = data.markdownRemark
   return (
     <>
       <SEO title={frontmatter.title} />

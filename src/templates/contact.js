@@ -6,14 +6,17 @@ import styled, { css } from "styled-components"
 import { mix, tint, shade, transparentize } from "polished"
 
 export default function Page({ data }) {
-  const { markdownRemark } = data
-  const { frontmatter, html } = markdownRemark
+  const { frontmatter, html } = data.markdownRemark
   return (
     <>
       <SEO title={frontmatter.title} />
       <Paper>
         <div dangerouslySetInnerHTML={{ __html: html }}></div>
-        <Form name="contact" method="POST" data-netlify="true">
+        <Form
+          name="contact"
+          action="https://formspree.io/scott.byrne@forestry.io"
+          method="POST"
+        >
           <FormField>
             <label for="name">Name</label>
             <input
