@@ -106,9 +106,9 @@ export const FormField = styled.div`
   input,
   textarea {
     position: relative;
-    line-height: 2rem;
+    line-height: 2.25rem;
     font-size: 1rem;
-    padding: 0 0.5rem;
+    padding: 0 0.625rem;
     border-radius: ${props => props.theme.radius.small};
     border: none;
     width: 100%;
@@ -125,7 +125,7 @@ export const FormField = styled.div`
 
   textarea {
     line-height: 1.5;
-    padding: 0.5rem;
+    padding: 0.5rem 0.625rem;
     resize: vertical;
   }
 
