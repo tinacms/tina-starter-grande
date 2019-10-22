@@ -5,13 +5,13 @@ import { Paper } from "../components/style"
 import Layout from "../components/layout"
 
 const NotFoundPage = () => (
-  <LayoutDimensions>
+  <Layout>
     <SEO title="404: Not found" />
     <Paper>
       <h1>NOT FOUND</h1>
       <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
     </Paper>
-  </LayoutDimensions>
+  </Layout>
 )
 
 export default NotFoundPage
