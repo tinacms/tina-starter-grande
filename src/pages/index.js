@@ -19,7 +19,7 @@ const Home = () => {
   `)
 
   return (
-    <>
+    <Layout>
       <SEO title="Home" />
       <Paper>
         <h2>Instant Frappuccino</h2>
@@ -55,7 +55,7 @@ const Home = () => {
           quam. Vivamus pretium ornare est.
         </p>
       </Paper>
-    </>
+    </Layout>
   )
 }
 

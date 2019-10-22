@@ -5,7 +5,6 @@ import { Moon, Sun } from "styled-icons/boxicons-regular"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
-import { ThemeLight, ThemeDark } from "./theme"
 
 export const Reset = css`
   /*! minireset.css v0.0.5 | MIT License | github.com/jgthms/minireset.css */

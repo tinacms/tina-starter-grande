@@ -3,10 +3,11 @@ import { Link } from "gatsby"
 import { Paper, Button } from "../components/style"
 import { SEO } from "../components/seo"
 import styled, { css } from "styled-components"
+import Layout from "../components/layout"
 import { mix, tint, shade, transparentize } from "polished"
 
 const Contact = () => (
-  <>
+  <Layout>
     <SEO title="Contact" />
     <Paper>
       <h2>Contact Us</h2>
@@ -70,7 +71,7 @@ const Contact = () => (
         </FormField>
       </Form>
     </Paper>
-  </>
+  </Layout>
 )
 
 export default Contact
