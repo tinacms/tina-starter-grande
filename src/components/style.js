@@ -3,7 +3,9 @@ import styled, { createGlobalStyle, css } from "styled-components"
 import { mix, tint, shade, transparentize } from "polished"
 import { Moon, Sun } from "styled-icons/boxicons-regular"
 import { Link } from "gatsby"
+import Img from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
+import { ThemeLight, ThemeDark } from "./theme"
 
 export const Reset = css`
   /*! minireset.css v0.0.5 | MIT License | github.com/jgthms/minireset.css */
@@ -316,11 +318,12 @@ export const HeaderWrapper = styled(Wrapper)`
 `
 
 export const DarkModeToggle = styled(
-  ({ setIsDarkMode, isDarkMode, ...styleProps }) => {
+  ({ setIsDarkMode, isDarkMode, setTheme, ...styleProps }) => {
     return (
       <button
         onClick={() => {
           setIsDarkMode(!isDarkMode)
+          setTheme(isDarkMode ? ThemeDark : ThemeLight)
           if (typeof window !== "undefined") {
             localStorage.setItem("isDarkMode", !isDarkMode)
           }
@@ -447,6 +450,8 @@ export const Paper = styled.div`
     padding: 3rem 4rem;
   }
 `
+
+export const Image = styled(Img)``
 
 export const Main = styled.main`
   padding: 6rem 0 4rem 0;

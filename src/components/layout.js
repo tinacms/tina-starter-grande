@@ -7,12 +7,12 @@ import { Header } from "./header"
 import { Footer } from "./footer"
 
 const Layout = ({ children }) => {
-  const stored =
+  const userPrefDark =
     typeof window !== "undefined" ? localStorage.getItem("isDarkMode") : false
-  const [isDarkMode, setIsDarkMode] = useState(stored === "true" ? true : false)
-  const Theme = useMemo(() => (isDarkMode ? ThemeDark : ThemeLight), [
-    isDarkMode,
-  ])
+  const [isDarkMode, setIsDarkMode] = useState(
+    userPrefDark === "true" ? true : false
+  )
+  const [theme, setTheme] = useState(isDarkMode ? ThemeDark : ThemeLight)
 
   const data = useStaticQuery(graphql`
     query SiteQuery {
@@ -32,12 +32,13 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <ThemeProvider theme={Theme}>
+    <ThemeProvider theme={theme}>
       <>
         <GlobalStyles />
         <Page>
           <Header
             setIsDarkMode={setIsDarkMode}
+            setTheme={setTheme}
             isDarkMode={isDarkMode}
             siteTitle={data.site.siteMetadata.title}
             backgroundImage={data.file.childImageSharp.fluid}

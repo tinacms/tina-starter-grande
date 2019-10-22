@@ -12,10 +12,12 @@ import {
   Overlay,
 } from "./style"
 import { Coffee } from "styled-icons/boxicons-regular"
+import { ThemeLight, ThemeDark } from "./theme"
 
 export const Header = ({
   setIsDarkMode,
   isDarkMode,
+  setTheme,
   siteTitle,
   backgroundImage,
 }) => {
@@ -43,7 +45,13 @@ export const Header = ({
               <NavLink to="/contact">contact</NavLink>
             </NavItem>
             <DarkModeToggle
-              setIsDarkMode={setIsDarkMode}
+              onClick={() => {
+                setIsDarkMode(!isDarkMode)
+                setTheme(!isDarkMode ? ThemeDark : ThemeLight)
+                if (typeof window !== "undefined") {
+                  localStorage.setItem("isDarkMode", !isDarkMode)
+                }
+              }}
               isDarkMode={isDarkMode}
             />
           </Navbar>
