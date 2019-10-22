@@ -34,10 +34,7 @@ export const Header = ({
               <NavLink to="/">home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/page">page</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/blog">blog</NavLink>
+              <NavLink to="/about">about</NavLink>
             </NavItem>
             <NavItem>
               <NavLink to="/contact">contact</NavLink>

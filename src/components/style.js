@@ -119,12 +119,14 @@ export const GlobalStyles = createGlobalStyle`
   blockquote {
     font-size: 1.3rem;
     padding: 1rem 1.5rem;
-    border-radius: ${props => props.theme.radius.small};
+    border-radius: 0 ${props => props.theme.radius.small} ${props =>
+  props.theme.radius.small} 0;
     border: 1px solid
       ${props => transparentize(0.95, props.theme.color.foreground)};
-    border-left: 6px solid ${props => props.theme.color.primary};
     background-color: ${props =>
       transparentize(0.95, props.theme.color.foreground)};
+    box-shadow: -6px 0 0 ${props => props.theme.color.primary};
+    margin-left: 6px;
     &:not(:first-child) {
       margin-top: 1.6rem;
     }
@@ -487,15 +489,15 @@ export const Paper = styled.div`
     padding: 3.5rem 4rem;
   }
 
-  ${Image} {
-    margin: 1.5rem -2rem;
+  ${Image}, .gatsby-resp-image-wrapper {
+    margin: 1.5rem -2rem !important;
 
     @media (min-width: ${props => props.theme.breakpoints.small}) {
-      margin: 2.5rem -3rem;
+      margin: 2.5rem -3rem !important;
     }
 
     @media (min-width: ${props => props.theme.breakpoints.large}) {
-      margin: 3.5rem -4rem;
+      margin: 3.5rem -4rem !important;
     }
   }
 `
