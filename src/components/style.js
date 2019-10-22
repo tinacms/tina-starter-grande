@@ -295,25 +295,26 @@ export const NavLink = styled(props => (
   text-decoration: none;
   color: ${p => p.theme.color.white} !important;
   opacity: 0.5;
-  overflow: hidden;
+  overflow: visible;
   transition: all 150ms ${p => p.theme.easing};
 
   &:after {
     content: "";
     display: block;
     position: absolute;
-    bottom: 0;
+    top: -6px;
     left: 0;
     width: 100%;
-    height: 4px;
-    background-color: ${props => props.theme.color.primary};
-    transform: translate3d(0, 100%, 0);
+    height: 6px;
+    background-color: ${props => transparentize(0.85, props.theme.color.white)};
+    transform: translate3d(0, -100%, 0);
     transition: all 150ms ${props => props.theme.easing};
   }
 
   &:hover:not(.active) {
     &:after {
-      opacity: 0.3;
+      background-color: ${props =>
+        transparentize(0.85, props.theme.color.black)};
     }
   }
 
