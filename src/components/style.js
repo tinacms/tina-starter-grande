@@ -476,27 +476,27 @@ export const Paper = styled.div`
   border: 1px solid
     ${props =>
       mix(0.93, props.theme.color.background, props.theme.color.foreground)};
-  padding: 2rem;
   border-radius: ${props => props.theme.radius.small};
   box-shadow: 0 0.5rem 1rem -0.5rem ${props => transparentize(0.9, props.theme.color.black)};
+  padding: 1.5rem 2rem;
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
-    padding: 3rem;
+    padding: 2.5rem 3rem;
   }
 
   @media (min-width: ${props => props.theme.breakpoints.large}) {
-    padding: 4rem;
+    padding: 3.5rem 4rem;
   }
 
   ${Image} {
-    margin: 2rem -2rem;
+    margin: 1.5rem -2rem;
 
     @media (min-width: ${props => props.theme.breakpoints.small}) {
-      margin: 3rem -3rem;
+      margin: 2.5rem -3rem;
     }
 
     @media (min-width: ${props => props.theme.breakpoints.large}) {
-      margin: 4rem -4rem;
+      margin: 3.5rem -4rem;
     }
   }
 `
