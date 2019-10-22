@@ -242,8 +242,6 @@ export const GlobalStyles = createGlobalStyle`
     padding: 1rem 1.5rem;
     border-radius: 0 ${props => props.theme.radius.small} ${props =>
   props.theme.radius.small} 0;
-    border: 1px solid
-      ${props => transparentize(0.95, props.theme.color.foreground)};
     background-color: ${props =>
       transparentize(0.95, props.theme.color.foreground)};
     box-shadow: -6px 0 0 ${props => props.theme.color.primary};
@@ -656,7 +654,7 @@ export const Main = styled.main`
 export const Button = styled.button`
   display: inline-block;
   position: relative;
-  line-height: 2rem;
+  line-height: 2.25rem;
   font-size: 1rem;
   padding: 0 1rem;
   text-align: center;
