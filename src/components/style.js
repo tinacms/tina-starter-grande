@@ -117,7 +117,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   blockquote {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     padding: 1rem 1.5rem;
     border-radius: 0 ${props => props.theme.radius.small} ${props =>
   props.theme.radius.small} 0;
@@ -127,6 +127,28 @@ export const GlobalStyles = createGlobalStyle`
       transparentize(0.95, props.theme.color.foreground)};
     box-shadow: -6px 0 0 ${props => props.theme.color.primary};
     margin-left: 6px;
+    &:not(:first-child) {
+      margin-top: 1.6rem;
+    }
+    &:not(:last-child) {
+      margin-bottom: 1.6rem;
+    }
+  }
+
+  pre {
+    font-size: 0.9em;
+    padding: 1rem 1.5rem;
+    border-radius: 0 ${props => props.theme.radius.small} ${props =>
+  props.theme.radius.small} 0;
+    border: 1px solid
+      ${props => transparentize(0.95, props.theme.color.foreground)};
+    background-color: ${props =>
+      transparentize(0.95, props.theme.color.foreground)};
+    code {
+      border: none;
+      border-radius: none;
+      background-color: transparent;
+    }
     &:not(:first-child) {
       margin-top: 1.6rem;
     }
