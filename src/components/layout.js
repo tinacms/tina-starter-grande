@@ -1,18 +1,25 @@
 import React, { useState, useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
-import { ThemeLight, ThemeDark } from "./theme"
+import { Theme } from "./theme"
 import { GlobalStyles, Page, Main, Wrapper } from "./style"
 import { Header } from "./header"
 import { Footer } from "./footer"
 
 const Layout = ({ children }) => {
-  const userPrefDark =
-    typeof window !== "undefined" ? localStorage.getItem("isDarkMode") : false
+  const isBrowser = typeof window !== "undefined"
+  const userPrefDark = isBrowser ? localStorage.getItem("isDarkMode") : false
   const [isDarkMode, setIsDarkMode] = useState(
     userPrefDark === "true" ? true : false
   )
-  const [theme, setTheme] = useState(isDarkMode ? ThemeDark : ThemeLight)
+  const theme = Theme(isDarkMode)
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode)
+    if (typeof window !== "undefined") {
+      localStorage.setItem("isDarkMode", !isDarkMode)
+    }
+  }
 
   const data = useStaticQuery(graphql`
     query SiteQuery {
@@ -37,8 +44,7 @@ const Layout = ({ children }) => {
         <GlobalStyles />
         <Page>
           <Header
-            setIsDarkMode={setIsDarkMode}
-            setTheme={setTheme}
+            toggleDarkMode={toggleDarkMode}
             isDarkMode={isDarkMode}
             siteTitle={data.site.siteMetadata.title}
             backgroundImage={data.file.childImageSharp.fluid}

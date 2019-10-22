@@ -18,6 +18,7 @@
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^2.1.33",
     "gatsby-transformer-sharp": "^2.2.23",
+    "lodash.merge": "^4.6.2",
     "polished": "^3.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
