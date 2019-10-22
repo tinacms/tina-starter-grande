@@ -1,7 +1,7 @@
 ---
 title: Contact
 path: "/contact"
-inMenu: true
+menus: main
 template: contact
 ---
 

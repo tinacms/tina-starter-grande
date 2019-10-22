@@ -1,7 +1,7 @@
 ---
 title: About
 path: "/about"
-inMenu: true
+menus: main
 template: page
 ---
 

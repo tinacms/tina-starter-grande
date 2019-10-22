@@ -18,6 +18,7 @@ export const Header = ({
   isDarkMode,
   siteTitle,
   backgroundImage,
+  menuLinks,
 }) => {
   return (
     <>
@@ -30,15 +31,11 @@ export const Header = ({
             </SiteLink>
           </SiteTitle>
           <Navbar>
-            <NavItem>
-              <NavLink to="/">home</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/about">about</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/contact">contact</NavLink>
-            </NavItem>
+            {menuLinks.map(link => (
+              <NavItem key={link.name}>
+                <NavLink to={link.link}>{link.name}</NavLink>
+              </NavItem>
+            ))}
             <DarkModeToggle onClick={toggleDarkMode} isDarkMode={isDarkMode} />
           </Navbar>
         </HeaderWrapper>

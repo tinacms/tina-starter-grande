@@ -2,6 +2,7 @@
 title: Home
 path: "/"
 template: page
+menus: main
 ---
 
 ## Instant Frappuccino

@@ -26,6 +26,10 @@ const Layout = ({ children }) => {
       site {
         siteMetadata {
           title
+          menuLinks {
+            name
+            link
+          }
         }
       }
       file(relativePath: { eq: "cafe.jpg" }) {
@@ -48,6 +52,7 @@ const Layout = ({ children }) => {
             isDarkMode={isDarkMode}
             siteTitle={data.site.siteMetadata.title}
             backgroundImage={data.file.childImageSharp.fluid}
+            menuLinks={data.site.siteMetadata.menuLinks}
           />
           <Main>
             <Wrapper>{children}</Wrapper>
