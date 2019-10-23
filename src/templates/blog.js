@@ -10,24 +10,19 @@ export default function Blog({ data }) {
       <SEO title={data.page.frontmatter.title} />
       <Paper>
         <div dangerouslySetInnerHTML={{ __html: data.page.html }}></div>
-        {data.posts.edges.forEach(({ node }) => (
-          <div key={node.id}>
-            <article>
-              <header>
-                <p>
-                  <Link to={node.frontmatter.path}>
-                    {node.frontmatter.title}
-                  </Link>
-                  <span>{node.frontmatter.date}</span>
-                </p>
-              </header>
+        {data.posts.edges.map(({ node }) => {
+          return (
+            <article key={node.id}>
+              <h3>
+                <Link to={node.frontmatter.path}>{node.frontmatter.title}</Link>
+              </h3>
+              <p>{node.frontmatter.date}</p>
               <p>
-                {node.excerpt}
                 <Link to={node.frontmatter.path}>Keep Reading →</Link>
               </p>
             </article>
-          </div>
-        ))}
+          )
+        })}
       </Paper>
     </>
   )
@@ -49,7 +44,6 @@ export const pageQuery = graphql`
       edges {
         node {
           id
-          excerpt(pruneLength: 140)
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             path
