@@ -416,6 +416,8 @@ export const Navbar = styled.ul`
 
 export const NavItem = styled.li`
   flex: 0 0 auto;
+  display: flex;
+  align-items: center;
   @media (max-width: ${props => props.theme.breakpoints.small}) {
     &:not(:last-child) {
       border-bottom: 1px solid
@@ -427,6 +429,7 @@ export const NavItem = styled.li`
 export const NavLink = styled(props => (
   <Link activeClassName="active" {...props} isCurrent />
 ))`
+  flex: 1 0 auto;
   line-height: 3rem;
   padding: 0 0.75rem;
   display: block;
@@ -571,7 +574,7 @@ export const DarkModeToggle = styled(({ ...styleProps }) => {
   position: relative;
   flex: 0 0 auto;
   width: 100%;
-  height: 3rem;
+  height: 2.75rem;
   align-self: stretch;
   padding: 0;
   border: 0;
@@ -686,11 +689,8 @@ export const Image = styled(Img)``
 export const Paper = styled.div`
   background-color: ${props => props.theme.color.background};
   border-radius: ${props => props.theme.radius.small};
-  box-shadow: inset 0 0 0 1px
-      ${props =>
-        mix(0.93, props.theme.color.background, props.theme.color.foreground)},
-    0 0.5rem 1rem -0.5rem ${props => transparentize(0.9, props.theme.color.black)};
-  padding: 1.5rem 2rem;
+  box-shadow: 0 0.5rem 1rem -0.5rem ${props => transparentize(0.9, props.theme.color.black)};
+  padding: 2rem;
 
   > *:not(:last-child) {
     margin-bottom: 1.5rem;
@@ -705,7 +705,7 @@ export const Paper = styled.div`
   }
 
   ${Image}, .gatsby-resp-image-wrapper {
-    margin: 1.5rem -2rem !important;
+    margin: 2rem -2rem !important;
     overflow: hidden;
 
     @media (min-width: ${props => props.theme.breakpoints.small}) {
