@@ -39,7 +39,11 @@ export const Header = ({
           <Navbar navOpen={navOpen}>
             {menuLinks.map(link => (
               <NavItem key={link.name}>
-                <NavLink onClick={toggleNavOpen} to={link.link}>
+                <NavLink
+                  onClick={toggleNavOpen}
+                  partiallyActive={link.link === "/" ? false : true}
+                  to={link.link}
+                >
                   {link.name}
                 </NavLink>
               </NavItem>

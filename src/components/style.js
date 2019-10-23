@@ -526,10 +526,11 @@ export const NavToggle = styled(({ menuOpen, ...styleProps }) => {
   margin-left: 1rem;
   font-size: 0.8rem;
   line-height: 1;
+  align-self: stretch;
   text-transform: uppercase;
   color: ${props => props.theme.color.white};
   opacity: 0.5;
-  overflow: hidden;
+  overflow: visible;
   transition: all 150ms ${p => p.theme.easing};
 
   .open {
@@ -541,6 +542,8 @@ export const NavToggle = styled(({ menuOpen, ...styleProps }) => {
 
   &:focus {
     outline: none;
+    opacity: 1;
+    text-decoration: underline;
   }
 
   &:hover {
