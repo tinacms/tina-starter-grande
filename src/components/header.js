@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import {
   StyledHeader,
   HeaderWrapper,
@@ -7,6 +7,7 @@ import {
   Navbar,
   NavItem,
   NavLink,
+  NavToggle,
   DarkModeToggle,
   HeroBackgroundImage,
   Overlay,
@@ -20,6 +21,11 @@ export const Header = ({
   backgroundImage,
   menuLinks,
 }) => {
+  const [navOpen, setNavOpen] = useState(false)
+  const toggleNavOpen = () => {
+    setNavOpen(!navOpen)
+  }
+
   return (
     <>
       <StyledHeader>
@@ -30,14 +36,22 @@ export const Header = ({
               {siteTitle}
             </SiteLink>
           </SiteTitle>
-          <Navbar>
+          <Navbar navOpen={navOpen}>
             {menuLinks.map(link => (
               <NavItem key={link.name}>
-                <NavLink to={link.link}>{link.name}</NavLink>
+                <NavLink onClick={toggleNavOpen} to={link.link}>
+                  {link.name}
+                </NavLink>
               </NavItem>
             ))}
-            <DarkModeToggle onClick={toggleDarkMode} isDarkMode={isDarkMode} />
+            <NavItem>
+              <DarkModeToggle
+                onClick={toggleDarkMode}
+                isDarkMode={isDarkMode}
+              />
+            </NavItem>
           </Navbar>
+          <NavToggle onClick={toggleNavOpen} navOpen={navOpen}></NavToggle>
         </HeaderWrapper>
       </StyledHeader>
       <HeroBackgroundImage fluid={backgroundImage}>

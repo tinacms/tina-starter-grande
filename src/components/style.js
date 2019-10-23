@@ -103,11 +103,17 @@ export const PrismTheme = css`
     hyphens: none;
     border-radius: 0 ${props => props.theme.radius.small}
       ${props => props.theme.radius.small} 0;
-    background-color: #272822;
+    background-color: ${props =>
+      mix(
+        0.9,
+        mix(0.9, props.theme.color.black, props.theme.color.secondary),
+        props.theme.color.background
+      )};
   }
 
   code[class*="language-"] {
-    padding: 0 0.25rem;
+    padding: 0 0.25em;
+    margin: 0 0.125em;
     font-size: 0.9em;
     display: inline-block;
     border-radius: ${props => props.theme.radius.small};
@@ -127,6 +133,7 @@ export const PrismTheme = css`
       display: block;
       font-size: 1em;
       padding: 0;
+      margin: 0;
       border-radius: 0;
       border: none;
       background-color: transparent;
@@ -229,10 +236,6 @@ export const GlobalStyles = createGlobalStyle`
     -ms-overflow-style: none;
     overflow-y: scroll;
     overflow-x: hidden;
-  }
-
-  body {
-    min-width: 440px;
   }
 
   ${PrismTheme}
@@ -378,14 +381,47 @@ export const StyledHeader = styled.header`
 `
 
 export const Navbar = styled.ul`
-  display: flex;
-  align-items: stretch;
-  flex: 0 0 auto;
-  margin: 0;
+  @media (max-width: ${props => props.theme.breakpoints.small}) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate3d(0, 100%, 0);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    opacity: 0;
+    z-index: 1000;
+    background-color: ${props =>
+      mix(0.95, props.theme.color.black, props.theme.color.white)};
+    box-shadow: 0 1rem 2rem -0.5rem ${props => transparentize(0.5, props.theme.color.black)};
+    transition: all 150ms ${p => p.theme.easing};
+    ${props =>
+      props.navOpen &&
+      css`
+        opacity: 1;
+      `};
+  }
+
+  @media (min-width: ${props => props.theme.breakpoints.small}) {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-end;
+    flex: 1 0 auto;
+    margin: 0;
+    opacity: 1;
+  }
 `
 
 export const NavItem = styled.li`
   flex: 0 0 auto;
+  @media (max-width: ${props => props.theme.breakpoints.small}) {
+    &:not(:last-child) {
+      border-bottom: 1px solid
+        ${props => transparentize(0.85, props.theme.color.white)};
+    }
+  }
 `
 
 export const NavLink = styled(props => (
@@ -434,6 +470,12 @@ export const NavLink = styled(props => (
       transform: translate3d(0, 0, 0);
     }
   }
+
+  @media (max-width: ${props => props.theme.breakpoints.small}) {
+    &:after {
+      display: none;
+    }
+  }
 `
 
 export const SiteLink = styled(Link)`
@@ -464,32 +506,93 @@ export const HeaderWrapper = styled(Wrapper)`
   height: 3rem;
 `
 
-export const DarkModeToggle = styled(
-  ({ setIsDarkMode, isDarkMode, setTheme, ...styleProps }) => {
-    return (
-      <button {...styleProps}>
-        <Sun />
-        <Moon />
-      </button>
-    )
-  }
-)`
+export const NavToggle = styled(({ menuOpen, ...styleProps }) => {
+  return (
+    <button {...styleProps}>
+      <span className="closed">Open Menu</span>
+      <span className="open">Close Menu</span>
+    </button>
+  )
+})`
   position: relative;
-  width: 1.5rem;
   padding: 0;
   border: 0;
   background: transparent;
   color: inherit;
   cursor: pointer;
   margin-left: 1rem;
+  font-size: 0.8rem;
+  line-height: 1;
+  text-transform: uppercase;
   color: ${props => props.theme.color.white};
   opacity: 0.5;
   overflow: hidden;
   transition: all 150ms ${p => p.theme.easing};
+
+  .open {
+    display: none;
+  }
+  .closed {
+    display: block;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @media (min-width: ${props => props.theme.breakpoints.small}) {
+    display: none;
+  }
+
+  ${props =>
+    props.navOpen &&
+    css`
+      .open {
+        display: block;
+      }
+      .closed {
+        display: none;
+      }
+    `};
+`
+
+export const DarkModeToggle = styled(({ ...styleProps }) => {
+  return (
+    <button {...styleProps}>
+      <Sun />
+      <Moon />
+    </button>
+  )
+})`
+  position: relative;
+  flex: 0 0 auto;
+  width: 100%;
+  height: 3rem;
+  align-self: stretch;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  color: ${props => props.theme.color.white};
+  opacity: 0.5;
+  overflow: hidden;
+  transition: all 150ms ${p => p.theme.easing};
+
+  @media (min-width: ${props => props.theme.breakpoints.small}) {
+    width: 1.5rem;
+    height: auto;
+    margin-left: 1rem;
+  }
+
   svg {
     position: absolute;
     top: calc(50% - 0.75rem);
-    left: 0;
+    left: calc(50% - 0.75rem);
     width: 1.5rem;
     height: auto;
     fill: currentColor;
