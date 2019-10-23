@@ -13,22 +13,15 @@ export default function Post({ data }) {
   )
 }
 
-export const postQuery = graphql`
-  query {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { template: { eq: "post" } } }
-    ) {
-      edges {
-        node {
-          id
-          excerpt(pruneLength: 140)
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            path
-            title
-          }
-        }
+export const pageQuery = graphql`
+  query($path: String!) {
+    markdownRemark(frontmatter: { path: { eq: $path } }) {
+      id
+      html
+      frontmatter {
+        path
+        date
+        title
       }
     }
   }
