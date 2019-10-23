@@ -220,7 +220,7 @@ export const PrismTheme = css`
   .token.char,
   .token.builtin,
   .token.inserted {
-    color: ${props => mix(0.85, "#A2E222", props.theme.color.foreground)};
+    color: ${props => mix(0.85, "#91CA1E", props.theme.color.foreground)};
   }
 
   .token.operator,
@@ -235,7 +235,7 @@ export const PrismTheme = css`
   .token.atrule,
   .token.attr-value,
   .token.function {
-    color: ${props => mix(0.85, "#E6D749", props.theme.color.foreground)};
+    color: ${props => mix(0.85, "#C6BE00", props.theme.color.foreground)};
   }
 
   .token.keyword {

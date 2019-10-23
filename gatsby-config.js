@@ -28,6 +28,15 @@ module.exports = {
       options: {
         sidebar: {
           position: "fixed",
+          theme: {
+            color: {
+              primary: {
+                light: "#358156",
+                medium: "#007043",
+                dark: "#0A623B",
+              },
+            },
+          },
         },
         plugins: ["gatsby-tinacms-git", "gatsby-tinacms-remark"],
       },
@@ -66,8 +75,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `tina-grande`,
-        short_name: `grande`,
+        name: `Tina Grande Gatsby Starter`,
+        short_name: `Tina Grandee`,
         start_url: `/`,
         background_color: `#007043`,
         theme_color: `#007043`,
@@ -75,6 +84,7 @@ module.exports = {
         icon: `src/images/icon.png`,
       },
     },
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {

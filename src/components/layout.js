@@ -6,6 +6,9 @@ import { GlobalStyles, Page, Main, Wrapper } from "./style"
 import { Header } from "./header"
 import { Footer } from "./footer"
 
+import { createRemarkButton } from "gatsby-tinacms-remark"
+import { withPlugin } from "react-tinacms"
+
 const Layout = ({ children }) => {
   const isBrowser = typeof window !== "undefined"
   const userPrefDark = isBrowser ? localStorage.getItem("isDarkMode") : false
@@ -64,4 +67,33 @@ const Layout = ({ children }) => {
   )
 }
 
-export default Layout
+const filepath = title => {
+  return "content/posts/" + title.replace(/\s+/g, "-").toLowerCase() + ".md"
+}
+
+const CreatePostPlugin = createRemarkButton({
+  label: "Create Post",
+  filename({ title }) {
+    filepath({ title })
+  },
+  frontmatter({ title }) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          title,
+          date: new Date(),
+          template: "post",
+          path: filepath(title),
+        })
+      }, 1000)
+    })
+  },
+  body({ title }) {
+    return `## ${title}`
+  },
+  fields: [
+    { name: "title", label: "Title", component: "text", required: true },
+  ],
+})
+
+export default withPlugin(Layout, CreatePostPlugin)
