@@ -585,7 +585,7 @@ export const DarkModeToggle = styled(({ ...styleProps }) => {
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
     width: 1.5rem;
-    height: auto;
+    height: 100%;
     margin-left: 1rem;
   }
 
