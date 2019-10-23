@@ -24,12 +24,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    createPage({
-      path: node.frontmatter.path,
-      component: path.resolve(
-        `src/templates/${String(node.frontmatter.template)}.js`
-      ),
-      context: {}, // additional data can be passed via context
-    })
+    if (node.frontmatter.path) {
+      createPage({
+        path: node.frontmatter.path,
+        component: path.resolve(
+          `src/templates/${String(node.frontmatter.template)}.js`
+        ),
+        context: {}, // additional data can be passed via context
+      })
+    }
   })
 }

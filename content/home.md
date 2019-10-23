@@ -1,8 +1,8 @@
 ---
 title: Home
 path: "/"
-template: page
 menus: main
+template: page
 ---
 
 ## Instant Frappuccino

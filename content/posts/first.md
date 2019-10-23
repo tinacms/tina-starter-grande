@@ -1,8 +1,8 @@
 ---
-title: About
-path: "/blog/my-first-post"
+title: My First Post
+path: "blog/my-first-post"
 date: "2019-07-07"
-template: page
+template: post
 ---
 
 Has anyone heard about GatsbyJS yet?
