@@ -3,7 +3,9 @@ import { graphql } from "gatsby"
 import { Paper } from "../components/style"
 import { SEO } from "../components/seo"
 
-export default function Page({ data }) {
+import { remarkForm } from "gatsby-tinacms-remark"
+
+function Page({ data }) {
   const { frontmatter, html } = data.markdownRemark
   return (
     <>
@@ -13,6 +15,23 @@ export default function Page({ data }) {
   )
 }
 
+let PageForm = {
+  fields: [
+    {
+      label: "Title",
+      name: "rawFrontmatter.title",
+      component: "text",
+    },
+    {
+      label: "Body",
+      name: "rawMarkdownBody",
+      component: "markdown",
+    },
+  ],
+}
+
+export default remarkForm(Page, PageForm)
+
 export const pageQuery = graphql`
   query($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
@@ -21,6 +40,10 @@ export const pageQuery = graphql`
         path
         title
       }
+
+      fileRelativePath
+      rawFrontmatter
+      rawMarkdownBody
     }
   }
 `

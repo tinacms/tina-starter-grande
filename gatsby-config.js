@@ -24,6 +24,15 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: "gatsby-plugin-tinacms",
+      options: {
+        sidebar: {
+          position: "fixed",
+        },
+        plugins: ["gatsby-tinacms-git", "gatsby-tinacms-remark"],
+      },
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/static/images`,
@@ -95,7 +104,7 @@ module.exports = {
               classPrefix: "language-",
               inlineCodeMarker: null,
               aliases: {},
-              showLineNumbers: false,
+              showLineNumbers: true,
               noInlineHighlight: false,
               prompt: {
                 user: "root",

@@ -5,7 +5,9 @@ import { Paper, Button } from "../components/style"
 import styled, { css } from "styled-components"
 import { mix, tint, shade, transparentize } from "polished"
 
-export default function Page({ data }) {
+import { remarkForm } from "gatsby-tinacms-remark"
+
+function Contact({ data }) {
   const { frontmatter, html } = data.markdownRemark
   return (
     <>
@@ -14,60 +16,38 @@ export default function Page({ data }) {
         <div dangerouslySetInnerHTML={{ __html: html }}></div>
         <Form
           name="contact"
-          action="https://formspree.io/scott.byrne@forestry.io"
+          action="https://formspree.io/{frontmatter.recipient}"
           method="POST"
         >
-          <FormField>
-            <label for="name">Name</label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              autocorrect="off"
-              autocomplete="name"
-            />
-          </FormField>
-
-          <FormField>
-            <label for="company">Company</label>
-            <input
-              id="company"
-              name="company"
-              type="text"
-              autocorrect="off"
-              autocomplete="organization"
-            />
-          </FormField>
-
-          <FormField>
-            <label for="email">E-Mail</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autocapitalize="off"
-              autocorrect="off"
-              autocomplete="email"
-            />
-          </FormField>
-
-          <FormField>
-            <label for="tel">Phone</label>
-            <input
-              id="tel"
-              name="tel"
-              type="tel"
-              autocorrect="off"
-              autocomplete="tel"
-            />
-          </FormField>
-
+          {frontmatter.fields.map(field => {
+            if (field.inputType === "textarea") {
+              return (
+                <FormField wide>
+                  <label for="{field.id}">{field.label}</label>
+                  <textarea
+                    cols="40"
+                    rows="5"
+                    name="{field.id}"
+                    id="{field.id}"
+                  ></textarea>
+                </FormField>
+              )
+            } else {
+              return (
+                <FormField>
+                  <label for="{field.id}">{field.label}</label>
+                  <input
+                    id="{field.id}"
+                    name="{field.id}"
+                    type="{field.inputType}"
+                    autocorrect="off"
+                    autocomplete="{field.autocomplete | ``}"
+                  />
+                </FormField>
+              )
+            }
+          })}
           <FormField wide>
-            <label for="message">Message</label>
-            <textarea cols="40" rows="5" name="message" id="message"></textarea>
-          </FormField>
-
-          <FormField>
             <Button primary type="submit" value="Submit">
               Submit
             </Button>
@@ -85,10 +65,43 @@ export const pageQuery = graphql`
       frontmatter {
         path
         title
+        recipient
+        fields {
+          id
+          label
+          inputType
+          autocomplete
+        }
       }
+
+      fileRelativePath
+      rawFrontmatter
+      rawMarkdownBody
     }
   }
 `
+
+let ContactForm = {
+  fields: [
+    {
+      label: "Title",
+      name: "rawFrontmatter.title",
+      component: "text",
+    },
+    {
+      label: "Recipient",
+      name: "rawFrontmatter.recipient",
+      component: "text",
+    },
+    {
+      label: "Body",
+      name: "rawMarkdownBody",
+      component: "markdown",
+    },
+  ],
+}
+
+export default remarkForm(Contact, ContactForm)
 
 export const Form = styled.form`
   display: grid;

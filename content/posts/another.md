@@ -26,29 +26,22 @@ lupis. Nomine decus erat presso, puero [flendo](http://ingenio.io/amantem)
 decimum. Modo Atque, armorum premunt; sua dea quae **cadunt**.
 
 ```javascript
-if (adapter - box + mouse_soap_plug) {
-  dual_cyberbullying_flood = 2 + nas_reader_panel
-  remoteBalancing(3)
+var File = function(url, object) {
+  File.list = Array.isArray(File.list) ? File.list : []
+  File.progress = File.progress || 0
+  this.progress = 0
+  this.object = object
+  this.url = url
 }
-var cachePetaflops = social * dvTransistorVdu
-if (cluster < lun / favoritesSms) {
-  p_ibm_access(
-    tablet_and_bloatware,
-    dotDefragment + title_speed_server,
-    shortcut / publicWizardFlatbed
-  )
-  uddi = 57
-} else {
-  infotainment.number_bar(refresh, boot(typeface, 1, impactBitmapDel))
-  station(association)
-  device(refreshBiometricsApi(simplexIpSoft))
-}
-if (impact_api == buffer) {
-  superscalar(searchKbps, 4)
-  cpa_leak = whitelist(binary_cut, boot_fiber, session)
-  duplex_half = printer + asp_panel_tweet + d
-} else {
-  tebibyte.graphics_windows_samba = edutainment_qbe + crop
+
+File.indexOf = function(term) {
+  for (var index in File.list) {
+    var file = File.list[index]
+    if (file.equals(term) || file.url === term || file.object === term) {
+      return index
+    }
+  }
+  return -1
 }
 ```
 

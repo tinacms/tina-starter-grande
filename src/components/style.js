@@ -91,7 +91,7 @@ export const Reset = css`
 export const PrismTheme = css`
   code[class*="language-"],
   pre[class*="language-"] {
-    color: ${props => props.theme.color.white};
+    color: ${props => transparentize(0.1, props.theme.color.foreground)};
     font-family: "Hack", Monaco, "Courier New", Courier, monospace;
     direction: ltr;
     text-align: left;
@@ -104,11 +104,7 @@ export const PrismTheme = css`
     border-radius: 0 ${props => props.theme.radius.small}
       ${props => props.theme.radius.small} 0;
     background-color: ${props =>
-      mix(
-        0.9,
-        mix(0.9, props.theme.color.black, props.theme.color.secondary),
-        props.theme.color.background
-      )};
+      mix(0.975, props.theme.color.background, props.theme.color.foreground)};
   }
 
   code[class*="language-"] {
@@ -117,17 +113,24 @@ export const PrismTheme = css`
     font-size: 0.9em;
     display: inline-block;
     border-radius: ${props => props.theme.radius.small};
+    border: 1px solid
+      ${props => transparentize(0.95, props.theme.color.foreground)};
   }
 
   pre[class*="language-"] {
+    position: relative;
     border-radius: 0 ${props => props.theme.radius.small}
       ${props => props.theme.radius.small} 0;
     padding: 1em;
     margin: 0.5em 0;
     overflow: auto;
     border-radius: 0.3em;
-    font-size: 0.9em;
-    padding: 1rem 1.5rem;
+    font-size: 0.8em;
+    padding: 1.5rem;
+    border-top: 1px solid
+      ${props => transparentize(0.95, props.theme.color.foreground)};
+    border-bottom: 1px solid
+      ${props => transparentize(0.95, props.theme.color.foreground)};
 
     code {
       display: block;
@@ -140,15 +143,58 @@ export const PrismTheme = css`
     }
   }
 
+  pre[class*="language-"].line-numbers {
+    counter-reset: linenumber;
+  }
+
+  pre[class*="language-"].line-numbers > code {
+    white-space: inherit;
+  }
+
+  .line-numbers .line-numbers-rows {
+    position: absolute;
+    top: 1.5rem;
+    pointer-events: none;
+    font-size: 100%;
+    width: 3em;
+    letter-spacing: -1px;
+    user-select: none;
+    padding-left: 0.75rem;
+
+    @media (min-width: ${props => props.theme.breakpoints.small}) {
+      padding-left: 1.5rem;
+    }
+
+    @media (min-width: ${props => props.theme.breakpoints.large}) {
+      padding-left: 2rem;
+    }
+  }
+
+  .line-numbers-rows > span {
+    pointer-events: none;
+    display: block;
+    counter-increment: linenumber;
+  }
+
+  .line-numbers-rows > span:before {
+    content: counter(linenumber);
+    color: ${props => props.theme.color.foreground};
+    opacity: 0.25;
+    display: block;
+    padding-right: 0.8em;
+    text-align: right;
+  }
+
   .token.comment,
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: #778090;
+    color: ${props => props.theme.color.foreground};
+    opacity: 0.5;
   }
 
   .token.punctuation {
-    color: #f8f8f2;
+    color: ${props => props.theme.color.foreground};
   }
 
   .namespace {
@@ -160,12 +206,12 @@ export const PrismTheme = css`
   .token.constant,
   .token.symbol,
   .token.deleted {
-    color: #f92672;
+    color: ${props => mix(0.85, "#F90B61", props.theme.color.foreground)};
   }
 
   .token.boolean,
   .token.number {
-    color: #ae81ff;
+    color: ${props => mix(0.85, "#9458FF", props.theme.color.foreground)};
   }
 
   .token.selector,
@@ -174,7 +220,7 @@ export const PrismTheme = css`
   .token.char,
   .token.builtin,
   .token.inserted {
-    color: #a6e22e;
+    color: ${props => mix(0.85, "#A2E222", props.theme.color.foreground)};
   }
 
   .token.operator,
@@ -183,22 +229,22 @@ export const PrismTheme = css`
   .language-css .token.string,
   .style .token.string,
   .token.variable {
-    color: #f8f8f2;
+    color: ${props => props.theme.color.foreground};
   }
 
   .token.atrule,
   .token.attr-value,
   .token.function {
-    color: #e6db74;
+    color: ${props => mix(0.85, "#E6D749", props.theme.color.foreground)};
   }
 
   .token.keyword {
-    color: #f92672;
+    color: ${props => mix(0.85, "#F90B61", props.theme.color.foreground)};
   }
 
   .token.regex,
   .token.important {
-    color: #fd971f;
+    color: ${props => mix(0.85, "#FD8F0D", props.theme.color.foreground)};
   }
 
   .token.important,
@@ -715,7 +761,25 @@ export const Paper = styled.div`
     padding: 3.5rem 4rem;
   }
 
-  ${Image}, .gatsby-resp-image-wrapper {
+  pre[class*="language-"] {
+    border-radius: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    @media (min-width: ${props => props.theme.breakpoints.small}) {
+      margin: 2.5rem -3rem !important;
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+
+    @media (min-width: ${props => props.theme.breakpoints.large}) {
+      margin: 3.5rem -4rem !important;
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  ${Image}, .gatsby-resp-image-wrapper, pre[class*="language-"] {
     margin: 2rem -2rem !important;
     overflow: hidden;
 
