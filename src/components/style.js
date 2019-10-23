@@ -442,10 +442,12 @@ export const Navbar = styled.ul`
       mix(0.95, props.theme.color.black, props.theme.color.white)};
     box-shadow: 0 1rem 2rem -0.5rem ${props => transparentize(0.5, props.theme.color.black)};
     transition: all 150ms ${p => p.theme.easing};
+    pointer-events: none;
     ${props =>
       props.navOpen &&
       css`
         opacity: 1;
+        pointer-events: all;
       `};
   }
 
@@ -457,6 +459,7 @@ export const Navbar = styled.ul`
     flex: 1 0 auto;
     margin: 0;
     opacity: 1;
+    pointer-events: all;
   }
 `
 
@@ -923,11 +926,11 @@ export const ArticleTitle = styled.h3`
     text-decoration: none;
   }
   & + ${Meta} {
-    margin-top: -0.5rem;
+    margin-top: 0;
   }
   ${props =>
     props.big &&
     css`
       font-size: 2.4rem;
-    `};
+]    `};
 `

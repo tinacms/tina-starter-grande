@@ -15,9 +15,7 @@ export default function Post({ data }) {
     <>
       <SEO title={frontmatter.title} />
       <Paper>
-        <ArticleTitle big>
-          <a href="#">{frontmatter.title}</a>
-        </ArticleTitle>
+        <ArticleTitle big>{frontmatter.title}</ArticleTitle>
         <Meta>
           <span>{frontmatter.date}</span>
           <a href="/blog">← Back to Blog</a>
