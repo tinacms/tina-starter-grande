@@ -4,7 +4,3 @@ path: "/blog"
 menus: main
 template: blog
 ---
-
-## Blog
-
----

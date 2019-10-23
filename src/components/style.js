@@ -695,6 +695,14 @@ export const Paper = styled.div`
   box-shadow: 0 0.5rem 1rem -0.5rem ${props => transparentize(0.9, props.theme.color.black)};
   padding: 2rem;
 
+  ${props =>
+    props.article &&
+    css`
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    `};
+
   > *:not(:last-child) {
     margin-bottom: 1.5rem;
   }
@@ -828,5 +836,34 @@ export const Button = styled.button`
     css`
       background-color: ${props => props.theme.color.primary};
       color: ${props => props.theme.color.white};
+    `};
+`
+
+export const Meta = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  span {
+    opacity: 0.5;
+  }
+  a:not(:hover) {
+    text-decoration: none;
+  }
+`
+
+export const ArticleTitle = styled.h3`
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 1rem !important;
+  a:not(:hover) {
+    text-decoration: none;
+  }
+  & + ${Meta} {
+    margin-top: -0.5rem;
+  }
+  ${props =>
+    props.big &&
+    css`
+      font-size: 2.4rem;
     `};
 `

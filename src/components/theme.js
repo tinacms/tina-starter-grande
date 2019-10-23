@@ -30,6 +30,19 @@ export const Theme = isDarkMode => {
     radius: {
       small: "3px",
     },
+    header: {
+      style: "transparent", // transparent, opaque (responds to darkmode), white, black, primary
+      sticky: false,
+      overline: true,
+    },
+    hero: {
+      style: "backdrop", // backdrop, banner, hybrid
+      fade: true,
+    },
+    options: {
+      titlePlacement: "page", // page, hero
+      defaultTheme: "light", // light, dark
+    },
   }
 
   // const BaseTheme = React.useMemo(merge(DefaultTheme, UserTheme), [

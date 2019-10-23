@@ -1,6 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Paper } from "../components/style"
+import {
+  Paper,
+  PaperHeader,
+  ArticleTitle,
+  Meta,
+  Link,
+} from "../components/style"
 import { SEO } from "../components/seo"
 
 export default function Post({ data }) {
@@ -8,7 +14,17 @@ export default function Post({ data }) {
   return (
     <>
       <SEO title={frontmatter.title} />
-      <Paper dangerouslySetInnerHTML={{ __html: html }}></Paper>
+      <Paper>
+        <ArticleTitle big>
+          <a href="#">{frontmatter.title}</a>
+        </ArticleTitle>
+        <Meta>
+          <span>{frontmatter.date}</span>
+          <a href="/blog">← Back to Blog</a>
+        </Meta>
+        <hr />
+        <div dangerouslySetInnerHTML={{ __html: html }}></div>
+      </Paper>
     </>
   )
 }
@@ -20,7 +36,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         path
-        date
+        date(formatString: "MMMM DD, YYYY")
         title
       }
     }
