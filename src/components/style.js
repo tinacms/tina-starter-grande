@@ -121,9 +121,9 @@ export const PrismTheme = css`
     position: relative;
     border-radius: 0 ${props => props.theme.radius.small}
       ${props => props.theme.radius.small} 0;
-    padding: 1em;
+    padding: 1em 0 1em 1em;
     margin: 0.5em 0;
-    overflow: auto;
+
     border-radius: 0.3em;
     font-size: 0.8em;
     padding: 1.5rem;
@@ -135,11 +135,13 @@ export const PrismTheme = css`
     code {
       display: block;
       font-size: 1em;
-      padding: 0;
+      padding: 0 1rem 0 0;
       margin: 0;
       border-radius: 0;
       border: none;
       background-color: transparent;
+      overflow: auto;
+      max-width: 100vw;
     }
   }
 
@@ -774,18 +776,16 @@ export const Paper = styled.div`
   pre[class*="language-"] {
     border-radius: 0;
     padding-left: 2rem;
-    padding-right: 2rem;
+    padding-right: 0rem;
 
     @media (min-width: ${props => props.theme.breakpoints.small}) {
       margin: 2.5rem -3rem !important;
       padding-left: 3rem;
-      padding-right: 3rem;
     }
 
     @media (min-width: ${props => props.theme.breakpoints.large}) {
       margin: 3.5rem -4rem !important;
       padding-left: 4rem;
-      padding-right: 4rem;
     }
   }
 
