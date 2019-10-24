@@ -74,14 +74,26 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   })
 
   result.data.lists.edges.forEach(({ node }) => {
-    if (node.frontmatter.path) {
+    const posts = result.data.posts.edges
+    const postsPerPage = 2
+    const numPages = Math.ceil(posts.length / postsPerPage)
+    Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
-        path: node.frontmatter.path,
+        path:
+          i === 0
+            ? node.frontmatter.path
+            : `${String(node.frontmatter.path)}/${String(i + 1)}`,
         component: path.resolve(
           `src/templates/${String(node.frontmatter.template)}.js`
         ),
-        context: {}, // additional data can be passed via context
+        context: {
+          slug: node.frontmatter.path,
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
+        },
       })
-    }
+    })
   })
 }

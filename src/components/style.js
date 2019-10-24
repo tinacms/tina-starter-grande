@@ -143,6 +143,10 @@ export const PrismTheme = css`
       overflow: auto;
       max-width: 100vw;
     }
+
+    *:focus:not(.focus-visible) {
+      outline: none;
+    }
   }
 
   pre[class*="language-"].line-numbers {
@@ -387,7 +391,6 @@ export const GlobalStyles = createGlobalStyle`
     &:focus {
       color: ${props => shade(0.1, props.theme.color.link)};
       text-decoration-color: ${props => props.theme.color.link};
-      outline: none;
       background-color: ${props =>
         transparentize(0.95, props.theme.color.foreground)};
     }
@@ -494,6 +497,7 @@ export const NavLink = styled(props => (
   opacity: 0.5;
   overflow: visible;
   transition: all 150ms ${p => p.theme.easing};
+  z-index: 1;
 
   &:after {
     content: "";
@@ -506,6 +510,27 @@ export const NavLink = styled(props => (
     background-color: ${props => transparentize(0.85, props.theme.color.white)};
     transform: translate3d(0, -100%, 0);
     transition: all 150ms ${props => props.theme.easing};
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${props => props.theme.color.primary};
+    opacity: 0;
+    transition: all 150ms ${p => p.theme.easing};
+    z-index: -1;
+  }
+
+  &:focus-visible {
+    opacity: 1;
+    &:before {
+      opacity: 0.5;
+    }
   }
 
   &:hover:not(.active) {
@@ -533,17 +558,40 @@ export const NavLink = styled(props => (
 `
 
 export const SiteLink = styled(Link)`
-  line-height: 36px;
+  position: relative;
+  line-height: 3rem;
   display: flex;
   align-items: center;
+  align-self: stretch;
   color: ${props => props.theme.color.white} !important;
   text-decoration: none;
   margin: 0;
+  transition: all 150ms ${p => p.theme.easing};
+  z-index: 1;
   svg {
     width: 1.5rem;
     height: 1.5rem;
     margin-right: 0.5rem;
     fill: ${props => props.theme.color.white};
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: -1rem;
+    width: calc(100% + 2rem);
+    height: 100%;
+    background-color: ${props => props.theme.color.primary};
+    opacity: 0;
+    transition: all 150ms ${p => p.theme.easing};
+    z-index: -1;
+  }
+
+  &:focus-visible {
+    &:after {
+      opacity: 0.5;
+    }
   }
 `
 
@@ -551,6 +599,7 @@ export const SiteTitle = styled.h1`
   margin: 0;
   flex: 0 0 auto;
   font-size: 1rem;
+  align-self: stretch;
 `
 
 export const HeaderWrapper = styled(Wrapper)`
@@ -592,7 +641,6 @@ export const NavToggle = styled(({ menuOpen, ...styleProps }) => {
   }
 
   &:focus {
-    outline: none;
     opacity: 1;
     text-decoration: underline;
   }
@@ -638,7 +686,8 @@ export const DarkModeToggle = styled(({ ...styleProps }) => {
   color: ${props => props.theme.color.white};
   opacity: 0.5;
   overflow: hidden;
-  transition: all 150ms ${p => p.theme.easing};
+  transition: all 300ms ${props => props.theme.easing};
+  transform-origin: 50% 50%;
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
     width: 1.5rem;
@@ -667,6 +716,11 @@ export const DarkModeToggle = styled(({ ...styleProps }) => {
 
   &:focus {
     outline: none;
+  }
+
+  &:focus-visible {
+    transform: rotate(360deg);
+    opacity: 1;
   }
 
   &:hover {
@@ -756,6 +810,7 @@ export const Paper = styled.div`
   ${props =>
     props.article &&
     css`
+      flex-grow: 0 !important;
       &:not(:last-child) {
         margin-bottom: 2rem;
       }
@@ -906,7 +961,6 @@ export const Button = styled.button`
   }
 
   &:focus {
-    outline: none;
     box-shadow: 0 0 0 3px ${props => props.theme.color.secondary};
   }
 
@@ -979,7 +1033,6 @@ export const FormField = styled.div`
       mix(0.95, props.theme.color.background, props.theme.color.foreground)};
 
     &:focus {
-      outline: none;
       box-shadow: 0 0 0 3px ${props => props.theme.color.secondary};
     }
   }
@@ -1003,4 +1056,15 @@ export const FormField = styled.div`
         grid-column-end: 3;
       }
     `};
+`
+
+export const ListNav = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+  }
 `

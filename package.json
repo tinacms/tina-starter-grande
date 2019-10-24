@@ -8,6 +8,7 @@
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
     "babel-plugin-styled-components": "^1.10.6",
+    "focus-visible": "^5.0.2",
     "gatsby": "^2.16.1",
     "gatsby-background-image": "^0.8.15",
     "gatsby-image": "^2.2.29",

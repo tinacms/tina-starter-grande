@@ -1,10 +1,17 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Paper, ArticleTitle, Meta } from "../components/style"
+import { Paper, ArticleTitle, Meta, ListNav } from "../components/style"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
-export default function List({ data }) {
+export default function List({ data, pageContext }) {
+  const { slug, currentPage, numPages } = pageContext
+  const isFirst = currentPage === 1
+  const isLast = currentPage === numPages
+  const prevPage =
+    currentPage - 1 === 1 ? slug : slug + "/" + (currentPage - 1).toString()
+  const nextPage = slug + "/" + (currentPage + 1).toString()
+
   return (
     <>
       <SEO title={data.page.frontmatter.title} />
@@ -22,13 +29,25 @@ export default function List({ data }) {
           </Paper>
         )
       })}
+      <ListNav>
+        {!isFirst && (
+          <Link to={prevPage} rel="prev">
+            ← Newer
+          </Link>
+        )}
+        {!isLast && (
+          <Link to={nextPage} rel="next">
+            Older →
+          </Link>
+        )}
+      </ListNav>
     </>
   )
 }
 
-export const pageQuery = graphql`
-  query($path: String!) {
-    page: markdownRemark(frontmatter: { path: { eq: $path } }) {
+export const listPageQuery = graphql`
+  query($slug: String!, $skip: Int!, $limit: Int!) {
+    page: markdownRemark(frontmatter: { path: { eq: $slug } }) {
       html
       frontmatter {
         path
@@ -38,6 +57,8 @@ export const pageQuery = graphql`
     posts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: { frontmatter: { template: { eq: "post" } } }
+      limit: $limit
+      skip: $skip
     ) {
       edges {
         node {
