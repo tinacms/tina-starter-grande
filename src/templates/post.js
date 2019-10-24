@@ -15,11 +15,11 @@ export default function Post({ data }) {
     <>
       <SEO title={frontmatter.title} />
       <Paper>
-        <ArticleTitle big>{frontmatter.title}</ArticleTitle>
         <Meta>
           <span>{frontmatter.date}</span>
           <a href="/blog">← Back to Blog</a>
         </Meta>
+        <ArticleTitle big>{frontmatter.title}</ArticleTitle>
         <hr />
         <div dangerouslySetInnerHTML={{ __html: html }}></div>
       </Paper>

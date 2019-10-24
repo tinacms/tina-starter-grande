@@ -24,9 +24,8 @@ fields:
   - id: message
     inputType: textarea
     label: Message
-    autocomplete: off
+    autocomplete: 'off'
 ---
-
 ## Contact
 
----
+***

@@ -932,5 +932,9 @@ export const ArticleTitle = styled.h3`
     props.big &&
     css`
       font-size: 2.4rem;
+      margin-bottom: 2.4rem !important;
+      & + hr {
+        margin-bottom: 2.4rem !important;
+      }
 ]    `};
 `
