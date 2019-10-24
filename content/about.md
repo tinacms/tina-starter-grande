@@ -1,12 +1,11 @@
 ---
 title: About
-path: "/about"
+path: /about
 template: page
 ---
-
 ## About
 
----
+***
 
 Lorem markdownum strepitus exierat: vacuus Phoebus tempora, auro, callida furtis
 noctis ipso _mittere_, inexcusabile. Vites nepotes umida quod rapinae
@@ -24,6 +23,7 @@ ore undas placida naides, superest, cristati pelagi nec Iuno, ubi taurum?
 ```javascript
 let name = prompt("Please enter your name")
 console.log(name)
+const theme = {}
 ```
 
 ### Rogat et mediam manus
