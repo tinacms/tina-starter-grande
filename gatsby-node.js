@@ -75,7 +75,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   result.data.lists.edges.forEach(({ node }) => {
     const posts = result.data.posts.edges
-    const postsPerPage = 2
+    const postsPerPage = 6
     const numPages = Math.ceil(posts.length / postsPerPage)
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
