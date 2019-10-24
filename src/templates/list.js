@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Paper, ArticleTitle, Meta, ListNav } from "../components/style"
+import styled from "styled-components"
+import { Paper, ArticleTitle, Meta } from "../components/style"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
@@ -72,5 +73,16 @@ export const listPageQuery = graphql`
         }
       }
     }
+  }
+`
+
+export const ListNav = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
   }
 `

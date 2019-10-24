@@ -2,10 +2,9 @@ import React, { useState, useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 import { Theme } from "./theme"
-import { GlobalStyles, Page, Main, Wrapper } from "./style"
-import { Header } from "./header"
+import { GlobalStyles, Main, Wrapper } from "./style"
+import { Header, StyledHeader } from "./header"
 import { Footer } from "./footer"
-
 import { createRemarkButton } from "gatsby-tinacms-remark"
 import { withPlugin } from "react-tinacms"
 
@@ -97,3 +96,21 @@ const CreatePostPlugin = createRemarkButton({
 })
 
 export default withPlugin(Layout, CreatePostPlugin)
+
+export const Page = styled.div`
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+
+  ${StyledHeader} {
+    flex: 0 0 auto;
+  }
+  main {
+    flex: 1 0 auto;
+  }
+  footer {
+    flex: 0 0 auto;
+  }
+`
