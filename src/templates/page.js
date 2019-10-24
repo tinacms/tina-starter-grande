@@ -32,6 +32,40 @@ let PageForm = {
       name: "rawMarkdownBody",
       component: "markdown",
     },
+    {
+      label: "Form",
+      name: "frontmatter.form",
+      component: "group",
+      fields: [
+        { name: "name", label: "Name", component: "text" },
+        {
+          name: "recipient",
+          label: "Recipient",
+          component: "text",
+        },
+        {
+          label: "Fields",
+          name: "fields",
+          component: "group-list",
+          defaultItem: {
+            id: "name",
+            label: "Name",
+            inputType: "text",
+            autocomplete: "name",
+          },
+          itemProps: item => ({
+            key: item.id,
+            label: item.label,
+          }),
+          fields: [
+            { name: "id", label: "ID", component: "text" },
+            { name: "label", label: "Label", component: "text" },
+            { name: "inputType", label: "Input Type", component: "text" },
+            { name: "autocomplete", label: "Autocomplete", component: "text" },
+          ],
+        },
+      ],
+    },
   ],
 }
 
