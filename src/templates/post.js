@@ -1,13 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
-import {
-  Paper,
-  PaperHeader,
-  ArticleTitle,
-  Meta,
-  Link,
-} from "../components/style"
+import { Paper, PaperHeader, ArticleTitle, Meta } from "../components/style"
 import { SEO } from "../components/seo"
+import { Link } from "gatsby"
 
 export default function Post({ data }) {
   const { frontmatter, html } = data.markdownRemark
@@ -17,7 +12,7 @@ export default function Post({ data }) {
       <Paper>
         <Meta>
           <span>{frontmatter.date}</span>
-          <a href="/blog">← Back to Blog</a>
+          <Link to="/blog">← Back to Blog</Link>
         </Meta>
         <ArticleTitle big>{frontmatter.title}</ArticleTitle>
         <hr />
