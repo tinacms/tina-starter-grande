@@ -4,7 +4,7 @@ import { Paper, ArticleTitle, Meta } from "../components/style"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
-export default function Blog({ data }) {
+export default function List({ data }) {
   return (
     <>
       <SEO title={data.page.frontmatter.title} />

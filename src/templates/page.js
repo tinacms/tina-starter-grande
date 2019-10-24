@@ -2,15 +2,20 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Paper } from "../components/style"
 import { SEO } from "../components/seo"
+import { ContactForm } from "../components/contactForm"
 
 import { remarkForm } from "gatsby-tinacms-remark"
 
 function Page({ data }) {
   const { frontmatter, html } = data.markdownRemark
+
   return (
     <>
       <SEO title={frontmatter.title} />
-      <Paper dangerouslySetInnerHTML={{ __html: html }}></Paper>
+      <Paper>
+        <div dangerouslySetInnerHTML={{ __html: html }}></div>
+        {frontmatter.form && <ContactForm form={frontmatter.form} />}
+      </Paper>
     </>
   )
 }
@@ -39,6 +44,15 @@ export const pageQuery = graphql`
       frontmatter {
         path
         title
+        form {
+          recipient
+          fields {
+            id
+            label
+            inputType
+            autocomplete
+          }
+        }
       }
 
       fileRelativePath

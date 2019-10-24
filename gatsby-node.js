@@ -5,7 +5,33 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     {
-      allMarkdownRemark {
+      lists: allMarkdownRemark(
+        filter: { frontmatter: { template: { eq: "list" } } }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              path
+              template
+            }
+          }
+        }
+      }
+      posts: allMarkdownRemark(
+        filter: { frontmatter: { template: { eq: "post" } } }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              path
+              template
+            }
+          }
+        }
+      }
+      pages: allMarkdownRemark(
+        filter: { frontmatter: { template: { eq: "page" } } }
+      ) {
         edges {
           node {
             frontmatter {
@@ -23,7 +49,31 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return
   }
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  result.data.pages.edges.forEach(({ node }) => {
+    if (node.frontmatter.path) {
+      createPage({
+        path: node.frontmatter.path,
+        component: path.resolve(
+          `src/templates/${String(node.frontmatter.template)}.js`
+        ),
+        context: {}, // additional data can be passed via context
+      })
+    }
+  })
+
+  result.data.posts.edges.forEach(({ node }) => {
+    if (node.frontmatter.path) {
+      createPage({
+        path: node.frontmatter.path,
+        component: path.resolve(
+          `src/templates/${String(node.frontmatter.template)}.js`
+        ),
+        context: {}, // additional data can be passed via context
+      })
+    }
+  })
+
+  result.data.lists.edges.forEach(({ node }) => {
     if (node.frontmatter.path) {
       createPage({
         path: node.frontmatter.path,

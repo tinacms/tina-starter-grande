@@ -748,7 +748,8 @@ export const Image = styled(Img)``
 export const Paper = styled.div`
   background-color: ${props => props.theme.color.background};
   border-radius: ${props => props.theme.radius.small};
-  box-shadow: 0 0.5rem 1rem -0.5rem ${props => transparentize(0.9, props.theme.color.black)};
+  box-shadow: 0 0.5rem 1rem -0.5rem ${props =>
+    transparentize(0.9, props.theme.color.black)};
   padding: 2rem;
   margin: 0 -1rem;
 
@@ -802,7 +803,7 @@ export const Paper = styled.div`
     }
   }
 
-  > *:first-child {
+  /* > *:first-child {
     ${Image}, .gatsby-resp-image-wrapper {
       margin-top: -1.5rem !important;
       border-radius: ${props => props.theme.radius.small}
@@ -820,7 +821,7 @@ export const Paper = styled.div`
           ${props => props.theme.radius.small} 0 0;
       }
     }
-  }
+  } */
 `
 
 export const Main = styled.main`
@@ -947,5 +948,59 @@ export const ArticleTitle = styled.h3`
       & + hr {
         margin-bottom: 2.4rem !important;
       }
-]    `};
+    `};
+`
+
+export const Form = styled.form`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 1.5rem;
+  justify-items: stretch;
+
+  @media (min-width: ${props => props.theme.breakpoints.medium}) {
+    grid-template-columns: 1fr 1fr;
+  }
+`
+
+export const FormField = styled.div`
+  input,
+  textarea {
+    position: relative;
+    line-height: 2.25rem;
+    font-size: 1rem;
+    padding: 0 0.625rem;
+    border-radius: ${props => props.theme.radius.small};
+    border: none;
+    width: 100%;
+    transition: box-shadow 150ms ${props => props.theme.easing};
+    color: ${props => props.theme.color.foreground};
+    background-color: ${props =>
+      mix(0.95, props.theme.color.background, props.theme.color.foreground)};
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px ${props => props.theme.color.secondary};
+    }
+  }
+
+  textarea {
+    line-height: 1.5;
+    padding: 0.5rem 0.625rem;
+    resize: vertical;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  ${p =>
+    p.wide &&
+    css`
+      @media (min-width: ${props => props.theme.breakpoints.medium}) {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+    `};
 `

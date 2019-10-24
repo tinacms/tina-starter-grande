@@ -1,7 +1,6 @@
 ---
 title: Home
 path: /
-menus: main
 template: page
 ---
 ## Instant Coffee
