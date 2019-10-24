@@ -355,7 +355,7 @@ export const GlobalStyles = createGlobalStyle`
       &:before {
         content: counter(counter) " –";
         color: ${props => props.theme.color.secondary};
-        font-weight: bold;
+        font-weight: 700;
         margin-right: 0.25rem;
       }
     }
@@ -367,7 +367,7 @@ export const GlobalStyles = createGlobalStyle`
       &:before {
         content: "–";
         color: ${props => props.theme.color.secondary};
-        font-weight: bold;
+        font-weight: 700;
         margin-right: 0.25rem;
       }
     }

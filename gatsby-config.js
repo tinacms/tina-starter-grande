@@ -131,9 +131,10 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Lato"],
+          families: ["Lato:400,700"],
         },
       },
     },
+    "gatsby-plugin-robots-txt",
   ],
 }

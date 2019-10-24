@@ -43,6 +43,7 @@ export const Theme = isDarkMode => {
       titlePlacement: "page", // page, hero
       defaultTheme: "light", // light, dark
       wideBlocks: true, // for images, code
+      wrapCode: false,
     },
   }
 

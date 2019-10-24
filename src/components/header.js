@@ -50,12 +50,17 @@ export const Header = ({
             ))}
             <NavItem>
               <DarkModeToggle
+                aria-label="Toggle Dark Theme"
                 onClick={toggleDarkMode}
                 isDarkMode={isDarkMode}
               />
             </NavItem>
           </Navbar>
-          <NavToggle onClick={toggleNavOpen} navOpen={navOpen}></NavToggle>
+          <NavToggle
+            aria-label="Toggle Nav"
+            onClick={toggleNavOpen}
+            navOpen={navOpen}
+          ></NavToggle>
         </HeaderWrapper>
       </StyledHeader>
       <HeroBackgroundImage fluid={backgroundImage}>
