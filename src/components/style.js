@@ -409,7 +409,7 @@ export const Wrapper = styled.div`
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1em;
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
     padding: 0 2rem;
@@ -688,13 +688,18 @@ export const DarkModeToggle = styled(({ ...styleProps }) => {
 `
 
 export const HeroBackgroundImage = styled(BackgroundImage)`
-  position: absolute !important;
+  position: relative !important;
   width: 100%;
-  height: 18rem;
+  height: 12rem;
   z-index: -1;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
+  @media (min-width: ${props => props.theme.breakpoints.small}) {
+    position: absolute !important;
+    height: 18rem;
+  }
 `
 
 export const Overlay = styled.div`
@@ -743,6 +748,7 @@ export const Paper = styled.div`
   border-radius: ${props => props.theme.radius.small};
   box-shadow: 0 0.5rem 1rem -0.5rem ${props => transparentize(0.9, props.theme.color.black)};
   padding: 2rem;
+  margin: 0 -1rem;
 
   ${props =>
     props.article &&
@@ -758,6 +764,7 @@ export const Paper = styled.div`
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
     padding: 2.5rem 3rem;
+    margin: 0;
   }
 
   @media (min-width: ${props => props.theme.breakpoints.large}) {
@@ -817,7 +824,7 @@ export const Paper = styled.div`
 `
 
 export const Main = styled.main`
-  padding: 6rem 0 4rem 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -829,6 +836,10 @@ export const Main = styled.main`
   }
   ${Paper} {
     flex: 1 0 auto;
+  }
+
+  @media (min-width: ${props => props.theme.breakpoints.small}) {
+    padding: 6rem 0 4rem 0;
   }
 `
 
