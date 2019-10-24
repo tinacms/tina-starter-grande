@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Paper } from "../components/style"
 import { SEO } from "../components/seo"
-import { ContactForm } from "../components/contactForm"
+import { Form } from "../components/form"
 
 import { remarkForm } from "gatsby-tinacms-remark"
 
@@ -14,7 +14,7 @@ function Page({ data }) {
       <SEO title={frontmatter.title} />
       <Paper>
         <div dangerouslySetInnerHTML={{ __html: html }}></div>
-        {frontmatter.form && <ContactForm form={frontmatter.form} />}
+        {frontmatter.form && <Form form={frontmatter.form} />}
       </Paper>
     </>
   )

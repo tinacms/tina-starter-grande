@@ -1,9 +1,9 @@
 import React from "react"
-import { Button, Form, FormField } from "./style"
+import { Button, StyledForm, FormField } from "./style"
 
-export function ContactForm({ form }) {
+export function Form({ form }) {
   return (
-    <Form
+    <StyledForm
       name="contact"
       action="https://formspree.io/{form.recipient}"
       method="POST"
@@ -41,6 +41,6 @@ export function ContactForm({ form }) {
           Submit
         </Button>
       </FormField>
-    </Form>
+    </StyledForm>
   )
 }

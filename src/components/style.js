@@ -951,7 +951,7 @@ export const ArticleTitle = styled.h3`
     `};
 `
 
-export const Form = styled.form`
+export const StyledForm = styled.form`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
