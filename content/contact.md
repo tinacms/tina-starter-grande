@@ -3,6 +3,7 @@ title: Contact
 path: /contact
 template: page
 form:
+  name: Contact Form
   recipient: scott.byrne@forestry.io
   fields:
     - id: company
@@ -13,14 +14,21 @@ form:
       label: Name
       inputType: text
       autocomplete: name
+    - id: email
+      label: Email
+      inputType: email
+      autocomplete: email
+    - id: tel
+      label: Phone
+      inputType: text
+      autocomplete: tel
     - id: message
       inputType: textarea
       label: Message
-      autocomplete: 'off'
+      autocomplete: "off"
   name: Contact Form
 ---
+
 ## Contact
 
-***
-
-Whats up nerds
+---
