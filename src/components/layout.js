@@ -8,6 +8,7 @@ import { Footer } from "./footer"
 import { createRemarkButton } from "gatsby-tinacms-remark"
 import { withPlugin } from "react-tinacms"
 import Helmet from "react-helmet"
+import slugify from "react-slugify"
 
 const Layout = ({ children }) => {
   const isBrowser = typeof window !== "undefined"
@@ -73,17 +74,19 @@ const filepath = title => {
 
 const CreatePostButton = createRemarkButton({
   label: "New Post",
-  filename({ title }) {
-    filepath({ title })
+  filename(form) {
+    let slug = slugify(form.title.toLowerCase())
+    return `content/posts/${slug}.md`
   },
-  frontmatter({ title }) {
+  frontmatter(form) {
+    let slug = slugify(form.title.toLowerCase())
     return new Promise(resolve => {
       setTimeout(() => {
         resolve({
-          title,
+          title: form.title,
           date: new Date(),
           template: "post",
-          path: filepath(title),
+          path: `blog/${slug}`,
         })
       }, 1000)
     })
@@ -98,29 +101,25 @@ const CreatePostButton = createRemarkButton({
 
 const CreatePageButton = createRemarkButton({
   label: "New Page",
-  filename({ title }) {
-    filepath({ title })
+  filename(form) {
+    let slug = slugify(form.title.toLowerCase())
+    return `content/${slug}.md`
   },
-  frontmatter({ title, menu }) {
+  frontmatter(form) {
+    let slug = slugify(form.title.toLowerCase())
     return new Promise(resolve => {
       setTimeout(() => {
         resolve({
-          title,
+          title: form.title,
           template: "page",
-          path: filepath(title),
-          menu,
+          path: slug,
+          menu: form.menu,
         })
       }, 1000)
     })
   },
   body({ title }) {
     return `## ${title}`
-  },
-  defaultItem: {
-    title: "Example",
-    template: "page",
-    path: "/example",
-    menu: false,
   },
   fields: [
     { name: "title", label: "Title", component: "text", required: true },

@@ -2,7 +2,8 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Paper } from "../components/style"
 import { SEO } from "../components/seo"
-import { Form, formBlock } from "../blocks/form"
+import { Form, FormBlock } from "../blocks/form"
+import { Content, ContentBlock } from "../blocks/content"
 
 import { remarkForm } from "gatsby-tinacms-remark"
 
@@ -19,10 +20,10 @@ function Page(props) {
         )}
         {blocks.map(({ _template, ...data }) => {
           switch (_template) {
-            case "formBlock":
+            case "FormBlock":
               return <Form form={data} />
-            case "hrBlock":
-              return <hr />
+            case "ContentBlock":
+              return <p>Content goes here lol</p>
             default:
               return "Error"
           }
@@ -49,7 +50,8 @@ const PageForm = {
       name: "rawFrontmatter.blocks",
       component: "blocks",
       templates: {
-        formBlock,
+        FormBlock,
+        ContentBlock,
       },
     },
   ],

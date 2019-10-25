@@ -114,7 +114,7 @@ export const messageInputBlock = {
   ...base,
 }
 
-export const formBlock = {
+export const FormBlock = {
   label: "Form",
   key: "name",
   name: "form",
