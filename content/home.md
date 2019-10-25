@@ -5,17 +5,9 @@ template: page
 menu: true
 blocks:
   - _template: formBlock
-    name: Form
-    recipient: scott.byrne@forestry.io
+    name: Homepage Form
+    recipient: email
     fields:
-      - label: Name
-        inputType: text
-        autocomplete: name
-        _template: nameInputBlock
-      - label: Email
-        inputType: text
-        autocomplete: email
-        _template: emailInputBlock
       - label: Message
         inputType: textarea
         autocomplete: ""

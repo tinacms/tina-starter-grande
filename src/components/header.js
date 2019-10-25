@@ -45,7 +45,7 @@ export const Header = ({
             </SiteLink>
           </SiteTitle>
           <Navbar navOpen={navOpen}>
-            {data.menu.edges.forEach(({ node }) => {
+            {data.menu.edges.map(({ node }) => {
               const { title, path } = node.frontmatter
 
               return (
