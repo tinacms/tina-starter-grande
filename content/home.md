@@ -3,15 +3,6 @@ title: Home
 path: /
 template: page
 menu: true
-blocks:
-  - _template: formBlock
-    name: Homepage Form
-    recipient: email
-    fields:
-      - label: Message
-        inputType: textarea
-        autocomplete: ""
-        _template: messageInputBlock
 ---
 
 ## Instant Coffee
