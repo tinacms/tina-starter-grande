@@ -7,6 +7,7 @@ import { Header, StyledHeader } from "./header"
 import { Footer } from "./footer"
 import { createRemarkButton } from "gatsby-tinacms-remark"
 import { withPlugin } from "react-tinacms"
+import Helmet from "react-helmet"
 
 const Layout = ({ children }) => {
   const isBrowser = typeof window !== "undefined"
@@ -45,24 +46,29 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <ThemeProvider theme={theme}>
-      <>
-        <GlobalStyles />
-        <Page>
-          <Header
-            toggleDarkMode={toggleDarkMode}
-            isDarkMode={isDarkMode}
-            siteTitle={data.site.siteMetadata.title}
-            backgroundImage={data.file.childImageSharp.fluid}
-            menuLinks={data.site.siteMetadata.menuLinks}
-          />
-          <Main>
-            <Wrapper>{children}</Wrapper>
-          </Main>
-          <Footer />
-        </Page>
-      </>
-    </ThemeProvider>
+    <>
+      <Helmet>
+        <script src="https://cdn.jsdelivr.net/npm/focus-visible@5.0.2/dist/focus-visible.min.js"></script>
+      </Helmet>
+      <ThemeProvider theme={theme}>
+        <>
+          <GlobalStyles />
+          <Page>
+            <Header
+              toggleDarkMode={toggleDarkMode}
+              isDarkMode={isDarkMode}
+              siteTitle={data.site.siteMetadata.title}
+              backgroundImage={data.file.childImageSharp.fluid}
+              menuLinks={data.site.siteMetadata.menuLinks}
+            />
+            <Main>
+              <Wrapper>{children}</Wrapper>
+            </Main>
+            <Footer />
+          </Page>
+        </>
+      </ThemeProvider>
+    </>
   )
 }
 

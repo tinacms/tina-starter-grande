@@ -125,6 +125,7 @@ export const FormField = styled.div`
       mix(0.95, props.theme.color.background, props.theme.color.foreground)};
 
     &:focus {
+      outline: none;
       box-shadow: 0 0 0 3px ${props => props.theme.color.secondary};
     }
   }
