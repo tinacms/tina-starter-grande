@@ -2,6 +2,7 @@
 title: About
 path: /about
 template: page
+menu: true
 ---
 
 ## About

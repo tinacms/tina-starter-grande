@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import { useStaticQuery, graphql } from "gatsby"
+
 import { Wrapper, Overlay } from "./style"
 import { Moon, Sun, Coffee } from "styled-icons/boxicons-regular"
 import styled, { css } from "styled-components"
@@ -11,12 +13,26 @@ export const Header = ({
   isDarkMode,
   siteTitle,
   backgroundImage,
-  menuLinks,
 }) => {
   const [navOpen, setNavOpen] = useState(false)
   const toggleNavOpen = () => {
     setNavOpen(!navOpen)
   }
+
+  const data = useStaticQuery(graphql`
+    query headerQuery {
+      menu: allMarkdownRemark(filter: { frontmatter: { menu: { eq: true } } }) {
+        edges {
+          node {
+            frontmatter {
+              title
+              path
+            }
+          }
+        }
+      }
+    }
+  `)
 
   return (
     <>
@@ -29,17 +45,21 @@ export const Header = ({
             </SiteLink>
           </SiteTitle>
           <Navbar navOpen={navOpen}>
-            {menuLinks.map(link => (
-              <NavItem key={link.name}>
-                <NavLink
-                  onClick={toggleNavOpen}
-                  partiallyActive={link.link === "/" ? false : true}
-                  to={link.link}
-                >
-                  {link.name}
-                </NavLink>
-              </NavItem>
-            ))}
+            {data.menu.edges.forEach(({ node }) => {
+              const { title, path } = node.frontmatter
+
+              return (
+                <NavItem key={title}>
+                  <NavLink
+                    onClick={toggleNavOpen}
+                    partiallyActive={path === "/" ? false : true}
+                    to={path}
+                  >
+                    {title}
+                  </NavLink>
+                </NavItem>
+              )
+            })}
             <NavItem>
               <DarkModeToggle
                 aria-label="Toggle Dark Theme"
@@ -115,6 +135,7 @@ export const Navbar = styled.ul`
   @media (min-width: ${props => props.theme.breakpoints.small}) {
     display: flex;
     flex-direction: row;
+    align-self: stretch;
     align-items: stretch;
     justify-content: flex-end;
     flex: 1 0 auto;

@@ -8,7 +8,7 @@ export function Form({ form }) {
   return (
     <StyledForm
       name="contact"
-      action="https://formspree.io/{form.recipient}"
+      action={`https://formspree.io/${form.recipient}`}
       method="POST"
     >
       {form.fields.map(field => {
@@ -74,6 +74,46 @@ export const nameInputBlock = {
   ...base,
 }
 
+export const emailInputBlock = {
+  label: "Email Input",
+  defaultItem: {
+    label: "Email",
+    inputType: "text",
+    autocomplete: "email",
+  },
+  ...base,
+}
+
+export const phoneInputBlock = {
+  label: "Phone Input",
+  defaultItem: {
+    label: "Phone",
+    inputType: "text",
+    autocomplete: "tel",
+  },
+  ...base,
+}
+
+export const companyInputBlock = {
+  label: "Company Input",
+  defaultItem: {
+    label: "Compnany",
+    inputType: "text",
+    autocomplete: "organization",
+  },
+  ...base,
+}
+
+export const messageInputBlock = {
+  label: "Message Input",
+  defaultItem: {
+    label: "Message",
+    inputType: "textarea",
+    autocomplete: "",
+  },
+  ...base,
+}
+
 export const formBlock = {
   label: "Form",
   key: "name",
@@ -99,6 +139,10 @@ export const formBlock = {
       templates: {
         customInputBlock,
         nameInputBlock,
+        emailInputBlock,
+        phoneInputBlock,
+        companyInputBlock,
+        messageInputBlock,
       },
     },
   ],

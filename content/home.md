@@ -2,7 +2,24 @@
 title: Home
 path: /
 template: page
-blocks: []
+menu: true
+blocks:
+  - _template: formBlock
+    name: Form
+    recipient: scott.byrne@forestry.io
+    fields:
+      - label: Name
+        inputType: text
+        autocomplete: name
+        _template: nameInputBlock
+      - label: Email
+        inputType: text
+        autocomplete: email
+        _template: emailInputBlock
+      - label: Message
+        inputType: textarea
+        autocomplete: ""
+        _template: messageInputBlock
 ---
 
 ## Instant Coffee

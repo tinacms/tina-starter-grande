@@ -29,10 +29,6 @@ const Layout = ({ children }) => {
       site {
         siteMetadata {
           title
-          menuLinks {
-            name
-            link
-          }
         }
       }
       file(relativePath: { eq: "cafe.jpg" }) {
@@ -59,7 +55,6 @@ const Layout = ({ children }) => {
               isDarkMode={isDarkMode}
               siteTitle={data.site.siteMetadata.title}
               backgroundImage={data.file.childImageSharp.fluid}
-              menuLinks={data.site.siteMetadata.menuLinks}
             />
             <Main>
               <Wrapper>{children}</Wrapper>
@@ -76,8 +71,8 @@ const filepath = title => {
   return "content/posts/" + title.replace(/\s+/g, "-").toLowerCase() + ".md"
 }
 
-const CreatePostPlugin = createRemarkButton({
-  label: "Create Post",
+const CreatePostButton = createRemarkButton({
+  label: "New Post",
   filename({ title }) {
     filepath({ title })
   },
@@ -101,7 +96,42 @@ const CreatePostPlugin = createRemarkButton({
   ],
 })
 
-export default withPlugin(Layout, CreatePostPlugin)
+const CreatePageButton = createRemarkButton({
+  label: "New Page",
+  filename({ title }) {
+    filepath({ title })
+  },
+  frontmatter({ title, menu }) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          title,
+          template: "page",
+          path: filepath(title),
+          menu,
+        })
+      }, 1000)
+    })
+  },
+  body({ title }) {
+    return `## ${title}`
+  },
+  defaultItem: {
+    title: "Example",
+    template: "page",
+    path: "/example",
+    menu: false,
+  },
+  fields: [
+    { name: "title", label: "Title", component: "text", required: true },
+    { name: "menu", label: "In Menu", component: "toggle", required: true },
+  ],
+})
+
+export default withPlugin(
+  withPlugin(Layout, CreatePostButton),
+  CreatePageButton
+)
 
 export const Page = styled.div`
   position: relative;

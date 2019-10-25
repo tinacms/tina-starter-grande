@@ -40,6 +40,11 @@ const PageForm = {
       component: "text",
     },
     {
+      label: "In Menu",
+      name: "rawFrontmatter.menu",
+      component: "toggle",
+    },
+    {
       label: "Sections",
       name: "rawFrontmatter.blocks",
       component: "blocks",
