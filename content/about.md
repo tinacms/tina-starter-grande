@@ -3,9 +3,10 @@ title: About
 path: /about
 template: page
 ---
+
 ## About
 
-***
+---
 
 Lorem markdownum strepitus exierat: vacuus Phoebus tempora, auro, callida furtis
 noctis ipso _mittere_, inexcusabile. Vites nepotes umida quod rapinae

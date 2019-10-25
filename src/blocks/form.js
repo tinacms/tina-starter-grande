@@ -2,6 +2,7 @@ import React from "react"
 import { Button } from "../components/style"
 import styled, { css } from "styled-components"
 import { mix } from "polished"
+import slugify from "react-slugify"
 
 export function Form({ form }) {
   return (
@@ -14,25 +15,25 @@ export function Form({ form }) {
         if (field.inputType === "textarea") {
           return (
             <FormField wide>
-              <label for="{field.id}">{field.label}</label>
+              <label for={slugify(field.label)}>{field.label}</label>
               <textarea
                 cols="40"
                 rows="5"
-                name="{field.id}"
-                id="{field.id}"
+                name={slugify(field.label)}
+                id={slugify(field.label)}
               ></textarea>
             </FormField>
           )
         } else {
           return (
             <FormField>
-              <label for="{field.id}">{field.label}</label>
+              <label for={slugify(field.label)}>{field.label}</label>
               <input
-                id="{field.id}"
-                name="{field.id}"
-                type="{field.inputType}"
+                id={slugify(field.label)}
+                name={slugify(field.label)}
+                type={field.inputType}
                 autocorrect="off"
-                autocomplete="{field.autocomplete | ``}"
+                autocomplete={field.autocomplete | ``}
               />
             </FormField>
           )
@@ -47,37 +48,43 @@ export function Form({ form }) {
   )
 }
 
-export const nameInputBlock = {
-  label: "Name Input",
-  name: "nameInput",
-  id: "name",
-  label: "Name",
-  inputType: "text",
-  autocomplete: "name",
-}
-
-export const customInputBlock = {
-  label: "Custom Input",
+const base = {
   name: "customInput",
+  key: "label",
   component: "group",
-  itemProps: item => ({
-    label: item.label,
-  }),
   fields: [
-    { name: "id", label: "ID", component: "text" },
     { name: "label", label: "Label", component: "text" },
     { name: "inputType", label: "Input Type", component: "text" },
     { name: "autocomplete", label: "Autocomplete", component: "text" },
   ],
 }
 
+export const customInputBlock = {
+  label: "Custom Input",
+  ...base,
+}
+
+export const nameInputBlock = {
+  label: "Name Input",
+  defaultItem: {
+    label: "Name",
+    inputType: "text",
+    autocomplete: "name",
+  },
+  ...base,
+}
+
 export const formBlock = {
   label: "Form",
+  key: "name",
   name: "form",
   component: "group",
-  itemProps: item => ({
-    label: item.name,
-  }),
+  defaultItem: {
+    _template: "formBlock",
+    name: "Form",
+    recipient: "email",
+    fields: [],
+  },
   fields: [
     { name: "name", label: "Name", component: "text" },
     {

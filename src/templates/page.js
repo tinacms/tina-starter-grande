@@ -32,8 +32,6 @@ function Page(props) {
   )
 }
 
-const hrBlock = { name: "hr" }
-
 const PageForm = {
   fields: [
     {
@@ -67,7 +65,6 @@ export const pageQuery = graphql`
           recipient
           fields {
             _template
-            id
             label
             inputType
             autocomplete
