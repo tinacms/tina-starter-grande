@@ -1,32 +1,17 @@
 ---
 title: Contact
-path: /contact
+path: "/contact"
 template: page
-form:
-  name: Contact Form
-  recipient: scott.byrne@forestry.io
-  fields:
-    - id: company
-      label: Company
-      inputType: text
-      autocomplete: organization
-    - id: name
-      label: Name
-      inputType: text
-      autocomplete: name
-    - id: email
-      label: Email
-      inputType: email
-      autocomplete: email
-    - id: tel
-      label: Phone
-      inputType: text
-      autocomplete: tel
-    - id: message
-      inputType: textarea
-      label: Message
-      autocomplete: "off"
-  name: Contact Form
+blocks:
+  - _template: formBlock
+    name: Test
+    recipient: test@test.com
+    fields:
+      - _template: customInputBlock
+        id: test
+        label: What's Up
+        inputType: text
+        autocomplete: name
 ---
 
 ## Contact

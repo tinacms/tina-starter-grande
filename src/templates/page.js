@@ -2,25 +2,39 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Paper } from "../components/style"
 import { SEO } from "../components/seo"
-import { Form } from "../components/form"
+import { Form, formBlock } from "../blocks/form"
 
 import { remarkForm } from "gatsby-tinacms-remark"
 
-function Page({ data }) {
-  const { frontmatter, html } = data.markdownRemark
+function Page(props) {
+  const page = props.data.markdownRemark
+  const blocks = page.frontmatter.blocks || []
 
   return (
     <>
-      <SEO title={frontmatter.title} />
+      <SEO title={page.frontmatter.title} />
       <Paper>
-        <div dangerouslySetInnerHTML={{ __html: html }}></div>
-        {frontmatter.form && <Form form={frontmatter.form} />}
+        {page.html && (
+          <div dangerouslySetInnerHTML={{ __html: page.html }}></div>
+        )}
+        {blocks.map(({ _template, ...data }) => {
+          switch (_template) {
+            case "formBlock":
+              return <Form form={data} />
+            case "hrBlock":
+              return <hr />
+            default:
+              return "Error"
+          }
+        })}
       </Paper>
     </>
   )
 }
 
-let PageForm = {
+const hrBlock = { name: "hr" }
+
+const PageForm = {
   fields: [
     {
       label: "Title",
@@ -28,43 +42,12 @@ let PageForm = {
       component: "text",
     },
     {
-      label: "Body",
-      name: "rawMarkdownBody",
-      component: "markdown",
-    },
-    {
-      label: "Form",
-      name: "frontmatter.form",
-      component: "group",
-      fields: [
-        { name: "name", label: "Name", component: "text" },
-        {
-          name: "recipient",
-          label: "Recipient",
-          component: "text",
-        },
-        {
-          label: "Fields",
-          name: "fields",
-          component: "group-list",
-          defaultItem: {
-            id: "name",
-            label: "Name",
-            inputType: "text",
-            autocomplete: "name",
-          },
-          itemProps: item => ({
-            key: item.id,
-            label: item.label,
-          }),
-          fields: [
-            { name: "id", label: "ID", component: "text" },
-            { name: "label", label: "Label", component: "text" },
-            { name: "inputType", label: "Input Type", component: "text" },
-            { name: "autocomplete", label: "Autocomplete", component: "text" },
-          ],
-        },
-      ],
+      label: "Sections",
+      name: "rawFrontmatter.blocks",
+      component: "blocks",
+      templates: {
+        formBlock,
+      },
     },
   ],
 }
@@ -78,7 +61,9 @@ export const pageQuery = graphql`
       frontmatter {
         path
         title
-        form {
+        blocks {
+          _template
+          name
           recipient
           fields {
             id

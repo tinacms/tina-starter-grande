@@ -77,12 +77,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     const posts = result.data.posts.edges
     const postsPerPage = 6
     const numPages = Math.ceil(posts.length / postsPerPage)
+
     Array.from({ length: numPages }).forEach((_, i) => {
+      const currentPage = i + 1
+      const isFirstPage = i === 0
+
       createPage({
-        path:
-          i === 0
-            ? node.frontmatter.path
-            : `${String(node.frontmatter.path)}/${String(i + 1)}`,
+        path: isFirstPage
+          ? node.frontmatter.path
+          : `${String(node.frontmatter.path)}/${String(currentPage)}`,
         component: path.resolve(
           `src/templates/${String(node.frontmatter.template)}.js`
         ),
@@ -91,7 +94,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           limit: postsPerPage,
           skip: i * postsPerPage,
           numPages,
-          currentPage: i + 1,
+          currentPage: currentPage,
         },
       })
     })

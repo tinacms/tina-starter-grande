@@ -1,5 +1,5 @@
 import React from "react"
-import { Button } from "./style"
+import { Button } from "../components/style"
 import styled, { css } from "styled-components"
 import { mix } from "polished"
 
@@ -45,6 +45,46 @@ export function Form({ form }) {
       </FormField>
     </StyledForm>
   )
+}
+
+export const customInputBlock = {
+  label: "Custom Input",
+  name: "customInput",
+  component: "group",
+  itemProps: item => ({
+    label: item.label,
+  }),
+  fields: [
+    { name: "id", label: "ID", component: "text" },
+    { name: "label", label: "Label", component: "text" },
+    { name: "inputType", label: "Input Type", component: "text" },
+    { name: "autocomplete", label: "Autocomplete", component: "text" },
+  ],
+}
+
+export const formBlock = {
+  label: "Form",
+  name: "form",
+  component: "group",
+  itemProps: item => ({
+    label: item.name,
+  }),
+  fields: [
+    { name: "name", label: "Name", component: "text" },
+    {
+      name: "recipient",
+      label: "Recipient",
+      component: "text",
+    },
+    {
+      label: "Fields",
+      name: "fields",
+      component: "blocks",
+      templates: {
+        customInputBlock,
+      },
+    },
+  ],
 }
 
 export const StyledForm = styled.form`
