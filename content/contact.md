@@ -1,6 +1,6 @@
 ---
 title: Contact
-path: "/contact"
+path: /contact
 template: page
 blocks:
   - _template: formBlock

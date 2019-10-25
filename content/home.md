@@ -2,6 +2,7 @@
 title: Home
 path: /
 template: page
+blocks: []
 ---
 
 ## Instant Coffee

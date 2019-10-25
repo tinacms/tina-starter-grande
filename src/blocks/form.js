@@ -47,6 +47,15 @@ export function Form({ form }) {
   )
 }
 
+export const nameInputBlock = {
+  label: "Name Input",
+  name: "nameInput",
+  id: "name",
+  label: "Name",
+  inputType: "text",
+  autocomplete: "name",
+}
+
 export const customInputBlock = {
   label: "Custom Input",
   name: "customInput",
@@ -82,6 +91,7 @@ export const formBlock = {
       component: "blocks",
       templates: {
         customInputBlock,
+        nameInputBlock,
       },
     },
   ],

@@ -66,6 +66,7 @@ export const pageQuery = graphql`
           name
           recipient
           fields {
+            _template
             id
             label
             inputType
