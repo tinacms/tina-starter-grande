@@ -5,25 +5,26 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    {
-      resolve: "gatsby-plugin-tinacms",
-      options: {
-        sidebar: {
-          hidden: process.env.NODE_ENV === "production",
-          position: "fixed",
-          theme: {
-            color: {
-              primary: {
-                light: "#358156",
-                medium: "#007043",
-                dark: "#0A623B",
-              },
-            },
-          },
-        },
-        plugins: ["gatsby-tinacms-git", "gatsby-tinacms-remark"],
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-tinacms",
+    //   options: {
+    //     sidebar: {
+    //       hidden: process.env.NODE_ENV === "production",
+    //       position: "fixed",
+    //       theme: {
+    //         color: {
+    //           primary: {
+    //             light: "#358156",
+    //             medium: "#007043",
+    //             dark: "#0A623B",
+    //           },
+    //         },
+    //       },
+    //     },
+    //     plugins: ["gatsby-tinacms-git", "gatsby-tinacms-remark"],
+    //   },
+    // },
+    `gatsby-transformer-json`,
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -43,6 +44,13 @@ module.exports = {
       options: {
         name: `markdown-pages`,
         path: `${__dirname}/content`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/data`,
       },
     },
     {

@@ -2,7 +2,7 @@
 title: Another Great Article
 path: "/blog/another-great-article"
 date: "2019-07-07"
-template: post
+type: "post"
 ---
 
 ## Avi medius pectine

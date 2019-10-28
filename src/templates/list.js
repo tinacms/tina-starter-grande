@@ -47,17 +47,14 @@ export default function List({ data, pageContext }) {
 }
 
 export const listPageQuery = graphql`
-  query($slug: String!, $skip: Int!, $limit: Int!) {
-    page: markdownRemark(frontmatter: { path: { eq: $slug } }) {
-      html
-      frontmatter {
-        path
-        title
-      }
+  query($type: String!, $slug: String!, $skip: Int!, $limit: Int!) {
+    page: listJson(path: { eq: $slug }) {
+      title
+      path
     }
     posts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { template: { eq: "post" } } }
+      filter: { frontmatter: { type: { eq: $type } } }
       limit: $limit
       skip: $skip
     ) {

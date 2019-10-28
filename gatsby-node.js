@@ -5,39 +5,29 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     {
-      lists: allMarkdownRemark(
-        filter: { frontmatter: { template: { eq: "list" } } }
-      ) {
+      pages: allPageJson {
+        edges {
+          node {
+            id
+            path
+          }
+        }
+      }
+      posts: allMarkdownRemark {
         edges {
           node {
             frontmatter {
               path
-              template
             }
           }
         }
       }
-      posts: allMarkdownRemark(
-        filter: { frontmatter: { template: { eq: "post" } } }
-      ) {
+      lists: allListJson {
         edges {
           node {
-            frontmatter {
-              path
-              template
-            }
-          }
-        }
-      }
-      pages: allMarkdownRemark(
-        filter: { frontmatter: { template: { eq: "page" } } }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              path
-              template
-            }
+            id
+            path
+            type
           }
         }
       }
@@ -52,11 +42,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   result.data.pages.edges.forEach(({ node }) => {
     if (node.frontmatter.path) {
       createPage({
-        path: node.frontmatter.path,
-        component: path.resolve(
-          `src/templates/${String(node.frontmatter.template)}.js`
-        ),
-        context: {}, // additional data can be passed via context
+        path: node.path,
+        component: path.resolve(`src/templates/page.js`),
+        context: {},
       })
     }
   })
@@ -65,17 +53,19 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     if (node.frontmatter.path) {
       createPage({
         path: node.frontmatter.path,
-        component: path.resolve(
-          `src/templates/${String(node.frontmatter.template)}.js`
-        ),
-        context: {}, // additional data can be passed via context
+        component: path.resolve(`src/templates/post.js`),
+        context: {},
       })
     }
   })
 
   result.data.lists.edges.forEach(({ node }) => {
-    const posts = result.data.posts.edges
-    const postsPerPage = 6
+    const listType = node.type
+    const allPosts = result.data.posts.edges
+    const posts = allPosts.filter(function(node) {
+      return node.type === listType
+    })
+    const postsPerPage = 2
     const numPages = Math.ceil(posts.length / postsPerPage)
 
     Array.from({ length: numPages }).forEach((_, i) => {
@@ -84,13 +74,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
       createPage({
         path: isFirstPage
-          ? node.frontmatter.path
-          : `${String(node.frontmatter.path)}/${String(currentPage)}`,
-        component: path.resolve(
-          `src/templates/${String(node.frontmatter.template)}.js`
-        ),
+          ? node.path
+          : `${String(node.path)}/${String(currentPage)}`,
+        component: path.resolve(`src/templates/list.js`),
         context: {
-          slug: node.frontmatter.path,
+          type: listType,
+          slug: node.path,
           limit: postsPerPage,
           skip: i * postsPerPage,
           numPages,

@@ -5,7 +5,7 @@ import { Theme } from "./theme"
 import { GlobalStyles, Main, Wrapper } from "./style"
 import { Header, StyledHeader } from "./header"
 import { Footer } from "./footer"
-import { createRemarkButton } from "gatsby-tinacms-remark"
+// import { createRemarkButton } from "gatsby-tinacms-remark"
 import { withPlugin } from "react-tinacms"
 import Helmet from "react-helmet"
 import slugify from "react-slugify"
@@ -72,65 +72,67 @@ const filepath = title => {
   return "content/posts/" + title.replace(/\s+/g, "-").toLowerCase() + ".md"
 }
 
-const CreatePostButton = createRemarkButton({
-  label: "New Post",
-  filename(form) {
-    let slug = slugify(form.title.toLowerCase())
-    return `content/posts/${slug}.md`
-  },
-  frontmatter(form) {
-    let slug = slugify(form.title.toLowerCase())
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve({
-          title: form.title,
-          date: new Date(),
-          template: "post",
-          path: `blog/${slug}`,
-        })
-      }, 1000)
-    })
-  },
-  body({ title }) {
-    return `## ${title}`
-  },
-  fields: [
-    { name: "title", label: "Title", component: "text", required: true },
-  ],
-})
+// const CreatePostButton = createRemarkButton({
+//   label: "New Post",
+//   filename(form) {
+//     let slug = slugify(form.title.toLowerCase())
+//     return `content/posts/${slug}.md`
+//   },
+//   frontmatter(form) {
+//     let slug = slugify(form.title.toLowerCase())
+//     return new Promise(resolve => {
+//       setTimeout(() => {
+//         resolve({
+//           title: form.title,
+//           date: new Date(),
+//           template: "post",
+//           path: `blog/${slug}`,
+//         })
+//       }, 1000)
+//     })
+//   },
+//   body({ title }) {
+//     return `## ${title}`
+//   },
+//   fields: [
+//     { name: "title", label: "Title", component: "text", required: true },
+//   ],
+// })
 
-const CreatePageButton = createRemarkButton({
-  label: "New Page",
-  filename(form) {
-    let slug = slugify(form.title.toLowerCase())
-    return `content/${slug}.md`
-  },
-  frontmatter(form) {
-    let slug = slugify(form.title.toLowerCase())
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve({
-          title: form.title,
-          template: "page",
-          path: slug,
-          menu: form.menu,
-        })
-      }, 1000)
-    })
-  },
-  body({ title }) {
-    return `## ${title}`
-  },
-  fields: [
-    { name: "title", label: "Title", component: "text", required: true },
-    { name: "menu", label: "In Menu", component: "toggle", required: true },
-  ],
-})
+// const CreatePageButton = createRemarkButton({
+//   label: "New Page",
+//   filename(form) {
+//     let slug = slugify(form.title.toLowerCase())
+//     return `content/${slug}.md`
+//   },
+//   frontmatter(form) {
+//     let slug = slugify(form.title.toLowerCase())
+//     return new Promise(resolve => {
+//       setTimeout(() => {
+//         resolve({
+//           title: form.title,
+//           template: "page",
+//           path: slug,
+//           menu: form.menu,
+//         })
+//       }, 1000)
+//     })
+//   },
+//   body({ title }) {
+//     return `## ${title}`
+//   },
+//   fields: [
+//     { name: "title", label: "Title", component: "text", required: true },
+//     { name: "menu", label: "In Menu", component: "toggle", required: true },
+//   ],
+// })
 
-export default withPlugin(
-  withPlugin(Layout, CreatePostButton),
-  CreatePageButton
-)
+// export default withPlugin(
+//   withPlugin(Layout, CreatePostButton),
+//   CreatePageButton
+// )
+
+export default Layout
 
 export const Page = styled.div`
   position: relative;

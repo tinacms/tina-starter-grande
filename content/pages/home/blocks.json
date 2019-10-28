@@ -1,0 +1,20 @@
+[
+  {
+    "blocks": [
+      {
+        "_template": "dummy",
+        "content": "# dummy",
+        "name": "dummy",
+        "recipient": "dummy",
+        "fields": [
+          {
+            "_template": "dummy",
+            "label": "dummy",
+            "inputType": "dummy",
+            "autocomplete": "dummy"
+          }
+        ]
+      }
+    ]
+  }
+]

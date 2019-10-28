@@ -21,14 +21,10 @@ export const Header = ({
 
   const data = useStaticQuery(graphql`
     query headerQuery {
-      menu: allMarkdownRemark(filter: { frontmatter: { menu: { eq: true } } }) {
-        edges {
-          node {
-            frontmatter {
-              title
-              path
-            }
-          }
+      menu: menuJson {
+        items {
+          label
+          link
         }
       }
     }
@@ -45,17 +41,17 @@ export const Header = ({
             </SiteLink>
           </SiteTitle>
           <Navbar navOpen={navOpen}>
-            {data.menu.edges.map(({ node }) => {
-              const { title, path } = node.frontmatter
+            {data.menu.items.map(({ item }) => {
+              const { label, link } = item
 
               return (
-                <NavItem key={title}>
+                <NavItem key={label}>
                   <NavLink
                     onClick={toggleNavOpen}
-                    partiallyActive={path === "/" ? false : true}
-                    to={path}
+                    partiallyActive={link === "/" ? false : true}
+                    to={link}
                   >
-                    {title}
+                    {label}
                   </NavLink>
                 </NavItem>
               )

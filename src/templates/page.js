@@ -5,19 +5,16 @@ import { SEO } from "../components/seo"
 import { Form, FormBlock } from "../blocks/form"
 import { Content, ContentBlock } from "../blocks/content"
 
-import { remarkForm } from "gatsby-tinacms-remark"
+// import { remarkForm } from "gatsby-tinacms-remark"
 
 function Page(props) {
-  const page = props.data.markdownRemark
-  const blocks = page.frontmatter.blocks || []
+  const page = props.data.pageJson
+  const blocks = []
 
   return (
     <>
-      <SEO title={page.frontmatter.title} />
+      <SEO title={page.title} />
       <Paper>
-        {page.html && (
-          <div dangerouslySetInnerHTML={{ __html: page.html }}></div>
-        )}
         {blocks.map(({ _template, ...data }) => {
           switch (_template) {
             case "FormBlock":
@@ -57,31 +54,12 @@ const PageForm = {
   ],
 }
 
-export default remarkForm(Page, PageForm)
+export default Page
 
 export const pageQuery = graphql`
   query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
-      frontmatter {
-        path
-        title
-        blocks {
-          _template
-          name
-          recipient
-          fields {
-            _template
-            label
-            inputType
-            autocomplete
-          }
-        }
-      }
-
-      fileRelativePath
-      rawFrontmatter
-      rawMarkdownBody
+    page: pageJson(path: { eq: $path }) {
+      title
     }
   }
 `

@@ -1,11 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Paper, PaperHeader, ArticleTitle, Meta } from "../components/style"
+import { Paper, ArticleTitle, Meta } from "../components/style"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
 export default function Post({ data }) {
   const { frontmatter, html } = data.markdownRemark
+
   return (
     <>
       <SEO title={frontmatter.title} />
@@ -23,8 +24,8 @@ export default function Post({ data }) {
 }
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query {
+    markdownRemark {
       id
       html
       frontmatter {
