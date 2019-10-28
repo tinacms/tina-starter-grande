@@ -1301,6 +1301,14 @@
     multer "1.4.2"
     simple-git "1.126.0"
 
+"@tinacms/core@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@tinacms/core/-/core-0.3.0.tgz#4a8d87f86baf12934bc50796e481ca6da6d21cfc"
+  integrity sha512-2vj+RSm5cxb6kHLmO4EU7P4HaeQUA/R1Rkhdeth9LPzp0nJ3D2XCElU5P4JsUu67yajr9SJn6fqrghAh1bAPlg==
+  dependencies:
+    final-form "^4.18.2"
+    final-form-arrays "^3.0.1"
+
 "@tinacms/core@^0.3.0-alpha.1":
   version "0.3.0-alpha.1"
   resolved "https://registry.yarnpkg.com/@tinacms/core/-/core-0.3.0-alpha.1.tgz#ffd5ab5dd25e92ffdd87736607f1d1f6c8cf3dd4"
@@ -6344,6 +6352,14 @@ gatsby-tinacms-git@^0.2.5-alpha.1:
     react-tinacms "^0.5.0-alpha.1"
     simple-git "1.124.0"
     tinacms "^0.5.0-alpha.1"
+
+gatsby-tinacms-json@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/gatsby-tinacms-json/-/gatsby-tinacms-json-0.5.0.tgz#0bdf88f84bc025f49899cb5cc54fe01533b201c9"
+  integrity sha512-qAvHSb7T2zoZBso9oO8RjA3+GDNil6i0d2CPhPG6Zkc0GbWi8v+WzrKP8PaoN1rI2sifhtBYPOHWMirmRUMXiw==
+  dependencies:
+    "@tinacms/core" "^0.3.0"
+    react-tinacms "^0.5.0"
 
 gatsby-tinacms-remark@^0.3.5-alpha.1:
   version "0.3.5-alpha.1"
@@ -11729,6 +11745,15 @@ react-slugify@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-slugify/-/react-slugify-2.0.1.tgz#719410fc2f6cfeb77f731d57adae4f47649ebd15"
   integrity sha512-vy5dAh9puvno06cV1TgK/FoSviXErOYD5fSngR/qygJkwkI2V4YjF76mnhIIp2fUJyA0ox5Ab3ASH+efNzqaPQ==
+
+react-tinacms@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/react-tinacms/-/react-tinacms-0.5.0.tgz#a44c13a37954b441abe9d6d25cd26d1142d1985e"
+  integrity sha512-Yr5VSY8V6S7nAbX0wG7mPoK5WP/nm85U4RxmWRf1ccEn1VYFd/88/Gy6fep0BksGW6jziIbX1cOsxCAi6NxUTg==
+  dependencies:
+    "@tinacms/core" "^0.3.0"
+    lodash.get "^4.4.2"
+    lodash.set "^4.3.2"
 
 react-tinacms@^0.5.0-alpha.1:
   version "0.5.0-alpha.1"

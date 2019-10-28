@@ -5,8 +5,6 @@ import { SEO } from "../components/seo"
 import { Form, FormBlock } from "../blocks/form"
 import { Content, ContentBlock } from "../blocks/content"
 
-// import { remarkForm } from "gatsby-tinacms-remark"
-
 function Page(props) {
   const page = props.data.page
   const blocks = page.blocks
