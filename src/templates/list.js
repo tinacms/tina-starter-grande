@@ -15,7 +15,7 @@ export default function List({ data, pageContext }) {
 
   return (
     <>
-      <SEO title={data.page.frontmatter.title} />
+      <SEO title={data.page.title} />
       {data.posts.edges.map(({ node }) => {
         return (
           <Paper article key={node.id}>

@@ -8,7 +8,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       pages: allPageJson {
         edges {
           node {
-            id
             path
           }
         }
@@ -25,9 +24,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       lists: allListJson {
         edges {
           node {
-            id
             path
-            type
+            listType
           }
         }
       }
@@ -40,7 +38,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   result.data.pages.edges.forEach(({ node }) => {
-    if (node.frontmatter.path) {
+    if (node.path) {
       createPage({
         path: node.path,
         component: path.resolve(`src/templates/page.js`),
@@ -60,7 +58,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   })
 
   result.data.lists.edges.forEach(({ node }) => {
-    const listType = node.type
+    const listType = node.listType
     const allPosts = result.data.posts.edges
     const posts = allPosts.filter(function(node) {
       return node.type === listType
