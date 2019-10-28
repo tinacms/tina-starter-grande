@@ -15,16 +15,17 @@ function Page(props) {
     <>
       <SEO title={page.title} />
       <Paper>
-        {blocks.map(({ _template, ...data }) => {
-          switch (_template) {
-            case "FormBlock":
-              return <Form form={data} />
-            case "ContentBlock":
-              return <p>{data.content}</p>
-            default:
-              return "Error"
-          }
-        })}
+        {blocks &&
+          blocks.map(({ _template, ...data }) => {
+            switch (_template) {
+              case "FormBlock":
+                return <Form form={data} />
+              case "ContentBlock":
+                return <p>{data.content}</p>
+              default:
+                return "Error"
+            }
+          })}
       </Paper>
     </>
   )
