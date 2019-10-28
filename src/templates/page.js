@@ -9,7 +9,7 @@ import { Content, ContentBlock } from "../blocks/content"
 
 function Page(props) {
   const page = props.data.page
-  const blocks = []
+  const blocks = page.blocks
 
   return (
     <>
@@ -20,7 +20,7 @@ function Page(props) {
             case "FormBlock":
               return <Form form={data} />
             case "ContentBlock":
-              return <p>Content goes here lol</p>
+              return <p>{data.content}</p>
             default:
               return "Error"
           }
@@ -60,6 +60,11 @@ export const pageQuery = graphql`
   query($path: String!) {
     page: pageJson(path: { eq: $path }) {
       title
+      content
+      blocks {
+        _template
+        content
+      }
     }
   }
 `

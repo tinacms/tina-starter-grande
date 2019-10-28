@@ -1,9 +1,12 @@
 [
   {
+    "title": "Dummy",
+    "path": "/dummy",
+    "content": "## root",
     "blocks": [
       {
         "_template": "dummy",
-        "content": "# dummy",
+        "content": "## block content",
         "name": "dummy",
         "recipient": "dummy",
         "fields": [
