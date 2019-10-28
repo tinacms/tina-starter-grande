@@ -41,21 +41,17 @@ export const Header = ({
             </SiteLink>
           </SiteTitle>
           <Navbar navOpen={navOpen}>
-            {data.menu.items.map(({ item }) => {
-              const { label, link } = item
-
-              return (
-                <NavItem key={label}>
-                  <NavLink
-                    onClick={toggleNavOpen}
-                    partiallyActive={link === "/" ? false : true}
-                    to={link}
-                  >
-                    {label}
-                  </NavLink>
-                </NavItem>
-              )
-            })}
+            {data.menu.items.map(item => (
+              <NavItem key={item.label}>
+                <NavLink
+                  onClick={toggleNavOpen}
+                  partiallyActive={item.link === "/" ? false : true}
+                  to={item.link}
+                >
+                  {item.label}
+                </NavLink>
+              </NavItem>
+            ))}
             <NavItem>
               <DarkModeToggle
                 aria-label="Toggle Dark Theme"

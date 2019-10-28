@@ -8,7 +8,7 @@ import { Content, ContentBlock } from "../blocks/content"
 // import { remarkForm } from "gatsby-tinacms-remark"
 
 function Page(props) {
-  const page = props.data.pageJson
+  const page = props.data.page
   const blocks = []
 
   return (
