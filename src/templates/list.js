@@ -6,7 +6,7 @@ import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
 export default function List({ data, pageContext }) {
-  const { slug, currentPage, numPages } = pageContext
+  const { type, slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
   const prevPage =
@@ -15,7 +15,7 @@ export default function List({ data, pageContext }) {
 
   return (
     <>
-      {/* <SEO title={data.page.title} /> */}
+      <SEO title={data.page.title} />
       {data.posts.edges.map(node => (
         <Paper article key={node.id}>
           <ArticleTitle>
@@ -46,6 +46,11 @@ export default function List({ data, pageContext }) {
 
 export const listPageQuery = graphql`
   query($type: String!, $slug: String!, $skip: Int!, $limit: Int!) {
+    page: listJson(path: { eq: $slug }) {
+      path
+      title
+      listType
+    }
     posts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: { frontmatter: { type: { eq: $type } } }

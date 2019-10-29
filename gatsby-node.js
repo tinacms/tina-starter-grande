@@ -112,7 +112,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           slug: node.path,
           limit: postsPerPage,
           skip: i * postsPerPage,
-          numPages,
+          numPages: numPages,
           currentPage: currentPage,
         },
       })
