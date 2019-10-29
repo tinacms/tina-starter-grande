@@ -6,6 +6,7 @@ import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
 export default function List({ data, pageContext }) {
+  console.log(data)
   const { slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1
   const pageTitle = isFirst
@@ -20,15 +21,15 @@ export default function List({ data, pageContext }) {
     <>
       <SEO title={pageTitle} />
       {data.posts &&
-        data.posts.edges.map(node => (
-          <Paper article key={node.id}>
+        data.posts.edges.map(item => (
+          <Paper article key={item.node.id}>
             <ArticleTitle>
-              <Link to={node.frontmatter.path}>{node.frontmatter.title}</Link>
+              <Link to={item.node.frontmatter.path}>{item.node.frontmatter.title}</Link>
             </ArticleTitle>
-            <p>{node.excerpt}</p>
+            <p>{item.node.excerpt}</p>
             <Meta>
-              <span>{node.frontmatter.date}</span>
-              <Link to={node.frontmatter.path}>Read Article →</Link>
+              <span>{item.node.frontmatter.date}</span>
+              <Link to={item.node.frontmatter.path}>Read Article →</Link>
             </Meta>
           </Paper>
         ))}
