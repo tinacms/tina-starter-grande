@@ -1,17 +1,15 @@
-[
-  {
-    "title": "Home",
-    "path": "/",
-    "content": "## root content",
-    "blocks": [
-      {
-        "_template": "ContentBlock",
-        "content": "## block content"
-      },
-      {
-        "_template": "ContentBlock",
-        "content": "## more block content"
-      }
-    ]
-  }
-]
+{
+  "title": "Home",
+  "path": "/",
+  "content": "## root content",
+  "blocks": [
+    {
+      "_template": "ContentBlock",
+      "content": "## block content"
+    },
+    {
+      "_template": "ContentBlock",
+      "content": "## more block content"
+    }
+  ]
+}

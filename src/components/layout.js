@@ -5,7 +5,7 @@ import { Theme } from "./theme"
 import { GlobalStyles, Main, Wrapper } from "./style"
 import { Header, StyledHeader } from "./header"
 import { Footer } from "./footer"
-// import { createRemarkButton } from "gatsby-tinacms-remark"
+import { createRemarkButton } from "gatsby-tinacms-remark"
 import { withPlugin } from "react-tinacms"
 import Helmet from "react-helmet"
 import slugify from "react-slugify"
@@ -68,9 +68,9 @@ const Layout = ({ children }) => {
   )
 }
 
-const filepath = title => {
-  return "content/posts/" + title.replace(/\s+/g, "-").toLowerCase() + ".md"
-}
+// const filepath = title => {
+//   return "content/posts/" + title.replace(/\s+/g, "-").toLowerCase() + ".md"
+// }
 
 // const CreatePostButton = createRemarkButton({
 //   label: "New Post",
@@ -103,7 +103,7 @@ const filepath = title => {
 //   label: "New Page",
 //   filename(form) {
 //     let slug = slugify(form.title.toLowerCase())
-//     return `content/${slug}.md`
+//     return `content/${slug}.json`
 //   },
 //   frontmatter(form) {
 //     let slug = slugify(form.title.toLowerCase())

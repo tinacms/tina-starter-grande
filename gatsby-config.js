@@ -24,6 +24,7 @@ module.exports = {
         plugins: ["gatsby-tinacms-git", "gatsby-tinacms-remark"],
       },
     },
+    `gatsby-tinacms-json`,
     `gatsby-transformer-json`,
     {
       resolve: "gatsby-source-filesystem",

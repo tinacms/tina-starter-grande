@@ -5,8 +5,10 @@ import { SEO } from "../components/seo"
 import { Form, FormBlock } from "../blocks/form"
 import { Content, ContentBlock } from "../blocks/content"
 
+import { useJsonForm } from "gatsby-tinacms-json"
+
 function Page(props) {
-  const page = props.data.page
+  const page = useJsonForm(props.data.page)
   const blocks = page.blocks ? page.blocks : []
 
   return (
@@ -64,6 +66,9 @@ export const pageQuery = graphql`
         _template
         content
       }
+
+      rawJson
+      fileRelativePath
     }
   }
 `

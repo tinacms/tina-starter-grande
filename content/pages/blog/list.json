@@ -1,7 +1,5 @@
-[
-  {
-    "path": "/blog",
-    "title": "Blog",
-    "listType": "post"
-  }
-]
+{
+  "path": "/blog",
+  "title": "Blog",
+  "listType": "post"
+}
