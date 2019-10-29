@@ -22,7 +22,7 @@ export const Header = ({
   const data = useStaticQuery(graphql`
     query headerQuery {
       dataJson {
-        items {
+        menuItems {
           label
           link
         }
@@ -41,7 +41,7 @@ export const Header = ({
             </SiteLink>
           </SiteTitle>
           <Navbar navOpen={navOpen}>
-            {data.dataJson.items.map(item => (
+            {data.dataJson.menuItems.map(item => (
               <NavItem key={item.label}>
                 <NavLink
                   onClick={toggleNavOpen}

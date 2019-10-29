@@ -9,7 +9,6 @@ import { useJsonForm } from "gatsby-tinacms-json"
 
 function Page(props) {
   const [page] = useJsonForm(props.data.page, PageForm)
-  console.log(props.data)
   const blocks = page.blocks ? page.blocks : []
 
   return (
@@ -20,11 +19,15 @@ function Page(props) {
         <hr />
         {blocks &&
           blocks.map(({ _template, ...data }) => {
+            {
+              console.log(_template)
+              console.log(data)
+            }
             switch (_template) {
               case "FormBlock":
                 return <Form form={data} />
               case "ContentBlock":
-                return <p>{data.content}</p>
+                return <p>test</p>
               default:
                 return "Error"
             }
@@ -63,6 +66,13 @@ export const pageQuery = graphql`
       blocks {
         _template
         content
+        name
+        recipient
+        fields {
+          label
+          inputType
+          autocomplete
+        }
       }
 
       rawJson

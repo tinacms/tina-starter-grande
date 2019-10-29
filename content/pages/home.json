@@ -1,5 +1,4 @@
 {
   "title": "Home",
-  "path": "/",
-  "content": "## root content"
+  "path": "/"
 }
