@@ -97,7 +97,7 @@ export const phoneInputBlock = {
 export const companyInputBlock = {
   label: "Company Input",
   defaultItem: {
-    label: "Compnany",
+    label: "Company",
     inputType: "text",
     autocomplete: "organization",
   },

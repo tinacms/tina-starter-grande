@@ -1,5 +1,43 @@
 {
   "title": "Contact",
   "path": "/contact",
-  "blocks": []
+  "blocks": [
+    {
+      "_template": "FormBlock",
+      "name": "Contact Form",
+      "recipient": "scott.byrne@forestry.io",
+      "fields": [
+        {
+          "label": "Name",
+          "inputType": "text",
+          "autocomplete": "name",
+          "_template": "nameInputBlock"
+        },
+        {
+          "label": "Email",
+          "inputType": "text",
+          "autocomplete": "email",
+          "_template": "emailInputBlock"
+        },
+        {
+          "label": "Phone",
+          "inputType": "text",
+          "autocomplete": "tel",
+          "_template": "phoneInputBlock"
+        },
+        {
+          "label": "Company",
+          "inputType": "text",
+          "autocomplete": "organization",
+          "_template": "companyInputBlock"
+        },
+        {
+          "label": "Message",
+          "inputType": "textarea",
+          "autocomplete": "",
+          "_template": "messageInputBlock"
+        }
+      ]
+    }
+  ]
 }
