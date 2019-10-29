@@ -24,7 +24,9 @@ export default function List({ data, pageContext }) {
         data.posts.edges.map(item => (
           <Paper article key={item.node.id}>
             <ArticleTitle>
-              <Link to={item.node.frontmatter.path}>{item.node.frontmatter.title}</Link>
+              <Link to={item.node.frontmatter.path}>
+                {item.node.frontmatter.title}
+              </Link>
             </ArticleTitle>
             <p>{item.node.excerpt}</p>
             <Meta>
@@ -51,7 +53,7 @@ export default function List({ data, pageContext }) {
 
 export const pageQuery = graphql`
   query($listType: String!, $slug: String!, $skip: Int!, $limit: Int!) {
-    page: listJson(path: { eq: $slug }) {
+    page: listsJson(path: { eq: $slug }) {
       path
       title
       listType

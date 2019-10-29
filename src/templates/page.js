@@ -9,6 +9,7 @@ import { useJsonForm } from "gatsby-tinacms-json"
 
 function Page(props) {
   const [page] = useJsonForm(props.data.page, PageForm)
+  console.log(props.data)
   const blocks = page.blocks ? page.blocks : []
 
   return (
@@ -35,12 +36,12 @@ const PageForm = {
   fields: [
     {
       label: "Title",
-      name: "title",
+      name: "rawJon.title",
       component: "text",
     },
     {
       label: "Sections",
-      name: "blocks",
+      name: "rawJon.blocks",
       component: "blocks",
       templates: {
         FormBlock,
@@ -54,7 +55,7 @@ export default Page
 
 export const pageQuery = graphql`
   query($path: String!) {
-    page: pageJson(path: { eq: $path }) {
+    page: pagesJson(path: { eq: $path }) {
       title
       content
       blocks {

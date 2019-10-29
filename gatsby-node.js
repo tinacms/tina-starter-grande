@@ -8,15 +8,16 @@ exports.onCreateNode = ({
 }) => {
   const { createNode, createNodeField } = actions
 
-  if (node.internal.type === `PageJson`) {
+  // Check for the correct type to only affect this
+  if (node.internal.type === `PagesJson`) {
     const textNode = {
       id: createNodeId(`${node.id} markdown field`),
       children: [],
       parent: node.id,
       internal: {
-        content: node.blocks.content,
+        content: node.content,
         mediaType: `text/markdown`, // Important!
-        contentDigest: createContentDigest(node.blocks.content),
+        contentDigest: createContentDigest(node.content),
         type: `${node.internal.type}Markdown`,
       },
     }
@@ -37,7 +38,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     {
-      pages: allPageJson(filter: { path: { ne: null } }) {
+      pages: allPagesJson(filter: { path: { ne: null } }) {
         edges {
           node {
             path
@@ -56,7 +57,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
-      lists: allListJson(filter: { path: { ne: null } }) {
+      lists: allListsJson(filter: { path: { ne: null } }) {
         edges {
           node {
             path
