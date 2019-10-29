@@ -44,7 +44,7 @@ export default function List({ data, pageContext }) {
   )
 }
 
-export const listPageQuery = graphql`
+export const pageQuery = graphql`
   query($type: String!, $slug: String!, $skip: Int!, $limit: Int!) {
     page: listJson(path: { eq: $slug }) {
       path
