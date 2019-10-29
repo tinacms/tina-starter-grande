@@ -1,4 +1,6 @@
-{
-  "title": "Home",
-  "path": "/about"
-}
+[
+  {
+    "title": "Home",
+    "path": "/about"
+  }
+]

@@ -8,7 +8,7 @@ import { Content, ContentBlock } from "../blocks/content"
 import { useJsonForm } from "gatsby-tinacms-json"
 
 function Page(props) {
-  const page = useJsonForm(props.data.page)
+  const [page] = useJsonForm(props.data.page, PageForm)
   const blocks = page.blocks ? page.blocks : []
 
   return (
@@ -35,17 +35,12 @@ const PageForm = {
   fields: [
     {
       label: "Title",
-      name: "rawFrontmatter.title",
+      name: "title",
       component: "text",
     },
     {
-      label: "In Menu",
-      name: "rawFrontmatter.menu",
-      component: "toggle",
-    },
-    {
       label: "Sections",
-      name: "rawFrontmatter.blocks",
+      name: "blocks",
       component: "blocks",
       templates: {
         FormBlock,

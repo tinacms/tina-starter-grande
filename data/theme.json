@@ -1,31 +1,33 @@
-{
-  "color": {
-    "black": "#131110",
-    "white": "#f7f7f7",
-    "primary": "#007043",
-    "secondary": "#B8A45D"
-  },
-  "easing": "cubic-bezier(0.215, 0.610, 0.355, 1.000)",
-  "breakpoints": {
-    "small": "600px",
-    "medium": "1200px",
-    "large": "1600px"
-  },
-  "radius": {
-    "small": "3px"
-  },
-  "header": {
-    "style": "transparent",
-    "sticky": false,
-    "overline": true
-  },
-  "hero": {
-    "style": "backdrop",
-    "fade": true
-  },
-  "options": {
-    "titlePlacement": "page",
-    "defaultTheme": "light",
-    "wideBlocks": true
+[
+  {
+    "color": {
+      "black": "#131110",
+      "white": "#f7f7f7",
+      "primary": "#007043",
+      "secondary": "#B8A45D"
+    },
+    "easing": "cubic-bezier(0.215, 0.610, 0.355, 1.000)",
+    "breakpoints": {
+      "small": "600px",
+      "medium": "1200px",
+      "large": "1600px"
+    },
+    "radius": {
+      "small": "3px"
+    },
+    "header": {
+      "style": "transparent",
+      "sticky": false,
+      "overline": true
+    },
+    "hero": {
+      "style": "backdrop",
+      "fade": true
+    },
+    "options": {
+      "titlePlacement": "page",
+      "defaultTheme": "light",
+      "wideBlocks": true
+    }
   }
-}
+]
