@@ -89,6 +89,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   })
 
   result.data.lists.edges.forEach(({ node }) => {
+    const listPageTemplate = path.resolve(`src/templates/list.js`)
     const listType = node.listType
     const allPosts = result.data.posts.edges
     const posts = allPosts.filter(post => post.type === listType)
@@ -104,7 +105,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         path: isFirstPage
           ? node.path
           : `${String(node.path)}/${String(currentPage)}`,
-        component: path.resolve(`src/templates/list.js`),
+        component: listPageTemplate,
         context: {
           listType: listType,
           slug: slug,
