@@ -16,6 +16,8 @@ function Page(props) {
     <>
       <SEO title={page.title} />
       <Paper>
+        <h2>{page.title}</h2>
+        <hr />
         {blocks &&
           blocks.map(({ _template, ...data }) => {
             switch (_template) {
@@ -36,12 +38,12 @@ const PageForm = {
   fields: [
     {
       label: "Title",
-      name: "rawJon.title",
+      name: "rawJson.title",
       component: "text",
     },
     {
       label: "Sections",
-      name: "rawJon.blocks",
+      name: "rawJson.blocks",
       component: "blocks",
       templates: {
         FormBlock,
