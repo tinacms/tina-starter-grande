@@ -7,7 +7,7 @@ import { Content, ContentBlock } from "../blocks/content"
 
 function Page(props) {
   const page = props.data.page
-  const blocks = page.blocks
+  const blocks = page.blocks ? page.blocks : []
 
   return (
     <>

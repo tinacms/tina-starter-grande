@@ -1,59 +1,30 @@
 const path = require(`path`)
 
-exports.onCreateNode = ({
-  node,
-  actions,
-  createNodeId,
-  createContentDigest,
-}) => {
-  const { createNode, createNodeField } = actions
-
-  if (node.internal.type === `PageJson`) {
-    const textNode = {
-      id: createNodeId(`${node.id} markdown field`),
-      children: [],
-      parent: node.id,
-      internal: {
-        content: node.content,
-        mediaType: `text/markdown`, // Important!
-        contentDigest: createContentDigest(node.content),
-        type: `${node.internal.type}Markdown`,
-      },
-    }
-
-    createNode(textNode)
-
-    // Add link to the new node
-    createNodeField({
-      node,
-      name: `markdownContent___NODE`, // Before the ___NODE: Name of the new fields
-      value: textNode.id, // Connects both nodes
-    })
-  }
-}
-
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
   const result = await graphql(`
     {
-      pages: allPageJson {
+      pages: allPageJson(filter: { path: { ne: null } }) {
         edges {
           node {
             path
           }
         }
       }
-      posts: allMarkdownRemark {
+      posts: allMarkdownRemark(
+        filter: { frontmatter: { path: { ne: null } } }
+      ) {
         edges {
           node {
             frontmatter {
               path
+              type
             }
           }
         }
       }
-      lists: allListJson {
+      lists: allListJson(filter: { path: { ne: null } }) {
         edges {
           node {
             path
@@ -70,23 +41,19 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   result.data.pages.edges.forEach(({ node }) => {
-    if (node.path) {
-      createPage({
-        path: node.path,
-        component: path.resolve(`src/templates/page.js`),
-        context: {},
-      })
-    }
+    createPage({
+      path: node.path,
+      component: path.resolve(`src/templates/page.js`),
+      context: {},
+    })
   })
 
   result.data.posts.edges.forEach(({ node }) => {
-    if (node.frontmatter.path) {
-      createPage({
-        path: node.frontmatter.path,
-        component: path.resolve(`src/templates/post.js`),
-        context: {},
-      })
-    }
+    createPage({
+      path: node.frontmatter.path,
+      component: path.resolve(`src/templates/post.js`),
+      context: {},
+    })
   })
 
   result.data.lists.edges.forEach(({ node }) => {
@@ -108,7 +75,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           : `${String(node.path)}/${String(currentPage)}`,
         component: path.resolve(`src/templates/list.js`),
         context: {
-          type: listType,
+          listType: listType,
           slug: node.path,
           limit: postsPerPage,
           skip: i * postsPerPage,
