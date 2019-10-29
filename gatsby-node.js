@@ -94,7 +94,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     const allPosts = result.data.posts.edges
     const posts = allPosts.filter(post => post.type === listType)
     const postsPerPage = 2
-    const numPages = Math.ceil(posts.length / postsPerPage)
+    const numPages = Math.max(Math.ceil(posts.length / postsPerPage), 1)
     const slug = node.path
 
     Array.from({ length: numPages }).forEach((_, i) => {
