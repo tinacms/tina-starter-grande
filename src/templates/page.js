@@ -78,5 +78,12 @@ export const pageQuery = graphql`
       rawJson
       fileRelativePath
     }
+    file: file(relativePath: { eq: "cafe.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
   }
 `

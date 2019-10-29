@@ -11,6 +11,23 @@ import Helmet from "react-helmet"
 import slugify from "react-slugify"
 
 const Layout = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    query SiteQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+      file: file(relativePath: { eq: "cafe.jpg" }) {
+        childImageSharp {
+          fluid(quality: 90, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+  `)
+
   const isBrowser = typeof window !== "undefined"
   const userPrefDark = isBrowser ? localStorage.getItem("isDarkMode") : false
   const [isDarkMode, setIsDarkMode] = useState(
@@ -25,22 +42,7 @@ const Layout = ({ children }) => {
     }
   }
 
-  const data = useStaticQuery(graphql`
-    query SiteQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-      file(relativePath: { eq: "cafe.jpg" }) {
-        childImageSharp {
-          fluid(quality: 90, maxWidth: 1920) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `)
+  const [heroImage, setHeroImage] = useState(data.file.childImageSharp.fluid)
 
   return (
     <>
@@ -55,7 +57,7 @@ const Layout = ({ children }) => {
               toggleDarkMode={toggleDarkMode}
               isDarkMode={isDarkMode}
               siteTitle={data.site.siteMetadata.title}
-              backgroundImage={data.file.childImageSharp.fluid}
+              heroImage={heroImage}
             />
             <Main>
               <Wrapper>{children}</Wrapper>

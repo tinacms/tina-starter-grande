@@ -1,7 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import { Paper, ArticleTitle, Meta } from "../components/style"
+import {
+  Paper,
+  ArticleTitle,
+  Meta,
+  HeroBackgroundImage,
+  Overlay,
+} from "../components/style"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
@@ -73,6 +79,13 @@ export const pageQuery = graphql`
             path
             title
           }
+        }
+      }
+    }
+    file: file(relativePath: { eq: "cafe.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }

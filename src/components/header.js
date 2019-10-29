@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-
 import { Wrapper, Overlay } from "./style"
 import { Moon, Sun, Coffee } from "styled-icons/boxicons-regular"
 import styled, { css } from "styled-components"
@@ -14,7 +13,7 @@ export const Header = ({
   toggleDarkMode,
   isDarkMode,
   siteTitle,
-  backgroundImage,
+  heroImage,
 }) => {
   const [navOpen, setNavOpen] = useState(false)
   const toggleNavOpen = () => {
@@ -44,6 +43,7 @@ export const Header = ({
   }
 
   const MenuForm = {
+    label: "Menu",
     fields: [
       {
         label: "Menu Items",
@@ -96,7 +96,7 @@ export const Header = ({
           ></NavToggle>
         </HeaderWrapper>
       </StyledHeader>
-      <HeroBackgroundImage fluid={backgroundImage}>
+      <HeroBackgroundImage fluid={heroImage}>
         <Overlay />
       </HeroBackgroundImage>
     </>
