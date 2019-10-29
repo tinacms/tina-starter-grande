@@ -8,6 +8,8 @@ import { mix, tint, shade, transparentize } from "polished"
 import BackgroundImage from "gatsby-background-image"
 import { Link } from "gatsby"
 
+import { useJsonForm } from "gatsby-tinacms-json"
+
 export const Header = ({
   toggleDarkMode,
   isDarkMode,
@@ -30,6 +32,33 @@ export const Header = ({
     }
   `)
 
+  const MenuItem = {
+    name: "menuItem",
+    key: "label",
+    label: "Menu Item",
+    component: "group",
+    fields: [
+      { name: "label", label: "Label", component: "text" },
+      { name: "link", label: "Path", component: "text" },
+    ],
+  }
+
+  const MenuForm = {
+    fields: [
+      {
+        label: "Menu Items",
+        name: "rawJson.menuItems",
+        component: "blocks",
+        templates: {
+          MenuItem,
+        },
+      },
+    ],
+  }
+
+  //const [menu] = useJsonForm(data.dataJson, MenuForm)
+  const menu = data.dataJson
+
   return (
     <>
       <StyledHeader>
@@ -41,7 +70,7 @@ export const Header = ({
             </SiteLink>
           </SiteTitle>
           <Navbar navOpen={navOpen}>
-            {data.dataJson.menuItems.map(item => (
+            {menu.menuItems.map(item => (
               <NavItem key={item.label}>
                 <NavLink
                   onClick={toggleNavOpen}
