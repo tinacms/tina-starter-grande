@@ -179,6 +179,12 @@ export const FormField = styled.div`
       outline: none;
       box-shadow: 0 0 0 3px ${props => props.theme.color.secondary};
     }
+
+    ${props =>
+      props.theme.mode === "dark" &&
+      css`
+        background-color: ${props => props.theme.color.background};
+      `};
   }
 
   textarea {

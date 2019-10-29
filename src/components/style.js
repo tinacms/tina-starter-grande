@@ -285,6 +285,12 @@ export const GlobalStyles = createGlobalStyle`
     -ms-overflow-style: none;
     overflow-y: scroll;
     overflow-x: hidden;
+
+    ${props =>
+      props.theme.mode === "dark" &&
+      css`
+        background-color: ${props => props.theme.color.background};
+      `};
   }
 
   ${PrismTheme}
@@ -445,6 +451,13 @@ export const Paper = styled.div`
       &:not(:last-child) {
         margin-bottom: 2rem;
       }
+    `};
+
+  ${props =>
+    props.theme.mode === "dark" &&
+    css`
+      background-color: ${props =>
+        mix(0.95, props.theme.color.background, props.theme.color.foreground)};
     `};
 
   > *:not(:last-child) {

@@ -54,6 +54,7 @@ export const Theme = isDarkMode => {
   const BaseTheme = merge(DefaultTheme, UserTheme)
 
   const ThemeLight = {
+    mode: "light",
     color: {
       black: BaseTheme.color.black,
       white: BaseTheme.color.white,
@@ -69,6 +70,7 @@ export const Theme = isDarkMode => {
   }
 
   const ThemeDark = {
+    mode: "dark",
     color: {
       black: BaseTheme.color.black,
       white: mix(0.7, BaseTheme.color.white, BaseTheme.color.secondary),
