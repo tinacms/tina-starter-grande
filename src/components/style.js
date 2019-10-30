@@ -1,6 +1,8 @@
 import React from "react"
 import styled, { createGlobalStyle, css } from "styled-components"
 import { mix, tint, shade, transparentize } from "polished"
+import { CalendarAlt } from "styled-icons/boxicons-regular/CalendarAlt"
+import { Person } from "styled-icons/material/Person"
 import Img from "gatsby-image"
 
 export const Reset = css`
@@ -651,6 +653,25 @@ export const Meta = styled.div`
     margin-bottom: 1.5rem;
   }
 `
+
+export const MetaSpan = styled.span``
+
+export const MetaDate = styled(children => {
+  return (
+    <MetaSpan {...styleProps}>
+      <Person />
+      {children}
+    </MetaSpan>
+  )
+})``
+
+export const MetaAuthor = styled(children => {
+  return (
+    <MetaSpan {...styleProps}>
+      <CalendarAlt /> {children}
+    </MetaSpan>
+  )
+})``
 
 export const DraftBadge = styled.span`
   display: inline-block;

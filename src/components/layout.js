@@ -20,12 +20,6 @@ const Layout = ({ children }) => {
           title
         }
       }
-      menuJson: dataJson(fileRelativePath: { eq: "/data/menu.json" }) {
-        menuItems {
-          link
-          label
-        }
-      }
       themeJson: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
         color {
           primary
@@ -78,8 +72,6 @@ const Layout = ({ children }) => {
   }
 
   const [heroImage, setHeroImage] = useState(data.file.childImageSharp.fluid)
-
-  const menuItems = data.menuJson
 
   return (
     <>
