@@ -33,7 +33,10 @@ const Layout = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(
     userPrefDark === "true" ? true : false
   )
-  const theme = Theme(isDarkMode)
+
+  const userTheme = {}
+  console.log(data)
+  const theme = Theme(userTheme, isDarkMode)
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)

@@ -1,18 +1,8 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { mix } from "polished"
 
-export const Theme = isDarkMode => {
+export const Theme = (userTheme = {}, isDarkMode) => {
   const merge = require("lodash.merge")
-
-  const UserTheme = {
-    /* These would come from a config */
-    color: {
-      black: "#131110",
-      white: "#f7f7f7",
-      primary: "#007043",
-      secondary: "#B8A45D",
-    },
-  }
 
   const DefaultTheme = {
     color: {
@@ -47,11 +37,7 @@ export const Theme = isDarkMode => {
     },
   }
 
-  // const BaseTheme = React.useMemo(merge(DefaultTheme, UserTheme), [
-  //   DefaultTheme,
-  //   UserTheme,
-  // ])
-  const BaseTheme = merge(DefaultTheme, UserTheme)
+  const BaseTheme = merge(DefaultTheme, userTheme)
 
   const ThemeLight = {
     mode: "light",

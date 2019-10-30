@@ -2642,7 +2642,7 @@ blob@0.0.5:
   resolved "https://registry.yarnpkg.com/blob/-/blob-0.0.5.tgz#d680eeef25f8cd91ad533f5b01eed48e64caf683"
   integrity sha512-gaqbzQPqOoamawKg0LGVd7SzLgXS+JH61oWprSLH+P+abTczqJbhTR8CmJ2u9/bUYNmHTGJx/UEmn6doAvvuig==
 
-bluebird@^3.0.5:
+bluebird@^3.0.5, bluebird@^3.5.0:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.1.tgz#df70e302b471d7473489acf26a93d63b53f874de"
   integrity sha512-DdmyoGCleJnkbp3nkbxTLJ18rjDsE4yCggEwKNXkeV123sPNfOCYeDoeuOY+F2FrSjO1YXcTU+dsy96KMy+gcg==
@@ -6380,6 +6380,14 @@ gatsby-transformer-json@^2.2.15:
   dependencies:
     "@babel/runtime" "^7.6.3"
     bluebird "^3.7.0"
+
+gatsby-transformer-rawjson@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-rawjson/-/gatsby-transformer-rawjson-1.1.1.tgz#d2ca0c30a29c1093128258d49fdb73c4d5ef5628"
+  integrity sha512-LAtJ5mFW8LsFdRARErchFAbGwu9C2SGxUKpLDwjq3tLzPoE233W4u+WCIdoz69g74cy8jtGHx75QQ4FUxEG32w==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    bluebird "^3.5.0"
 
 gatsby-transformer-remark@^2.6.30:
   version "2.6.30"

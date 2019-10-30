@@ -26,6 +26,7 @@ module.exports = {
     },
     `gatsby-tinacms-json`,
     `gatsby-transformer-json`,
+    `gatsby-transformer-rawjson`,
     {
       resolve: "gatsby-source-filesystem",
       options: {
