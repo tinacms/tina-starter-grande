@@ -659,6 +659,7 @@ export const MetaActions = styled.span`
 export const MetaSpan = styled.span`
   justify-self: flex-start;
   opacity: 0.5;
+  position: relative;
   em {
     font-style: normal;
     opacity: 0.5;
@@ -672,7 +673,17 @@ export const MetaSpan = styled.span`
     }
   }
   &:not(:last-child) {
-    margin-right: 1.5em;
+    margin-right: 1em;
+  }
+  &:not(:first-child) {
+    padding-left: 1rem;
+    &:before {
+      content: "—";
+      position: absolute;
+      opacity: 0.5;
+      left: 0;
+      transform: translate3d(-50%, 0, 0);
+    }
   }
   &:last-child {
     flex: 1 0 auto;
