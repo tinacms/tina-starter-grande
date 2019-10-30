@@ -29,7 +29,7 @@ function Page(props) {
               case "ContentBlock":
                 return <p>test</p>
               default:
-                return "Error"
+                return <p>Undefined block</p>
             }
           })}
       </Paper>
