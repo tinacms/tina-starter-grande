@@ -1,8 +1,6 @@
 import React from "react"
 import styled, { createGlobalStyle, css } from "styled-components"
 import { mix, tint, shade, transparentize } from "polished"
-import { CalendarAlt } from "styled-icons/boxicons-regular/CalendarAlt"
-import { Person } from "styled-icons/material/Person"
 import Img from "gatsby-image"
 
 export const Reset = css`
@@ -642,36 +640,44 @@ export const Button = styled.button`
 export const Meta = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-between;
-  span {
-    opacity: 0.5;
-  }
+  justify-content: flex-start;
   a:not(:hover) {
     text-decoration: none;
   }
   &:not(:last-child) {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
 `
 
-export const MetaSpan = styled.span``
+export const MetaActions = styled.span`
+  opacity: 1;
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: flex-end;
+`
 
-export const MetaDate = styled(children => {
-  return (
-    <MetaSpan {...styleProps}>
-      <Person />
-      {children}
-    </MetaSpan>
-  )
-})``
-
-export const MetaAuthor = styled(children => {
-  return (
-    <MetaSpan {...styleProps}>
-      <CalendarAlt /> {children}
-    </MetaSpan>
-  )
-})``
+export const MetaSpan = styled.span`
+  justify-self: flex-start;
+  opacity: 0.5;
+  em {
+    font-style: normal;
+    opacity: 0.5;
+  }
+  svg {
+    opacity: 0.5;
+    width: 1.4em;
+    margin-top: -0.2em;
+    &:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+  &:not(:last-child) {
+    margin-right: 1.5em;
+  }
+  &:last-child {
+    flex: 1 0 auto;
+  }
+`
 
 export const DraftBadge = styled.span`
   display: inline-block;
