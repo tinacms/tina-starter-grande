@@ -22,12 +22,6 @@ const Layout = ({ children }) => {
       }
       themeJson: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
         theme {
-          easing
-          breakpoints {
-            large
-            medium
-            small
-          }
           color {
             primary
             black
@@ -47,9 +41,6 @@ const Layout = ({ children }) => {
             titlePlacement
             defaultTheme
             wideBlocks
-          }
-          radius {
-            small
           }
         }
       }

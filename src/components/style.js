@@ -428,12 +428,16 @@ export const GlobalStyles = createGlobalStyle`
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-width: 960px;
+  max-width: 896px;
   margin: 0 auto;
   padding: 0 1em;
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
     padding: 0 2rem;
+  }
+
+  @media (min-width: ${props => props.theme.breakpoints.large}) {
+    max-width: 1024px;
   }
 `
 
