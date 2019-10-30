@@ -8,6 +8,7 @@ import {
   MetaActions,
   DraftBadge,
 } from "../components/style"
+import { Authors } from "../components/authors"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
@@ -29,26 +30,31 @@ export default function List({ data, pageContext }) {
     <>
       <SEO title={pageTitle} />
       {data.posts &&
-        data.posts.edges.map(item => (
-          <Paper article key={item.node.id}>
-            <h2>
-              {item.node.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
-              <Link to={item.node.frontmatter.path}>
-                {item.node.frontmatter.title}
-              </Link>
-            </h2>
-            <p>{item.node.excerpt}</p>
-            <Meta>
-              <MetaSpan>{item.node.frontmatter.date}</MetaSpan>
-              <MetaSpan>
-                <em>By</em> Scott Byrne
-              </MetaSpan>
-              <MetaActions>
-                <Link to={item.node.frontmatter.path}>Read Article →</Link>
-              </MetaActions>
-            </Meta>
-          </Paper>
-        ))}
+        data.posts.edges.map(item => {
+          return (
+            <Paper article key={item.node.id}>
+              <h2>
+                {item.node.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
+                <Link to={item.node.frontmatter.path}>
+                  {item.node.frontmatter.title}
+                </Link>
+              </h2>
+              <p>{item.node.excerpt}</p>
+              <Meta>
+                <MetaSpan>{item.node.frontmatter.date}</MetaSpan>
+                {item.node.frontmatter.authors && (
+                  <MetaSpan>
+                    <em>By</em>&nbsp;
+                    <Authors authorSlugs={item.node.frontmatter.authors} />
+                  </MetaSpan>
+                )}
+                <MetaActions>
+                  <Link to={item.node.frontmatter.path}>Read Article →</Link>
+                </MetaActions>
+              </Meta>
+            </Paper>
+          )
+        })}
       <ListNav>
         {!isFirst && (
           <Link to={prevPage} rel="prev">
@@ -90,6 +96,7 @@ export const pageQuery = graphql`
             path
             title
             draft
+            authors
           }
         }
       }

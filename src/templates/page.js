@@ -31,8 +31,8 @@ function Page(props) {
                   <div
                     dangerouslySetInnerHTML={{
                       __html:
-                        page.childPagesJsonBlockMarkdown[i].childMarkdownRemark
-                          .html,
+                        page.childrenPagesJsonBlockMarkdown[i]
+                          .childMarkdownRemark.html,
                     }}
                   ></div>
                 )
@@ -82,7 +82,7 @@ export const pageQuery = graphql`
           autocomplete
         }
       }
-      childPagesJsonBlockMarkdown {
+      childrenPagesJsonBlockMarkdown {
         childMarkdownRemark {
           html
         }

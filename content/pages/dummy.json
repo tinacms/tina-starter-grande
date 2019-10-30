@@ -5,7 +5,11 @@
   "content": "## root",
   "blocks": [
     {
-      "_template": "dummy",
+      "_template": "ContentBlock",
+      "content": "## Thanks DJ\n\nThis is awesome"
+    },
+    {
+      "_template": "ContentBlock",
       "content": "## block content",
       "name": "dummy",
       "recipient": "dummy",

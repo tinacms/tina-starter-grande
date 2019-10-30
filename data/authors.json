@@ -1,6 +1,14 @@
 {
-  "scott": {
-    "Name": "Scott Byrne",
-    "Email": "scott.byrne@forestry.io"
-  }
+  "authors": [
+    {
+      "slug": "scott-byrne",
+      "name": "Scott Byrne",
+      "email": "scott.byrne@forestry.io"
+    },
+    {
+      "slug": "test-dude",
+      "name": "Test Dude",
+      "email": "scott.byrne@forestry.io"
+    }
+  ]
 }

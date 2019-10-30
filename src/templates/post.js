@@ -8,6 +8,7 @@ import {
   DraftBadge,
   Content,
 } from "../components/style"
+import { Authors } from "../components/authors"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
@@ -22,9 +23,12 @@ const Post = ({ data }) => {
       <Paper>
         <Meta>
           <MetaSpan>{frontmatter.date}</MetaSpan>
-          <MetaSpan>
-            <em>By</em> Scott Byrne
-          </MetaSpan>
+          {frontmatter.authors && (
+            <MetaSpan>
+              <em>By</em>&nbsp;
+              <Authors authorSlugs={frontmatter.authors} />
+            </MetaSpan>
+          )}
           <MetaActions>
             <Link to="/blog">← Back to Blog</Link>
           </MetaActions>
@@ -81,6 +85,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         draft
+        authors
       }
 
       fileRelativePath

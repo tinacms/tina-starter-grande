@@ -3,6 +3,7 @@ title: My First Post
 path: "/blog/my-first-post"
 date: "2019-04-04"
 type: "post"
+authors: ["scott-byrne", "test-dude"]
 draft: true
 ---
 
