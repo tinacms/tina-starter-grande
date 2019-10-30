@@ -1,22 +1,4 @@
 {
   "title": "Home",
-  "path": "/",
-  "headerImage": "cafe-2.jpg",
-  "content": "## test",
-  "blocks": [
-    {
-      "_template": "dummy",
-      "content": "## block content",
-      "name": "dummy",
-      "recipient": "dummy",
-      "fields": [
-        {
-          "_template": "dummy",
-          "label": "dummy",
-          "inputType": "dummy",
-          "autocomplete": "dummy"
-        }
-      ]
-    }
-  ]
+  "path": "/"
 }

@@ -18,7 +18,7 @@ function Page(props) {
         <h2>{page.title}</h2>
         <hr />
         {blocks &&
-          blocks.map(({ _template, ...data }) => {
+          blocks.map(({ _template, ...data }, i) => {
             {
               console.log(_template)
               console.log(data)
@@ -27,7 +27,15 @@ function Page(props) {
               case "FormBlock":
                 return <Form form={data} />
               case "ContentBlock":
-                return <p>test</p>
+                return (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        page.childrenPagesJsonBlockMarkdown[i]
+                          .childMarkdownRemark.html,
+                    }}
+                  ></div>
+                )
               default:
                 return <p>Undefined block</p>
             }
@@ -74,7 +82,11 @@ export const pageQuery = graphql`
           autocomplete
         }
       }
-
+      childPagesJsonBlockMarkdown {
+        childMarkdownRemark {
+          html
+        }
+      }
       rawJson
       fileRelativePath
     }

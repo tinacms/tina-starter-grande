@@ -640,15 +640,53 @@ export const Button = styled.button`
 export const Meta = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-between;
-  span {
-    opacity: 0.5;
-  }
+  justify-content: flex-start;
   a:not(:hover) {
     text-decoration: none;
   }
   &:not(:last-child) {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+`
+
+export const MetaActions = styled.span`
+  opacity: 1;
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: flex-end;
+`
+
+export const MetaSpan = styled.span`
+  justify-self: flex-start;
+  opacity: 0.5;
+  position: relative;
+  em {
+    font-style: normal;
+    opacity: 0.5;
+  }
+  svg {
+    opacity: 0.5;
+    width: 1.4em;
+    margin-top: -0.2em;
+    &:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+  &:not(:last-child) {
+    margin-right: 1em;
+  }
+  &:not(:first-child) {
+    padding-left: 1rem;
+    &:before {
+      content: "—";
+      position: absolute;
+      opacity: 0.5;
+      left: 0;
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  &:last-child {
+    flex: 1 0 auto;
   }
 `
 

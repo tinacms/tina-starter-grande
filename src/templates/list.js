@@ -1,7 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import { Paper, Meta, DraftBadge } from "../components/style"
+import {
+  Paper,
+  Meta,
+  MetaSpan,
+  MetaActions,
+  DraftBadge,
+} from "../components/style"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
@@ -33,8 +39,13 @@ export default function List({ data, pageContext }) {
             </h2>
             <p>{item.node.excerpt}</p>
             <Meta>
-              <span>{item.node.frontmatter.date}</span>
-              <Link to={item.node.frontmatter.path}>Read Article →</Link>
+              <MetaSpan>{item.node.frontmatter.date}</MetaSpan>
+              <MetaSpan>
+                <em>By</em> Scott Byrne
+              </MetaSpan>
+              <MetaActions>
+                <Link to={item.node.frontmatter.path}>Read Article →</Link>
+              </MetaActions>
             </Meta>
           </Paper>
         ))}
