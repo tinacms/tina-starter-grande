@@ -1,13 +1,14 @@
 import React from "react"
 
-export const SiteContext = React.createContext()
+export const Context = React.createContext()
 
-export class SiteProvider extends React.Component {
+export class ContextProvider extends React.Component {
   state = {
     heroImage: "",
   }
 
   setHeroImage = image => {
+    alert("test")
     this.setState({
       heroImage: image,
     })
@@ -15,14 +16,14 @@ export class SiteProvider extends React.Component {
 
   render() {
     return (
-      <SiteContext.Provider
+      <Context.Provider
         value={{
           ...this.state,
           setHeroImage: this.setHeroImage,
         }}
       >
         {this.props.children}
-      </SiteContext.Provider>
+      </Context.Provider>
     )
   }
 }

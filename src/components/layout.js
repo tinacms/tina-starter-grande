@@ -7,7 +7,7 @@ import { Header, StyledHeader } from "./header"
 import { Footer } from "./footer"
 import Helmet from "react-helmet"
 import slugify from "react-slugify"
-import { SiteProvider } from "./siteContext"
+import { ContextProvider, Context } from "./context"
 
 import { createRemarkButton } from "gatsby-tinacms-remark"
 import { withPlugin } from "react-tinacms"
@@ -45,7 +45,6 @@ const Layout = ({ children }) => {
   //const [userTheme] = useJsonForm(data.themeJson)
   const userTheme = data.themeJson
   const theme = Theme(userTheme, isDarkMode)
-  console.log(theme)
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
@@ -59,24 +58,30 @@ const Layout = ({ children }) => {
       <Helmet>
         <script src="https://cdn.jsdelivr.net/npm/focus-visible@5.0.2/dist/focus-visible.min.js"></script>
       </Helmet>
-      <SiteProvider>
-        <ThemeProvider theme={theme}>
-          <>
-            <GlobalStyles />
-            <Page>
-              <Header
-                toggleDarkMode={toggleDarkMode}
-                isDarkMode={isDarkMode}
-                siteTitle={data.site.siteMetadata.title}
-              />
-              <Main>
-                <Wrapper>{children}</Wrapper>
-              </Main>
-              <Footer />
-            </Page>
-          </>
-        </ThemeProvider>
-      </SiteProvider>
+      <ContextProvider>
+        <Context.Consumer>
+          {({ heroImage, setHeroImage }) => (
+            <ThemeProvider theme={theme}>
+              <>
+                <GlobalStyles />
+                <Page>
+                  <Header
+                    toggleDarkMode={toggleDarkMode}
+                    isDarkMode={isDarkMode}
+                    siteTitle={data.site.siteMetadata.title}
+                    heroImage={heroImage}
+                  />
+
+                  <Main>
+                    <Wrapper>{children}</Wrapper>
+                  </Main>
+                  <Footer />
+                </Page>
+              </>
+            </ThemeProvider>
+          )}
+        </Context.Consumer>
+      </ContextProvider>
     </>
   )
 }

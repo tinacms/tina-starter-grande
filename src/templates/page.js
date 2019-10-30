@@ -4,6 +4,7 @@ import { Paper } from "../components/style"
 import { SEO } from "../components/seo"
 import { Form, FormBlock } from "../blocks/form"
 import { Content, ContentBlock } from "../blocks/content"
+import { ContextProvider, Context } from "../components/context"
 
 import { useJsonForm } from "gatsby-tinacms-json"
 
@@ -12,9 +13,9 @@ function Page(props) {
   const blocks = page.blocks ? page.blocks : []
   // const setHeroImage = props.setHeroImage
 
-  // if (page.headerBackground) {
-  //   setHeroImage(page.headerBackground.childImageSharp.fluid)
-  // }
+  if (page.headerBackground) {
+    setHeroImage(page.headerBackground.childImageSharp.fluid)
+  }
 
   return (
     <>
@@ -24,10 +25,6 @@ function Page(props) {
         <hr />
         {blocks &&
           blocks.map(({ _template, ...data }, i) => {
-            {
-              console.log(_template)
-              console.log(data)
-            }
             switch (_template) {
               case "FormBlock":
                 return <Form form={data} />

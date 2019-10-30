@@ -18,6 +18,12 @@
           "inputType": "text",
           "autocomplete": "email",
           "_template": "emailInputBlock"
+        },
+        {
+          "label": "Message",
+          "inputType": "textarea",
+          "autocomplete": "",
+          "_template": "messageInputBlock"
         }
       ]
     }

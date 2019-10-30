@@ -19,8 +19,6 @@ export const Authors = ({ authorSlugs }) => {
     return authorSlugs.indexOf(author.slug) > -1 ? true : false
   })
 
-  console.log(postAuthors)
-
   return postAuthors.map((author, i) => {
     if (postAuthors.length === i + 1) {
       return author.name
