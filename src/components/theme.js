@@ -21,19 +21,8 @@ export const Theme = (userTheme = {}, isDarkMode) => {
       small: "3px",
     },
     header: {
-      style: "transparent", // transparent, opaque (responds to darkmode), white, black, primary
-      sticky: false,
-      overline: true,
-    },
-    hero: {
-      style: "backdrop", // backdrop, banner, hybrid
-      fade: true,
-    },
-    options: {
-      titlePlacement: "page", // page, hero
-      defaultTheme: "light", // light, dark
-      wideBlocks: true, // for images, code
-      wrapCode: false,
+      overline: false,
+      defaultImage: "cafe.jpg",
     },
   }
 
@@ -53,6 +42,7 @@ export const Theme = (userTheme = {}, isDarkMode) => {
     easing: BaseTheme.easing,
     breakpoints: BaseTheme.breakpoints,
     radius: BaseTheme.radius,
+    header: BaseTheme.header,
   }
 
   const ThemeDark = {
@@ -69,6 +59,7 @@ export const Theme = (userTheme = {}, isDarkMode) => {
     easing: BaseTheme.easing,
     breakpoints: BaseTheme.breakpoints,
     radius: BaseTheme.radius,
+    header: BaseTheme.header,
   }
 
   return isDarkMode ? ThemeDark : ThemeLight

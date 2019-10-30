@@ -6,18 +6,7 @@
     "secondary": "#B8A45D"
   },
   "header": {
-    "style": "transparent",
-    "sticky": false,
     "overline": true,
     "defaultImage": "cafe.jpg"
-  },
-  "hero": {
-    "style": "backdrop",
-    "fade": true
-  },
-  "options": {
-    "titlePlacement": "page",
-    "defaultTheme": "light",
-    "wideBlocks": true
   }
 }

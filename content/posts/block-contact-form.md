@@ -1,9 +1,10 @@
 ---
 title: Creating a Form Builder With Tina
 path: /blog/creating-a-form-builder-with-tina
-date: "2019-10-22T00:00:00.000Z"
+date: '2019-10-22T00:00:00.000Z'
 type: post
-authors: ["scott-byrne"]
+authors:
+  - scott-byrne
 draft: true
 ---
 

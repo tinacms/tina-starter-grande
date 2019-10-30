@@ -10,6 +10,11 @@ import { useJsonForm } from "gatsby-tinacms-json"
 function Page(props) {
   const [page] = useJsonForm(props.data.page, PageForm)
   const blocks = page.blocks ? page.blocks : []
+  // const setHeroImage = props.setHeroImage
+
+  // if (page.headerBackground) {
+  //   setHeroImage(page.headerBackground.childImageSharp.fluid)
+  // }
 
   return (
     <>
@@ -71,6 +76,13 @@ export const pageQuery = graphql`
     page: pagesJson(path: { eq: $path }) {
       title
       content
+      headerBackground {
+        childImageSharp {
+          fluid(quality: 90, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
       blocks {
         _template
         content

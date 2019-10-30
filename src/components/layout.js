@@ -29,18 +29,7 @@ const Layout = ({ children }) => {
         }
         header {
           overline
-          sticky
-          style
           defaultImage
-        }
-        hero {
-          fade
-          style
-        }
-        options {
-          titlePlacement
-          defaultTheme
-          wideBlocks
         }
       }
       file: file(relativePath: { eq: "cafe.jpg" }) {
@@ -61,8 +50,8 @@ const Layout = ({ children }) => {
 
   //const [userTheme] = useJsonForm(data.themeJson)
   const userTheme = data.themeJson
-  console.log(userTheme)
   const theme = Theme(userTheme, isDarkMode)
+  console.log(theme)
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)

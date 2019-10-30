@@ -41,9 +41,14 @@ export const StyledHeader = styled.header`
   width: 100%;
   top: 0;
   background-color: ${props => transparentize(0.95, props.theme.color.black)};
-  border-top: 6px solid ${props => props.theme.color.primary};
   box-shadow: inset 0 -1px 0 ${props => transparentize(0.9, props.theme.color.white)},
     0 1px 0 ${props => transparentize(0.9, props.theme.color.black)};
+
+  ${props =>
+    props.theme.header.overline &&
+    css`
+      border-top: 6px solid ${props => props.theme.color.primary};
+    `};
 `
 
 export const HeaderBackground = styled(BackgroundImage)`

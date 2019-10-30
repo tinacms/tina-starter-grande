@@ -5,6 +5,10 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-tinacms-json`,
+    `gatsby-transformer-json`,
     {
       resolve: "gatsby-plugin-tinacms",
       options: {
@@ -24,8 +28,6 @@ module.exports = {
         plugins: ["gatsby-tinacms-git", "gatsby-tinacms-remark"],
       },
     },
-    `gatsby-tinacms-json`,
-    `gatsby-transformer-json`,
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -62,8 +64,6 @@ module.exports = {
     },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
