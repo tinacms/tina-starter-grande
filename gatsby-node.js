@@ -33,30 +33,71 @@ exports.onCreateNode = ({
   createNodeId,
   createContentDigest,
 }) => {
-  const { createNode, createNodeField } = actions
+  const { createNode, createNodeField, createParentChildLink } = actions
 
   // Check for the correct type to only affect this
   if (node.internal.type === `PagesJson`) {
-    const textNode = {
-      id: createNodeId(`${node.id} markdown field`),
-      children: [],
-      parent: node.id,
-      internal: {
-        content: node.content,
-        mediaType: `text/markdown`, // Important!
-        contentDigest: createContentDigest(node.content),
-        type: `${node.internal.type}Markdown`,
-      },
+
+    // transform markdown in blocks[i].content
+    if (node.blocks) {
+      const markdownHost = {
+        id: createNodeId(`${node.id} markdown host`),
+        parent: node.id,
+        internal: {
+          contentDigest: "foo",
+          type: `${node.internal.type}MarkdownData`
+        }
+      }
+
+      createNode(markdownHost)
+
+      createNodeField({
+        node,
+        name: `markdownContent___NODE`, // Before the ___NODE: Name of the new fields
+        value: markdownHost.id, // Connects both nodes
+      })
+
+      node.blocks.forEach((block, i) => {
+        const blockNode = {
+          id: `${node.id} block ${i} markdown`,
+          parent: markdownHost.id,
+          internal: {
+            content: block.content,
+            contentDigest: "aaaaa",
+            type: `${node.internal.type}BlockMarkdown`,
+            mediaType: "text/markdown"
+          }
+        }
+        
+        createNode(blockNode)
+
+        createParentChildLink({parent: node, child: blockNode})
+      })
     }
 
-    createNode(textNode)
+    // transform markdown in node.content
+    if (node.content) {
+      const textNode = {
+        id: createNodeId(`${node.id} markdown field`),
+        children: [],
+        parent: node.id,
+        internal: {
+          content: node.content,
+          mediaType: `text/markdown`, // Important!
+          contentDigest: createContentDigest(node.content),
+          type: `${node.internal.type}Markdown`,
+        },
+      }
 
-    // Add link to the new node
-    createNodeField({
-      node,
-      name: `markdownContent___NODE`, // Before the ___NODE: Name of the new fields
-      value: textNode.id, // Connects both nodes
-    })
+      createNode(textNode)
+
+      // Add link to the new node
+      createNodeField({
+        node,
+        name: `markdownContent___NODE`, // Before the ___NODE: Name of the new fields
+        value: markdownNode.id, // Connects both nodes
+      })
+    }
   }
 }
 
