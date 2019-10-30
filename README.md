@@ -6,7 +6,6 @@ To complete before making public:
 
 - Read theme from config
 - Control menu order
-- Fix error breaking pages randomly (key undefined)
 - Add more blocks
   - Content
   - Image

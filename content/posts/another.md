@@ -1,8 +1,9 @@
 ---
 title: Another Great Article
-path: "/blog/another-great-article"
-date: "2019-07-07"
-type: "post"
+path: /blog/another-great-article
+date: '2019-07-07'
+type: post
+draft: true
 ---
 
 ## Avi medius pectine

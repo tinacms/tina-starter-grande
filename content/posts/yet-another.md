@@ -3,6 +3,7 @@ title: Vidit tum quis meoque
 path: "/blog/vidit-tum"
 date: "2019-01-06"
 type: "post"
+draft: true
 ---
 
 Potest velit uti nataeque dicere stolidarum **nec tendebat** turba prodit

@@ -641,3 +641,15 @@ export const Meta = styled.div`
     text-decoration: none;
   }
 `
+
+export const DraftBadge = styled.span`
+  display: inline-block;
+  line-height: 1;
+  font-size: 0.6em;
+  margin-right: 0.5em;
+  padding: 0.2em 0.3em;
+  border-radius: ${props => props.theme.radius.small};
+  color: ${props => props.theme.color.white};
+  background: ${props => props.theme.color.primary};
+  transform: translate3d(0, -0.2em, 0);
+`

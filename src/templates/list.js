@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import { Paper, Meta, HeroBackgroundImage, Overlay } from "../components/style"
+import { Paper, Meta, DraftBadge } from "../components/style"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
@@ -24,6 +24,7 @@ export default function List({ data, pageContext }) {
         data.posts.edges.map(item => (
           <Paper article key={item.node.id}>
             <h2>
+              {item.node.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
               <Link to={item.node.frontmatter.path}>
                 {item.node.frontmatter.title}
               </Link>
@@ -60,7 +61,10 @@ export const pageQuery = graphql`
     }
     posts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { type: { eq: $listType } } }
+      filter: {
+        frontmatter: { type: { eq: $listType } }
+        published: { eq: true }
+      }
       limit: $limit
       skip: $skip
     ) {
@@ -72,6 +76,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             path
             title
+            draft
           }
         }
       }

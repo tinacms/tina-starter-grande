@@ -1,4 +1,31 @@
 const path = require(`path`)
+const { GraphQLBoolean } = require("gatsby/graphql")
+
+exports.setFieldsOnGraphQLNodeType = ({ type }) => {
+  // if the node is a markdown file, add the `published` field
+  if ("MarkdownRemark" === type.name) {
+    return {
+      published: {
+        type: GraphQLBoolean,
+        resolve: ({ frontmatter }) => {
+          /*
+          `published` is always true in development
+              so both drafts and finished posts are built
+          */
+          if (process.env.NODE_ENV !== "production") {
+            return true
+          }
+          /*
+          return the opposite of the `draft` value,
+          i.e. if draft = true : published = false
+          */
+          return !frontmatter.draft
+        },
+      },
+    }
+  }
+  return {}
+}
 
 exports.onCreateNode = ({
   node,
@@ -50,6 +77,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       ) {
         edges {
           node {
+            published
             frontmatter {
               path
               type
@@ -82,6 +110,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   })
 
   result.data.posts.edges.forEach(({ node }) => {
+    if (!node.published) return
+
     createPage({
       path: node.frontmatter.path,
       component: path.resolve(`src/templates/post.js`),
