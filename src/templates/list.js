@@ -33,8 +33,8 @@ export default function List({ data, pageContext }) {
         data.posts.edges.map(item => {
           return (
             <Paper article key={item.node.id}>
+              {item.node.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
               <h2>
-                {item.node.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
                 <Link to={item.node.frontmatter.path}>
                   {item.node.frontmatter.title}
                 </Link>

@@ -457,6 +457,7 @@ export const Image = styled(Img)``
 export const Content = styled.div``
 
 export const Paper = styled.div`
+  position: relative;
   background-color: ${props => props.theme.color.background};
   border-radius: ${props => props.theme.radius.small};
   box-shadow: 0 0.5rem 1rem -0.5rem ${props =>
@@ -693,11 +694,14 @@ export const MetaSpan = styled.span`
 export const DraftBadge = styled.span`
   display: inline-block;
   line-height: 1;
-  font-size: 0.6em;
-  margin-right: 0.5em;
-  padding: 0.2em 0.3em;
-  border-radius: ${props => props.theme.radius.small};
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0 ${props => props.theme.radius.small} 0
+    ${props => props.theme.radius.small};
   color: ${props => props.theme.color.white};
   background: ${props => props.theme.color.primary};
-  transform: translate3d(0, -0.2em, 0);
+  position: absolute;
+  top: 0;
+  right: 0;
 `

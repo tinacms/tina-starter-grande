@@ -33,12 +33,10 @@ const Post = ({ data }) => {
             <Link to="/blog">← Back to Blog</Link>
           </MetaActions>
         </Meta>
-        <h1>
-          {frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
-          {frontmatter.title}
-        </h1>
+        <h1>{frontmatter.title}</h1>
         <hr />
         <Content dangerouslySetInnerHTML={{ __html: html }}></Content>
+        {frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
       </Paper>
     </>
   )
