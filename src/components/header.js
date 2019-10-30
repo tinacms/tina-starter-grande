@@ -29,9 +29,9 @@ export const Header = ({
           <Nav toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
         </HeaderWrapper>
       </StyledHeader>
-      <HeroBackgroundImage fluid={heroImage}>
+      <HeaderBackground fluid={heroImage}>
         <Overlay />
-      </HeroBackgroundImage>
+      </HeaderBackground>
     </>
   )
 }
@@ -46,7 +46,7 @@ export const StyledHeader = styled.header`
     0 1px 0 ${props => transparentize(0.9, props.theme.color.black)};
 `
 
-export const HeroBackgroundImage = styled(BackgroundImage)`
+export const HeaderBackground = styled(BackgroundImage)`
   position: relative !important;
   width: 100%;
   height: 12rem;

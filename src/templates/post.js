@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Paper, Meta, DraftBadge } from "../components/style"
+import { Paper, Meta, DraftBadge, Content } from "../components/style"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
@@ -22,7 +22,7 @@ const Post = ({ data }) => {
           {frontmatter.title}
         </h1>
         <hr />
-        <div dangerouslySetInnerHTML={{ __html: html }}></div>
+        <Content dangerouslySetInnerHTML={{ __html: html }}></Content>
       </Paper>
     </>
   )

@@ -312,10 +312,11 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
-  p:not([class]) {
+  p {
     font-size: 1em;
     letter-spacing: 0.2px;
     line-height: 1.7;
+    margin-bottom: 1.5rem;
   }
 
   h1,
@@ -323,13 +324,8 @@ export const GlobalStyles = createGlobalStyle`
   h3,
   h4,
   h5,
-  h6,
-  ul,
-  ol,
-  p {
-    &:not(:last-child):not([class]) {
-      margin-bottom: 1.5rem;
-    }
+  h6 {
+    margin-bottom: 1.5rem;
   }
 
   li:not(:last-child):not([class]) {
@@ -341,6 +337,10 @@ export const GlobalStyles = createGlobalStyle`
     line-height: 1.2;
     word-spacing: 1px;
     font-weight: 500;
+
+    + hr {
+      margin: 2.4rem 0;
+    }
   }
 
   h2 {
@@ -367,6 +367,7 @@ export const GlobalStyles = createGlobalStyle`
   ul:not([class]),
   ol:not([class]) {
     padding-left: 1em;
+    margin-bottom: 1.5rem;
   }
 
   ol:not([class]) {
@@ -416,7 +417,7 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
-  hr:not([class]) {
+  hr {
     width: 35%;
     min-width: 10rem;
     max-width: 100%;
@@ -453,6 +454,8 @@ export const Overlay = styled.div`
 
 export const Image = styled(Img)``
 
+export const Content = styled.div``
+
 export const Paper = styled.div`
   background-color: ${props => props.theme.color.background};
   border-radius: ${props => props.theme.radius.small};
@@ -477,8 +480,8 @@ export const Paper = styled.div`
         mix(0.95, props.theme.color.background, props.theme.color.foreground)};
     `};
 
-  > *:not(:last-child) {
-    margin-bottom: 1.5rem;
+  > *:last-child, ${Content} > *:last-child {
+    margin-bottom: 0;
   }
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
@@ -643,6 +646,9 @@ export const Meta = styled.div`
   }
   a:not(:hover) {
     text-decoration: none;
+  }
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
   }
 `
 

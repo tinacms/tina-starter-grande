@@ -32,6 +32,7 @@ const Layout = ({ children }) => {
             overline
             sticky
             style
+            defaultImage
           }
           hero {
             fade

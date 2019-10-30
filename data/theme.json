@@ -9,7 +9,8 @@
     "header": {
       "style": "transparent",
       "sticky": false,
-      "overline": true
+      "overline": true,
+      "defaultImage": "cafe.jpg"
     },
     "hero": {
       "style": "backdrop",
