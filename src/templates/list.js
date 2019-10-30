@@ -5,12 +5,15 @@ import { Paper, Meta, DraftBadge } from "../components/style"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
+import { useJsonForm } from "gatsby-tinacms-json"
+
 export default function List({ data, pageContext }) {
+  //const [page] = useJsonForm(data.page)
+  const page = data.page
+
   const { slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1
-  const pageTitle = isFirst
-    ? data.page.title
-    : data.page.title + " - " + currentPage
+  const pageTitle = isFirst ? page.title : page.title + " - " + currentPage
   const isLast = currentPage === numPages
   const prevPage =
     currentPage - 1 === 1 ? slug : slug + "/" + (currentPage - 1).toString()
