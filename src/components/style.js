@@ -336,14 +336,14 @@ export const GlobalStyles = createGlobalStyle`
     margin-bottom: 0.5rem;
   }
 
-  h1:not([class]) {
+  h1 {
     font-size: 2.2em;
     line-height: 1.2;
     word-spacing: 1px;
     font-weight: 500;
   }
 
-  h2:not([class]) {
+  h2 {
     font-size: 1.8em;
     line-height: 1.2;
     text-transform: uppercase;
@@ -351,10 +351,17 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 700;
   }
 
-  h3:not([class]) {
+  h3 {
     font-size: 1.4em;
     word-spacing: 1px;
     font-weight: 700;
+  }
+
+  h1, h2, h3 {
+    a:not(:hover) {
+      text-decoration: none;
+      color: inherit;
+    }
   }
 
   ul:not([class]),
@@ -401,9 +408,7 @@ export const GlobalStyles = createGlobalStyle`
     }
     &:focus {
       color: ${props => shade(0.1, props.theme.color.link)};
-      text-decoration-color: ${props => props.theme.color.link};
-      background-color: ${props =>
-        transparentize(0.95, props.theme.color.foreground)};
+      text-decoration-color: ${props => shade(0.1, props.theme.color.link)};
     }
     &:active {
       color: ${props => shade(0.1, props.theme.color.link)};

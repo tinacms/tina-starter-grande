@@ -173,23 +173,33 @@ export const NavLink = styled(props => (
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${props => props.theme.color.primary};
+    background: linear-gradient(
+      to bottom,
+      ${props => transparentize(0.7, props.theme.color.black)},
+      transparent 2rem
+    );
     opacity: 0;
-    transition: all 150ms ${p => p.theme.easing};
     z-index: -1;
+    transform: translate3d(0, -100%, 0);
+    transition: all 150ms ${props => props.theme.easing};
   }
 
   &:focus-visible {
     opacity: 1;
     &:before {
+      transform: translate3d(0, 0, 0);
       opacity: 0.5;
     }
   }
 
   &:hover:not(.active) {
+    &:before {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
     &:after {
       background-color: ${props =>
-        transparentize(0.85, props.theme.color.black)};
+        transparentize(0.8, props.theme.color.black)};
     }
   }
 
@@ -198,6 +208,10 @@ export const NavLink = styled(props => (
   &.active {
     opacity: 1;
 
+    &:before {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
     &:after {
       transform: translate3d(0, 0, 0);
     }
