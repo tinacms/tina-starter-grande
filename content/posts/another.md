@@ -1,7 +1,7 @@
 ---
 title: Another Great Article
 path: /blog/another-great-article
-date: '2019-07-07'
+date: '2019-10-22T00:00:00.000Z'
 type: post
 draft: true
 ---

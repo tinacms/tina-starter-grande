@@ -41,11 +41,6 @@ const PostForm = {
       label: "Draft",
     },
     {
-      label: "Path",
-      name: "rawFrontmatter.path",
-      component: "text",
-    },
-    {
       label: "Date",
       name: "rawFrontmatter.date",
       component: "date",

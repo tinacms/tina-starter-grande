@@ -5,10 +5,12 @@ import { Theme } from "./theme"
 import { GlobalStyles, Main, Wrapper } from "./style"
 import { Header, StyledHeader } from "./header"
 import { Footer } from "./footer"
-import { createRemarkButton } from "gatsby-tinacms-remark"
-import { withPlugin } from "react-tinacms"
 import Helmet from "react-helmet"
 import slugify from "react-slugify"
+
+import { createRemarkButton } from "gatsby-tinacms-remark"
+import { withPlugin } from "react-tinacms"
+import { useJsonForm } from "gatsby-tinacms-json"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -16,6 +18,39 @@ const Layout = ({ children }) => {
       site {
         siteMetadata {
           title
+        }
+      }
+      themeJson: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
+        theme {
+          easing
+          breakpoints {
+            large
+            medium
+            small
+          }
+          color {
+            primary
+            black
+            secondary
+            white
+          }
+          header {
+            overline
+            sticky
+            style
+          }
+          hero {
+            fade
+            style
+          }
+          options {
+            titlePlacement
+            defaultTheme
+            wideBlocks
+          }
+          radius {
+            small
+          }
         }
       }
       file: file(relativePath: { eq: "cafe.jpg" }) {
@@ -34,7 +69,8 @@ const Layout = ({ children }) => {
     userPrefDark === "true" ? true : false
   )
 
-  const userTheme = {}
+  //const [userTheme] = useJsonForm(data.themeJson.theme)
+  const userTheme = data.themeJson.theme
   console.log(data)
   const theme = Theme(userTheme, isDarkMode)
 

@@ -3,7 +3,7 @@
     "color": {
       "black": "#131110",
       "white": "#f7f7f7",
-      "primary": "#cc0000", // test
+      "primary": "#007043",
       "secondary": "#B8A45D"
     },
     "easing": "cubic-bezier(0.215, 0.610, 0.355, 1.000)",

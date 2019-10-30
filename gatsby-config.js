@@ -10,16 +10,16 @@ module.exports = {
       options: {
         sidebar: {
           hidden: process.env.NODE_ENV === "production",
-          position: "fixed",
-          theme: {
-            color: {
-              primary: {
-                light: "#358156",
-                medium: "#007043",
-                dark: "#0A623B",
-              },
-            },
-          },
+          position: "displace",
+          // theme: {
+          //   color: {
+          //     primary: {
+          //       light: "#358156",
+          //       medium: "#007043",
+          //       dark: "#0A623B",
+          //     },
+          //   },
+          // },
         },
         plugins: ["gatsby-tinacms-git", "gatsby-tinacms-remark"],
       },

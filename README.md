@@ -5,7 +5,6 @@ Work in progress, feel free to contribute Tina folks
 To complete before making public:
 
 - Read theme from config
-- Control menu order
 - Add more blocks
   - Content
   - Image
@@ -15,13 +14,12 @@ To complete before making public:
 - Add form to manage theme settings
 - Add more theme style options (controlled by theme settings)
 - Make header bg image dynamic (default, allow override per-page)
-- Add drafts
-- Refactor/improve bad code (both JS & CSS)
 - Sweet readme
 - Awesome name
 
 Features already added:
 
+- Drafts
 - Dynamic forms w/ input blocks & presets
 - Dynamic menu
 - Create post/page buttons
@@ -35,6 +33,7 @@ Features already added:
 
 Features to add post lauch:
 
+- Refactor/improve bad code (both JS & CSS)
 - Blog categories / tags
 - 'Launch in Teams' button?
 - Theme presets
