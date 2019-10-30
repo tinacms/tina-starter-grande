@@ -1,7 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import { Paper, Meta, DraftBadge } from "../components/style"
+import {
+  Paper,
+  Meta,
+  MetaDate,
+  MetaAuthor,
+  DraftBadge,
+} from "../components/style"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
@@ -33,7 +39,8 @@ export default function List({ data, pageContext }) {
             </h2>
             <p>{item.node.excerpt}</p>
             <Meta>
-              <span>{item.node.frontmatter.date}</span>
+              <MetaDate>{item.node.frontmatter.date}</MetaDate>
+              <MetaAuthor>Test Name</MetaAuthor>
               <Link to={item.node.frontmatter.path}>Read Article →</Link>
             </Meta>
           </Paper>
