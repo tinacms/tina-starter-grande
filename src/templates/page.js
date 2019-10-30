@@ -27,7 +27,15 @@ function Page(props) {
               case "FormBlock":
                 return <Form form={data} />
               case "ContentBlock":
-                return <div dangerouslySetInnerHTML={{__html: page.childrenPagesJsonBlockMarkdown[i].childMarkdownRemark.html}}></div>
+                return (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        page.childrenPagesJsonBlockMarkdown[i]
+                          .childMarkdownRemark.html,
+                    }}
+                  ></div>
+                )
               default:
                 return <p>Undefined block</p>
             }
@@ -74,7 +82,7 @@ export const pageQuery = graphql`
           autocomplete
         }
       }
-      childrenPagesJsonBlockMarkdown {
+      childPagesJsonBlockMarkdown {
         childMarkdownRemark {
           html
         }
