@@ -15,7 +15,7 @@ export default function Post({ data }) {
           <span>{frontmatter.date}</span>
           <Link to="/blog">← Back to Blog</Link>
         </Meta>
-        <ArticleTitle big>{frontmatter.title}</ArticleTitle>
+        <h1>{frontmatter.title}</h1>
         <hr />
         <div dangerouslySetInnerHTML={{ __html: html }}></div>
       </Paper>
@@ -32,13 +32,6 @@ export const pageQuery = graphql`
         path
         date(formatString: "MMMM DD, YYYY")
         title
-      }
-    }
-    file: file(relativePath: { eq: "cafe.jpg" }) {
-      childImageSharp {
-        fluid(quality: 90, maxWidth: 1920) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
       }
     }
   }

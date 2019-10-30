@@ -1,13 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import {
-  Paper,
-  ArticleTitle,
-  Meta,
-  HeroBackgroundImage,
-  Overlay,
-} from "../components/style"
+import { Paper, Meta, HeroBackgroundImage, Overlay } from "../components/style"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
@@ -29,11 +23,11 @@ export default function List({ data, pageContext }) {
       {data.posts &&
         data.posts.edges.map(item => (
           <Paper article key={item.node.id}>
-            <ArticleTitle>
+            <h2>
               <Link to={item.node.frontmatter.path}>
                 {item.node.frontmatter.title}
               </Link>
-            </ArticleTitle>
+            </h2>
             <p>{item.node.excerpt}</p>
             <Meta>
               <span>{item.node.frontmatter.date}</span>

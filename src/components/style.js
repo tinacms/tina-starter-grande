@@ -314,6 +314,7 @@ export const GlobalStyles = createGlobalStyle`
 
   p:not([class]) {
     font-size: 1em;
+    letter-spacing: 0.2px;
     line-height: 1.7;
   }
 
@@ -333,6 +334,13 @@ export const GlobalStyles = createGlobalStyle`
 
   li:not(:last-child):not([class]) {
     margin-bottom: 0.5rem;
+  }
+
+  h1:not([class]) {
+    font-size: 2.2em;
+    line-height: 1.2;
+    word-spacing: 1px;
+    font-weight: 500;
   }
 
   h2:not([class]) {
@@ -627,25 +635,4 @@ export const Meta = styled.div`
   a:not(:hover) {
     text-decoration: none;
   }
-`
-
-export const ArticleTitle = styled.h3`
-  font-size: 2rem;
-  line-height: 1.2;
-  margin-bottom: 1rem !important;
-  a:not(:hover) {
-    text-decoration: none;
-  }
-  & + ${Meta} {
-    margin-top: 0;
-  }
-  ${props =>
-    props.big &&
-    css`
-      font-size: 2.4rem;
-      margin-bottom: 2.4rem !important;
-      & + hr {
-        margin-bottom: 2.4rem !important;
-      }
-    `};
 `

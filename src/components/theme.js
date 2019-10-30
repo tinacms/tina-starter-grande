@@ -78,7 +78,7 @@ export const Theme = isDarkMode => {
       secondary: BaseTheme.color.secondary,
       foreground: mix(0.7, BaseTheme.color.white, BaseTheme.color.secondary),
       background: BaseTheme.color.black,
-      link: mix(0.85, BaseTheme.color.primary, BaseTheme.color.white),
+      link: BaseTheme.color.primary,
     },
     easing: BaseTheme.easing,
     breakpoints: BaseTheme.breakpoints,
