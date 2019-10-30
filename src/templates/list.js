@@ -6,7 +6,6 @@ import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
 export default function List({ data, pageContext }) {
-  console.log(data)
   const { slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1
   const pageTitle = isFirst

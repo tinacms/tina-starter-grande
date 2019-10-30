@@ -1,25 +1,23 @@
 {
-  "theme": {
-    "color": {
-      "black": "#131110",
-      "white": "#f7f7f7",
-      "primary": "#007043",
-      "secondary": "#B8A45D"
-    },
-    "header": {
-      "style": "transparent",
-      "sticky": false,
-      "overline": true,
-      "defaultImage": "cafe.jpg"
-    },
-    "hero": {
-      "style": "backdrop",
-      "fade": true
-    },
-    "options": {
-      "titlePlacement": "page",
-      "defaultTheme": "light",
-      "wideBlocks": true
-    }
+  "color": {
+    "black": "#131110",
+    "white": "#f7f7f7",
+    "primary": "#000043",
+    "secondary": "#B8A45D"
+  },
+  "header": {
+    "style": "transparent",
+    "sticky": false,
+    "overline": true,
+    "defaultImage": "cafe.jpg"
+  },
+  "hero": {
+    "style": "backdrop",
+    "fade": true
+  },
+  "options": {
+    "titlePlacement": "page",
+    "defaultTheme": "light",
+    "wideBlocks": true
   }
 }

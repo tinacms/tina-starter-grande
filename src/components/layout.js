@@ -21,28 +21,26 @@ const Layout = ({ children }) => {
         }
       }
       themeJson: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
-        theme {
-          color {
-            primary
-            black
-            secondary
-            white
-          }
-          header {
-            overline
-            sticky
-            style
-            defaultImage
-          }
-          hero {
-            fade
-            style
-          }
-          options {
-            titlePlacement
-            defaultTheme
-            wideBlocks
-          }
+        color {
+          primary
+          black
+          secondary
+          white
+        }
+        header {
+          overline
+          sticky
+          style
+          defaultImage
+        }
+        hero {
+          fade
+          style
+        }
+        options {
+          titlePlacement
+          defaultTheme
+          wideBlocks
         }
       }
       file: file(relativePath: { eq: "cafe.jpg" }) {
@@ -61,9 +59,9 @@ const Layout = ({ children }) => {
     userPrefDark === "true" ? true : false
   )
 
-  //const [userTheme] = useJsonForm(data.themeJson.theme)
-  const userTheme = data.themeJson.theme
-  console.log(data)
+  //const [userTheme] = useJsonForm(data.themeJson)
+  const userTheme = data.themeJson
+  console.log(userTheme)
   const theme = Theme(userTheme, isDarkMode)
 
   const toggleDarkMode = () => {
