@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Wrapper, Overlay } from "./style"
 import { Moon, Sun, Coffee } from "styled-icons/boxicons-regular"
@@ -7,32 +7,54 @@ import { mix, tint, shade, transparentize } from "polished"
 import BackgroundImage from "gatsby-background-image"
 import { Link } from "gatsby"
 import { Nav } from "./nav"
+import { ContextProvider, Context } from "./context"
 
 import { useJsonForm } from "gatsby-tinacms-json"
 
-export const Header = ({
-  toggleDarkMode,
-  isDarkMode,
-  siteTitle,
-  heroImage,
-}) => {
+export const Header = ({ toggleDarkMode, isDarkMode, siteTitle }) => {
+  const data = useStaticQuery(graphql`
+    query HeaderQuery {
+      defaultHeaderBackground: file(relativePath: { eq: "header.jpg" }) {
+        childImageSharp {
+          fluid(quality: 90, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+  `)
+
+  const context = React.useContext(Context)
+  const defaultHeaderBackground =
+    data.defaultHeaderBackground.childImageSharp.fluid
+
+  useEffect(() => context.setDefaultHeroImage(defaultHeaderBackground), [
+    defaultHeaderBackground,
+  ])
+
   return (
-    <>
-      <StyledHeader>
-        <HeaderWrapper>
-          <SiteTitle>
-            <SiteLink to="/">
-              <Coffee />
-              {siteTitle}
-            </SiteLink>
-          </SiteTitle>
-          <Nav toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-        </HeaderWrapper>
-      </StyledHeader>
-      <HeaderBackground fluid={heroImage}>
-        <Overlay />
-      </HeaderBackground>
-    </>
+    <Context.Consumer>
+      {({ heroImage, defaultHeroImage }) => (
+        <>
+          <StyledHeader>
+            <HeaderWrapper>
+              <SiteTitle>
+                <SiteLink to="/">
+                  <Coffee />
+                  {siteTitle}
+                </SiteLink>
+              </SiteTitle>
+              <Nav toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
+            </HeaderWrapper>
+          </StyledHeader>
+          <HeaderBackground
+            fluid={heroImage !== "" ? heroImage : defaultHeroImage}
+          >
+            <Overlay />
+          </HeaderBackground>
+        </>
+      )}
+    </Context.Consumer>
   )
 }
 

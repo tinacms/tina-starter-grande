@@ -59,28 +59,22 @@ const Layout = ({ children }) => {
         <script src="https://cdn.jsdelivr.net/npm/focus-visible@5.0.2/dist/focus-visible.min.js"></script>
       </Helmet>
       <ContextProvider>
-        <Context.Consumer>
-          {({ heroImage, setHeroImage }) => (
-            <ThemeProvider theme={theme}>
-              <>
-                <GlobalStyles />
-                <Page>
-                  <Header
-                    toggleDarkMode={toggleDarkMode}
-                    isDarkMode={isDarkMode}
-                    siteTitle={data.site.siteMetadata.title}
-                    heroImage={heroImage}
-                  />
-
-                  <Main>
-                    <Wrapper>{children}</Wrapper>
-                  </Main>
-                  <Footer />
-                </Page>
-              </>
-            </ThemeProvider>
-          )}
-        </Context.Consumer>
+        <ThemeProvider theme={theme}>
+          <>
+            <GlobalStyles />
+            <Page>
+              <Header
+                toggleDarkMode={toggleDarkMode}
+                isDarkMode={isDarkMode}
+                siteTitle={data.site.siteMetadata.title}
+              />
+              <Main>
+                <Wrapper>{children}</Wrapper>
+              </Main>
+              <Footer />
+            </Page>
+          </>
+        </ThemeProvider>
       </ContextProvider>
     </>
   )

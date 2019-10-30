@@ -37,7 +37,6 @@ exports.onCreateNode = ({
 
   // Check for the correct type to only affect this
   if (node.internal.type === `PagesJson`) {
-
     // transform markdown in blocks[i].content
     if (node.blocks) {
       const markdownHost = {
@@ -45,8 +44,8 @@ exports.onCreateNode = ({
         parent: node.id,
         internal: {
           contentDigest: "foo",
-          type: `${node.internal.type}MarkdownData`
-        }
+          type: `${node.internal.type}MarkdownData`,
+        },
       }
 
       createNode(markdownHost)
@@ -65,13 +64,13 @@ exports.onCreateNode = ({
             content: block.content,
             contentDigest: "aaaaa",
             type: `${node.internal.type}BlockMarkdown`,
-            mediaType: "text/markdown"
-          }
+            mediaType: "text/markdown",
+          },
         }
-        
+
         createNode(blockNode)
 
-        createParentChildLink({parent: node, child: blockNode})
+        createParentChildLink({ parent: node, child: blockNode })
       })
     }
 

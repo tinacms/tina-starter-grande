@@ -1,21 +1,23 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import { Paper } from "../components/style"
 import { SEO } from "../components/seo"
 import { Form, FormBlock } from "../blocks/form"
 import { Content, ContentBlock } from "../blocks/content"
-import { ContextProvider, Context } from "../components/context"
+import { Context } from "../components/context"
 
 import { useJsonForm } from "gatsby-tinacms-json"
 
 function Page(props) {
   const [page] = useJsonForm(props.data.page, PageForm)
   const blocks = page.blocks ? page.blocks : []
-  // const setHeroImage = props.setHeroImage
 
-  if (page.headerBackground) {
-    setHeroImage(page.headerBackground.childImageSharp.fluid)
-  }
+  const context = React.useContext(Context)
+  const headerBackground = page.headerBackground
+    ? page.headerBackground.childImageSharp.fluid
+    : ""
+
+  useEffect(() => context.setHeroImage(headerBackground), [headerBackground])
 
   return (
     <>
@@ -98,13 +100,6 @@ export const pageQuery = graphql`
       }
       rawJson
       fileRelativePath
-    }
-    file: file(relativePath: { eq: "cafe.jpg" }) {
-      childImageSharp {
-        fluid(quality: 90, maxWidth: 1920) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
-      }
     }
   }
 `

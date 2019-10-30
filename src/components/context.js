@@ -5,12 +5,18 @@ export const Context = React.createContext()
 export class ContextProvider extends React.Component {
   state = {
     heroImage: "",
+    defaultHeroImage: "",
   }
 
   setHeroImage = image => {
-    alert("test")
     this.setState({
       heroImage: image,
+    })
+  }
+
+  setDefaultHeroImage = image => {
+    this.setState({
+      defaultHeroImage: image,
     })
   }
 
@@ -20,6 +26,7 @@ export class ContextProvider extends React.Component {
         value={{
           ...this.state,
           setHeroImage: this.setHeroImage,
+          setDefaultHeroImage: this.setDefaultHeroImage,
         }}
       >
         {this.props.children}
