@@ -4,7 +4,6 @@ Work in progress, feel free to contribute Tina folks
 
 To complete before making public:
 
-- Read theme from config
 - Add more blocks
   - Content
   - Image
@@ -19,6 +18,7 @@ To complete before making public:
 
 Features already added:
 
+- Read theme from config
 - Drafts
 - Dynamic forms w/ input blocks & presets
 - Dynamic menu

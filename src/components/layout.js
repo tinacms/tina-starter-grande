@@ -7,6 +7,7 @@ import { Header, StyledHeader } from "./header"
 import { Footer } from "./footer"
 import Helmet from "react-helmet"
 import slugify from "react-slugify"
+import { SiteProvider } from "./siteContext"
 
 import { createRemarkButton } from "gatsby-tinacms-remark"
 import { withPlugin } from "react-tinacms"
@@ -32,13 +33,6 @@ const Layout = ({ children }) => {
           defaultImage
         }
       }
-      file: file(relativePath: { eq: "cafe.jpg" }) {
-        childImageSharp {
-          fluid(quality: 90, maxWidth: 1920) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
     }
   `)
 
@@ -60,30 +54,29 @@ const Layout = ({ children }) => {
     }
   }
 
-  const [heroImage, setHeroImage] = useState(data.file.childImageSharp.fluid)
-
   return (
     <>
       <Helmet>
         <script src="https://cdn.jsdelivr.net/npm/focus-visible@5.0.2/dist/focus-visible.min.js"></script>
       </Helmet>
-      <ThemeProvider theme={theme}>
-        <>
-          <GlobalStyles />
-          <Page>
-            <Header
-              toggleDarkMode={toggleDarkMode}
-              isDarkMode={isDarkMode}
-              siteTitle={data.site.siteMetadata.title}
-              heroImage={heroImage}
-            />
-            <Main>
-              <Wrapper>{children}</Wrapper>
-            </Main>
-            <Footer />
-          </Page>
-        </>
-      </ThemeProvider>
+      <SiteProvider>
+        <ThemeProvider theme={theme}>
+          <>
+            <GlobalStyles />
+            <Page>
+              <Header
+                toggleDarkMode={toggleDarkMode}
+                isDarkMode={isDarkMode}
+                siteTitle={data.site.siteMetadata.title}
+              />
+              <Main>
+                <Wrapper>{children}</Wrapper>
+              </Main>
+              <Footer />
+            </Page>
+          </>
+        </ThemeProvider>
+      </SiteProvider>
     </>
   )
 }
