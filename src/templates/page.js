@@ -31,8 +31,8 @@ function Page(props) {
                   <div
                     dangerouslySetInnerHTML={{
                       __html:
-                        page.childrenPagesJsonBlockMarkdown[i]
-                          .childMarkdownRemark.html,
+                        page.childPagesJsonBlockMarkdown[i].childMarkdownRemark
+                          .html,
                     }}
                   ></div>
                 )

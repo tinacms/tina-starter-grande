@@ -1,4 +1,14 @@
 {
   "title": "Home",
-  "path": "/"
+  "path": "/",
+  "blocks": [
+    {
+      "content": "## First",
+      "_template": "ContentBlock"
+    },
+    {
+      "content": "## Test",
+      "_template": "ContentBlock"
+    }
+  ]
 }
