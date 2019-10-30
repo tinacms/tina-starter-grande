@@ -1,6 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Paper, Meta, DraftBadge, Content } from "../components/style"
+import {
+  Paper,
+  Meta,
+  MetaSpan,
+  MetaActions,
+  DraftBadge,
+  Content,
+} from "../components/style"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 
@@ -14,8 +21,13 @@ const Post = ({ data }) => {
       <SEO title={frontmatter.title} />
       <Paper>
         <Meta>
-          <span>{frontmatter.date}</span>
-          <Link to="/blog">← Back to Blog</Link>
+          <MetaSpan>{frontmatter.date}</MetaSpan>
+          <MetaSpan>
+            <em>By</em> Scott Byrne
+          </MetaSpan>
+          <MetaActions>
+            <Link to="/blog">← Back to Blog</Link>
+          </MetaActions>
         </Meta>
         <h1>
           {frontmatter.draft && <DraftBadge>Draft</DraftBadge>}

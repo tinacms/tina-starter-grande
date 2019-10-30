@@ -10,10 +10,10 @@ import { useJsonForm } from "gatsby-tinacms-json"
 export const Nav = ({ toggleDarkMode, isDarkMode }) => {
   const data = useStaticQuery(graphql`
     query navQuery {
-      dataJson (fileRelativePath:{eq:"/data/menu.json"}) {
+      dataJson(fileRelativePath: { eq: "/data/menu.json" }) {
         menuItems {
-          label
           link
+          label
         }
       }
     }
@@ -24,7 +24,7 @@ export const Nav = ({ toggleDarkMode, isDarkMode }) => {
     setNavOpen(!navOpen)
   }
 
-  //const [menu] = useJsonForm(data.dataJson, MenuForm)
+  //const [menu] = useJsonForm(data.dataJson)
   const menu = data.dataJson
 
   return (

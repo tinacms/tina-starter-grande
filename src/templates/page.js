@@ -29,7 +29,7 @@ function Page(props) {
               case "ContentBlock":
                 return <div dangerouslySetInnerHTML={{__html: page.childrenPagesJsonBlockMarkdown[i].childMarkdownRemark.html}}></div>
               default:
-                return "Error"
+                return <p>Undefined block</p>
             }
           })}
       </Paper>
