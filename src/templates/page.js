@@ -13,7 +13,7 @@ function Page(props) {
   const blocks = page.blocks ? page.blocks : []
 
   const pageContext = React.useContext(Context)
-  const pageTheme = page.theme
+  const pageTheme = page.pageTheme ? page.pageTheme : {}
   useEffect(() => pageContext.setPageTheme(pageTheme), [pageTheme])
 
   return (
@@ -91,7 +91,7 @@ export const pageQuery = graphql`
         }
       }
 
-      theme {
+      pageTheme {
         color {
           primary
           black

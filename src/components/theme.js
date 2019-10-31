@@ -1,41 +1,26 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import { mix } from "polished"
 
-export const Theme = (pageTheme = {}, isDarkMode) => {
+export const Theme = (globalTheme, pageTheme, isDarkMode) => {
   const merge = require("lodash.merge")
+  const removeEmpty = obj => {
+    const newObj = {}
 
-  const data = useStaticQuery(graphql`
-    query ThemeQuery {
-      themeJson: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
-        color {
-          primary
-          black
-          secondary
-          white
-        }
-        easing
-        breakpoints {
-          small
-          medium
-          large
-          huge
-        }
-        radius {
-          small
-        }
-        header {
-          overline
-          layout
-          background
-        }
+    Object.keys(obj).forEach(key => {
+      if (obj[key] && typeof obj[key] === "object") {
+        newObj[key] = removeEmpty(obj[key]) // recurse
+      } else if (obj[key] != null) {
+        newObj[key] = obj[key] // copy value
       }
-    }
-  `)
+    })
 
-  const globalTheme = data.themeJson
+    return newObj
+  }
 
-  const BaseTheme = merge(globalTheme, pageTheme)
+  const BaseTheme = merge(globalTheme, removeEmpty(pageTheme))
+
+  console.log("(In Theme) Base Theme: ")
+  console.log(BaseTheme)
 
   const ThemeLight = {
     mode: "light",

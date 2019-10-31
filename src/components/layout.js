@@ -19,15 +19,42 @@ const Layout = ({ children }) => {
           title
         }
       }
+      dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
+        color {
+          black
+          white
+          primary
+          secondary
+        }
+        easing
+        breakpoints {
+          small
+          medium
+          large
+          huge
+        }
+        radius {
+          small
+        }
+        header {
+          overline
+          layout
+          background
+        }
+      }
     }
   `)
+
+  const globalTheme = data.dataJson
+  console.log("Global Theme: ")
+  console.log(globalTheme)
 
   return (
     <>
       <Helmet>
         <script src="https://cdn.jsdelivr.net/npm/focus-visible@5.0.2/dist/focus-visible.min.js"></script>
       </Helmet>
-      <ContextProvider>
+      <ContextProvider globalTheme={globalTheme}>
         <Context.Consumer>
           {({ theme }) => (
             <ThemeProvider theme={theme}>

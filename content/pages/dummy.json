@@ -23,7 +23,7 @@
       ]
     }
   ],
-  "theme": {
+  "pageTheme": {
     "color": {
       "black": "#131110",
       "white": "#f7f7f7",

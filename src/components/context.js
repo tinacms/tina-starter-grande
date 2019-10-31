@@ -1,4 +1,5 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import { Theme } from "./theme"
 
 export const Context = React.createContext()
@@ -6,17 +7,16 @@ export const Context = React.createContext()
 const isBrowser = typeof window !== "undefined"
 const userPrefDark = isBrowser ? localStorage.getItem("isDarkMode") : false
 const initialDarkMode = userPrefDark === "true" ? true : false
-const defaultTheme = Theme(initialDarkMode)
 
 export class ContextProvider extends React.Component {
   state = {
     isDarkMode: initialDarkMode,
-    theme: defaultTheme,
+    theme: Theme(this.props.globalTheme, {}, initialDarkMode),
   }
 
   setPageTheme = pageTheme => {
     this.setState({
-      theme: Theme(pageTheme, this.state.isDarkMode),
+      theme: Theme(this.props.globalTheme, pageTheme, this.state.isDarkMode),
     })
   }
 

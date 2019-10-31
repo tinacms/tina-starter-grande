@@ -1,7 +1,10 @@
 {
   "title": "Home",
   "path": "/",
-  "theme": {
+  "pageTheme": {
+    "color": {
+      "primary": "#902043"
+    },
     "header": {
       "layout": "hero",
       "background": "cafe-2.jpg"
