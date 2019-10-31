@@ -21,37 +21,8 @@ const Layout = ({ children }) => {
           title
         }
       }
-      themeJson: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
-        color {
-          primary
-          black
-          secondary
-          white
-        }
-        header {
-          overline
-          defaultImage
-        }
-      }
     }
   `)
-
-  const isBrowser = typeof window !== "undefined"
-  const userPrefDark = isBrowser ? localStorage.getItem("isDarkMode") : false
-  const [isDarkMode, setIsDarkMode] = useState(
-    userPrefDark === "true" ? true : false
-  )
-
-  //const [userTheme] = useJsonForm(data.themeJson)
-  const userTheme = data.themeJson
-  const theme = Theme(userTheme, isDarkMode)
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode)
-    if (typeof window !== "undefined") {
-      localStorage.setItem("isDarkMode", !isDarkMode)
-    }
-  }
 
   return (
     <>
@@ -59,29 +30,25 @@ const Layout = ({ children }) => {
         <script src="https://cdn.jsdelivr.net/npm/focus-visible@5.0.2/dist/focus-visible.min.js"></script>
       </Helmet>
       <ContextProvider>
-        <ThemeProvider theme={theme}>
-          <>
-            <GlobalStyles />
-            <Page>
-              <Header
-                toggleDarkMode={toggleDarkMode}
-                isDarkMode={isDarkMode}
-                siteTitle={data.site.siteMetadata.title}
-              />
-              <Main>
-                <Wrapper>{children}</Wrapper>
-              </Main>
-              <Footer />
-            </Page>
-          </>
-        </ThemeProvider>
+        <Context.Consumer>
+          {({ theme }) => (
+            <ThemeProvider theme={theme}>
+              <>
+                <GlobalStyles />
+                <Page>
+                  <Header siteTitle={data.site.siteMetadata.title} />
+                  <Main>
+                    <Wrapper>{children}</Wrapper>
+                  </Main>
+                  <Footer />
+                </Page>
+              </>
+            </ThemeProvider>
+          )}
+        </Context.Consumer>
       </ContextProvider>
     </>
   )
-}
-
-const filepath = title => {
-  return "content/posts/" + title.replace(/\s+/g, "-").toLowerCase() + ".md"
 }
 
 const CreatePostButton = createRemarkButton({

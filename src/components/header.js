@@ -34,7 +34,7 @@ export const Header = ({ toggleDarkMode, isDarkMode, siteTitle }) => {
 
   return (
     <Context.Consumer>
-      {({ heroImage, defaultHeroImage }) => (
+      {({ headerBackground, toggleDarkMode, isDarkMode }) => (
         <>
           <StyledHeader>
             <HeaderWrapper>
@@ -48,7 +48,7 @@ export const Header = ({ toggleDarkMode, isDarkMode, siteTitle }) => {
             </HeaderWrapper>
           </StyledHeader>
           <HeaderBackground
-            fluid={heroImage !== "" ? heroImage : defaultHeroImage}
+            fluid={headerBackground}
           >
             <Overlay />
           </HeaderBackground>
@@ -86,6 +86,13 @@ export const HeaderBackground = styled(BackgroundImage)`
     position: absolute !important;
     height: 18rem;
   }
+
+  ${props =>
+    props.theme.header.layout === "hero" &&
+    css`
+      height: 100vh;
+    `};
+`
 `
 
 export const SiteLink = styled(Link)`

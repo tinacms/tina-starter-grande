@@ -24,7 +24,6 @@ export const Nav = ({ toggleDarkMode, isDarkMode }) => {
     setNavOpen(!navOpen)
   }
 
-  //const [menu] = useJsonForm(data.dataJson)
   const menu = data.dataJson
 
   return (

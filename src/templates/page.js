@@ -78,13 +78,6 @@ export const pageQuery = graphql`
     page: pagesJson(path: { eq: $path }) {
       title
       content
-      headerBackground {
-        childImageSharp {
-          fluid(quality: 90, maxWidth: 1920) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
       blocks {
         _template
         content
@@ -101,6 +94,27 @@ export const pageQuery = graphql`
           html
         }
       }
+
+      theme {
+        color {
+          primary
+          black
+          secondary
+          white
+        }
+        header {
+          overline
+          layout
+          background {
+            childImageSharp {
+              fluid(quality: 90, maxWidth: 1920) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
+
       rawJson
       fileRelativePath
     }

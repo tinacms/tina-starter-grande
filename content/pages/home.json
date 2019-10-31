@@ -1,10 +1,10 @@
 {
   "title": "Home",
   "path": "/",
-  "headerBackground": "cafe-2.jpg",
-  "pageTheme": {
+  "theme": {
     "header": {
-      "layout": "hero"
+      "layout": "hero",
+      "background": "cafe-2.jpg"
     }
   },
   "blocks": [
