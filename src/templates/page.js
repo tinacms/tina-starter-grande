@@ -13,7 +13,7 @@ function Page(props) {
   const blocks = page.blocks ? page.blocks : []
 
   const pageContext = React.useContext(Context)
-  const pageTheme = page.pageTheme ? page.pageTheme : {}
+  const pageTheme = page.pageTheme ? removeNull(page.pageTheme) : {}
   useEffect(() => pageContext.setPageTheme(pageTheme), [pageTheme])
 
   return (
@@ -116,3 +116,14 @@ export const pageQuery = graphql`
     }
   }
 `
+
+const removeNull = obj =>
+  Object.keys(obj)
+    .filter(k => obj[k] != null) // Remove undef. and null.
+    .reduce(
+      (newObj, k) =>
+        typeof obj[k] === "object"
+          ? { ...newObj, [k]: removeNull(obj[k]) } // Recurse.
+          : { ...newObj, [k]: obj[k] }, // Copy value.
+      {}
+    )
