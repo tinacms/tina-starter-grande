@@ -1,8 +1,10 @@
-import React, { useMemo } from "react"
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import { mix } from "polished"
 
 export const Theme = (pageTheme = {}, isDarkMode) => {
   const merge = require("lodash.merge")
+
   const data = useStaticQuery(graphql`
     query ThemeQuery {
       themeJson: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
@@ -12,16 +14,20 @@ export const Theme = (pageTheme = {}, isDarkMode) => {
           secondary
           white
         }
+        easing
+        breakpoints {
+          small
+          medium
+          large
+          huge
+        }
+        radius {
+          small
+        }
         header {
           overline
           layout
-          background {
-            childImageSharp {
-              fluid(quality: 90, maxWidth: 1920) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
+          background
         }
       }
     }

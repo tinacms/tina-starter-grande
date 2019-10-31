@@ -6,11 +6,12 @@ export const Context = React.createContext()
 const isBrowser = typeof window !== "undefined"
 const userPrefDark = isBrowser ? localStorage.getItem("isDarkMode") : false
 const initialDarkMode = userPrefDark === "true" ? true : false
+const defaultTheme = Theme(initialDarkMode)
 
 export class ContextProvider extends React.Component {
   state = {
     isDarkMode: initialDarkMode,
-    theme: Theme(initialDarkMode),
+    theme: defaultTheme,
   }
 
   setPageTheme = pageTheme => {
@@ -25,7 +26,7 @@ export class ContextProvider extends React.Component {
     })
 
     if (typeof window !== "undefined") {
-      localStorage.setItem("isDarkMode", !isDarkMode)
+      localStorage.setItem("isDarkMode", !this.state.isDarkMode)
     }
   }
 

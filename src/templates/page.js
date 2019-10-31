@@ -38,8 +38,9 @@ function Page(props) {
                       }}
                     ></div>
                   )
+                break
               default:
-                return
+                return true
             }
           })}
       </Paper>

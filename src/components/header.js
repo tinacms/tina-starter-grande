@@ -1,14 +1,14 @@
 import React from "react"
-import { Overlay } from "./style"
+import { Overlay, Wrapper } from "./style"
 import { Coffee } from "styled-icons/boxicons-regular"
 import styled, { css } from "styled-components"
 import { transparentize } from "polished"
 import BackgroundImage from "gatsby-background-image"
 import { Nav } from "./nav"
 import { Context } from "./context"
+import { Link } from "gatsby"
 
 export const Header = ({ siteTitle }) => {
-
   return (
     <Context.Consumer>
       {({ theme, toggleDarkMode, isDarkMode }) => (
@@ -24,11 +24,11 @@ export const Header = ({ siteTitle }) => {
               <Nav toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
             </HeaderWrapper>
           </StyledHeader>
-          <HeaderBackground
+          {/* <HeaderBackground
             fluid={theme.header.background.childImageSharp.fluid}
           >
             <Overlay />
-          </HeaderBackground>
+          </HeaderBackground> */}
         </>
       )}
     </Context.Consumer>
@@ -69,7 +69,6 @@ export const HeaderBackground = styled(BackgroundImage)`
     css`
       height: 100vh;
     `};
-`
 `
 
 export const SiteLink = styled(Link)`

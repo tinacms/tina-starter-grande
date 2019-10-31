@@ -1,41 +1,43 @@
 # Tina Grande
 
-Work in progress, feel free to contribute Tina folks
+## Features
 
-To complete before making public:
-
-- Add more blocks
-  - Content
-  - Image
-  - Code
-  - ?
-- Add form for meta data / seo
-- Add form to manage theme settings
-- Add more theme style options (controlled by theme settings)
-- Make header bg image dynamic (default, allow override per-page)
-- Sweet readme
-- Awesome name
-
-Features already added:
-
-- Read theme from config
-- Drafts
-- Dynamic forms w/ input blocks & presets
-- Dynamic menu
-- Create post/page buttons
-- Page template
-- Post template
-- List template w/ pagination
-- Dark/light toggle w/ local storage
-- Basic Tina setup
+- **Full [TinaCMS](http://tinacms.org) integration**
+- Dark mode
+- Easy Theme Customization
+  - Both global & per-page
+  - Preset logos/colors to choose from
+  - Use custom logo/colors if desired
+- Form Builder
+  - Pre-defined fields
+  - Custom fields
+  - Netlify and Formspree Integration
+- Page Builder
 - Syntax highlighting
-- Decent design
+- Blog
+  - Pagination
+  - Author(s)
+  - Draft mode
+- Netlify deploy configuration
+- Styled Components
+- Looks good
 
-Features to add post lauch:
+## Getting Started
 
-- Refactor/improve bad code (both JS & CSS)
-- Blog categories / tags
-- 'Launch in Teams' button?
-- Theme presets
-  - Some kind of config wizard?
-- ...
+```
+git clone https://github.com/tinacms/tina-starter-grande.git
+
+cd tina-starter-grande
+
+gatsby develop
+```
+
+## Contributing
+
+Feel free to report bugs, request features or submit improvements.
+
+### Planned Features
+
+- Blog categories & tags
+- Theme setup wizard with presets that include images, content & theme settings
+- [Request something](https://github.com/tinacms/tina-starter-grande/issues/new)
