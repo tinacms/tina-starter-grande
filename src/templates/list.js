@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import {
@@ -11,12 +11,22 @@ import {
 import { Authors } from "../components/authors"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
+import { Context } from "../components/context"
 
 import { useJsonForm } from "gatsby-tinacms-json"
 
 export default function List({ data, pageContext }) {
   //const [page] = useJsonForm(data.page)
   const page = data.page
+
+  const themeContext = React.useContext(Context)
+  const headerBackground = page.headerBackground
+    ? page.headerBackground.childImageSharp.fluid
+    : ""
+
+  useEffect(() => themeContext.setHeroImage(headerBackground), [
+    headerBackground,
+  ])
 
   const { slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1
@@ -28,7 +38,6 @@ export default function List({ data, pageContext }) {
 
   return (
     <>
-      <SEO title={pageTitle} />
       {data.posts &&
         data.posts.edges.map(item => {
           return (
@@ -73,10 +82,20 @@ export default function List({ data, pageContext }) {
 
 export const pageQuery = graphql`
   query($listType: String!, $slug: String!, $skip: Int!, $limit: Int!) {
-    page: listsJson(path: { eq: $slug }) {
+    page: pagesJson(path: { eq: $slug }) {
       path
       title
       listType
+      headerBackground {
+        childImageSharp {
+          fluid(quality: 90, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+
+      rawJson
+      fileRelativePath
     }
     posts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
@@ -98,13 +117,6 @@ export const pageQuery = graphql`
             draft
             authors
           }
-        }
-      }
-    }
-    file: file(relativePath: { eq: "cafe.jpg" }) {
-      childImageSharp {
-        fluid(quality: 90, maxWidth: 1920) {
-          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }

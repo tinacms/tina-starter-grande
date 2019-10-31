@@ -80,71 +80,39 @@ const Layout = ({ children }) => {
   )
 }
 
-// const filepath = title => {
-//   return "content/posts/" + title.replace(/\s+/g, "-").toLowerCase() + ".md"
-// }
+const filepath = title => {
+  return "content/posts/" + title.replace(/\s+/g, "-").toLowerCase() + ".md"
+}
 
-// const CreatePostButton = createRemarkButton({
-//   label: "New Post",
-//   filename(form) {
-//     let slug = slugify(form.title.toLowerCase())
-//     return `content/posts/${slug}.md`
-//   },
-//   frontmatter(form) {
-//     let slug = slugify(form.title.toLowerCase())
-//     return new Promise(resolve => {
-//       setTimeout(() => {
-//         resolve({
-//           title: form.title,
-//           date: new Date(),
-//           template: "post",
-//           path: `blog/${slug}`,
-//         })
-//       }, 1000)
-//     })
-//   },
-//   body({ title }) {
-//     return `## ${title}`
-//   },
-//   fields: [
-//     { name: "title", label: "Title", component: "text", required: true },
-//   ],
-// })
+const CreatePostButton = createRemarkButton({
+  label: "New Post",
+  filename(form) {
+    let slug = slugify(form.title.toLowerCase())
+    return `content/posts/${slug}.md`
+  },
+  frontmatter(form) {
+    let slug = slugify(form.title.toLowerCase())
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          title: form.title,
+          date: new Date(),
+          type: "post",
+          path: `/blog/${slug}`,
+          draft: true,
+        })
+      }, 1000)
+    })
+  },
+  body({ title }) {
+    return `## ${title}`
+  },
+  fields: [
+    { name: "title", label: "Title", component: "text", required: true },
+  ],
+})
 
-// const CreatePageButton = createRemarkButton({
-//   label: "New Page",
-//   filename(form) {
-//     let slug = slugify(form.title.toLowerCase())
-//     return `content/${slug}.json`
-//   },
-//   frontmatter(form) {
-//     let slug = slugify(form.title.toLowerCase())
-//     return new Promise(resolve => {
-//       setTimeout(() => {
-//         resolve({
-//           title: form.title,
-//           template: "page",
-//           path: slug,
-//           menu: form.menu,
-//         })
-//       }, 1000)
-//     })
-//   },
-//   body({ title }) {
-//     return `## ${title}`
-//   },
-//   fields: [
-//     { name: "title", label: "Title", component: "text", required: true },
-//     { name: "menu", label: "In Menu", component: "toggle", required: true },
-//   ],
-// })
-
-// export default withPlugin(
-//   withPlugin(Layout, CreatePostButton),
-//   CreatePageButton
-// )
-
-export default Layout
+export default withPlugin(Layout, CreatePostButton)
 
 export const Page = styled.div`
   position: relative;

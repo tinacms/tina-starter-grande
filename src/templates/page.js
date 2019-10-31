@@ -12,12 +12,14 @@ function Page(props) {
   const [page] = useJsonForm(props.data.page, PageForm)
   const blocks = page.blocks ? page.blocks : []
 
-  const context = React.useContext(Context)
+  const pageContext = React.useContext(Context)
   const headerBackground = page.headerBackground
     ? page.headerBackground.childImageSharp.fluid
     : ""
 
-  useEffect(() => context.setHeroImage(headerBackground), [headerBackground])
+  useEffect(() => pageContext.setHeroImage(headerBackground), [
+    headerBackground,
+  ])
 
   return (
     <>

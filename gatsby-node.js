@@ -105,10 +105,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     {
-      pages: allPagesJson(filter: { path: { ne: null } }) {
+      pages: allPagesJson(
+        filter: { path: { ne: null }, listType: { eq: null } }
+      ) {
         edges {
           node {
             path
+          }
+        }
+      }
+      lists: allPagesJson(
+        filter: { path: { ne: null }, listType: { ne: null } }
+      ) {
+        edges {
+          node {
+            path
+            listType
           }
         }
       }
@@ -122,14 +134,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               path
               type
             }
-          }
-        }
-      }
-      lists: allListsJson(filter: { path: { ne: null } }) {
-        edges {
-          node {
-            path
-            listType
           }
         }
       }

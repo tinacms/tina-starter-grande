@@ -1,0 +1,7 @@
+{
+  "path": "/blog",
+  "title": "Blog",
+  "pageType": "list",
+  "listType": "post",
+  "headerBackground": "coffee-beans.jpg"
+}

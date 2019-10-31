@@ -2,6 +2,11 @@
   "title": "Home",
   "path": "/",
   "headerBackground": "cafe-2.jpg",
+  "pageTheme": {
+    "header": {
+      "layout": "hero"
+    }
+  },
   "blocks": [
     {
       "_template": "ContentBlock",

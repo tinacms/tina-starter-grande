@@ -5,6 +5,7 @@ export const Theme = (userTheme = {}, isDarkMode) => {
   const merge = require("lodash.merge")
 
   const DefaultTheme = {
+    mode: "default",
     color: {
       black: "#131110",
       white: "#f7f7f7",
@@ -23,6 +24,7 @@ export const Theme = (userTheme = {}, isDarkMode) => {
     header: {
       overline: false,
       defaultImage: "cafe.jpg",
+      layout: "default",
     },
   }
 
@@ -64,3 +66,12 @@ export const Theme = (userTheme = {}, isDarkMode) => {
 
   return isDarkMode ? ThemeDark : ThemeLight
 }
+
+// export const query = graphql`
+//   fragment SiteInformation on Site {
+//     siteMetadata {
+//       title
+//       siteDescription
+//     }
+//   }
+// `
