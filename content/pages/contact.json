@@ -1,7 +1,6 @@
 {
   "title": "Contact",
   "path": "/contact",
-  "headerBackground": "coffee-beans.jpg",
   "blocks": [
     {
       "_template": "FormBlock",
