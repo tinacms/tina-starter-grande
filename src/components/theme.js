@@ -17,6 +17,7 @@ export const Theme = (userTheme = {}, isDarkMode) => {
       small: "600px",
       medium: "1200px",
       large: "1600px",
+      huge: "2200px",
     },
     radius: {
       small: "3px",

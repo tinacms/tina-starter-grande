@@ -267,7 +267,7 @@ export const GlobalStyles = createGlobalStyle`
   ${Reset}
 
   html {
-    font-size: 125%;
+    font-size: 100%;
     font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
       "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
       "Helvetica Neue", sans-serif;
@@ -286,11 +286,21 @@ export const GlobalStyles = createGlobalStyle`
     overflow-y: scroll;
     overflow-x: hidden;
 
+    @media (min-width: ${props => props.theme.breakpoints.small}) {
+      font-size: 125%;
+    }
+
+
+    @media (min-width: ${props => props.theme.breakpoints.huge}) {
+      font-size: 140%;
+    }
+
     ${props =>
       props.theme.mode === "dark" &&
       css`
         background-color: ${props => props.theme.color.background};
       `};
+      
   }
 
   ${PrismTheme}
@@ -309,6 +319,9 @@ export const GlobalStyles = createGlobalStyle`
     }
     &:not(:last-child) {
       margin-bottom: 1.6rem;
+    }
+    *:last-child {
+      margin-bottom: 0 !important;
     }
   }
 
@@ -439,6 +452,10 @@ export const Wrapper = styled.div`
 
   @media (min-width: ${props => props.theme.breakpoints.large}) {
     max-width: 1024px;
+  }
+
+  @media (min-width: ${props => props.theme.breakpoints.huge}) {
+    max-width: 1280px;
   }
 `
 
