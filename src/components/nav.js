@@ -2,10 +2,8 @@ import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Moon, Sun } from "styled-icons/boxicons-regular"
 import styled, { css } from "styled-components"
-import { mix, tint, shade, transparentize } from "polished"
+import { mix, transparentize } from "polished"
 import { Link } from "gatsby"
-
-import { useJsonForm } from "gatsby-tinacms-json"
 
 export const Nav = ({ toggleDarkMode, isDarkMode }) => {
   const data = useStaticQuery(graphql`

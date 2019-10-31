@@ -1,7 +1,6 @@
-import React, { useState, useMemo } from "react"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
-import { Theme } from "./theme"
 import { GlobalStyles, Main, Wrapper } from "./style"
 import { Header, StyledHeader } from "./header"
 import { Footer } from "./footer"
@@ -11,7 +10,6 @@ import { ContextProvider, Context } from "./context"
 
 import { createRemarkButton } from "gatsby-tinacms-remark"
 import { withPlugin } from "react-tinacms"
-import { useJsonForm } from "gatsby-tinacms-json"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`

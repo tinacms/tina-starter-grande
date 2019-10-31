@@ -13,20 +13,8 @@ import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 import { Context } from "../components/context"
 
-import { useJsonForm } from "gatsby-tinacms-json"
-
 export default function List({ data, pageContext }) {
-  //const [page] = useJsonForm(data.page)
   const page = data.page
-
-  const themeContext = React.useContext(Context)
-  const headerBackground = page.headerBackground
-    ? page.headerBackground.childImageSharp.fluid
-    : ""
-
-  useEffect(() => themeContext.setHeroImage(headerBackground), [
-    headerBackground,
-  ])
 
   const { slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1
@@ -86,13 +74,6 @@ export const pageQuery = graphql`
       path
       title
       listType
-      headerBackground {
-        childImageSharp {
-          fluid(quality: 90, maxWidth: 1920) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
 
       rawJson
       fileRelativePath

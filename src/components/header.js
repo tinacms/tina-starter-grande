@@ -1,40 +1,17 @@
-import React, { useEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { Wrapper, Overlay } from "./style"
-import { Moon, Sun, Coffee } from "styled-icons/boxicons-regular"
+import React from "react"
+import { Overlay } from "./style"
+import { Coffee } from "styled-icons/boxicons-regular"
 import styled, { css } from "styled-components"
-import { mix, tint, shade, transparentize } from "polished"
+import { transparentize } from "polished"
 import BackgroundImage from "gatsby-background-image"
-import { Link } from "gatsby"
 import { Nav } from "./nav"
-import { ContextProvider, Context } from "./context"
+import { Context } from "./context"
 
-import { useJsonForm } from "gatsby-tinacms-json"
-
-export const Header = ({ toggleDarkMode, isDarkMode, siteTitle }) => {
-  const data = useStaticQuery(graphql`
-    query HeaderQuery {
-      defaultHeaderBackground: file(relativePath: { eq: "header.jpg" }) {
-        childImageSharp {
-          fluid(quality: 90, maxWidth: 1920) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `)
-
-  const context = React.useContext(Context)
-  const defaultHeaderBackground =
-    data.defaultHeaderBackground.childImageSharp.fluid
-
-  useEffect(() => context.setDefaultHeroImage(defaultHeaderBackground), [
-    defaultHeaderBackground,
-  ])
+export const Header = ({ siteTitle }) => {
 
   return (
     <Context.Consumer>
-      {({ headerBackground, toggleDarkMode, isDarkMode }) => (
+      {({ theme, toggleDarkMode, isDarkMode }) => (
         <>
           <StyledHeader>
             <HeaderWrapper>
@@ -48,7 +25,7 @@ export const Header = ({ toggleDarkMode, isDarkMode, siteTitle }) => {
             </HeaderWrapper>
           </StyledHeader>
           <HeaderBackground
-            fluid={headerBackground}
+            fluid={theme.header.background.childImageSharp.fluid}
           >
             <Overlay />
           </HeaderBackground>

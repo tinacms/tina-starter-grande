@@ -1,6 +1,6 @@
 import React from "react"
 import styled, { createGlobalStyle, css } from "styled-components"
-import { mix, tint, shade, transparentize } from "polished"
+import { mix, shade, transparentize } from "polished"
 import Img from "gatsby-image"
 
 export const Reset = css`

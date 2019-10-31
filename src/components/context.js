@@ -1,23 +1,32 @@
 import React from "react"
+import { Theme } from "./theme"
 
 export const Context = React.createContext()
 
+const isBrowser = typeof window !== "undefined"
+const userPrefDark = isBrowser ? localStorage.getItem("isDarkMode") : false
+const initialDarkMode = userPrefDark === "true" ? true : false
+
 export class ContextProvider extends React.Component {
   state = {
-    heroImage: "",
-    defaultHeroImage: "",
+    isDarkMode: initialDarkMode,
+    theme: Theme(initialDarkMode),
   }
 
-  setHeroImage = image => {
+  setPageTheme = pageTheme => {
     this.setState({
-      heroImage: image,
+      theme: Theme(pageTheme, this.state.isDarkMode),
     })
   }
 
-  setDefaultHeroImage = image => {
+  toggleDarkMode = () => {
     this.setState({
-      defaultHeroImage: image,
+      isDarkMode: !this.state.isDarkMode,
     })
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem("isDarkMode", !isDarkMode)
+    }
   }
 
   render() {
@@ -25,8 +34,8 @@ export class ContextProvider extends React.Component {
       <Context.Provider
         value={{
           ...this.state,
-          setHeroImage: this.setHeroImage,
-          setDefaultHeroImage: this.setDefaultHeroImage,
+          setPageTheme: this.setPageTheme,
+          toggleDarkMode: this.toggleDarkMode,
         }}
       >
         {this.props.children}

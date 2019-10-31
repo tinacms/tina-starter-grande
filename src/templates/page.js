@@ -13,13 +13,8 @@ function Page(props) {
   const blocks = page.blocks ? page.blocks : []
 
   const pageContext = React.useContext(Context)
-  const headerBackground = page.headerBackground
-    ? page.headerBackground.childImageSharp.fluid
-    : ""
-
-  useEffect(() => pageContext.setHeroImage(headerBackground), [
-    headerBackground,
-  ])
+  const pageTheme = page.theme
+  useEffect(() => pageContext.setPageTheme(pageTheme), [pageTheme])
 
   return (
     <>
