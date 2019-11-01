@@ -3,5 +3,9 @@
   "title": "Blog",
   "pageType": "list",
   "listType": "post",
-  "headerBackground": "coffee-beans.jpg"
+  "pageTheme": {
+    "header": {
+      "background": "coffee-beans.jpg"
+    }
+  }
 }

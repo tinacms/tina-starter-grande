@@ -1,32 +1,54 @@
-import React from "react"
+import React, { useMemo } from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import { Theme } from "./theme"
+import { removeNull } from "./helpers"
 
 export const Context = React.createContext()
 
+const isBrowser = typeof window !== "undefined"
+const userPrefDark = isBrowser ? localStorage.getItem("isDarkMode") : false
+const initialDarkMode = userPrefDark === "true" ? true : false
+
 export class ContextProvider extends React.Component {
   state = {
-    heroImage: "",
-    defaultHeroImage: "",
+    isDarkMode: initialDarkMode,
+    pageTheme: {},
   }
 
-  setHeroImage = image => {
+  setPageTheme = pageTheme => {
+    const newPageTheme = pageTheme ? removeNull(pageTheme) : {}
     this.setState({
-      heroImage: image,
+      ...this.state,
+      pageTheme: {
+        ...newPageTheme
+      }
     })
   }
 
-  setDefaultHeroImage = image => {
+  toggleDarkMode = () => {
+    const newMode = !this.state.isDarkMode
+
     this.setState({
-      defaultHeroImage: image,
+      isDarkMode: newMode,
     })
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem("isDarkMode", newMode)
+    }
   }
 
   render() {
+    const theme = Theme(
+      this.props.globalTheme,
+      this.state.pageTheme,
+      this.state.isDarkMode
+    )
     return (
       <Context.Provider
         value={{
-          ...this.state,
-          setHeroImage: this.setHeroImage,
-          setDefaultHeroImage: this.setDefaultHeroImage,
+          theme: theme,
+          setPageTheme: this.setPageTheme,
+          toggleDarkMode: this.toggleDarkMode,
         }}
       >
         {this.props.children}

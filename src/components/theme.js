@@ -1,35 +1,12 @@
-import React, { useMemo } from "react"
+import React from "react"
 import { mix } from "polished"
 
-export const Theme = (userTheme = {}, isDarkMode) => {
-  const merge = require("lodash.merge")
+const merge = require("lodash.merge")
+const clonedeep = require("lodash.clonedeep")
 
-  const DefaultTheme = {
-    mode: "default",
-    color: {
-      black: "#131110",
-      white: "#f7f7f7",
-      primary: "#007043",
-      secondary: "#B8A45D",
-    },
-    easing: "cubic-bezier(0.215, 0.610, 0.355, 1.000)",
-    breakpoints: {
-      small: "600px",
-      medium: "1200px",
-      large: "1600px",
-      huge: "2200px",
-    },
-    radius: {
-      small: "3px",
-    },
-    header: {
-      overline: false,
-      defaultImage: "cafe.jpg",
-      layout: "default",
-    },
-  }
-
-  const BaseTheme = merge(DefaultTheme, userTheme)
+export const Theme = (globalTheme, pageTheme, isDarkMode) => {
+  const BaseTheme = clonedeep(globalTheme)
+  merge(BaseTheme, pageTheme)
 
   const ThemeLight = {
     mode: "light",
@@ -67,12 +44,3 @@ export const Theme = (userTheme = {}, isDarkMode) => {
 
   return isDarkMode ? ThemeDark : ThemeLight
 }
-
-// export const query = graphql`
-//   fragment SiteInformation on Site {
-//     siteMetadata {
-//       title
-//       siteDescription
-//     }
-//   }
-// `

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useMemo } from "react"
 import { graphql } from "gatsby"
 import { Paper } from "../components/style"
 import { SEO } from "../components/seo"
@@ -12,14 +12,9 @@ function Page(props) {
   const [page] = useJsonForm(props.data.page, PageForm)
   const blocks = page.blocks ? page.blocks : []
 
-  const pageContext = React.useContext(Context)
-  const headerBackground = page.headerBackground
-    ? page.headerBackground.childImageSharp.fluid
-    : ""
+  const siteContext = React.useContext(Context)
 
-  useEffect(() => pageContext.setHeroImage(headerBackground), [
-    headerBackground,
-  ])
+  useEffect(() => siteContext.setPageTheme(page.pageTheme), [page.pageTheme])
 
   return (
     <>
@@ -43,8 +38,9 @@ function Page(props) {
                       }}
                     ></div>
                   )
+                break
               default:
-                return
+                return true
             }
           })}
       </Paper>
@@ -78,13 +74,6 @@ export const pageQuery = graphql`
     page: pagesJson(path: { eq: $path }) {
       title
       content
-      headerBackground {
-        childImageSharp {
-          fluid(quality: 90, maxWidth: 1920) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
       blocks {
         _template
         content
@@ -101,6 +90,27 @@ export const pageQuery = graphql`
           html
         }
       }
+
+      pageTheme {
+        color {
+          black
+          white
+          primary
+          secondary
+        }
+        header {
+          overline
+          layout
+          background {
+            childImageSharp {
+              fluid(quality: 90, maxWidth: 1920) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
+
       rawJson
       fileRelativePath
     }

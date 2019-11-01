@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import {
   Paper,
@@ -11,11 +11,17 @@ import {
 import { Authors } from "../components/authors"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
+import { Context } from "../components/context"
 
 import { remarkForm } from "gatsby-tinacms-remark"
 
 const Post = ({ data }) => {
   const { frontmatter, html } = data.markdownRemark
+
+  const siteContext = React.useContext(Context)
+  const pageTheme = {}
+
+  useEffect(() => siteContext.setPageTheme(pageTheme), [pageTheme, siteContext])
 
   return (
     <>

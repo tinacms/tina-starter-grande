@@ -1,6 +1,6 @@
 import React from "react"
 import styled, { createGlobalStyle, css } from "styled-components"
-import { mix, tint, shade, transparentize } from "polished"
+import { mix, shade, transparentize } from "polished"
 import Img from "gatsby-image"
 
 export const Reset = css`
@@ -578,6 +578,12 @@ export const Main = styled.main`
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
     padding: 6rem 0 4rem 0;
+
+    ${props =>
+      props.theme.header.layout === "hero" &&
+      css`
+        padding: 12rem 0 4rem 0;
+      `};
   }
 `
 

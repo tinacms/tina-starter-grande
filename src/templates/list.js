@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useMemo } from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import {
@@ -12,21 +12,14 @@ import { Authors } from "../components/authors"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 import { Context } from "../components/context"
-
-import { useJsonForm } from "gatsby-tinacms-json"
+import { removeNull } from "../components/helpers"
 
 export default function List({ data, pageContext }) {
-  //const [page] = useJsonForm(data.page)
   const page = data.page
 
-  const themeContext = React.useContext(Context)
-  const headerBackground = page.headerBackground
-    ? page.headerBackground.childImageSharp.fluid
-    : ""
+  const siteContext = React.useContext(Context) 
 
-  useEffect(() => themeContext.setHeroImage(headerBackground), [
-    headerBackground,
-  ])
+  useEffect(() => siteContext.setPageTheme(page.pageTheme), [page.pageTheme])
 
   const { slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1
@@ -86,10 +79,23 @@ export const pageQuery = graphql`
       path
       title
       listType
-      headerBackground {
-        childImageSharp {
-          fluid(quality: 90, maxWidth: 1920) {
-            ...GatsbyImageSharpFluid_withWebp
+
+      pageTheme {
+        color {
+          black
+          white
+          primary
+          secondary
+        }
+        header {
+          overline
+          layout
+          background {
+            childImageSharp {
+              fluid(quality: 90, maxWidth: 1920) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
           }
         }
       }

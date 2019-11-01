@@ -1,40 +1,17 @@
-import React, { useEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { Wrapper, Overlay } from "./style"
-import { Moon, Sun, Coffee } from "styled-icons/boxicons-regular"
+import React from "react"
+import { Overlay, Wrapper } from "./style"
+import { Coffee } from "styled-icons/boxicons-regular"
 import styled, { css } from "styled-components"
-import { mix, tint, shade, transparentize } from "polished"
+import { transparentize } from "polished"
 import BackgroundImage from "gatsby-background-image"
-import { Link } from "gatsby"
 import { Nav } from "./nav"
-import { ContextProvider, Context } from "./context"
+import { Context } from "./context"
+import { Link } from "gatsby"
 
-import { useJsonForm } from "gatsby-tinacms-json"
-
-export const Header = ({ toggleDarkMode, isDarkMode, siteTitle }) => {
-  const data = useStaticQuery(graphql`
-    query HeaderQuery {
-      defaultHeaderBackground: file(relativePath: { eq: "header.jpg" }) {
-        childImageSharp {
-          fluid(quality: 90, maxWidth: 1920) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `)
-
-  const context = React.useContext(Context)
-  const defaultHeaderBackground =
-    data.defaultHeaderBackground.childImageSharp.fluid
-
-  useEffect(() => context.setDefaultHeroImage(defaultHeaderBackground), [
-    defaultHeaderBackground,
-  ])
-
+export const Header = ({ siteTitle }) => {
   return (
     <Context.Consumer>
-      {({ heroImage, defaultHeroImage }) => (
+      {({ theme, toggleDarkMode, isDarkMode }) => (
         <>
           <StyledHeader>
             <HeaderWrapper>
@@ -47,11 +24,13 @@ export const Header = ({ toggleDarkMode, isDarkMode, siteTitle }) => {
               <Nav toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
             </HeaderWrapper>
           </StyledHeader>
-          <HeaderBackground
-            fluid={heroImage !== "" ? heroImage : defaultHeroImage}
-          >
-            <Overlay />
-          </HeaderBackground>
+          {theme.header.background.childImageSharp && (
+            <HeaderBackground
+              fluid={theme.header.background.childImageSharp.fluid}
+            >
+              <Overlay />
+            </HeaderBackground>
+          )}
         </>
       )}
     </Context.Consumer>
@@ -71,6 +50,13 @@ export const StyledHeader = styled.header`
     css`
       border-top: 6px solid ${props => props.theme.color.primary};
     `};
+
+  ${props =>
+    props.theme.header.layout === "hero" &&
+    css`
+      background-color: ${props =>
+        transparentize(0.3, props.theme.color.black)};
+    `};
 `
 
 export const HeaderBackground = styled(BackgroundImage)`
@@ -86,6 +72,15 @@ export const HeaderBackground = styled(BackgroundImage)`
     position: absolute !important;
     height: 18rem;
   }
+
+  ${props =>
+    props.theme.header.layout === "hero" &&
+    css`
+      height: 80vh !important;
+      ${Overlay} {
+        opacity: 0;
+      }
+    `};
 `
 
 export const SiteLink = styled(Link)`

@@ -1,10 +1,13 @@
 {
   "title": "Home",
   "path": "/",
-  "headerBackground": "cafe-2.jpg",
   "pageTheme": {
+    "color": {
+      "primary": "#902043"
+    },
     "header": {
-      "layout": "hero"
+      "layout": "hero",
+      "background": "cafe-2.jpg"
     }
   },
   "blocks": [
