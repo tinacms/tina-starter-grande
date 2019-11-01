@@ -1,9 +1,12 @@
 import React from "react"
 import { mix } from "polished"
 
+const merge = require("lodash.merge")
+const clonedeep = require("lodash.clonedeep")
+
 export const Theme = (globalTheme, pageTheme, isDarkMode) => {
-  const merge = require("lodash.merge")
-  const BaseTheme = merge(globalTheme, pageTheme)
+  const BaseTheme = clonedeep(globalTheme)
+  merge(BaseTheme, pageTheme)
 
   const ThemeLight = {
     mode: "light",
