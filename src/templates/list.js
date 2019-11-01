@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useMemo } from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import {
@@ -17,10 +17,12 @@ import { removeNull } from "../components/helpers"
 export default function List({ data, pageContext }) {
   const page = data.page
 
-  const siteContext = React.useContext(Context)
-  const pageTheme = page.pageTheme ? removeNull(page.pageTheme) : {}
+  const siteContext = React.useContext(Context) 
 
-  useEffect(() => siteContext.setPageTheme(pageTheme), [pageTheme, siteContext])
+  useEffect(() => {
+    console.log('setting page theme', page.pageTheme)
+    siteContext.setPageTheme(page.pageTheme)
+  }, [page.pageTheme])
 
   const { slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1

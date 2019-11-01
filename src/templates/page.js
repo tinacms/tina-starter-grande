@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useMemo } from "react"
 import { graphql } from "gatsby"
 import { Paper } from "../components/style"
 import { SEO } from "../components/seo"
@@ -14,9 +14,8 @@ function Page(props) {
   const blocks = page.blocks ? page.blocks : []
 
   const siteContext = React.useContext(Context)
-  const pageTheme = page.pageTheme ? removeNull(page.pageTheme) : {}
 
-  useEffect(() => siteContext.setPageTheme(pageTheme), [pageTheme, siteContext])
+  useEffect(() => siteContext.setPageTheme(page.pageTheme), [page.pageTheme])
 
   return (
     <>

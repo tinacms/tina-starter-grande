@@ -1,6 +1,7 @@
 import React, { useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Theme } from "./theme"
+import { removeNull } from "./helpers"
 
 export const Context = React.createContext()
 
@@ -16,8 +17,12 @@ export class ContextProvider extends React.Component {
   }
 
   setPageTheme = pageTheme => {
+    const newPageTheme = pageTheme ? removeNull(pageTheme) : {}
     this.setState({
-      pageTheme: pageTheme,
+      ...this.state,
+      pageTheme: {
+        ...newPageTheme
+      }
     })
   }
 
