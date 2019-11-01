@@ -52,7 +52,7 @@ const Layout = ({ children }) => {
     }
   `)
 
-  const globalTheme = removeNull(data.dataJson)
+  const globalTheme = data.dataJson
 
   return (
     <>
