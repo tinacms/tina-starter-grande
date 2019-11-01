@@ -578,6 +578,12 @@ export const Main = styled.main`
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
     padding: 6rem 0 4rem 0;
+
+    ${props =>
+      props.theme.header.layout === "hero" &&
+      css`
+        padding: 12rem 0 4rem 0;
+      `};
   }
 `
 

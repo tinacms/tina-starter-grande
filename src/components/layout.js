@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 import { GlobalStyles, Main, Wrapper } from "./style"
@@ -6,6 +6,7 @@ import { Header, StyledHeader } from "./header"
 import { Footer } from "./footer"
 import Helmet from "react-helmet"
 import slugify from "react-slugify"
+import { removeNull } from "./helpers"
 import { ContextProvider, Context } from "./context"
 
 import { createRemarkButton } from "gatsby-tinacms-remark"
@@ -13,7 +14,7 @@ import { withPlugin } from "react-tinacms"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query SiteQuery {
+    query LayoutQuery {
       site {
         siteMetadata {
           title
@@ -39,15 +40,19 @@ const Layout = ({ children }) => {
         header {
           overline
           layout
-          background
+          background {
+            childImageSharp {
+              fluid(quality: 90, maxWidth: 1920) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
         }
       }
     }
   `)
 
-  const globalTheme = data.dataJson
-  console.log("Global Theme: ")
-  console.log(globalTheme)
+  const globalTheme = removeNull(data.dataJson)
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Theme } from "./theme"
 
@@ -11,14 +11,13 @@ const initialDarkMode = userPrefDark === "true" ? true : false
 export class ContextProvider extends React.Component {
   state = {
     isDarkMode: initialDarkMode,
+    globalTheme: this.props.globalTheme,
     pageTheme: {},
-    theme: Theme(this.props.globalTheme, {}, initialDarkMode),
   }
 
   setPageTheme = pageTheme => {
     this.setState({
       pageTheme: pageTheme,
-      theme: Theme(this.props.globalTheme, pageTheme, this.state.isDarkMode),
     })
   }
 
@@ -27,7 +26,6 @@ export class ContextProvider extends React.Component {
 
     this.setState({
       isDarkMode: newMode,
-      theme: Theme(this.props.globalTheme, this.state.pageTheme, newMode),
     })
 
     if (typeof window !== "undefined") {
@@ -36,10 +34,16 @@ export class ContextProvider extends React.Component {
   }
 
   render() {
+    const theme = Theme(
+      this.state.globalTheme,
+      this.state.pageTheme,
+      this.state.isDarkMode
+    )
     return (
       <Context.Provider
         value={{
           ...this.state,
+          theme: theme,
           setPageTheme: this.setPageTheme,
           toggleDarkMode: this.toggleDarkMode,
         }}

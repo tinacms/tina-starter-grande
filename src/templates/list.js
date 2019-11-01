@@ -12,9 +12,15 @@ import { Authors } from "../components/authors"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 import { Context } from "../components/context"
+import { removeNull } from "../components/helpers"
 
 export default function List({ data, pageContext }) {
   const page = data.page
+
+  const siteContext = React.useContext(Context)
+  const pageTheme = page.pageTheme ? removeNull(page.pageTheme) : {}
+
+  useEffect(() => siteContext.setPageTheme(pageTheme), [pageTheme, siteContext])
 
   const { slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1
@@ -74,6 +80,26 @@ export const pageQuery = graphql`
       path
       title
       listType
+
+      pageTheme {
+        color {
+          black
+          white
+          primary
+          secondary
+        }
+        header {
+          overline
+          layout
+          background {
+            childImageSharp {
+              fluid(quality: 90, maxWidth: 1920) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
 
       rawJson
       fileRelativePath

@@ -5,6 +5,7 @@ import { SEO } from "../components/seo"
 import { Form, FormBlock } from "../blocks/form"
 import { Content, ContentBlock } from "../blocks/content"
 import { Context } from "../components/context"
+import { removeNull } from "../components/helpers"
 
 import { useJsonForm } from "gatsby-tinacms-json"
 
@@ -12,9 +13,10 @@ function Page(props) {
   const [page] = useJsonForm(props.data.page, PageForm)
   const blocks = page.blocks ? page.blocks : []
 
-  const pageContext = React.useContext(Context)
+  const siteContext = React.useContext(Context)
   const pageTheme = page.pageTheme ? removeNull(page.pageTheme) : {}
-  useEffect(() => pageContext.setPageTheme(pageTheme), [pageTheme])
+
+  useEffect(() => siteContext.setPageTheme(pageTheme), [pageTheme, siteContext])
 
   return (
     <>
@@ -93,10 +95,10 @@ export const pageQuery = graphql`
 
       pageTheme {
         color {
-          primary
           black
-          secondary
           white
+          primary
+          secondary
         }
         header {
           overline
@@ -116,14 +118,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-const removeNull = obj =>
-  Object.keys(obj)
-    .filter(k => obj[k] != null) // Remove undef. and null.
-    .reduce(
-      (newObj, k) =>
-        typeof obj[k] === "object"
-          ? { ...newObj, [k]: removeNull(obj[k]) } // Recurse.
-          : { ...newObj, [k]: obj[k] }, // Copy value.
-      {}
-    )

@@ -24,11 +24,13 @@ export const Header = ({ siteTitle }) => {
               <Nav toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
             </HeaderWrapper>
           </StyledHeader>
-          {/* <HeaderBackground
-            fluid={theme.header.background.childImageSharp.fluid}
-          >
-            <Overlay />
-          </HeaderBackground> */}
+          {theme.header.background.childImageSharp && (
+            <HeaderBackground
+              fluid={theme.header.background.childImageSharp.fluid}
+            >
+              <Overlay />
+            </HeaderBackground>
+          )}
         </>
       )}
     </Context.Consumer>
@@ -47,6 +49,13 @@ export const StyledHeader = styled.header`
     props.theme.header.overline &&
     css`
       border-top: 6px solid ${props => props.theme.color.primary};
+    `};
+
+  ${props =>
+    props.theme.header.layout === "hero" &&
+    css`
+      background-color: ${props =>
+        transparentize(0.3, props.theme.color.black)};
     `};
 `
 
@@ -67,7 +76,10 @@ export const HeaderBackground = styled(BackgroundImage)`
   ${props =>
     props.theme.header.layout === "hero" &&
     css`
-      height: 100vh;
+      height: 80vh !important;
+      ${Overlay} {
+        opacity: 0;
+      }
     `};
 `
 
