@@ -19,10 +19,7 @@ export default function List({ data, pageContext }) {
 
   const siteContext = React.useContext(Context) 
 
-  useEffect(() => {
-    console.log('setting page theme', page.pageTheme)
-    siteContext.setPageTheme(page.pageTheme)
-  }, [page.pageTheme])
+  useEffect(() => siteContext.setPageTheme(page.pageTheme), [page.pageTheme])
 
   const { slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1
