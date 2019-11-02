@@ -350,7 +350,7 @@ export const DarkModeToggle = styled(({ ...styleProps }) => {
   }
 
   ${props =>
-    props.isDarkMode &&
+    props.theme.isDarkMode &&
     css`
       svg {
         &:first-child {

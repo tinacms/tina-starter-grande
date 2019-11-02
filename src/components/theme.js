@@ -10,7 +10,7 @@ export const Theme = (globalTheme, pageTheme, isDarkMode) => {
   merge(BaseTheme, pageTheme)
 
   const ThemeLight = {
-    mode: "light",
+    isDarkMode: false,
     color: {
       black: BaseTheme.color.black,
       white: BaseTheme.color.white,
@@ -28,7 +28,7 @@ export const Theme = (globalTheme, pageTheme, isDarkMode) => {
   }
 
   const ThemeDark = {
-    mode: "dark",
+    isDarkMode: true,
     color: {
       black: BaseTheme.color.black,
       white: mix(0.7, BaseTheme.color.white, BaseTheme.color.secondary),

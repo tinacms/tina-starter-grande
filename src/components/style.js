@@ -296,7 +296,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     ${props =>
-      props.theme.mode === "dark" &&
+      props.theme.isDarkMode &&
       css`
         background-color: ${props => props.theme.color.background};
       `};
@@ -501,7 +501,7 @@ export const Paper = styled.div`
     `};
 
   ${props =>
-    props.theme.mode === "dark" &&
+    props.theme.isDarkMode &&
     css`
       background-color: ${props =>
         mix(0.95, props.theme.color.background, props.theme.color.foreground)};
