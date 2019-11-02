@@ -17,7 +17,7 @@ import { removeNull } from "../components/helpers"
 export default function List({ data, pageContext }) {
   const page = data.page
 
-  const siteContext = React.useContext(Context) 
+  const siteContext = React.useContext(Context)
 
   useEffect(() => siteContext.setPageTheme(page.pageTheme), [page.pageTheme])
 
@@ -79,27 +79,7 @@ export const pageQuery = graphql`
       path
       title
       listType
-
-      pageTheme {
-        color {
-          black
-          white
-          primary
-          secondary
-        }
-        header {
-          overline
-          layout
-          background {
-            childImageSharp {
-              fluid(quality: 90, maxWidth: 1920) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-      }
-
+      ...pageTheme
       rawJson
       fileRelativePath
     }

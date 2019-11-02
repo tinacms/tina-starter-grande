@@ -21,36 +21,7 @@ const Layout = ({ children }) => {
         }
       }
       dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
-        color {
-          black
-          white
-          primary
-          secondary
-        }
-        easing
-        breakpoints {
-          small
-          medium
-          large
-          huge
-        }
-        radius {
-          small
-        }
-        header {
-          overline
-          layout
-          background {
-            childImageSharp {
-              fluid(quality: 90, maxWidth: 1920) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-        typography {
-          uppercaseH2
-        }
+        ...globalTheme
       }
     }
   `)

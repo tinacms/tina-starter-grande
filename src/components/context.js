@@ -23,7 +23,6 @@ export class ContextProvider extends React.Component {
         ...newPageTheme,
       },
     })
-    console.log(this.state)
   }
 
   toggleDarkMode = () => {

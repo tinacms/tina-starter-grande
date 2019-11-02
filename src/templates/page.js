@@ -14,6 +14,9 @@ function Page(props) {
 
   const siteContext = React.useContext(Context)
 
+  console.log("Page Theme: ")
+  console.log(page.pageTheme)
+
   useEffect(() => siteContext.setPageTheme(page.pageTheme), [page.pageTheme])
 
   return (
@@ -109,28 +112,7 @@ export const pageQuery = graphql`
         }
       }
 
-      pageTheme {
-        color {
-          black
-          white
-          primary
-          secondary
-        }
-        header {
-          overline
-          layout
-          background {
-            childImageSharp {
-              fluid(quality: 90, maxWidth: 1920) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-        typography {
-          uppercaseH2
-        }
-      }
+      ...pageTheme
 
       rawJson
       fileRelativePath

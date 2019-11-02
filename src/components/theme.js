@@ -1,5 +1,6 @@
 import React from "react"
 import { mix } from "polished"
+import { graphql } from "gatsby"
 
 const merge = require("lodash.merge")
 const clonedeep = require("lodash.clonedeep")
@@ -46,3 +47,85 @@ export const Theme = (globalTheme, pageTheme, isDarkMode) => {
 
   return isDarkMode ? ThemeDark : ThemeLight
 }
+
+export const markdownFrontmatterFragment = graphql`
+  fragment MarkdownFrontmatter on MarkdownRemark {
+    frontmatter {
+      path
+      title
+      date(formatString: "MMMM DD, YYYY")
+    }
+  }
+`
+
+export const globalThemeFragment = graphql`
+  fragment globalTheme on DataJson {
+    color {
+      black
+      white
+      primary
+      secondary
+    }
+    easing
+    breakpoints {
+      small
+      medium
+      large
+      huge
+    }
+    radius {
+      small
+    }
+    header {
+      overline
+      layout
+      background {
+        childImageSharp {
+          fluid(quality: 90, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+    typography {
+      uppercaseH2
+    }
+  }
+`
+
+export const pageThemeFragment = graphql`
+  fragment pageTheme on PagesJson {
+    pageTheme {
+      color {
+        black
+        white
+        primary
+        secondary
+      }
+      easing
+      breakpoints {
+        small
+        medium
+        large
+        huge
+      }
+      radius {
+        small
+      }
+      header {
+        overline
+        layout
+        background {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+      }
+      typography {
+        uppercaseH2
+      }
+    }
+  }
+`
