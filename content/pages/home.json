@@ -15,7 +15,9 @@
       "uppercaseH2": true
     },
     "page": {
-      "displayTitle": false
+      "displayTitle": false,
+      "displayHeadline": true
     }
-  }
+  },
+  "headline": "Welcome to Tina Grande."
 }

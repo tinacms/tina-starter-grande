@@ -747,8 +747,10 @@ export const DraftBadge = styled.span`
 export const Headline = styled.h2`
   font-size: 2.6em;
   line-height: 1.2;
+  color: ${props => props.theme.color.white};
   word-spacing: 1px;
-  font-weight: 500;
+  font-weight: 700;
+  text-transform: none;
 `
 
 export const Title = styled.h2`
@@ -758,6 +760,6 @@ export const Title = styled.h2`
   font-weight: 700;
 
   + hr {
-    margin: 2.4rem 0;
+    margin: 2.2rem 0;
   }
 `

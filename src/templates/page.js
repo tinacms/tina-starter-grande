@@ -10,6 +10,8 @@ import { useJsonForm } from "gatsby-tinacms-json"
 
 function Page(props) {
   const [page] = useJsonForm(props.data.page, PageForm)
+  const [nav] = useJsonForm(props.data.nav, NavForm)
+
   const blocks = page.blocks ? page.blocks : []
 
   const siteContext = React.useContext(Context)
@@ -24,7 +26,7 @@ function Page(props) {
       {({ theme }) => (
         <>
           <SEO title={page.title} />
-          {theme.page.displayHeadline && <Headline>{page.headling}</Headline>}
+          {theme.page.displayHeadline && <Headline>{page.headline}</Headline>}
           <Paper>
             {theme.page.displayTitle && (
               <>
@@ -60,7 +62,35 @@ function Page(props) {
   )
 }
 
+const NavForm = {
+  label: "Main Nav",
+  fields: [
+    {
+      label: "Main Nav",
+      name: "rawJson.menuItems",
+      component: "group-list",
+      itemProps: item => ({
+        key: item.link,
+        label: item.label,
+      }),
+      fields: [
+        {
+          label: "Label",
+          name: "label",
+          component: "text",
+        },
+        {
+          label: "Link",
+          name: "link",
+          component: "text",
+        },
+      ],
+    },
+  ],
+}
+
 const PageForm = {
+  label: "Page",
   fields: [
     {
       label: "Title",
@@ -92,6 +122,11 @@ const PageForm = {
           component: "toggle",
         },
         {
+          label: "Page Headline",
+          name: "page.displayHeadline",
+          component: "toggle",
+        },
+        {
           label: "Page Title",
           name: "page.displayTitle",
           component: "toggle",
@@ -107,6 +142,7 @@ export const pageQuery = graphql`
   query($path: String!) {
     page: pagesJson(path: { eq: $path }) {
       title
+      headline
       content
       blocks {
         _template
@@ -126,6 +162,15 @@ export const pageQuery = graphql`
       }
 
       ...pageTheme
+
+      rawJson
+      fileRelativePath
+    }
+    nav: dataJson(fileRelativePath: { eq: "/data/menu.json" }) {
+      menuItems {
+        link
+        label
+      }
 
       rawJson
       fileRelativePath
