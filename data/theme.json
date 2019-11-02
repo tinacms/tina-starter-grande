@@ -20,6 +20,10 @@
     "background": "cafe.jpg",
     "layout": "default"
   },
+  "page": {
+    "displayHeadline": false,
+    "displayTitle": true
+  },
   "typography": {
     "uppercaseH2": true
   }

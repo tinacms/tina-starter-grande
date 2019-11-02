@@ -341,6 +341,12 @@ export const GlobalStyles = createGlobalStyle`
     margin-bottom: 1.5rem;
   }
 
+  p, blockquote, ul, li {
+    + h1, + h2, + h3, + h4, + h5, + h6 {
+      margin-top: 3rem;
+    }
+  }
+
   li:not(:last-child):not([class]) {
     margin-bottom: 0.5rem;
   }

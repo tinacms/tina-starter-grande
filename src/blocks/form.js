@@ -181,7 +181,7 @@ export const FormField = styled.div`
     }
 
     ${props =>
-      props.theme.mode === "dark" &&
+      props.theme.isDarkMode &&
       css`
         background-color: ${props => props.theme.color.background};
       `};

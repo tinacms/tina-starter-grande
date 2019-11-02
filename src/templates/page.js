@@ -20,35 +20,43 @@ function Page(props) {
   useEffect(() => siteContext.setPageTheme(page.pageTheme), [page.pageTheme])
 
   return (
-    <>
-      <SEO title={page.title} />
-      {page.headline && <Headline>{page.headling}</Headline>}
-      <Paper>
-        <Title>{page.title}</Title>
-        <hr />
-        {blocks &&
-          blocks.map(({ _template, ...data }, i) => {
-            switch (_template) {
-              case "FormBlock":
-                return <Form form={data} />
-              case "ContentBlock":
-                if (data.content)
-                  return (
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          page.childrenPagesJsonBlockMarkdown[i]
-                            .childMarkdownRemark.html,
-                      }}
-                    ></div>
-                  )
-                break
-              default:
-                return true
-            }
-          })}
-      </Paper>
-    </>
+    <Context.Consumer>
+      {({ theme }) => (
+        <>
+          <SEO title={page.title} />
+          {theme.page.displayHeadline && <Headline>{page.headling}</Headline>}
+          <Paper>
+            {theme.page.displayTitle && (
+              <>
+                <Title>{page.title}</Title>
+                <hr />
+              </>
+            )}
+            {blocks &&
+              blocks.map(({ _template, ...data }, i) => {
+                switch (_template) {
+                  case "FormBlock":
+                    return <Form form={data} />
+                  case "ContentBlock":
+                    if (data.content)
+                      return (
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              page.childrenPagesJsonBlockMarkdown[i]
+                                .childMarkdownRemark.html,
+                          }}
+                        ></div>
+                      )
+                    break
+                  default:
+                    return true
+                }
+              })}
+          </Paper>
+        </>
+      )}
+    </Context.Consumer>
   )
 }
 
@@ -81,6 +89,11 @@ const PageForm = {
         {
           label: "Uppercase H2",
           name: "typography.uppercaseH2",
+          component: "toggle",
+        },
+        {
+          label: "Page Title",
+          name: "page.displayTitle",
           component: "toggle",
         },
       ],

@@ -24,6 +24,7 @@ export const Theme = (globalTheme, pageTheme, isDarkMode) => {
     breakpoints: BaseTheme.breakpoints,
     radius: BaseTheme.radius,
     header: BaseTheme.header,
+    page: BaseTheme.page,
     typography: BaseTheme.typography,
   }
 
@@ -42,6 +43,7 @@ export const Theme = (globalTheme, pageTheme, isDarkMode) => {
     breakpoints: BaseTheme.breakpoints,
     radius: BaseTheme.radius,
     header: BaseTheme.header,
+    page: BaseTheme.page,
     typography: BaseTheme.typography,
   }
 
@@ -87,6 +89,10 @@ export const globalThemeFragment = graphql`
         }
       }
     }
+    page {
+      displayHeadline
+      displayTitle
+    }
     typography {
       uppercaseH2
     }
@@ -122,6 +128,10 @@ export const pageThemeFragment = graphql`
             }
           }
         }
+      }
+      page {
+        displayHeadline
+        displayTitle
       }
       typography {
         uppercaseH2
