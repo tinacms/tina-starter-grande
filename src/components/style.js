@@ -359,9 +359,14 @@ export const GlobalStyles = createGlobalStyle`
   h2 {
     font-size: 1.8em;
     line-height: 1.2;
-    text-transform: uppercase;
     word-spacing: 1px;
     font-weight: 700;
+
+    ${props =>
+      props.theme.typography.uppercaseH2 &&
+      css`
+        text-transform: uppercase;
+      `};
   }
 
   h3 {
@@ -371,9 +376,13 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   h1, h2, h3 {
-    a:not(:hover) {
+    a:not([class]) {
+      color: inherit !important;
+    }
+    a:not([class]):not(:hover) {
       text-decoration: none;
-      color: inherit;
+      color: inherit !important;
+      text-decoration-color: transparent !important;
     }
   }
 
@@ -727,4 +736,22 @@ export const DraftBadge = styled.span`
   position: absolute;
   top: 0;
   right: 0;
+`
+
+export const Headline = styled.h2`
+  font-size: 2.6em;
+  line-height: 1.2;
+  word-spacing: 1px;
+  font-weight: 500;
+`
+
+export const Title = styled.h2`
+  font-size: 2.2em;
+  line-height: 1.2;
+  word-spacing: 1px;
+  font-weight: 700;
+
+  + hr {
+    margin: 2.4rem 0;
+  }
 `

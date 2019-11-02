@@ -18,11 +18,6 @@ import { remarkForm } from "gatsby-tinacms-remark"
 const Post = ({ data }) => {
   const { frontmatter, html } = data.markdownRemark
 
-  const siteContext = React.useContext(Context)
-  const pageTheme = {}
-
-  useEffect(() => siteContext.setPageTheme(pageTheme), [pageTheme, siteContext])
-
   return (
     <>
       <SEO title={frontmatter.title} />

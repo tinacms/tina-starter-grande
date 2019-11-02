@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from "react"
 import { graphql } from "gatsby"
-import { Paper } from "../components/style"
+import { Paper, Headline, Title } from "../components/style"
 import { SEO } from "../components/seo"
 import { Form, FormBlock } from "../blocks/form"
 import { Content, ContentBlock } from "../blocks/content"
@@ -19,8 +19,9 @@ function Page(props) {
   return (
     <>
       <SEO title={page.title} />
+      {page.headline && <Headline>{page.headling}</Headline>}
       <Paper>
-        <h2>{page.title}</h2>
+        <Title>{page.title}</Title>
         <hr />
         {blocks &&
           blocks.map(({ _template, ...data }, i) => {
@@ -56,6 +57,11 @@ const PageForm = {
       component: "text",
     },
     {
+      label: "Headline",
+      name: "rawJson.headline",
+      component: "text",
+    },
+    {
       label: "Sections",
       name: "rawJson.blocks",
       component: "blocks",
@@ -63,6 +69,18 @@ const PageForm = {
         FormBlock,
         ContentBlock,
       },
+    },
+    {
+      label: "Page Theme",
+      name: "rawJson.pageTheme",
+      component: "group",
+      fields: [
+        {
+          label: "Uppercase H2",
+          name: "typography.uppercaseH2",
+          component: "toggle",
+        },
+      ],
     },
   ],
 }
@@ -108,6 +126,9 @@ export const pageQuery = graphql`
               }
             }
           }
+        }
+        typography {
+          uppercaseH2
         }
       }
 

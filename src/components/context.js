@@ -20,9 +20,10 @@ export class ContextProvider extends React.Component {
     this.setState({
       ...this.state,
       pageTheme: {
-        ...newPageTheme
-      }
+        ...newPageTheme,
+      },
     })
+    console.log(this.state)
   }
 
   toggleDarkMode = () => {

@@ -172,8 +172,8 @@ export const NavLink = styled(props => (
     height: 100%;
     background: linear-gradient(
       to bottom,
-      ${props => transparentize(0.7, props.theme.color.black)},
-      transparent 2rem
+      ${props => transparentize(0.85, props.theme.color.black)},
+      transparent 1.5rem
     );
     opacity: 0;
     z-index: -1;
@@ -211,6 +211,16 @@ export const NavLink = styled(props => (
     }
     &:after {
       transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &.active {
+    &:before {
+      background: linear-gradient(
+        to bottom,
+        ${props => transparentize(0.85, props.theme.color.white)},
+        transparent 1.5rem
+      );
     }
   }
 

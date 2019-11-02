@@ -23,6 +23,7 @@ export const Theme = (globalTheme, pageTheme, isDarkMode) => {
     breakpoints: BaseTheme.breakpoints,
     radius: BaseTheme.radius,
     header: BaseTheme.header,
+    typography: BaseTheme.typography,
   }
 
   const ThemeDark = {
@@ -40,6 +41,7 @@ export const Theme = (globalTheme, pageTheme, isDarkMode) => {
     breakpoints: BaseTheme.breakpoints,
     radius: BaseTheme.radius,
     header: BaseTheme.header,
+    typography: BaseTheme.typography,
   }
 
   return isDarkMode ? ThemeDark : ThemeLight

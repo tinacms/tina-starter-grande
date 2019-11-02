@@ -48,6 +48,9 @@ const Layout = ({ children }) => {
             }
           }
         }
+        typography {
+          uppercaseH2
+        }
       }
     }
   `)

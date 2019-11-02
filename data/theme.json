@@ -19,5 +19,8 @@
     "overline": true,
     "background": "cafe.jpg",
     "layout": "default"
+  },
+  "typography": {
+    "uppercaseH2": true
   }
 }
