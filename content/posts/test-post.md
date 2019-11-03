@@ -1,8 +1,9 @@
 ---
 title: Nostris blandis iacuit
-path: "/blog/nostris-blandis"
-date: "2019-04-06"
-type: "post"
+path: /blog/nostris-blandis
+date: '2019-04-06'
+type: post
+draft: false
 ---
 
 Nostris blandis iacuit Laertiadaeque est Tritona, [pectora si

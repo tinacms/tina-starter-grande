@@ -1,5 +1,5 @@
 ---
 type: dummmy
 draft: true
-headerImage: "dummy"
+heroImage: coffee-beans.jpg
 ---

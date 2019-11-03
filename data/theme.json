@@ -16,13 +16,11 @@
     "small": "3px"
   },
   "header": {
-    "overline": true,
-    "background": "cafe.jpg",
-    "layout": "default"
+    "overline": true
   },
   "page": {
-    "displayHeadline": false,
-    "displayTitle": true
+    "displayTitle": true,
+    "heroImage": "cafe.jpg"
   },
   "typography": {
     "uppercaseH2": true

@@ -6,6 +6,7 @@ type: post
 authors:
   - scott-byrne
 draft: true
+heroImage: coffee-beans.jpg
 ---
 
 Draft outline:

@@ -1,12 +1,11 @@
 {
   "title": "Dummy",
   "path": "/dummy",
-  "headerImage": "dummy",
   "content": "## root",
   "hero": {
     "headline": "Dummy",
     "textline": "Dummy",
-    "background": "Dummy",
+    "image": "cafe-2.jpg",
     "ctas": [
       {
         "label": "Read The Blog",
@@ -54,13 +53,11 @@
       "small": "3px"
     },
     "header": {
-      "overline": true,
-      "background": "cafe.jpg",
-      "layout": "default"
+      "overline": true
     },
     "page": {
-      "displayHeadline": false,
-      "displayTitle": true
+      "displayTitle": true,
+      "heroImage": "cafe.jpg"
     },
     "typography": {
       "uppercaseH2": true

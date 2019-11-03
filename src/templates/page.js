@@ -10,6 +10,7 @@ import {
   Wrapper,
   Overlay,
   LinkButton,
+  HeroBackground,
 } from "../components/style"
 import { SEO } from "../components/seo"
 import { Form, FormBlock } from "../blocks/form"
@@ -54,6 +55,17 @@ function Page(props) {
               )}
             </Wrapper>
             <Overlay />
+            {page.hero && page.hero.image ? (
+              <HeroBackground
+                fluid={page.hero.image.childImageSharp.fluid}
+              ></HeroBackground>
+            ) : theme.page.heroImage ? (
+              <HeroBackground
+                fluid={theme.page.heroImage.childImageSharp.fluid}
+              ></HeroBackground>
+            ) : (
+              <></>
+            )}
           </Hero>
           <Wrapper>
             <Paper>
@@ -185,9 +197,18 @@ const PageForm = {
           component: "text",
         },
         {
+          label: "Image",
+          name: "image",
+          component: "text",
+        },
+        {
           label: "Actions",
           name: "ctas",
           component: "group-list",
+          itemProps: item => ({
+            key: item.link,
+            label: item.label,
+          }),
           fields: [
             {
               label: "Label",
@@ -233,14 +254,14 @@ const PageForm = {
           component: "toggle",
         },
         {
-          label: "Page Headline",
-          name: "page.displayHeadline",
-          component: "toggle",
-        },
-        {
           label: "Page Title",
           name: "page.displayTitle",
           component: "toggle",
+        },
+        {
+          label: "Default Hero Image",
+          name: "page.heroImage",
+          component: "text",
         },
       ],
     },
@@ -257,7 +278,13 @@ export const pageQuery = graphql`
       hero {
         headline
         textline
-        background
+        image {
+          childImageSharp {
+            fluid(quality: 70, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
         ctas {
           label
           link

@@ -7,6 +7,10 @@ import {
   MetaActions,
   DraftBadge,
   Content,
+  Hero,
+  HeroBackground,
+  Wrapper,
+  Overlay,
 } from "../components/style"
 import { Authors } from "../components/authors"
 import { SEO } from "../components/seo"
@@ -19,27 +23,47 @@ const Post = ({ data }) => {
   const { frontmatter, html } = data.markdownRemark
 
   return (
-    <>
-      <SEO title={frontmatter.title} />
-      <Paper>
-        <Meta>
-          <MetaSpan>{frontmatter.date}</MetaSpan>
-          {frontmatter.authors && (
-            <MetaSpan>
-              <em>By</em>&nbsp;
-              <Authors authorSlugs={frontmatter.authors} />
-            </MetaSpan>
-          )}
-          <MetaActions>
-            <Link to="/blog">← Back to Blog</Link>
-          </MetaActions>
-        </Meta>
-        <h1>{frontmatter.title}</h1>
-        <hr />
-        <Content dangerouslySetInnerHTML={{ __html: html }}></Content>
-        {frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
-      </Paper>
-    </>
+    <Context.Consumer>
+      {({ theme }) => (
+        <>
+          <SEO title={frontmatter.title} />
+          <Hero>
+            <Overlay />
+            {frontmatter.heroImage ? (
+              <HeroBackground
+                fluid={frontmatter.heroImage.childImageSharp.fluid}
+              ></HeroBackground>
+            ) : theme.page.heroImage ? (
+              <HeroBackground
+                fluid={theme.page.heroImage.childImageSharp.fluid}
+              ></HeroBackground>
+            ) : (
+              <></>
+            )}
+          </Hero>
+          <Wrapper>
+            <Paper>
+              <Meta>
+                <MetaSpan>{frontmatter.date}</MetaSpan>
+                {frontmatter.authors && (
+                  <MetaSpan>
+                    <em>By</em>&nbsp;
+                    <Authors authorSlugs={frontmatter.authors} />
+                  </MetaSpan>
+                )}
+                <MetaActions>
+                  <Link to="/blog">← Back to Blog</Link>
+                </MetaActions>
+              </Meta>
+              <h1>{frontmatter.title}</h1>
+              <hr />
+              <Content dangerouslySetInnerHTML={{ __html: html }}></Content>
+              {frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
+            </Paper>
+          </Wrapper>
+        </>
+      )}
+    </Context.Consumer>
   )
 }
 
@@ -51,7 +75,7 @@ const PostForm = {
       component: "text",
     },
     {
-      name: "frontmatter.draft",
+      name: "rawFrontmatter.draft",
       component: "toggle",
       label: "Draft",
     },
@@ -59,6 +83,11 @@ const PostForm = {
       label: "Date",
       name: "rawFrontmatter.date",
       component: "date",
+    },
+    {
+      name: "rawFrontmatter.heroImage",
+      component: "text",
+      label: "Hero Image",
     },
     {
       label: "Body",
@@ -85,6 +114,13 @@ export const pageQuery = graphql`
         title
         draft
         authors
+        heroImage {
+          childImageSharp {
+            fluid(quality: 70, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
       }
 
       fileRelativePath

@@ -8,20 +8,16 @@
     }
   ],
   "pageTheme": {
-    "header": {
-      "background": "cafe-2.jpg"
-    },
     "typography": {
       "uppercaseH2": true
     },
     "page": {
-      "displayTitle": false,
-      "displayHeadline": true
+      "displayTitle": false
     }
   },
   "hero": {
     "headline": "Welcome to Tina Grande.",
-    "textline": "This template is filled with sample content to demonstrate the theme's options",
+    "textline": "This template is filled with sample content to get you started.",
     "ctas": [
       {
         "label": "Read The Blog  →",
@@ -34,6 +30,7 @@
         "link": "/contact",
         "arrow": true
       }
-    ]
+    ],
+    "image": "cafe-2.jpg"
   }
 }

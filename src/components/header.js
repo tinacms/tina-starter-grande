@@ -40,13 +40,6 @@ export const Header = styled(({ siteTitle, ...styleProps }) => {
     css`
       border-top: 6px solid ${props => props.theme.color.primary};
     `};
-
-  ${props =>
-    props.theme.header.layout === "hero" &&
-    css`
-      background-color: ${props =>
-        transparentize(0.3, props.theme.color.black)};
-    `};
 `
 
 export const SiteLink = styled(Link)`

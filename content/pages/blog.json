@@ -3,9 +3,15 @@
   "title": "Blog",
   "pageType": "list",
   "listType": "post",
+  "hero": {
+    "image": "coffee-beans.jpg"
+  },
   "pageTheme": {
-    "header": {
-      "background": "coffee-beans.jpg"
+    "page": {
+      "displayTitle": false
+    },
+    "typography": {
+      "uppercaseH2": true
     }
   }
 }

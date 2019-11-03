@@ -80,18 +80,16 @@ export const globalThemeFragment = graphql`
     }
     header {
       overline
-      layout
-      background {
+    }
+    page {
+      displayTitle
+      heroImage {
         childImageSharp {
-          fluid(quality: 90, maxWidth: 1920) {
+          fluid(quality: 70, maxWidth: 1920) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
-    }
-    page {
-      displayHeadline
-      displayTitle
     }
     typography {
       uppercaseH2
@@ -120,18 +118,16 @@ export const pageThemeFragment = graphql`
       }
       header {
         overline
-        layout
-        background {
+      }
+      page {
+        displayTitle
+        heroImage {
           childImageSharp {
-            fluid(quality: 90, maxWidth: 1920) {
+            fluid(quality: 70, maxWidth: 1920) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
-      }
-      page {
-        displayHeadline
-        displayTitle
       }
       typography {
         uppercaseH2

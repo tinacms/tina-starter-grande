@@ -3,6 +3,7 @@ import styled, { createGlobalStyle, css } from "styled-components"
 import { mix, shade, transparentize } from "polished"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
+import BackgroundImage from "gatsby-background-image"
 
 export const Reset = css`
   /*! minireset.css v0.0.5 | MIT License | github.com/jgthms/minireset.css */
@@ -612,7 +613,7 @@ const ButtonStyles = css`
   border: none;
   transition: all 150ms ${props => props.theme.easing};
   color: ${props => props.theme.color.white};
-  background-color: ${props => transparentize(0.8, props.theme.color.black)};
+  background-color: ${props => transparentize(0.5, props.theme.color.black)};
   border-bottom: 3px solid
     ${props => transparentize(0.8, props.theme.color.black)};
   cursor: pointer;
@@ -647,7 +648,7 @@ const ButtonStyles = css`
 
   &:hover {
     &:before {
-      opacity: 0.15;
+      opacity: 0.1;
     }
   }
 
@@ -815,4 +816,16 @@ export const Hero = styled.header`
       }
     }
   }
+`
+
+export const HeroBackground = styled(BackgroundImage)`
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 `

@@ -4,7 +4,6 @@ import styled from "styled-components"
 import {
   Paper,
   Headline,
-  Title,
   Hero,
   Wrapper,
   Overlay,
@@ -12,6 +11,10 @@ import {
   MetaSpan,
   MetaActions,
   DraftBadge,
+  LinkButton,
+  Textline,
+  Actions,
+  HeroBackground,
 } from "../components/style"
 import { Authors } from "../components/authors"
 import { SEO } from "../components/seo"
@@ -19,8 +22,10 @@ import { Link } from "gatsby"
 import { Context } from "../components/context"
 import { removeNull } from "../components/helpers"
 
+import { useJsonForm } from "gatsby-tinacms-json"
+
 export default function List({ data, pageContext }) {
-  const page = data.page
+  const [page] = useJsonForm(data.page, ListForm)
 
   const siteContext = React.useContext(Context)
 
@@ -41,11 +46,25 @@ export default function List({ data, pageContext }) {
           <SEO title={page.title} />
           <Hero>
             <Wrapper>
-              {theme.page.displayHeadline && (
-                <Headline>{page.headline}</Headline>
+              {page.hero && page.hero.headline && (
+                <Headline>{page.hero.headline}</Headline>
+              )}
+              {page.hero && page.hero.textline && (
+                <Textline>{page.hero.textline}</Textline>
               )}
             </Wrapper>
             <Overlay />
+            {page.hero && page.hero.image ? (
+              <HeroBackground
+                fluid={page.hero.image.childImageSharp.fluid}
+              ></HeroBackground>
+            ) : theme.page.heroImage ? (
+              <HeroBackground
+                fluid={theme.page.heroImage.childImageSharp.fluid}
+              ></HeroBackground>
+            ) : (
+              <></>
+            )}
           </Hero>
           <Wrapper>
             {data.posts &&
@@ -107,7 +126,13 @@ export const pageQuery = graphql`
       hero {
         headline
         textline
-        background
+        image {
+          childImageSharp {
+            fluid(quality: 70, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
       }
       listType
       ...pageTheme
@@ -150,3 +175,58 @@ export const ListNav = styled.div`
     padding: 0.5rem 1rem;
   }
 `
+
+const ListForm = {
+  label: "Page",
+  fields: [
+    {
+      label: "Title",
+      name: "rawJson.title",
+      component: "text",
+    },
+    {
+      label: "Hero",
+      name: "rawJson.hero",
+      component: "group",
+      fields: [
+        {
+          label: "Headline",
+          name: "headline",
+          component: "text",
+        },
+        {
+          label: "Textline",
+          name: "textline",
+          component: "text",
+        },
+        {
+          label: "Image",
+          name: "image",
+          component: "text",
+        },
+      ],
+    },
+    {
+      label: "Page Theme",
+      name: "rawJson.pageTheme",
+      component: "group",
+      fields: [
+        {
+          label: "Uppercase H2",
+          name: "typography.uppercaseH2",
+          component: "toggle",
+        },
+        {
+          label: "Page Title",
+          name: "page.displayTitle",
+          component: "toggle",
+        },
+        {
+          label: "Default Hero Image",
+          name: "page.heroImage",
+          component: "text",
+        },
+      ],
+    },
+  ],
+}
