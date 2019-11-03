@@ -26,6 +26,7 @@ import { useJsonForm } from "gatsby-tinacms-json"
 
 export default function List({ data, pageContext }) {
   const [page] = useJsonForm(data.page, ListForm)
+  const [authors] = useJsonForm(data.authors, AuthorsForm)
 
   const siteContext = React.useContext(Context)
 
@@ -164,6 +165,17 @@ export const pageQuery = graphql`
         }
       }
     }
+    authors: dataJson(fileRelativePath: { eq: "/data/authors.json" }) {
+      authors {
+        slug
+        name
+        email
+        link
+      }
+
+      rawJson
+      fileRelativePath
+    }
   }
 `
 
@@ -236,6 +248,43 @@ const ListForm = {
         {
           label: "Default Hero Image",
           name: "page.heroImage",
+          component: "text",
+        },
+      ],
+    },
+  ],
+}
+
+const AuthorsForm = {
+  label: "Authors",
+  fields: [
+    {
+      label: "Authors",
+      name: "rawJson.authors",
+      component: "group-list",
+      itemProps: item => ({
+        key: item.slug,
+        label: item.name,
+      }),
+      fields: [
+        {
+          label: "Name",
+          name: "name",
+          component: "text",
+        },
+        {
+          label: "Slug",
+          name: "slug",
+          component: "text",
+        },
+        {
+          label: "Email",
+          name: "email",
+          component: "text",
+        },
+        {
+          label: "Link",
+          name: "link",
           component: "text",
         },
       ],
