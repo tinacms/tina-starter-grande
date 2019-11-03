@@ -456,6 +456,7 @@ export const GlobalStyles = createGlobalStyle`
 `
 
 export const Wrapper = styled.div`
+  position: relative;
   width: 100%;
   max-width: 896px;
   margin: 0 auto;
@@ -589,16 +590,6 @@ export const Main = styled.main`
   }
   ${Paper} {
     flex: 1 0 auto;
-  }
-
-  @media (min-width: ${props => props.theme.breakpoints.small}) {
-    padding: 6rem 0 4rem 0;
-
-    ${props =>
-      props.theme.header.layout === "hero" &&
-      css`
-        padding: 12rem 0 4rem 0;
-      `};
   }
 `
 
@@ -761,5 +752,28 @@ export const Title = styled.h2`
 
   + hr {
     margin: 2.2rem 0;
+  }
+`
+
+export const Hero = styled.header`
+  position: relative !important;
+  width: 100%;
+  z-index: -1;
+  background-color: ${props => transparentize(0.1, props.theme.color.primary)};
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 5.5rem 0 10rem 0;
+
+  @media (min-width: ${props => props.theme.breakpoints.small}) {
+    margin-bottom: -9.5rem;
+  }
+
+  ${Overlay} {
+    z-index: 1;
+  }
+
+  ${Wrapper} {
+    z-index: 2;
   }
 `

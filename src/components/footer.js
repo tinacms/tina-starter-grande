@@ -3,9 +3,9 @@ import { Wrapper } from "./style"
 import styled from "styled-components"
 import { transparentize } from "polished"
 
-export const Footer = () => {
+export const Footer = styled(({ ...styleProps }) => {
   return (
-    <StyledFooter>
+    <footer {...styleProps}>
       <Wrapper>
         © {new Date().getFullYear()} – Built with
         {` `}
@@ -13,11 +13,9 @@ export const Footer = () => {
         <a href="https://www.tinacms.org">Tina</a> <span>by </span>
         <a href="https://www.forestry.io">Forestry.io</a>
       </Wrapper>
-    </StyledFooter>
+    </footer>
   )
-}
-
-export const StyledFooter = styled.footer`
+})`
   font-size: 0.8rem;
   line-height: 3rem;
   text-align: center;

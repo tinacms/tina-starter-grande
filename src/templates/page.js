@@ -1,6 +1,13 @@
 import React, { useEffect, useMemo } from "react"
 import { graphql } from "gatsby"
-import { Paper, Headline, Title } from "../components/style"
+import {
+  Paper,
+  Headline,
+  Title,
+  Hero,
+  Wrapper,
+  Overlay,
+} from "../components/style"
 import { SEO } from "../components/seo"
 import { Form, FormBlock } from "../blocks/form"
 import { Content, ContentBlock } from "../blocks/content"
@@ -26,36 +33,45 @@ function Page(props) {
       {({ theme }) => (
         <>
           <SEO title={page.title} />
-          {theme.page.displayHeadline && <Headline>{page.headline}</Headline>}
-          <Paper>
-            {theme.page.displayTitle && (
-              <>
-                <Title>{page.title}</Title>
-                <hr />
-              </>
-            )}
-            {blocks &&
-              blocks.map(({ _template, ...data }, i) => {
-                switch (_template) {
-                  case "FormBlock":
-                    return <Form form={data} />
-                  case "ContentBlock":
-                    if (data.content)
-                      return (
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html:
-                              page.childrenPagesJsonBlockMarkdown[i]
-                                .childMarkdownRemark.html,
-                          }}
-                        ></div>
-                      )
-                    break
-                  default:
-                    return true
-                }
-              })}
-          </Paper>
+          <Hero>
+            <Wrapper>
+              {theme.page.displayHeadline && (
+                <Headline>{page.headline}</Headline>
+              )}
+            </Wrapper>
+            <Overlay />
+          </Hero>
+          <Wrapper>
+            <Paper>
+              {theme.page.displayTitle && (
+                <>
+                  <Title>{page.title}</Title>
+                  <hr />
+                </>
+              )}
+              {blocks &&
+                blocks.map(({ _template, ...data }, i) => {
+                  switch (_template) {
+                    case "FormBlock":
+                      return <Form form={data} />
+                    case "ContentBlock":
+                      if (data.content)
+                        return (
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                page.childrenPagesJsonBlockMarkdown[i]
+                                  .childMarkdownRemark.html,
+                            }}
+                          ></div>
+                        )
+                      break
+                    default:
+                      return true
+                  }
+                })}
+            </Paper>
+          </Wrapper>
         </>
       )}
     </Context.Consumer>

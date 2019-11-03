@@ -8,36 +8,25 @@ import { Nav } from "./nav"
 import { Context } from "./context"
 import { Link } from "gatsby"
 
-export const Header = ({ siteTitle }) => {
+export const Header = styled(({ siteTitle, ...styleProps }) => {
   return (
     <Context.Consumer>
-      {({ theme, toggleDarkMode, isDarkMode }) => (
-        <>
-          <StyledHeader>
-            <HeaderWrapper>
-              <SiteTitle>
-                <SiteLink to="/">
-                  <Coffee />
-                  {siteTitle}
-                </SiteLink>
-              </SiteTitle>
-              <Nav toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-            </HeaderWrapper>
-          </StyledHeader>
-          {theme.header.background.childImageSharp && (
-            <HeaderBackground
-              fluid={theme.header.background.childImageSharp.fluid}
-            >
-              <Overlay />
-            </HeaderBackground>
-          )}
-        </>
+      {({ toggleDarkMode, isDarkMode }) => (
+        <header {...styleProps}>
+          <HeaderWrapper>
+            <SiteTitle>
+              <SiteLink to="/">
+                <Coffee />
+                {siteTitle}
+              </SiteLink>
+            </SiteTitle>
+            <Nav toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
+          </HeaderWrapper>
+        </header>
       )}
     </Context.Consumer>
   )
-}
-
-export const StyledHeader = styled.header`
+})`
   position: absolute;
   width: 100%;
   top: 0;
@@ -56,30 +45,6 @@ export const StyledHeader = styled.header`
     css`
       background-color: ${props =>
         transparentize(0.3, props.theme.color.black)};
-    `};
-`
-
-export const HeaderBackground = styled(BackgroundImage)`
-  position: relative !important;
-  width: 100%;
-  height: 12rem;
-  z-index: -1;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  @media (min-width: ${props => props.theme.breakpoints.small}) {
-    position: absolute !important;
-    height: 18rem;
-  }
-
-  ${props =>
-    props.theme.header.layout === "hero" &&
-    css`
-      height: 80vh !important;
-      ${Overlay} {
-        opacity: 0;
-      }
     `};
 `
 

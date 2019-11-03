@@ -41,9 +41,7 @@ const Layout = ({ children }) => {
                 <GlobalStyles />
                 <Page>
                   <Header siteTitle={data.site.siteMetadata.title} />
-                  <Main>
-                    <Wrapper>{children}</Wrapper>
-                  </Main>
+                  <Main>{children}</Main>
                   <Footer />
                 </Page>
               </>
@@ -92,13 +90,13 @@ export const Page = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  ${StyledHeader} {
+  ${Header} {
     flex: 0 0 auto;
   }
-  main {
+  ${Main} {
     flex: 1 0 auto;
   }
-  footer {
+  ${Footer} {
     flex: 0 0 auto;
   }
 `
