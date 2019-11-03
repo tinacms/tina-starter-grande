@@ -58,6 +58,7 @@ export const Nav = ({ toggleDarkMode, isDarkMode }) => {
 }
 
 export const StyledNavbar = styled.ul`
+  color: inherit;
   @media (max-width: ${props => props.theme.breakpoints.small}) {
     position: absolute;
     bottom: 0;
@@ -124,6 +125,7 @@ export const NavItem = styled.li`
   flex: 0 0 auto;
   display: flex;
   align-items: center;
+  color: inherit;
   @media (max-width: ${props => props.theme.breakpoints.small}) {
     &:not(:last-child) {
       border-bottom: 1px solid
@@ -145,7 +147,7 @@ export const NavLink = styled(props => (
   font-size: 0.8rem;
   letter-spacing: 0.5px;
   text-decoration: none;
-  color: ${p => p.theme.color.white} !important;
+  color: inherit !important;
   opacity: 0.5;
   overflow: visible;
   transition: all 150ms ${p => p.theme.easing};
@@ -252,7 +254,7 @@ export const NavToggle = styled(({ menuOpen, ...styleProps }) => {
   line-height: 1;
   align-self: stretch;
   text-transform: uppercase;
-  color: ${props => props.theme.color.white};
+  color: inherit;
   opacity: 0.5;
   overflow: visible;
   transition: all 150ms ${p => p.theme.easing};
@@ -307,7 +309,6 @@ export const DarkModeToggle = styled(({ ...styleProps }) => {
   background: transparent;
   color: inherit;
   cursor: pointer;
-  color: ${props => props.theme.color.white};
   opacity: 0.5;
   overflow: hidden;
   transition: all 300ms ${props => props.theme.easing};

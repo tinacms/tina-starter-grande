@@ -80,6 +80,7 @@ export const globalThemeFragment = graphql`
     }
     header {
       overline
+      transparent
     }
     page {
       displayTitle
@@ -118,6 +119,7 @@ export const pageThemeFragment = graphql`
       }
       header {
         overline
+        transparent
       }
       page {
         displayTitle

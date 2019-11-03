@@ -31,14 +31,23 @@ export const Header = styled(({ siteTitle, ...styleProps }) => {
   z-index: 100;
   width: 100%;
   top: 0;
-  background-color: ${props => transparentize(0.95, props.theme.color.black)};
+  background-color: ${props => props.theme.color.background};
   box-shadow: inset 0 -1px 0 ${props => transparentize(0.9, props.theme.color.white)},
     0 1px 0 ${props => transparentize(0.9, props.theme.color.black)};
+  color: ${props => props.theme.color.foreground};
 
   ${props =>
     props.theme.header.overline &&
     css`
       border-top: 6px solid ${props => props.theme.color.primary};
+    `};
+
+  ${props =>
+    props.theme.header.transparent &&
+    css`
+      background-color: ${props =>
+        transparentize(0.95, props.theme.color.black)};
+      color: ${props => props.theme.color.white};
     `};
 `
 
@@ -48,7 +57,7 @@ export const SiteLink = styled(Link)`
   display: flex;
   align-items: center;
   align-self: stretch;
-  color: ${props => props.theme.color.white} !important;
+  color: inherit !important;
   text-decoration: none;
   margin: 0;
   transition: all 150ms ${p => p.theme.easing};
@@ -57,7 +66,7 @@ export const SiteLink = styled(Link)`
     width: 1.5rem;
     height: 1.5rem;
     margin-right: 0.5rem;
-    fill: ${props => props.theme.color.white};
+    fill: currentColor;
   }
   &:after {
     content: "";

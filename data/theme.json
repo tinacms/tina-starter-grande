@@ -16,7 +16,8 @@
     "small": "3px"
   },
   "header": {
-    "overline": true
+    "overline": true,
+    "transparent": true
   },
   "page": {
     "displayTitle": true,

@@ -54,7 +54,8 @@
       "small": "3px"
     },
     "header": {
-      "overline": true
+      "overline": true,
+      "transparent": false
     },
     "page": {
       "displayTitle": true,

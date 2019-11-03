@@ -5,7 +5,7 @@
   "listType": "post",
   "hero": {
     "image": "coffee-beans.jpg",
-    "large": true,
+    "large": false,
     "overlay": true
   },
   "pageTheme": {

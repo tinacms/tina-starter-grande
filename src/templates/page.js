@@ -324,6 +324,11 @@ const ThemeForm = {
           name: "overline",
           component: "toggle",
         },
+        {
+          label: "Transparent",
+          name: "transparent",
+          component: "toggle",
+        },
       ],
     },
     {
