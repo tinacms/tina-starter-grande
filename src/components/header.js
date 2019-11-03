@@ -28,6 +28,7 @@ export const Header = styled(({ siteTitle, ...styleProps }) => {
   )
 })`
   position: absolute;
+  z-index: 100;
   width: 100%;
   top: 0;
   background-color: ${props => transparentize(0.95, props.theme.color.black)};

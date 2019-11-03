@@ -2,6 +2,7 @@ import React from "react"
 import styled, { createGlobalStyle, css } from "styled-components"
 import { mix, shade, transparentize } from "polished"
 import Img from "gatsby-image"
+import { Link } from "gatsby"
 
 export const Reset = css`
   /*! minireset.css v0.0.5 | MIT License | github.com/jgthms/minireset.css */
@@ -306,7 +307,7 @@ export const GlobalStyles = createGlobalStyle`
   ${PrismTheme}
 
   blockquote {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     padding: 1rem 1.5rem;
     border-radius: 0 ${props => props.theme.radius.small} ${props =>
   props.theme.radius.small} 0;
@@ -582,6 +583,7 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: stretch;
+
   ${Wrapper} {
     flex: 1 0 auto;
     display: flex;
@@ -591,15 +593,20 @@ export const Main = styled.main`
   ${Paper} {
     flex: 1 0 auto;
   }
+
+  @media (min-width: ${props => props.theme.breakpoints.small}) {
+    padding-bottom: 3rem;
+  }
 `
 
-export const Button = styled.button`
+const ButtonStyles = css`
   display: inline-block;
   position: relative;
   line-height: 2.25rem;
   font-size: 1rem;
   padding: 0 1rem;
   text-align: center;
+  text-decoration: none;
   min-width: 8rem;
   border-radius: ${props => props.theme.radius.small};
   border: none;
@@ -665,6 +672,14 @@ export const Button = styled.button`
       background-color: ${props => props.theme.color.primary};
       color: ${props => props.theme.color.white};
     `};
+`
+
+export const Button = styled.button`
+  ${ButtonStyles}
+`
+
+export const LinkButton = styled(props => <Link {...props} />)`
+  ${ButtonStyles}
 `
 
 export const Meta = styled.div`
@@ -744,6 +759,23 @@ export const Headline = styled.h2`
   text-transform: none;
 `
 
+export const Textline = styled.p`
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: ${props => props.theme.color.secondary};
+  word-spacing: 1px;
+  font-weight: 500;
+  text-transform: none;
+  padding-bottom: 0.3rem;
+`
+
+export const Actions = styled.div`
+  padding-bottom: 0.5rem;
+  > * {
+    margin-right: 1rem;
+  }
+`
+
 export const Title = styled.h2`
   font-size: 2.2em;
   line-height: 1.2;
@@ -758,15 +790,15 @@ export const Title = styled.h2`
 export const Hero = styled.header`
   position: relative !important;
   width: 100%;
-  z-index: -1;
+  z-index: 0;
   background-color: ${props => transparentize(0.1, props.theme.color.primary)};
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 5.5rem 0 10rem 0;
+  padding: 5.5rem 0 9rem 0;
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
-    margin-bottom: -9.5rem;
+    margin-bottom: -8.5rem;
   }
 
   ${Overlay} {
@@ -775,5 +807,12 @@ export const Hero = styled.header`
 
   ${Wrapper} {
     z-index: 2;
+
+    > * {
+      margin-bottom: 1.5rem;
+      &:last-child {
+        margin-bottom: 2rem;
+      }
+    }
   }
 `

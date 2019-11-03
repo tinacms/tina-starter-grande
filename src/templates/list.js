@@ -3,6 +3,11 @@ import { graphql } from "gatsby"
 import styled from "styled-components"
 import {
   Paper,
+  Headline,
+  Title,
+  Hero,
+  Wrapper,
+  Overlay,
   Meta,
   MetaSpan,
   MetaActions,
@@ -30,46 +35,67 @@ export default function List({ data, pageContext }) {
   const nextPage = slug + "/" + (currentPage + 1).toString()
 
   return (
-    <>
-      {data.posts &&
-        data.posts.edges.map(item => {
-          return (
-            <Paper article key={item.node.id}>
-              {item.node.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
-              <h2>
-                <Link to={item.node.frontmatter.path}>
-                  {item.node.frontmatter.title}
+    <Context.Consumer>
+      {({ theme }) => (
+        <>
+          <SEO title={page.title} />
+          <Hero>
+            <Wrapper>
+              {theme.page.displayHeadline && (
+                <Headline>{page.headline}</Headline>
+              )}
+            </Wrapper>
+            <Overlay />
+          </Hero>
+          <Wrapper>
+            {data.posts &&
+              data.posts.edges.map(item => {
+                return (
+                  <Paper article key={item.node.id}>
+                    {item.node.frontmatter.draft && (
+                      <DraftBadge>Draft</DraftBadge>
+                    )}
+                    <h2>
+                      <Link to={item.node.frontmatter.path}>
+                        {item.node.frontmatter.title}
+                      </Link>
+                    </h2>
+                    <p>{item.node.excerpt}</p>
+                    <Meta>
+                      <MetaSpan>{item.node.frontmatter.date}</MetaSpan>
+                      {item.node.frontmatter.authors && (
+                        <MetaSpan>
+                          <em>By</em>&nbsp;
+                          <Authors
+                            authorSlugs={item.node.frontmatter.authors}
+                          />
+                        </MetaSpan>
+                      )}
+                      <MetaActions>
+                        <Link to={item.node.frontmatter.path}>
+                          Read Article →
+                        </Link>
+                      </MetaActions>
+                    </Meta>
+                  </Paper>
+                )
+              })}
+            <ListNav>
+              {!isFirst && (
+                <Link to={prevPage} rel="prev">
+                  ← Newer
                 </Link>
-              </h2>
-              <p>{item.node.excerpt}</p>
-              <Meta>
-                <MetaSpan>{item.node.frontmatter.date}</MetaSpan>
-                {item.node.frontmatter.authors && (
-                  <MetaSpan>
-                    <em>By</em>&nbsp;
-                    <Authors authorSlugs={item.node.frontmatter.authors} />
-                  </MetaSpan>
-                )}
-                <MetaActions>
-                  <Link to={item.node.frontmatter.path}>Read Article →</Link>
-                </MetaActions>
-              </Meta>
-            </Paper>
-          )
-        })}
-      <ListNav>
-        {!isFirst && (
-          <Link to={prevPage} rel="prev">
-            ← Newer
-          </Link>
-        )}
-        {!isLast && (
-          <Link to={nextPage} rel="next">
-            Older →
-          </Link>
-        )}
-      </ListNav>
-    </>
+              )}
+              {!isLast && (
+                <Link to={nextPage} rel="next">
+                  Older →
+                </Link>
+              )}
+            </ListNav>
+          </Wrapper>
+        </>
+      )}
+    </Context.Consumer>
   )
 }
 
@@ -78,6 +104,11 @@ export const pageQuery = graphql`
     page: pagesJson(path: { eq: $slug }) {
       path
       title
+      hero {
+        headline
+        textline
+        background
+      }
       listType
       ...pageTheme
       rawJson

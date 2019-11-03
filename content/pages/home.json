@@ -19,5 +19,21 @@
       "displayHeadline": true
     }
   },
-  "headline": "Welcome to Tina Grande."
+  "hero": {
+    "headline": "Welcome to Tina Grande.",
+    "textline": "This template is filled with sample content to demonstrate the theme's options",
+    "ctas": [
+      {
+        "label": "Read The Blog  →",
+        "link": "/blog",
+        "primary": true,
+        "arrow": true
+      },
+      {
+        "label": "Contact Us  →",
+        "link": "/contact",
+        "arrow": true
+      }
+    ]
+  }
 }

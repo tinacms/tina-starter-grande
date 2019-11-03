@@ -1,9 +1,21 @@
 {
   "title": "Dummy",
-  "headline": "Dummy",
   "path": "/dummy",
   "headerImage": "dummy",
   "content": "## root",
+  "hero": {
+    "headline": "Dummy",
+    "textline": "Dummy",
+    "background": "Dummy",
+    "ctas": [
+      {
+        "label": "Read The Blog",
+        "link": "/blog",
+        "primary": true,
+        "arrow": true
+      }
+    ]
+  },
   "blocks": [
     {
       "_template": "ContentBlock",

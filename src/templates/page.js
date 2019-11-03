@@ -3,10 +3,13 @@ import { graphql } from "gatsby"
 import {
   Paper,
   Headline,
+  Textline,
+  Actions,
   Title,
   Hero,
   Wrapper,
   Overlay,
+  LinkButton,
 } from "../components/style"
 import { SEO } from "../components/seo"
 import { Form, FormBlock } from "../blocks/form"
@@ -23,9 +26,6 @@ function Page(props) {
 
   const siteContext = React.useContext(Context)
 
-  console.log("Page Theme: ")
-  console.log(page.pageTheme)
-
   useEffect(() => siteContext.setPageTheme(page.pageTheme), [page.pageTheme])
 
   return (
@@ -35,8 +35,22 @@ function Page(props) {
           <SEO title={page.title} />
           <Hero>
             <Wrapper>
-              {theme.page.displayHeadline && (
-                <Headline>{page.headline}</Headline>
+              {page.hero && page.hero.headline && (
+                <Headline>{page.hero.headline}</Headline>
+              )}
+              {page.hero && page.hero.textline && (
+                <Textline>{page.hero.textline}</Textline>
+              )}
+              {page.hero && page.hero.ctas.length > 0 && (
+                <Actions>
+                  {page.hero.ctas.map(cta => {
+                    return (
+                      <LinkButton primary={cta.primary} to={cta.link}>
+                        {cta.label}
+                      </LinkButton>
+                    )
+                  })}
+                </Actions>
               )}
             </Wrapper>
             <Overlay />
@@ -79,10 +93,10 @@ function Page(props) {
 }
 
 const NavForm = {
-  label: "Main Nav",
+  label: "Main Menu",
   fields: [
     {
-      label: "Main Nav",
+      label: "Main Menu",
       name: "rawJson.menuItems",
       component: "group-list",
       itemProps: item => ({
@@ -100,6 +114,48 @@ const NavForm = {
           name: "link",
           component: "text",
         },
+        {
+          label: "Sub Menu",
+          name: "subMenu",
+          component: "group-list",
+          itemProps: item => ({
+            key: item.link,
+            label: item.label,
+          }),
+          fields: [
+            {
+              label: "Label",
+              name: "label",
+              component: "text",
+            },
+            {
+              label: "Link",
+              name: "link",
+              component: "text",
+            },
+            {
+              label: "Sub Menu",
+              name: "subMenu",
+              component: "group-list",
+              itemProps: item => ({
+                key: item.link,
+                label: item.label,
+              }),
+              fields: [
+                {
+                  label: "Label",
+                  name: "label",
+                  component: "text",
+                },
+                {
+                  label: "Link",
+                  name: "link",
+                  component: "text",
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
   ],
@@ -114,12 +170,51 @@ const PageForm = {
       component: "text",
     },
     {
-      label: "Headline",
-      name: "rawJson.headline",
-      component: "text",
+      label: "Hero",
+      name: "rawJson.hero",
+      component: "group",
+      fields: [
+        {
+          label: "Headline",
+          name: "headline",
+          component: "text",
+        },
+        {
+          label: "Textline",
+          name: "textline",
+          component: "text",
+        },
+        {
+          label: "Actions",
+          name: "ctas",
+          component: "group-list",
+          fields: [
+            {
+              label: "Label",
+              name: "label",
+              component: "text",
+            },
+            {
+              label: "Link",
+              name: "link",
+              component: "text",
+            },
+            {
+              label: "Primary",
+              name: "primary",
+              component: "toggle",
+            },
+            {
+              label: "Arrow",
+              name: "arrow",
+              component: "toggle",
+            },
+          ],
+        },
+      ],
     },
     {
-      label: "Sections",
+      label: "Page Sections",
       name: "rawJson.blocks",
       component: "blocks",
       templates: {
@@ -158,8 +253,17 @@ export const pageQuery = graphql`
   query($path: String!) {
     page: pagesJson(path: { eq: $path }) {
       title
-      headline
       content
+      hero {
+        headline
+        textline
+        background
+        ctas {
+          label
+          link
+          primary
+        }
+      }
       blocks {
         _template
         content
