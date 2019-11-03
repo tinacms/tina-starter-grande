@@ -22,6 +22,7 @@ import { useJsonForm } from "gatsby-tinacms-json"
 function Page(props) {
   const [page] = useJsonForm(props.data.page, PageForm)
   const [nav] = useJsonForm(props.data.nav, NavForm)
+  const [theme] = useJsonForm(props.data.theme, ThemeForm)
 
   const blocks = page.blocks ? page.blocks : []
 
@@ -54,7 +55,7 @@ function Page(props) {
                 </Actions>
               )}
             </Wrapper>
-            <Overlay />
+            {page.hero && page.hero.overlay && <Overlay />}
             {page.hero && page.hero.image ? (
               <HeroBackground
                 fluid={page.hero.image.childImageSharp.fluid}
@@ -192,6 +193,11 @@ const PageForm = {
           component: "toggle",
         },
         {
+          label: "Overlay",
+          name: "overlay",
+          component: "toggle",
+        },
+        {
           label: "Headline",
           name: "headline",
           component: "text",
@@ -278,6 +284,85 @@ const PageForm = {
   ],
 }
 
+const ThemeForm = {
+  label: "Global Theme",
+  fields: [
+    {
+      label: "Color",
+      name: "rawJson.color",
+      component: "group",
+      fields: [
+        {
+          label: "Black",
+          name: "black",
+          component: "text",
+        },
+        {
+          label: "White",
+          name: "white",
+          component: "text",
+        },
+        {
+          label: "Primary",
+          name: "primary",
+          component: "text",
+        },
+        {
+          label: "Secondary",
+          name: "secondary",
+          component: "text",
+        },
+      ],
+    },
+    {
+      label: "Header",
+      name: "rawJson.header",
+      component: "group",
+      fields: [
+        {
+          label: "Overline",
+          name: "overline",
+          component: "toggle",
+        },
+      ],
+    },
+    {
+      label: "Page",
+      name: "rawJson.page",
+      component: "group",
+      fields: [
+        {
+          label: "Page Title",
+          name: "displayTitle",
+          component: "toggle",
+        },
+        {
+          label: "Large Hero",
+          name: "largeHero",
+          component: "toggle",
+        },
+        {
+          label: "Default Hero Image",
+          name: "heroImage",
+          component: "text",
+        },
+      ],
+    },
+    {
+      label: "Typography",
+      name: "rawJson.typography",
+      component: "group",
+      fields: [
+        {
+          label: "Uppercase H2",
+          name: "uppercaseH2",
+          component: "toggle",
+        },
+      ],
+    },
+  ],
+}
+
 export default Page
 
 export const pageQuery = graphql`
@@ -289,6 +374,7 @@ export const pageQuery = graphql`
         headline
         textline
         large
+        overlay
         image {
           childImageSharp {
             fluid(quality: 70, maxWidth: 1920) {
@@ -329,6 +415,12 @@ export const pageQuery = graphql`
         link
         label
       }
+
+      rawJson
+      fileRelativePath
+    }
+    theme: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
+      ...globalTheme
 
       rawJson
       fileRelativePath

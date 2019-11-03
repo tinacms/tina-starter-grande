@@ -44,7 +44,7 @@ export default function List({ data, pageContext }) {
       {({ theme }) => (
         <>
           <SEO title={page.title} />
-          <Hero>
+          <Hero large={page.hero && page.hero.large}>
             <Wrapper>
               {page.hero && page.hero.headline && (
                 <Headline>{page.hero.headline}</Headline>
@@ -53,7 +53,7 @@ export default function List({ data, pageContext }) {
                 <Textline>{page.hero.textline}</Textline>
               )}
             </Wrapper>
-            <Overlay />
+            {page.hero && page.hero.overlay && <Overlay />}
             {page.hero && page.hero.image ? (
               <HeroBackground
                 fluid={page.hero.image.childImageSharp.fluid}
@@ -126,6 +126,8 @@ export const pageQuery = graphql`
       hero {
         headline
         textline
+        large
+        overlay
         image {
           childImageSharp {
             fluid(quality: 70, maxWidth: 1920) {
@@ -192,6 +194,11 @@ const ListForm = {
         {
           label: "Large",
           name: "large",
+          component: "toggle",
+        },
+        {
+          label: "Overlay",
+          name: "overlay",
           component: "toggle",
         },
         {

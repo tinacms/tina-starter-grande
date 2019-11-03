@@ -33,6 +33,7 @@
       }
     ],
     "image": "cafe-2.jpg",
-    "large": true
+    "large": true,
+    "overlay": true
   }
 }

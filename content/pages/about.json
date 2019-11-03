@@ -13,6 +13,7 @@
     }
   },
   "hero": {
-    "large": false
+    "large": false,
+    "overlay": true
   }
 }

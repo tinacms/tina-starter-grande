@@ -28,7 +28,7 @@ const Post = ({ data }) => {
         <>
           <SEO title={frontmatter.title} />
           <Hero large={frontmatter.hero && frontmatter.hero.large}>
-            <Overlay />
+            {frontmatter.hero && frontmatter.hero.overlay && <Overlay />}
             {frontmatter.heroImage ? (
               <HeroBackground
                 fluid={frontmatter.heroImage.childImageSharp.fluid}
@@ -90,6 +90,11 @@ const PostForm = {
       label: "Hero Image",
     },
     {
+      label: "Hero Overlay",
+      name: "rawFrontmatter.hero.overlay",
+      component: "toggle",
+    },
+    {
       name: "rawFrontmatter.hero.large",
       component: "toggle",
       label: "Large Hero",
@@ -121,6 +126,7 @@ export const pageQuery = graphql`
         authors
         hero {
           large
+          overlay
           image {
             childImageSharp {
               fluid(quality: 70, maxWidth: 1920) {

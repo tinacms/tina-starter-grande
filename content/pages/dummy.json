@@ -5,6 +5,7 @@
   "hero": {
     "headline": "Dummy",
     "textline": "Dummy",
+    "overlay": true,
     "image": "cafe-2.jpg",
     "ctas": [
       {
