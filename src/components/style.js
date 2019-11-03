@@ -797,10 +797,7 @@ export const Hero = styled.header`
   background-size: cover;
   background-repeat: no-repeat;
   padding: 5.5rem 0 9rem 0;
-
-  @media (min-width: ${props => props.theme.breakpoints.small}) {
-    margin-bottom: -8.5rem;
-  }
+  margin-bottom: -8.5rem;
 
   ${Overlay} {
     z-index: 1;

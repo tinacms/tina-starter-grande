@@ -9,6 +9,7 @@ draft: true
 hero:
   image: coffee-beans.jpg
   large: false
+  overlay: true
 ---
 
 Draft outline:
