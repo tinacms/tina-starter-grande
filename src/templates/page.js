@@ -34,7 +34,7 @@ function Page(props) {
       {({ theme }) => (
         <>
           <SEO title={page.title} />
-          <Hero>
+          <Hero large={page.hero && page.hero.large}>
             <Wrapper>
               {page.hero && page.hero.headline && (
                 <Headline>{page.hero.headline}</Headline>
@@ -42,7 +42,7 @@ function Page(props) {
               {page.hero && page.hero.textline && (
                 <Textline>{page.hero.textline}</Textline>
               )}
-              {page.hero && page.hero.ctas.length > 0 && (
+              {page.hero && page.hero.ctas && page.hero.ctas.length > 0 && (
                 <Actions>
                   {page.hero.ctas.map(cta => {
                     return (
@@ -187,6 +187,11 @@ const PageForm = {
       component: "group",
       fields: [
         {
+          label: "Large",
+          name: "large",
+          component: "toggle",
+        },
+        {
           label: "Headline",
           name: "headline",
           component: "text",
@@ -259,6 +264,11 @@ const PageForm = {
           component: "toggle",
         },
         {
+          label: "Large Hero",
+          name: "page.largeHero",
+          component: "toggle",
+        },
+        {
           label: "Default Hero Image",
           name: "page.heroImage",
           component: "text",
@@ -278,6 +288,7 @@ export const pageQuery = graphql`
       hero {
         headline
         textline
+        large
         image {
           childImageSharp {
             fluid(quality: 70, maxWidth: 1920) {

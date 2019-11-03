@@ -11,5 +11,8 @@
     "page": {
       "displayTitle": true
     }
+  },
+  "hero": {
+    "large": false
   }
 }

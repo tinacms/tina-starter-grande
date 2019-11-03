@@ -5,12 +5,12 @@
       "link": "/"
     },
     {
-      "label": "About",
-      "link": "/about"
-    },
-    {
       "label": "Blog",
       "link": "/blog"
+    },
+    {
+      "label": "About",
+      "link": "/about"
     },
     {
       "label": "Contact",

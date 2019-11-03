@@ -20,6 +20,7 @@
   },
   "page": {
     "displayTitle": true,
+    "largeHero": true,
     "heroImage": "cafe.jpg"
   },
   "typography": {

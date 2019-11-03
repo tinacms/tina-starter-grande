@@ -28,9 +28,11 @@
       {
         "label": "Contact Us  →",
         "link": "/contact",
-        "arrow": true
+        "arrow": true,
+        "primary": false
       }
     ],
-    "image": "cafe-2.jpg"
+    "image": "cafe-2.jpg",
+    "large": true
   }
 }

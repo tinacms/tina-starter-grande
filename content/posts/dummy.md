@@ -1,5 +1,7 @@
 ---
 type: dummmy
 draft: true
-heroImage: coffee-beans.jpg
+hero:
+  image: coffee-beans.jpg
+  large: false
 ---

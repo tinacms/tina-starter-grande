@@ -190,6 +190,11 @@ const ListForm = {
       component: "group",
       fields: [
         {
+          label: "Large",
+          name: "large",
+          component: "toggle",
+        },
+        {
           label: "Headline",
           name: "headline",
           component: "text",

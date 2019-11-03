@@ -811,11 +811,18 @@ export const Hero = styled.header`
 
     > * {
       margin-bottom: 1.5rem;
+
       &:last-child {
         margin-bottom: 2rem;
       }
     }
   }
+
+  ${props =>
+    props.large &&
+    css`
+      padding: 9.5rem 0 13rem 0;
+    `}
 `
 
 export const HeroBackground = styled(BackgroundImage)`

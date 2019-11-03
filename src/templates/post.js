@@ -27,7 +27,7 @@ const Post = ({ data }) => {
       {({ theme }) => (
         <>
           <SEO title={frontmatter.title} />
-          <Hero>
+          <Hero large={frontmatter.hero && frontmatter.hero.large}>
             <Overlay />
             {frontmatter.heroImage ? (
               <HeroBackground
@@ -85,9 +85,14 @@ const PostForm = {
       component: "date",
     },
     {
-      name: "rawFrontmatter.heroImage",
+      name: "rawFrontmatter.hero.image",
       component: "text",
       label: "Hero Image",
+    },
+    {
+      name: "rawFrontmatter.hero.large",
+      component: "toggle",
+      label: "Large Hero",
     },
     {
       label: "Body",
@@ -114,10 +119,13 @@ export const pageQuery = graphql`
         title
         draft
         authors
-        heroImage {
-          childImageSharp {
-            fluid(quality: 70, maxWidth: 1920) {
-              ...GatsbyImageSharpFluid_withWebp
+        hero {
+          large
+          image {
+            childImageSharp {
+              fluid(quality: 70, maxWidth: 1920) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
             }
           }
         }
