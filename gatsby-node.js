@@ -43,7 +43,7 @@ exports.onCreateNode = ({
         id: createNodeId(`${node.id} markdown host`),
         parent: node.id,
         internal: {
-          contentDigest: "foo",
+          contentDigest: createContentDigest(JSON.stringify(node.blocks)),
           type: `${node.internal.type}MarkdownData`,
         },
       }
@@ -57,12 +57,13 @@ exports.onCreateNode = ({
       })
 
       node.blocks.forEach((block, i) => {
+        if (!block.content) return
         const blockNode = {
           id: `${node.id} block ${i} markdown`,
           parent: markdownHost.id,
           internal: {
             content: block.content,
-            contentDigest: "aaaaa",
+            contentDigest: createContentDigest(block.content),
             type: `${node.internal.type}BlockMarkdown`,
             mediaType: "text/markdown",
           },
@@ -94,7 +95,7 @@ exports.onCreateNode = ({
       createNodeField({
         node,
         name: `markdownContent___NODE`, // Before the ___NODE: Name of the new fields
-        value: markdownNode.id, // Connects both nodes
+        value: textNode.id, // Connects both nodes
       })
     }
   }
