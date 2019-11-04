@@ -3,7 +3,6 @@
 ## Features
 
 - **Full [TinaCMS](http://tinacms.org) integration**
-- Dark mode
 - Easy Theme Customization
   - Both global & per-page
   - Preset logos/colors to choose from
@@ -13,6 +12,7 @@
   - Custom fields
   - Netlify and Formspree Integration
 - Page Builder
+- Dark mode
 - Syntax highlighting
 - Blog
   - Pagination
@@ -29,7 +29,7 @@ git clone https://github.com/tinacms/tina-starter-grande.git
 
 cd tina-starter-grande
 
-gatsby develop
+yarn install && gatsby develop
 ```
 
 ## Contributing
