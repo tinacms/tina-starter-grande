@@ -1,0 +1,15 @@
+{
+  "title": "404",
+  "path": "/404",
+  "hero": {
+    "ctas": [
+      {}
+    ]
+  },
+  "blocks": [
+    {
+      "_template": "ContentBlock",
+      "content": "Unfortunately the page you were looking for can't be found.\n\n[Homepage  →](/ \"Homepage\")"
+    }
+  ]
+}

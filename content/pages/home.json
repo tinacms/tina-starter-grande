@@ -24,7 +24,8 @@
       }
     ],
     "image": "cafe-2.jpg",
-    "large": true,
-    "overlay": true
-  }
+    "large": true
+  },
+  "title": "Home",
+  "displayTitle": false
 }

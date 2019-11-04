@@ -1,10 +1,12 @@
 {
   "title": "Dummy",
   "path": "/dummy",
+  "displayTitle": true,
   "content": "## root",
   "hero": {
     "headline": "Dummy",
     "textline": "Dummy",
+    "large": false,
     "overlay": true,
     "image": "cafe-2.jpg",
     "ctas": [

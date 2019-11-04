@@ -796,7 +796,7 @@ export const Hero = styled.header`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 5.5rem 0 9rem 0;
+  padding: 2.5rem 0 9rem 0;
   margin-bottom: -8.5rem;
 
   ${Overlay} {
@@ -818,8 +818,19 @@ export const Hero = styled.header`
   ${props =>
     props.large &&
     css`
-      padding: 9.5rem 0 13rem 0;
+      padding: 6.5rem 0 13rem 0;
     `}
+
+  ${props =>
+    props.theme.header.transparent &&
+    css`
+      padding-top: 5.5rem;
+      ${props =>
+        props.large &&
+        css`
+          padding-top: 9.5rem;
+        `}
+    `};
 `
 
 export const HeroBackground = styled(BackgroundImage)`

@@ -7,8 +7,5 @@
       "_template": "ContentBlock"
     }
   ],
-  "hero": {
-    "large": false,
-    "overlay": true
-  }
+  "displayTitle": true
 }

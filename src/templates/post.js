@@ -27,7 +27,9 @@ const Post = ({ data }) => {
 
   const siteContext = React.useContext(Context)
   const theme = siteContext.theme
-  const hero = merge({}, theme.hero, removeNull(frontmatter.hero))
+  const hero = frontmatter.hero
+    ? merge({}, theme.hero, removeNull(frontmatter.hero))
+    : theme.hero
 
   return (
     <Context.Consumer>

@@ -27,7 +27,7 @@ export const Header = styled(({ siteTitle, ...styleProps }) => {
     </Context.Consumer>
   )
 })`
-  position: absolute;
+  position: relative;
   z-index: 100;
   width: 100%;
   top: 0;
@@ -45,6 +45,7 @@ export const Header = styled(({ siteTitle, ...styleProps }) => {
   ${props =>
     props.theme.header.transparent &&
     css`
+      position: absolute;
       background-color: ${props =>
         transparentize(0.95, props.theme.color.black)};
       color: ${props => props.theme.color.white};

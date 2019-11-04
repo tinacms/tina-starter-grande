@@ -28,7 +28,5 @@
       ]
     }
   ],
-  "hero": {
-    "overlay": true
-  }
+  "displayTitle": true
 }

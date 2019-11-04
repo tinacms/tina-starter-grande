@@ -32,7 +32,9 @@ export default function List({ data, pageContext }) {
 
   const siteContext = React.useContext(Context)
   const theme = siteContext.theme
-  const hero = merge({}, theme.hero, removeNull(page.hero))
+  const hero = page.hero
+    ? merge({}, theme.hero, removeNull(page.hero))
+    : theme.hero
 
   const { slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1
@@ -228,28 +230,6 @@ const ListForm = {
         {
           label: "Image",
           name: "image",
-          component: "text",
-        },
-      ],
-    },
-    {
-      label: "Page Theme",
-      name: "rawJson.pageTheme",
-      component: "group",
-      fields: [
-        {
-          label: "Uppercase H2",
-          name: "typography.uppercaseH2",
-          component: "toggle",
-        },
-        {
-          label: "Page Title",
-          name: "page.displayTitle",
-          component: "toggle",
-        },
-        {
-          label: "Default Hero Image",
-          name: "page.heroImage",
           component: "text",
         },
       ],

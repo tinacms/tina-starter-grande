@@ -31,7 +31,9 @@ function Page(props) {
 
   const siteContext = React.useContext(Context)
   const theme = siteContext.theme
-  const hero = merge({}, theme.hero, removeNull(page.hero))
+  const hero = page.hero
+    ? merge({}, theme.hero, removeNull(page.hero))
+    : theme.hero
 
   return (
     <>
@@ -61,7 +63,7 @@ function Page(props) {
       </Hero>
       <Wrapper>
         <Paper>
-          {page.title && (
+          {page.title && page.displayTitle && (
             <>
               <Title>{page.title}</Title>
               <hr />
@@ -244,29 +246,14 @@ const PageForm = {
       },
     },
     {
-      label: "Page Theme",
-      name: "rawJson.pageTheme",
+      label: "Page Settings",
+      name: "rawJson",
       component: "group",
       fields: [
         {
-          label: "Uppercase H2",
-          name: "typography.uppercaseH2",
-          component: "toggle",
-        },
-        {
           label: "Page Title",
-          name: "page.displayTitle",
+          name: "displayTitle",
           component: "toggle",
-        },
-        {
-          label: "Large Hero",
-          name: "page.largeHero",
-          component: "toggle",
-        },
-        {
-          label: "Default Hero Image",
-          name: "page.heroImage",
-          component: "text",
         },
       ],
     },
@@ -364,6 +351,7 @@ export const pageQuery = graphql`
     page: pagesJson(path: { eq: $path }) {
       title
       content
+      displayTitle
       hero {
         headline
         textline
