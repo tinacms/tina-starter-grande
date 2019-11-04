@@ -20,6 +20,7 @@ export const Theme = (globalTheme, isDarkMode) => {
     breakpoints: globalTheme.breakpoints,
     radius: globalTheme.radius,
     header: globalTheme.header,
+    menu: globalTheme.menu,
     hero: globalTheme.hero,
     typography: globalTheme.typography,
   }
@@ -43,6 +44,7 @@ export const Theme = (globalTheme, isDarkMode) => {
     breakpoints: globalTheme.breakpoints,
     radius: globalTheme.radius,
     header: globalTheme.header,
+    menu: globalTheme.menu,
     hero: globalTheme.hero,
     typography: globalTheme.typography,
   }
@@ -71,6 +73,9 @@ export const globalThemeFragment = graphql`
     header {
       overline
       transparent
+    }
+    menu {
+      style
     }
     hero {
       image {

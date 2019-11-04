@@ -153,87 +153,176 @@ export const NavLink = styled(props => (
   transition: all 150ms ${p => p.theme.easing};
   z-index: 1;
 
-  &:after {
-    content: "";
-    display: none;
-    position: absolute;
-    top: -6px;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    background-color: ${props => transparentize(0.85, props.theme.color.white)};
-    transform: translate3d(0, -100%, 0);
-    transition: all 150ms ${props => props.theme.easing};
-  }
-
-  &:before {
-    content: "";
-    position: absolute;
-    display: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      to bottom,
-      ${props => transparentize(0.85, props.theme.color.black)},
-      transparent 1.5rem
-    );
-    opacity: 0;
-    z-index: -1;
-    transform: translate3d(0, -100%, 0);
-    transition: all 150ms ${props => props.theme.easing};
-  }
-
   &:focus-visible {
     opacity: 1;
-    &:before {
-      transform: translate3d(0, 0, 0);
-      opacity: 0.5;
-    }
   }
 
   &:hover:not(.active) {
-    &:before {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
-    }
-    &:after {
-      background-color: ${props =>
-        transparentize(0.8, props.theme.color.black)};
-    }
   }
 
   &:hover,
   &:active,
   &.active {
     opacity: 1;
-
-    &:before {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
-    }
-    &:after {
-      transform: translate3d(0, 0, 0);
-    }
   }
 
   &.active {
-    &:before {
-      background: linear-gradient(
-        to bottom,
-        ${props => transparentize(0.85, props.theme.color.white)},
-        transparent 1.5rem
-      );
-    }
   }
 
-  @media (min-width: ${props => props.theme.breakpoints.small}) {
-    &:after,
-    &:before {
-      display: block;
-    }
-  }
+  ${props =>
+    props.theme.menu.style === "pill" &&
+    css`
+      padding: 0 1rem;
+
+      &:before {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0rem;
+        left: 0rem;
+        right: 0rem;
+        bottom: 0rem;
+        opacity: 0;
+        z-index: -1;
+        background-color: ${props =>
+          props.theme.header.transparent
+            ? props.theme.color.background
+            : transparentize(0.95, props.theme.color.foreground)};
+        border: 1px solid
+          ${props => transparentize(0.95, props.theme.color.foreground)};
+        transition: all 150ms ${props => props.theme.easing};
+      }
+
+      &:focus-visible {
+        opacity: 1;
+        &:before {
+          opacity: 0.15;
+        }
+      }
+
+      &:hover:not(.active) {
+        &:before {
+          opacity: 0.15;
+        }
+      }
+
+      &:hover,
+      &:active,
+      &.active {
+        opacity: 1;
+
+        &:before {
+          opacity: 1;
+        }
+      }
+
+      &.active {
+        color: ${props =>
+          props.theme.isDarkMode
+            ? props.theme.color.foreground
+            : props.theme.color.primary} !important;
+        &:before {
+          opacity: 1;
+        }
+      }
+
+      @media (min-width: ${props => props.theme.breakpoints.small}) {
+        &:before {
+          top: 0.625rem;
+          left: 0.25rem;
+          right: 0.25rem;
+          bottom: 0.625rem;
+          border-radius: 3rem;
+        }
+      }
+    `}
+
+  ${props =>
+    props.theme.menu.style === "glow" &&
+    css`
+      &:after {
+        content: "";
+        display: none;
+        position: absolute;
+        top: -6px;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background-color: ${props =>
+          transparentize(0.85, props.theme.color.white)};
+        transform: translate3d(0, -100%, 0);
+        transition: all 150ms ${props => props.theme.easing};
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        display: none;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          ${props => transparentize(0.85, props.theme.color.black)},
+          transparent 1.5rem
+        );
+        opacity: 0;
+        z-index: -1;
+        transform: translate3d(0, -100%, 0);
+        transition: all 150ms ${props => props.theme.easing};
+      }
+
+      &:focus-visible {
+        opacity: 1;
+        &:before {
+          transform: translate3d(0, 0, 0);
+          opacity: 0.5;
+        }
+      }
+
+      &:hover:not(.active) {
+        &:before {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+        }
+        &:after {
+          background-color: ${props =>
+            transparentize(0.8, props.theme.color.black)};
+        }
+      }
+
+      &:hover,
+      &:active,
+      &.active {
+        opacity: 1;
+
+        &:before {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+        }
+        &:after {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      &.active {
+        &:before {
+          background: linear-gradient(
+            to bottom,
+            ${props => transparentize(0.85, props.theme.color.white)},
+            transparent 1.5rem
+          );
+        }
+      }
+
+      @media (min-width: ${props => props.theme.breakpoints.small}) {
+        &:after,
+        &:before {
+          display: block;
+        }
+      }
+    `}
 `
 
 export const NavToggle = styled(({ menuOpen, ...styleProps }) => {

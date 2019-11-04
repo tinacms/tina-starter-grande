@@ -19,6 +19,9 @@
     "overline": true,
     "transparent": true
   },
+  "menu": {
+    "style": "glow"
+  },
   "hero": {
     "image": "cafe.jpg",
     "large": false,

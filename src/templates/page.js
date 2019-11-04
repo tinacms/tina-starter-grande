@@ -312,6 +312,19 @@ const ThemeForm = {
       ],
     },
     {
+      label: "Menu",
+      name: "rawJson.menu",
+      component: "group",
+      fields: [
+        {
+          label: "Style",
+          description: "Options are 'pill' and 'glow'",
+          name: "style",
+          component: "text",
+        },
+      ],
+    },
+    {
       label: "Hero",
       name: "rawJson.hero",
       component: "group",
