@@ -19,7 +19,7 @@
       {
         "label": "Contact Us",
         "link": "/contact",
-        "arrow": true,
+        "arrow": false,
         "primary": false
       }
     ],

@@ -19,15 +19,15 @@
     "overline": true,
     "transparent": true
   },
-  "menu": {
-    "style": "glow"
-  },
   "hero": {
     "image": "cafe.jpg",
     "large": false,
     "overlay": true
   },
   "typography": {
-    "uppercaseH2": true
+    "uppercaseH2": false
+  },
+  "menu": {
+    "style": "glow"
   }
 }
