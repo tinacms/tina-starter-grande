@@ -11,13 +11,13 @@
     "textline": "This template is filled with sample content to get you started.",
     "ctas": [
       {
-        "label": "Read The Blog  →",
+        "label": "Read The Blog",
         "link": "/blog",
         "primary": true,
         "arrow": true
       },
       {
-        "label": "Contact Us  →",
+        "label": "Contact Us",
         "link": "/contact",
         "arrow": true,
         "primary": false

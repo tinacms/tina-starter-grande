@@ -42,12 +42,16 @@ function Page(props) {
         <Wrapper>
           {hero.headline && <Headline>{hero.headline}</Headline>}
           {hero.textline && <Textline>{hero.textline}</Textline>}
-          {hero.ctas && hero.ctas.length > 0 && (
+          {hero.ctas && (
             <Actions>
-              {hero.ctas.map(cta => {
+              {Object.keys(hero.ctas).map(key => {
                 return (
-                  <LinkButton primary={cta.primary} to={cta.link}>
-                    {cta.label}
+                  <LinkButton
+                    primary={hero.ctas[key].primary}
+                    to={hero.ctas[key].link}
+                  >
+                    {hero.ctas[key].label}
+                    {hero.ctas[key].arrow && <span>&nbsp;&nbsp;→</span>}
                   </LinkButton>
                 )
               })}
@@ -368,6 +372,7 @@ export const pageQuery = graphql`
           label
           link
           primary
+          arrow
         }
       }
       blocks {
