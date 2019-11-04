@@ -24,13 +24,15 @@ import { removeNull } from "../components/helpers"
 
 import { useJsonForm } from "gatsby-tinacms-json"
 
+const merge = require("lodash.merge")
+
 export default function List({ data, pageContext }) {
   const [page] = useJsonForm(data.page, ListForm)
   const [authors] = useJsonForm(data.authors, AuthorsForm)
 
   const siteContext = React.useContext(Context)
-
-  useEffect(() => siteContext.setPageTheme(page.pageTheme), [page.pageTheme])
+  const theme = siteContext.theme
+  const hero = merge({}, theme.hero, page.hero)
 
   const { slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1
@@ -45,26 +47,27 @@ export default function List({ data, pageContext }) {
       {({ theme }) => (
         <>
           <SEO title={page.title} />
-          <Hero large={page.hero && page.hero.large}>
+          <Hero large={hero.large}>
             <Wrapper>
-              {page.hero && page.hero.headline && (
-                <Headline>{page.hero.headline}</Headline>
-              )}
-              {page.hero && page.hero.textline && (
-                <Textline>{page.hero.textline}</Textline>
+              {hero.headline && <Headline>{hero.headline}</Headline>}
+              {hero.textline && <Textline>{hero.textline}</Textline>}
+              {hero.ctas && hero.ctas.length > 0 && (
+                <Actions>
+                  {hero.ctas.map(cta => {
+                    return (
+                      <LinkButton primary={cta.primary} to={cta.link}>
+                        {cta.label}
+                      </LinkButton>
+                    )
+                  })}
+                </Actions>
               )}
             </Wrapper>
-            {page.hero && page.hero.overlay && <Overlay />}
-            {page.hero && page.hero.image ? (
+            {hero.overlay && <Overlay />}
+            {hero.image && (
               <HeroBackground
-                fluid={page.hero.image.childImageSharp.fluid}
+                fluid={hero.image.childImageSharp.fluid}
               ></HeroBackground>
-            ) : theme.page.heroImage ? (
-              <HeroBackground
-                fluid={theme.page.heroImage.childImageSharp.fluid}
-              ></HeroBackground>
-            ) : (
-              <></>
             )}
           </Hero>
           <Wrapper>
@@ -138,7 +141,6 @@ export const pageQuery = graphql`
         }
       }
       listType
-      ...pageTheme
       rawJson
       fileRelativePath
     }

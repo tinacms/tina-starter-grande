@@ -19,10 +19,10 @@
     "overline": true,
     "transparent": true
   },
-  "page": {
-    "displayTitle": true,
-    "largeHero": true,
-    "heroImage": "cafe.jpg"
+  "hero": {
+    "image": "cafe.jpg",
+    "large": false,
+    "overlay": true
   },
   "typography": {
     "uppercaseH2": true

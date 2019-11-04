@@ -7,11 +7,6 @@
       "_template": "ContentBlock"
     }
   ],
-  "pageTheme": {
-    "page": {
-      "displayTitle": true
-    }
-  },
   "hero": {
     "large": false,
     "overlay": true

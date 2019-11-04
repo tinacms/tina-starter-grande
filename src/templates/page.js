@@ -19,89 +19,77 @@ import { Context } from "../components/context"
 
 import { useJsonForm } from "gatsby-tinacms-json"
 
+const merge = require("lodash.merge")
+
 function Page(props) {
   const [page] = useJsonForm(props.data.page, PageForm)
   const [nav] = useJsonForm(props.data.nav, NavForm)
-  const [theme] = useJsonForm(props.data.theme, ThemeForm)
+  const [globalTheme] = useJsonForm(props.data.theme, ThemeForm)
 
   const blocks = page.blocks ? page.blocks : []
 
   const siteContext = React.useContext(Context)
-
-  useEffect(() => siteContext.setPageTheme(page.pageTheme), [page.pageTheme])
+  const theme = siteContext.theme
+  const hero = merge({}, theme.hero, page.hero)
 
   return (
-    <Context.Consumer>
-      {({ theme }) => (
-        <>
-          <SEO title={page.title} />
-          <Hero large={page.hero && page.hero.large}>
-            <Wrapper>
-              {page.hero && page.hero.headline && (
-                <Headline>{page.hero.headline}</Headline>
-              )}
-              {page.hero && page.hero.textline && (
-                <Textline>{page.hero.textline}</Textline>
-              )}
-              {page.hero && page.hero.ctas && page.hero.ctas.length > 0 && (
-                <Actions>
-                  {page.hero.ctas.map(cta => {
+    <>
+      <SEO title={page.title} />
+      <Hero large={hero.large}>
+        <Wrapper>
+          {hero.headline && <Headline>{hero.headline}</Headline>}
+          {hero.textline && <Textline>{hero.textline}</Textline>}
+          {hero.ctas && hero.ctas.length > 0 && (
+            <Actions>
+              {hero.ctas.map(cta => {
+                return (
+                  <LinkButton primary={cta.primary} to={cta.link}>
+                    {cta.label}
+                  </LinkButton>
+                )
+              })}
+            </Actions>
+          )}
+        </Wrapper>
+        {hero.overlay && <Overlay />}
+        {hero.image && (
+          <HeroBackground
+            fluid={hero.image.childImageSharp.fluid}
+          ></HeroBackground>
+        )}
+      </Hero>
+      <Wrapper>
+        <Paper>
+          {page.displayTitle && (
+            <>
+              <Title>{page.title}</Title>
+              <hr />
+            </>
+          )}
+          {blocks &&
+            blocks.map(({ _template, ...data }, i) => {
+              switch (_template) {
+                case "FormBlock":
+                  return <Form form={data} />
+                case "ContentBlock":
+                  if (data.content)
                     return (
-                      <LinkButton primary={cta.primary} to={cta.link}>
-                        {cta.label}
-                      </LinkButton>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            page.childrenPagesJsonBlockMarkdown[i]
+                              .childMarkdownRemark.html,
+                        }}
+                      ></div>
                     )
-                  })}
-                </Actions>
-              )}
-            </Wrapper>
-            {page.hero && page.hero.overlay && <Overlay />}
-            {page.hero && page.hero.image ? (
-              <HeroBackground
-                fluid={page.hero.image.childImageSharp.fluid}
-              ></HeroBackground>
-            ) : theme.page.heroImage ? (
-              <HeroBackground
-                fluid={theme.page.heroImage.childImageSharp.fluid}
-              ></HeroBackground>
-            ) : (
-              <></>
-            )}
-          </Hero>
-          <Wrapper>
-            <Paper>
-              {theme.page.displayTitle && (
-                <>
-                  <Title>{page.title}</Title>
-                  <hr />
-                </>
-              )}
-              {blocks &&
-                blocks.map(({ _template, ...data }, i) => {
-                  switch (_template) {
-                    case "FormBlock":
-                      return <Form form={data} />
-                    case "ContentBlock":
-                      if (data.content)
-                        return (
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html:
-                                page.childrenPagesJsonBlockMarkdown[i]
-                                  .childMarkdownRemark.html,
-                            }}
-                          ></div>
-                        )
-                      break
-                    default:
-                      return true
-                  }
-                })}
-            </Paper>
-          </Wrapper>
-        </>
-      )}
-    </Context.Consumer>
+                  break
+                default:
+                  return true
+              }
+            })}
+        </Paper>
+      </Wrapper>
+    </>
   )
 }
 
@@ -332,23 +320,23 @@ const ThemeForm = {
       ],
     },
     {
-      label: "Page",
-      name: "rawJson.page",
+      label: "Hero",
+      name: "rawJson.hero",
       component: "group",
       fields: [
         {
-          label: "Page Title",
-          name: "displayTitle",
+          label: "Overlay",
+          name: "overlay",
           component: "toggle",
         },
         {
-          label: "Large Hero",
-          name: "largeHero",
+          label: "Large",
+          name: "large",
           component: "toggle",
         },
         {
-          label: "Default Hero Image",
-          name: "heroImage",
+          label: "Default Image",
+          name: "image",
           component: "text",
         },
       ],
@@ -409,8 +397,6 @@ export const pageQuery = graphql`
           html
         }
       }
-
-      ...pageTheme
 
       rawJson
       fileRelativePath

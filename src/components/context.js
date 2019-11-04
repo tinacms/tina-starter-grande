@@ -12,17 +12,6 @@ const initialDarkMode = userPrefDark === "true" ? true : false
 export class ContextProvider extends React.Component {
   state = {
     isDarkMode: initialDarkMode,
-    pageTheme: {},
-  }
-
-  setPageTheme = pageTheme => {
-    const newPageTheme = pageTheme ? removeNull(pageTheme) : {}
-    this.setState({
-      ...this.state,
-      pageTheme: {
-        ...newPageTheme,
-      },
-    })
   }
 
   toggleDarkMode = () => {
@@ -38,16 +27,11 @@ export class ContextProvider extends React.Component {
   }
 
   render() {
-    const theme = Theme(
-      this.props.globalTheme,
-      this.state.pageTheme,
-      this.state.isDarkMode
-    )
+    const theme = Theme(this.props.globalTheme, this.state.isDarkMode)
     return (
       <Context.Provider
         value={{
           theme: theme,
-          setPageTheme: this.setPageTheme,
           toggleDarkMode: this.toggleDarkMode,
         }}
       >

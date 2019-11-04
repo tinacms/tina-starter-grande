@@ -7,13 +7,5 @@
     "image": "coffee-beans.jpg",
     "large": false,
     "overlay": true
-  },
-  "pageTheme": {
-    "page": {
-      "displayTitle": false
-    },
-    "typography": {
-      "uppercaseH2": true
-    }
   }
 }

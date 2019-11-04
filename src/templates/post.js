@@ -19,26 +19,26 @@ import { Context } from "../components/context"
 
 import { remarkForm } from "gatsby-tinacms-remark"
 
+const merge = require("lodash.merge")
+
 const Post = ({ data }) => {
   const { frontmatter, html } = data.markdownRemark
+
+  const siteContext = React.useContext(Context)
+  const theme = siteContext.theme
+  const hero = merge({}, theme.hero, frontmatter.hero)
 
   return (
     <Context.Consumer>
       {({ theme }) => (
         <>
           <SEO title={frontmatter.title} />
-          <Hero large={frontmatter.hero && frontmatter.hero.large}>
-            {frontmatter.hero && frontmatter.hero.overlay && <Overlay />}
-            {frontmatter.heroImage ? (
+          <Hero large={hero.large}>
+            {hero.overlay && <Overlay />}
+            {hero.image && (
               <HeroBackground
-                fluid={frontmatter.heroImage.childImageSharp.fluid}
+                fluid={hero.image.childImageSharp.fluid}
               ></HeroBackground>
-            ) : theme.page.heroImage ? (
-              <HeroBackground
-                fluid={theme.page.heroImage.childImageSharp.fluid}
-              ></HeroBackground>
-            ) : (
-              <></>
             )}
           </Hero>
           <Wrapper>
