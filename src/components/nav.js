@@ -155,7 +155,7 @@ export const NavLink = styled(props => (
 
   &:after {
     content: "";
-    display: block;
+    display: none;
     position: absolute;
     top: -6px;
     left: 0;
@@ -169,7 +169,7 @@ export const NavLink = styled(props => (
   &:before {
     content: "";
     position: absolute;
-    display: block;
+    display: none;
     top: 0;
     left: 0;
     width: 100%;
@@ -228,9 +228,10 @@ export const NavLink = styled(props => (
     }
   }
 
-  @media (max-width: ${props => props.theme.breakpoints.small}) {
-    &:after {
-      display: none;
+  @media (min-width: ${props => props.theme.breakpoints.small}) {
+    &:after,
+    &:before {
+      display: block;
     }
   }
 `
