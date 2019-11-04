@@ -2,8 +2,6 @@ import React from "react"
 import { mix } from "polished"
 import { graphql } from "gatsby"
 
-const merge = require("lodash.merge")
-
 export const Theme = (globalTheme, isDarkMode) => {
   const ThemeLight = {
     isDarkMode: false,

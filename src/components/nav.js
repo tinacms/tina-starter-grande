@@ -5,8 +5,6 @@ import styled, { css } from "styled-components"
 import { mix, transparentize } from "polished"
 import { Link } from "gatsby"
 
-import { useJsonForm } from "gatsby-tinacms-json"
-
 export const Nav = ({ toggleDarkMode, isDarkMode }) => {
   const data = useStaticQuery(graphql`
     query navQuery {
