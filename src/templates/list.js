@@ -32,7 +32,7 @@ export default function List({ data, pageContext }) {
 
   const siteContext = React.useContext(Context)
   const theme = siteContext.theme
-  const hero = merge({}, theme.hero, page.hero)
+  const hero = merge({}, theme.hero, removeNull(page.hero))
 
   const { slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1

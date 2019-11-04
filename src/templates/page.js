@@ -16,6 +16,7 @@ import { SEO } from "../components/seo"
 import { Form, FormBlock } from "../blocks/form"
 import { Content, ContentBlock } from "../blocks/content"
 import { Context } from "../components/context"
+import { removeNull } from "../components/helpers"
 
 import { useJsonForm } from "gatsby-tinacms-json"
 
@@ -30,7 +31,7 @@ function Page(props) {
 
   const siteContext = React.useContext(Context)
   const theme = siteContext.theme
-  const hero = merge({}, theme.hero, page.hero)
+  const hero = merge({}, theme.hero, removeNull(page.hero))
 
   return (
     <>
@@ -60,7 +61,7 @@ function Page(props) {
       </Hero>
       <Wrapper>
         <Paper>
-          {page.displayTitle && (
+          {page.title && (
             <>
               <Title>{page.title}</Title>
               <hr />

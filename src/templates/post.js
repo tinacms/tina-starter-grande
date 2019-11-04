@@ -16,6 +16,7 @@ import { Authors } from "../components/authors"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
 import { Context } from "../components/context"
+import { removeNull } from "../components/helpers"
 
 import { remarkForm } from "gatsby-tinacms-remark"
 
@@ -26,7 +27,7 @@ const Post = ({ data }) => {
 
   const siteContext = React.useContext(Context)
   const theme = siteContext.theme
-  const hero = merge({}, theme.hero, frontmatter.hero)
+  const hero = merge({}, theme.hero, removeNull(frontmatter.hero))
 
   return (
     <Context.Consumer>
