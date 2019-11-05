@@ -19,28 +19,28 @@ import { useJsonForm } from "gatsby-tinacms-json"
 const merge = require("lodash.merge")
 
 export const Layout = ({ page, children }) => {
-  // const data = useStaticQuery(graphql`
-  //   query LayoutQuery {
-  //     nav: dataJson(fileRelativePath: { eq: "/data/menu.json" }) {
-  //       menuItems {
-  //         link
-  //         label
-  //       }
+  const data = useStaticQuery(graphql`
+    query LayoutQuery {
+      nav: dataJson(fileRelativePath: { eq: "/data/menu.json" }) {
+        menuItems {
+          link
+          label
+        }
 
-  //       rawJson
-  //       fileRelativePath
-  //     }
-  //     theme: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
-  //       ...globalTheme
+        rawJson
+        fileRelativePath
+      }
+      theme: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
+        ...globalTheme
 
-  //       rawJson
-  //       fileRelativePath
-  //     }
-  //   }
-  // `)
+        rawJson
+        fileRelativePath
+      }
+    }
+  `)
 
-  // const [nav] = useJsonForm(data.nav, NavForm)
-  // const [globalTheme] = useJsonForm(data.theme, ThemeForm)
+  const [nav] = useJsonForm(data.nav, NavForm)
+  const [globalTheme] = useJsonForm(data.theme, ThemeForm)
 
   const themeContext = React.useContext(ThemeContext)
   const theme = themeContext.theme
