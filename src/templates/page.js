@@ -16,7 +16,7 @@ export default function Page({ data }) {
       <Paper>
         {page.title && page.displayTitle && (
           <>
-            <Title>Test</Title>
+            <Title>{page.title}</Title>
             <hr />
           </>
         )}
