@@ -145,7 +145,6 @@ export const pageQuery = graphql`
   query($path: String!) {
     page: pagesJson(path: { eq: $path }) {
       title
-      content
       displayTitle
       hero {
         headline

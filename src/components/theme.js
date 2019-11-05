@@ -100,6 +100,7 @@ export const globalThemeFragment = graphql`
     header {
       overline
       transparent
+      height
     }
     menu {
       style
@@ -114,6 +115,7 @@ export const globalThemeFragment = graphql`
       }
       large
       overlay
+      overlap
     }
     typography {
       uppercaseH2

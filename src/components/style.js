@@ -3,7 +3,6 @@ import styled, { createGlobalStyle, css } from "styled-components"
 import { mix, shade, transparentize } from "polished"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
-import BackgroundImage from "gatsby-background-image"
 
 export const Reset = css`
   /*! minireset.css v0.0.5 | MIT License | github.com/jgthms/minireset.css */
@@ -751,32 +750,6 @@ export const DraftBadge = styled.span`
   right: 0;
 `
 
-export const Headline = styled.h2`
-  font-size: 2.6em;
-  line-height: 1.2;
-  color: ${props => props.theme.color.white};
-  word-spacing: 1px;
-  font-weight: 700;
-  text-transform: none;
-`
-
-export const Textline = styled.p`
-  font-size: 1.3rem;
-  line-height: 1.2;
-  color: ${props => props.theme.color.secondary};
-  word-spacing: 1px;
-  font-weight: 500;
-  text-transform: none;
-  padding-bottom: 0.3rem;
-`
-
-export const Actions = styled.div`
-  padding-bottom: 0.5rem;
-  > * {
-    margin-right: 1rem;
-  }
-`
-
 export const Title = styled.h2`
   font-size: 2.2em;
   line-height: 1.2;
@@ -786,61 +759,4 @@ export const Title = styled.h2`
   + hr {
     margin: 2.2rem 0;
   }
-`
-
-export const Hero = styled.header`
-  position: relative !important;
-  width: 100%;
-  z-index: 0;
-  background-color: ${props => transparentize(0.1, props.theme.color.primary)};
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 2.5rem 0 9rem 0;
-  margin-bottom: -8.5rem;
-
-  ${Overlay} {
-    z-index: 1;
-  }
-
-  ${Wrapper} {
-    z-index: 2;
-
-    > * {
-      margin-bottom: 1.5rem;
-
-      &:last-child {
-        margin-bottom: 2rem;
-      }
-    }
-  }
-
-  ${props =>
-    props.large &&
-    css`
-      padding: 6.5rem 0 13rem 0;
-    `}
-
-  ${props =>
-    props.theme.header.transparent &&
-    css`
-      padding-top: 5.5rem;
-      ${props =>
-        props.large &&
-        css`
-          padding-top: 9.5rem;
-        `}
-    `};
-`
-
-export const HeroBackground = styled(BackgroundImage)`
-  position: absolute !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
 `

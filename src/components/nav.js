@@ -122,7 +122,7 @@ export const MenuForm = {
 export const NavItem = styled.li`
   flex: 0 0 auto;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   color: inherit;
   @media (max-width: ${props => props.theme.breakpoints.small}) {
     &:not(:last-child) {
@@ -132,13 +132,16 @@ export const NavItem = styled.li`
   }
 `
 
-export const NavLink = styled(props => (
-  <Link activeClassName="active" {...props} isCurrent />
+export const NavLink = styled(({ children, ...styleProps }) => (
+  <Link activeClassName="active" {...styleProps} isCurrent>
+    <span>{children}</span>
+  </Link>
 ))`
   flex: 1 0 auto;
-  line-height: 3rem;
+  line-height: ${props => props.theme.header.height};
   padding: 0 0.75rem;
-  display: block;
+  display: flex;
+  align-items: center;
   position: relative;
   text-align: center;
   text-transform: uppercase;
@@ -165,6 +168,15 @@ export const NavLink = styled(props => (
   }
 
   &.active {
+  }
+
+  span {
+    display: block;
+    width: 100%;
+  }
+
+  @media (min-width: ${props => props.theme.breakpoints.small}) {
+    line-height: 1;
   }
 
   ${props =>

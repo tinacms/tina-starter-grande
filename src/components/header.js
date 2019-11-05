@@ -26,9 +26,10 @@ export const Header = styled(({ siteTitle, ...styleProps }) => {
     </ThemeContext.Consumer>
   )
 })`
-  position: relative;
+  position: absolute;
   z-index: 100;
   width: 100%;
+  height: ${props => props.theme.header.height};
   top: 0;
   background-color: ${props => props.theme.color.background};
   box-shadow: inset 0 -1px 0 ${props => transparentize(0.9, props.theme.color.white)},
@@ -44,7 +45,6 @@ export const Header = styled(({ siteTitle, ...styleProps }) => {
   ${props =>
     props.theme.header.transparent &&
     css`
-      position: absolute;
       background-color: ${props =>
         transparentize(0.95, props.theme.color.black)};
       color: ${props => props.theme.color.white};
@@ -98,7 +98,8 @@ export const SiteTitle = styled.h1`
 
 export const HeaderWrapper = styled(Wrapper)`
   display: flex;
+  align-self: stretch;
   justify-content: space-between;
   align-items: center;
-  height: 3rem;
+  height: 100%;
 `
