@@ -1,0 +1,11 @@
+{
+  "init_commands": [
+    "yarn install"
+  ],
+  "command": "yarn develop -p 8080 --host 0.0.0.0",
+  "output_dir": "public",
+  "image": "node:10",
+  "mount_path": "/srv",
+  "working_dir": "/srv",
+  "env": {}
+}
