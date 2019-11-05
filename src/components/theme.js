@@ -1,17 +1,51 @@
-import React from "react"
+import React, { useState } from "react"
 import { mix } from "polished"
-import { graphql } from "gatsby"
+import styled, { ThemeProvider } from "styled-components"
+import { useStaticQuery, graphql } from "gatsby"
+import { GlobalStyles, Main } from "./style"
 
-export const Theme = (globalTheme, isDarkMode) => {
-  const ThemeLight = {
-    isDarkMode: false,
+export const ThemeContext = React.createContext()
+
+export const Theme = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    query ThemeQuery {
+      dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
+        ...globalTheme
+      }
+    }
+  `)
+
+  const isBrowser = typeof window !== "undefined"
+  const userPrefDark = isBrowser ? localStorage.getItem("isDarkMode") : false
+  const initialDarkMode = userPrefDark === "true" ? true : false
+
+  const [darkMode, setDarkMode] = useState(initialDarkMode)
+
+  const toggleDarkMode = () => {
+    const newMode = !darkMode
+
+    setDarkMode(newMode)
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem("isDarkMode", newMode)
+    }
+  }
+
+  const globalTheme = data.dataJson
+
+  const theme = {
+    isDarkMode: darkMode,
     color: {
-      black: globalTheme.color.black,
-      white: globalTheme.color.white,
+      black: darkMode ? globalTheme.color.black : globalTheme.color.black,
+      white: darkMode
+        ? mix(0.7, globalTheme.color.white, globalTheme.color.secondary)
+        : globalTheme.color.white,
       primary: globalTheme.color.primary,
       secondary: globalTheme.color.secondary,
-      foreground: globalTheme.color.black,
-      background: globalTheme.color.white,
+      foreground: darkMode
+        ? mix(0.7, globalTheme.color.white, globalTheme.color.secondary)
+        : globalTheme.color.black,
+      background: darkMode ? globalTheme.color.black : globalTheme.color.white,
       link: globalTheme.color.primary,
     },
     easing: globalTheme.easing,
@@ -23,31 +57,26 @@ export const Theme = (globalTheme, isDarkMode) => {
     typography: globalTheme.typography,
   }
 
-  const ThemeDark = {
-    isDarkMode: true,
-    color: {
-      black: globalTheme.color.black,
-      white: mix(0.7, globalTheme.color.white, globalTheme.color.secondary),
-      primary: globalTheme.color.primary,
-      secondary: globalTheme.color.secondary,
-      foreground: mix(
-        0.7,
-        globalTheme.color.white,
-        globalTheme.color.secondary
-      ),
-      background: globalTheme.color.black,
-      link: globalTheme.color.primary,
-    },
-    easing: globalTheme.easing,
-    breakpoints: globalTheme.breakpoints,
-    radius: globalTheme.radius,
-    header: globalTheme.header,
-    menu: globalTheme.menu,
-    hero: globalTheme.hero,
-    typography: globalTheme.typography,
-  }
-
-  return isDarkMode ? ThemeDark : ThemeLight
+  return (
+    <ThemeContext.Provider
+      value={{
+        theme: theme,
+        toggleDarkMode: toggleDarkMode,
+        isDarkMode: darkMode,
+      }}
+    >
+      <ThemeContext.Consumer>
+        {({ theme }) => (
+          <ThemeProvider theme={theme}>
+            <>
+              <GlobalStyles />
+              {children}
+            </>
+          </ThemeProvider>
+        )}
+      </ThemeContext.Consumer>
+    </ThemeContext.Provider>
+  )
 }
 
 export const globalThemeFragment = graphql`

@@ -1,12 +1,12 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import styled, { ThemeProvider } from "styled-components"
-import { GlobalStyles, Main } from "./style"
+import styled from "styled-components"
+import { Main } from "./style"
 import { Header } from "./header"
 import { Footer } from "./footer"
+import { Theme } from "./theme"
 import Helmet from "react-helmet"
 import slugify from "react-slugify"
-import { ContextProvider, Context } from "./context"
 
 import { createRemarkButton } from "gatsby-tinacms-remark"
 import { withPlugin } from "react-tinacms"
@@ -19,35 +19,21 @@ const Layout = ({ children }) => {
           title
         }
       }
-      dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
-        ...globalTheme
-      }
     }
   `)
-
-  const globalTheme = data.dataJson
 
   return (
     <>
       <Helmet>
         <script src="https://cdn.jsdelivr.net/npm/focus-visible@5.0.2/dist/focus-visible.min.js"></script>
       </Helmet>
-      <ContextProvider globalTheme={globalTheme}>
-        <Context.Consumer>
-          {({ theme }) => (
-            <ThemeProvider theme={theme}>
-              <>
-                <GlobalStyles />
-                <Page>
-                  <Header siteTitle={data.site.siteMetadata.title} />
-                  <Main>{children}</Main>
-                  <Footer />
-                </Page>
-              </>
-            </ThemeProvider>
-          )}
-        </Context.Consumer>
-      </ContextProvider>
+      <Theme>
+        <Page>
+          <Header siteTitle={data.site.siteMetadata.title} />
+          <Main>{children}</Main>
+          <Footer />
+        </Page>
+      </Theme>
     </>
   )
 }

@@ -4,13 +4,13 @@ import { Coffee } from "styled-icons/boxicons-regular"
 import styled, { css } from "styled-components"
 import { transparentize } from "polished"
 import { Nav } from "./nav"
-import { Context } from "./context"
+import { ThemeContext } from "./theme"
 import { Link } from "gatsby"
 
 export const Header = styled(({ siteTitle, ...styleProps }) => {
   return (
-    <Context.Consumer>
-      {({ toggleDarkMode, isDarkMode }) => (
+    <ThemeContext.Consumer>
+      {({ toggleDarkMode, isDarkMode, theme }) => (
         <header {...styleProps}>
           <HeaderWrapper>
             <SiteTitle>
@@ -23,7 +23,7 @@ export const Header = styled(({ siteTitle, ...styleProps }) => {
           </HeaderWrapper>
         </header>
       )}
-    </Context.Consumer>
+    </ThemeContext.Consumer>
   )
 })`
   position: relative;

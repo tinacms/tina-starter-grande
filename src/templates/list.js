@@ -19,7 +19,7 @@ import {
 import { Authors } from "../components/authors"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
-import { Context } from "../components/context"
+import { ThemeContext } from "../components/theme"
 import { removeNull } from "../components/helpers"
 
 import { useJsonForm } from "gatsby-tinacms-json"
@@ -30,8 +30,8 @@ export default function List({ data, pageContext }) {
   const [page] = useJsonForm(data.page, ListForm)
   const [authors] = useJsonForm(data.authors, AuthorsForm)
 
-  const siteContext = React.useContext(Context)
-  const theme = siteContext.theme
+  const themeContext = React.useContext(ThemeContext)
+  const theme = themeContext.theme
   const hero = page.hero
     ? merge({}, theme.hero, removeNull(page.hero))
     : theme.hero
@@ -45,7 +45,7 @@ export default function List({ data, pageContext }) {
   const nextPage = slug + "/" + (currentPage + 1).toString()
 
   return (
-    <Context.Consumer>
+    <ThemeContext.Consumer>
       {({ theme }) => (
         <>
           <SEO title={page.title} />
@@ -124,7 +124,7 @@ export default function List({ data, pageContext }) {
           </Wrapper>
         </>
       )}
-    </Context.Consumer>
+    </ThemeContext.Consumer>
   )
 }
 

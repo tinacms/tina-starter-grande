@@ -15,7 +15,7 @@ import {
 import { SEO } from "../components/seo"
 import { Form, FormBlock } from "../blocks/form"
 import { Content, ContentBlock } from "../blocks/content"
-import { Context } from "../components/context"
+import { ThemeContext } from "../components/theme"
 import { removeNull } from "../components/helpers"
 
 import { useJsonForm } from "gatsby-tinacms-json"
@@ -29,8 +29,8 @@ function Page(props) {
 
   const blocks = page.blocks ? page.blocks : []
 
-  const siteContext = React.useContext(Context)
-  const theme = siteContext.theme
+  const themeContext = React.useContext(ThemeContext)
+  const theme = themeContext.theme
   const hero = page.hero
     ? merge({}, theme.hero, removeNull(page.hero))
     : theme.hero

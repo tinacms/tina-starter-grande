@@ -15,7 +15,7 @@ import {
 import { Authors } from "../components/authors"
 import { SEO } from "../components/seo"
 import { Link } from "gatsby"
-import { Context } from "../components/context"
+import { ThemeContext } from "../components/theme"
 import { removeNull } from "../components/helpers"
 
 import { remarkForm } from "gatsby-tinacms-remark"
@@ -25,14 +25,14 @@ const merge = require("lodash.merge")
 const Post = ({ data }) => {
   const { frontmatter, html } = data.markdownRemark
 
-  const siteContext = React.useContext(Context)
-  const theme = siteContext.theme
+  const themeContext = React.useContext(ThemeContext)
+  const theme = themeContext.theme
   const hero = frontmatter.hero
     ? merge({}, theme.hero, removeNull(frontmatter.hero))
     : theme.hero
 
   return (
-    <Context.Consumer>
+    <ThemeContext.Consumer>
       {({ theme }) => (
         <>
           <SEO title={frontmatter.title} />
@@ -66,7 +66,7 @@ const Post = ({ data }) => {
           </Wrapper>
         </>
       )}
-    </Context.Consumer>
+    </ThemeContext.Consumer>
   )
 }
 
