@@ -57,7 +57,9 @@ exports.onCreateNode = ({
       })
 
       node.blocks.forEach((block, i) => {
-        if (!block.content) return
+        if (!block.content) {
+          block.content = ""
+        }
         const blockNode = {
           id: `${node.id} block ${i} markdown`,
           parent: markdownHost.id,
