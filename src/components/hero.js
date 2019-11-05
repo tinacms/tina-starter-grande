@@ -65,7 +65,7 @@ const HeroBackground = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  bottom: -8rem;
+  bottom: -${props => props.theme.hero.overlap};
   z-index: -1;
   background-color: ${props => transparentize(0.1, props.theme.color.primary)};
   background-position: center;

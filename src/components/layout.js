@@ -209,6 +209,11 @@ const ThemeForm = {
           name: "image",
           component: "text",
         },
+        {
+          label: "Overlap",
+          name: "overlap",
+          component: "text",
+        },
       ],
     },
     {

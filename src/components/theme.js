@@ -115,6 +115,7 @@ export const globalThemeFragment = graphql`
       }
       large
       overlay
+      overlap
     }
     typography {
       uppercaseH2

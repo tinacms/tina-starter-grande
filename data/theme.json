@@ -23,7 +23,8 @@
   "hero": {
     "image": "cafe.jpg",
     "large": false,
-    "overlay": true
+    "overlay": true,
+    "overlap": "8rem"
   },
   "typography": {
     "uppercaseH2": false
