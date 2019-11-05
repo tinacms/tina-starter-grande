@@ -16,7 +16,7 @@ export default function Page({ data }) {
       <Paper>
         {page.title && page.displayTitle && (
           <>
-            <Title>{page.title}</Title>
+            <Title>Test</Title>
             <hr />
           </>
         )}
@@ -145,7 +145,6 @@ export const pageQuery = graphql`
   query($path: String!) {
     page: pagesJson(path: { eq: $path }) {
       title
-      content
       displayTitle
       hero {
         headline

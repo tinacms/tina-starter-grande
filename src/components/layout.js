@@ -1,17 +1,9 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import {
-  Headline,
-  Textline,
-  Actions,
-  Hero,
-  Wrapper,
-  Overlay,
-  LinkButton,
-  HeroBackground,
-} from "../components/style"
+import { Wrapper } from "../components/style"
 import { SEO } from "../components/seo"
 import { ThemeContext } from "../components/theme"
+import { Hero } from "../components/hero"
 import { removeNull } from "../components/helpers"
 
 import { useJsonForm } from "gatsby-tinacms-json"
@@ -57,33 +49,7 @@ export const Layout = ({ page, children }) => {
   return (
     <>
       {pageTitle && <SEO title={pageTitle} />}
-      <Hero large={hero.large}>
-        <Wrapper>
-          {hero.headline && <Headline>{hero.headline}</Headline>}
-          {hero.textline && <Textline>{hero.textline}</Textline>}
-          {hero.ctas && (
-            <Actions>
-              {Object.keys(hero.ctas).map(key => {
-                return (
-                  <LinkButton
-                    primary={hero.ctas[key].primary}
-                    to={hero.ctas[key].link}
-                  >
-                    {hero.ctas[key].label}
-                    {hero.ctas[key].arrow && <span>&nbsp;&nbsp;→</span>}
-                  </LinkButton>
-                )
-              })}
-            </Actions>
-          )}
-        </Wrapper>
-        {hero.overlay && <Overlay />}
-        {hero.image && (
-          <HeroBackground
-            fluid={hero.image.childImageSharp.fluid}
-          ></HeroBackground>
-        )}
-      </Hero>
+      <Hero hero={hero} />
       <Wrapper>{children}</Wrapper>
     </>
   )
