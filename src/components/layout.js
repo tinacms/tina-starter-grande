@@ -18,29 +18,29 @@ import { useJsonForm } from "gatsby-tinacms-json"
 
 const merge = require("lodash.merge")
 
-function Layout({ page, children }) {
-  const data = useStaticQuery(graphql`
-    query LayoutQuery {
-      nav: dataJson(fileRelativePath: { eq: "/data/menu.json" }) {
-        menuItems {
-          link
-          label
-        }
+export const Layout = ({ page, children }) => {
+  // const data = useStaticQuery(graphql`
+  //   query LayoutQuery {
+  //     nav: dataJson(fileRelativePath: { eq: "/data/menu.json" }) {
+  //       menuItems {
+  //         link
+  //         label
+  //       }
 
-        rawJson
-        fileRelativePath
-      }
-      theme: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
-        ...globalTheme
+  //       rawJson
+  //       fileRelativePath
+  //     }
+  //     theme: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
+  //       ...globalTheme
 
-        rawJson
-        fileRelativePath
-      }
-    }
-  `)
+  //       rawJson
+  //       fileRelativePath
+  //     }
+  //   }
+  // `)
 
-  const [nav] = useJsonForm(data.nav, NavForm)
-  const [globalTheme] = useJsonForm(data.theme, ThemeForm)
+  // const [nav] = useJsonForm(data.nav, NavForm)
+  // const [globalTheme] = useJsonForm(data.theme, ThemeForm)
 
   const themeContext = React.useContext(ThemeContext)
   const theme = themeContext.theme
@@ -48,12 +48,8 @@ function Layout({ page, children }) {
     ? page.title
     : page.frontmatter.title
     ? page.frontmatter.title
-    : null
-  const pageHero = page.hero
-    ? page.hero
-    : page.frontmatter.hero
-    ? page.frontmatter.hero
-    : null
+    : false
+  const pageHero = page.frontmatter ? page.frontmatter.hero : page.hero
   const hero = pageHero
     ? merge({}, theme.hero, removeNull(pageHero))
     : theme.hero
@@ -258,5 +254,3 @@ const ThemeForm = {
     },
   ],
 }
-
-export default Layout

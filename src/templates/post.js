@@ -15,36 +15,32 @@ import { Layout } from "../components/layout"
 
 import { useRemarkForm } from "gatsby-tinacms-remark"
 
-const Post = ({ data }) => {
+export default function Post({ data }) {
   const [page] = useRemarkForm(data.markdownRemark, PostForm)
 
   return (
     <Layout page={page}>
-      <Wrapper>
-        <Paper>
-          <Meta>
-            <MetaSpan>{page.frontmatter.date}</MetaSpan>
-            {page.frontmatter.authors && (
-              <MetaSpan>
-                <em>By</em>&nbsp;
-                <Authors authorSlugs={page.frontmatter.authors} />
-              </MetaSpan>
-            )}
-            <MetaActions>
-              <Link to="/blog">← Back to Blog</Link>
-            </MetaActions>
-          </Meta>
-          <h1>{page.frontmatter.title}</h1>
-          <hr />
-          <Content dangerouslySetInnerHTML={{ __html: page.html }}></Content>
-          {page.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
-        </Paper>
-      </Wrapper>
+      <Paper>
+        <Meta>
+          <MetaSpan>{page.frontmatter.date}</MetaSpan>
+          {page.frontmatter.authors && (
+            <MetaSpan>
+              <em>By</em>&nbsp;
+              <Authors authorSlugs={page.frontmatter.authors} />
+            </MetaSpan>
+          )}
+          <MetaActions>
+            <Link to="/blog">← Back to Blog</Link>
+          </MetaActions>
+        </Meta>
+        <h1>{page.frontmatter.title}</h1>
+        <hr />
+        <Content dangerouslySetInnerHTML={{ __html: page.html }}></Content>
+        {page.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
+      </Paper>
     </Layout>
   )
 }
-
-export default Post
 
 const PostForm = {
   fields: [

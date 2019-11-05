@@ -1,14 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Paper, Title, Wrapper } from "../components/style"
+import { Paper, Title } from "../components/style"
 import { Form, FormBlock } from "../blocks/form"
 import { Content, ContentBlock } from "../blocks/content"
 import { Layout } from "../components/layout"
 
 import { useJsonForm } from "gatsby-tinacms-json"
 
-function Page(props) {
-  const [page] = useJsonForm(props.data.page, PageForm)
+export default function Page({ data }) {
+  const [page] = useJsonForm(data.page, PageForm)
   const blocks = page.blocks ? page.blocks : []
 
   return (
@@ -140,8 +140,6 @@ const PageForm = {
     },
   ],
 }
-
-export default Page
 
 export const pageQuery = graphql`
   query($path: String!) {

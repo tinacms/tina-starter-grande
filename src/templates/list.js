@@ -28,44 +28,46 @@ export default function List({ data, pageContext }) {
 
   return (
     <Layout page={page}>
-      {data.posts &&
-        data.posts.edges.map(item => {
-          return (
-            <Paper article key={item.node.id}>
-              {item.node.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
-              <h2>
-                <Link to={item.node.frontmatter.path}>
-                  {item.node.frontmatter.title}
-                </Link>
-              </h2>
-              <p>{item.node.excerpt}</p>
-              <Meta>
-                <MetaSpan>{item.node.frontmatter.date}</MetaSpan>
-                {item.node.frontmatter.authors && (
-                  <MetaSpan>
-                    <em>By</em>&nbsp;
-                    <Authors authorSlugs={item.node.frontmatter.authors} />
-                  </MetaSpan>
-                )}
-                <MetaActions>
-                  <Link to={item.node.frontmatter.path}>Read Article →</Link>
-                </MetaActions>
-              </Meta>
-            </Paper>
-          )
-        })}
-      <ListNav>
-        {!isFirst && (
-          <Link to={prevPage} rel="prev">
-            ← Newer
-          </Link>
-        )}
-        {!isLast && (
-          <Link to={nextPage} rel="next">
-            Older →
-          </Link>
-        )}
-      </ListNav>
+      <>
+        {data.posts &&
+          data.posts.edges.map(item => {
+            return (
+              <Paper article key={item.node.id}>
+                {item.node.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
+                <h2>
+                  <Link to={item.node.frontmatter.path}>
+                    {item.node.frontmatter.title}
+                  </Link>
+                </h2>
+                <p>{item.node.excerpt}</p>
+                <Meta>
+                  <MetaSpan>{item.node.frontmatter.date}</MetaSpan>
+                  {item.node.frontmatter.authors && (
+                    <MetaSpan>
+                      <em>By</em>&nbsp;
+                      <Authors authorSlugs={item.node.frontmatter.authors} />
+                    </MetaSpan>
+                  )}
+                  <MetaActions>
+                    <Link to={item.node.frontmatter.path}>Read Article →</Link>
+                  </MetaActions>
+                </Meta>
+              </Paper>
+            )
+          })}
+        <ListNav>
+          {!isFirst && (
+            <Link to={prevPage} rel="prev">
+              ← Newer
+            </Link>
+          )}
+          {!isLast && (
+            <Link to={nextPage} rel="next">
+              Older →
+            </Link>
+          )}
+        </ListNav>
+      </>
     </Layout>
   )
 }
