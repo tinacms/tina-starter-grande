@@ -25,7 +25,16 @@ module.exports = {
             },
           },
         },
-        plugins: ["gatsby-tinacms-git", "gatsby-tinacms-remark"],
+        plugins: [
+          {
+            resolve: "gatsby-tinacms-git",
+            options: {
+              defaultCommitName: "TinaCMS",
+              defaultCommitEmail: "git@tinacms.org",
+            },
+          },
+          "gatsby-tinacms-remark",
+        ],
       },
     },
     {
