@@ -1,87 +1,262 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
-import { Main } from "./style"
-import { Header } from "./header"
-import { Footer } from "./footer"
-import { Theme } from "./theme"
-import Helmet from "react-helmet"
-import slugify from "react-slugify"
+import {
+  Headline,
+  Textline,
+  Actions,
+  Hero,
+  Wrapper,
+  Overlay,
+  LinkButton,
+  HeroBackground,
+} from "../components/style"
+import { SEO } from "../components/seo"
+import { ThemeContext } from "../components/theme"
+import { removeNull } from "../components/helpers"
 
-import { createRemarkButton } from "gatsby-tinacms-remark"
-import { withPlugin } from "react-tinacms"
+import { useJsonForm } from "gatsby-tinacms-json"
 
-const Layout = ({ children }) => {
+const merge = require("lodash.merge")
+
+function Layout({ page, children }) {
   const data = useStaticQuery(graphql`
     query LayoutQuery {
-      site {
-        siteMetadata {
-          title
+      nav: dataJson(fileRelativePath: { eq: "/data/menu.json" }) {
+        menuItems {
+          link
+          label
         }
+
+        rawJson
+        fileRelativePath
+      }
+      theme: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
+        ...globalTheme
+
+        rawJson
+        fileRelativePath
       }
     }
   `)
 
+  const [nav] = useJsonForm(data.nav, NavForm)
+  const [globalTheme] = useJsonForm(data.theme, ThemeForm)
+
+  const themeContext = React.useContext(ThemeContext)
+  const theme = themeContext.theme
+  const pageTitle = page.title
+    ? page.title
+    : page.frontmatter.title
+    ? page.frontmatter.title
+    : null
+  const pageHero = page.hero
+    ? page.hero
+    : page.frontmatter.hero
+    ? page.frontmatter.hero
+    : null
+  const hero = pageHero
+    ? merge({}, theme.hero, removeNull(pageHero))
+    : theme.hero
+
   return (
     <>
-      <Helmet>
-        <script src="https://cdn.jsdelivr.net/npm/focus-visible@5.0.2/dist/focus-visible.min.js"></script>
-      </Helmet>
-      <Theme>
-        <Page>
-          <Header siteTitle={data.site.siteMetadata.title} />
-          <Main>{children}</Main>
-          <Footer />
-        </Page>
-      </Theme>
+      {pageTitle && <SEO title={pageTitle} />}
+      <Hero large={hero.large}>
+        <Wrapper>
+          {hero.headline && <Headline>{hero.headline}</Headline>}
+          {hero.textline && <Textline>{hero.textline}</Textline>}
+          {hero.ctas && (
+            <Actions>
+              {Object.keys(hero.ctas).map(key => {
+                return (
+                  <LinkButton
+                    primary={hero.ctas[key].primary}
+                    to={hero.ctas[key].link}
+                  >
+                    {hero.ctas[key].label}
+                    {hero.ctas[key].arrow && <span>&nbsp;&nbsp;→</span>}
+                  </LinkButton>
+                )
+              })}
+            </Actions>
+          )}
+        </Wrapper>
+        {hero.overlay && <Overlay />}
+        {hero.image && (
+          <HeroBackground
+            fluid={hero.image.childImageSharp.fluid}
+          ></HeroBackground>
+        )}
+      </Hero>
+      <Wrapper>{children}</Wrapper>
     </>
   )
 }
 
-const CreatePostButton = createRemarkButton({
-  label: "New Post",
-  filename(form) {
-    let slug = slugify(form.title.toLowerCase())
-    return `content/posts/${slug}.md`
-  },
-  frontmatter(form) {
-    let slug = slugify(form.title.toLowerCase())
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve({
-          title: form.title,
-          date: new Date(),
-          type: "post",
-          path: `/blog/${slug}`,
-          draft: true,
-        })
-      }, 1000)
-    })
-  },
-  body({ title }) {
-    return `## ${title}`
-  },
+const NavForm = {
+  label: "Main Menu",
   fields: [
-    { name: "title", label: "Title", component: "text", required: true },
+    {
+      label: "Main Menu",
+      name: "rawJson.menuItems",
+      component: "group-list",
+      itemProps: item => ({
+        key: item.link,
+        label: item.label,
+      }),
+      fields: [
+        {
+          label: "Label",
+          name: "label",
+          component: "text",
+        },
+        {
+          label: "Link",
+          name: "link",
+          component: "text",
+        },
+        {
+          label: "Sub Menu",
+          name: "subMenu",
+          component: "group-list",
+          itemProps: item => ({
+            key: item.link,
+            label: item.label,
+          }),
+          fields: [
+            {
+              label: "Label",
+              name: "label",
+              component: "text",
+            },
+            {
+              label: "Link",
+              name: "link",
+              component: "text",
+            },
+            {
+              label: "Sub Menu",
+              name: "subMenu",
+              component: "group-list",
+              itemProps: item => ({
+                key: item.link,
+                label: item.label,
+              }),
+              fields: [
+                {
+                  label: "Label",
+                  name: "label",
+                  component: "text",
+                },
+                {
+                  label: "Link",
+                  name: "link",
+                  component: "text",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
   ],
-})
+}
 
-export default withPlugin(Layout, CreatePostButton)
+const ThemeForm = {
+  label: "Global Theme",
+  fields: [
+    {
+      label: "Color",
+      name: "rawJson.color",
+      component: "group",
+      fields: [
+        {
+          label: "Black",
+          name: "black",
+          component: "text",
+        },
+        {
+          label: "White",
+          name: "white",
+          component: "text",
+        },
+        {
+          label: "Primary",
+          name: "primary",
+          component: "text",
+        },
+        {
+          label: "Secondary",
+          name: "secondary",
+          component: "text",
+        },
+      ],
+    },
+    {
+      label: "Header",
+      name: "rawJson.header",
+      component: "group",
+      fields: [
+        {
+          label: "Overline",
+          name: "overline",
+          component: "toggle",
+        },
+        {
+          label: "Transparent",
+          name: "transparent",
+          component: "toggle",
+        },
+      ],
+    },
+    {
+      label: "Menu",
+      name: "rawJson.menu",
+      component: "group",
+      fields: [
+        {
+          label: "Style",
+          description: "Options are 'pill' and 'glow'",
+          name: "style",
+          component: "text",
+        },
+      ],
+    },
+    {
+      label: "Hero",
+      name: "rawJson.hero",
+      component: "group",
+      fields: [
+        {
+          label: "Overlay",
+          name: "overlay",
+          component: "toggle",
+        },
+        {
+          label: "Large",
+          name: "large",
+          component: "toggle",
+        },
+        {
+          label: "Default Image",
+          name: "image",
+          component: "text",
+        },
+      ],
+    },
+    {
+      label: "Typography",
+      name: "rawJson.typography",
+      component: "group",
+      fields: [
+        {
+          label: "Uppercase H2",
+          name: "uppercaseH2",
+          component: "toggle",
+        },
+      ],
+    },
+  ],
+}
 
-export const Page = styled.div`
-  position: relative;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  justify-content: space-between;
-
-  ${Header} {
-    flex: 0 0 auto;
-  }
-  ${Main} {
-    flex: 1 0 auto;
-  }
-  ${Footer} {
-    flex: 0 0 auto;
-  }
-`
+export default Layout

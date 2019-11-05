@@ -1,0 +1,87 @@
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
+import { Main } from "./style"
+import { Header } from "./header"
+import { Footer } from "./footer"
+import { Theme } from "./theme"
+import Helmet from "react-helmet"
+import slugify from "react-slugify"
+
+import { createRemarkButton } from "gatsby-tinacms-remark"
+import { withPlugin } from "react-tinacms"
+
+const MasterLayout = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    query MasterLayoutQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+
+  return (
+    <>
+      <Helmet>
+        <script src="https://cdn.jsdelivr.net/npm/focus-visible@5.0.2/dist/focus-visible.min.js"></script>
+      </Helmet>
+      <Theme>
+        <Site>
+          <Header siteTitle={data.site.siteMetadata.title} />
+          <Main>{children}</Main>
+          <Footer />
+        </Site>
+      </Theme>
+    </>
+  )
+}
+
+const CreatePostButton = createRemarkButton({
+  label: "New Post",
+  filename(form) {
+    let slug = slugify(form.title.toLowerCase())
+    return `content/posts/${slug}.md`
+  },
+  frontmatter(form) {
+    let slug = slugify(form.title.toLowerCase())
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          title: form.title,
+          date: new Date(),
+          type: "post",
+          path: `/blog/${slug}`,
+          draft: true,
+        })
+      }, 1000)
+    })
+  },
+  body({ title }) {
+    return `## ${title}`
+  },
+  fields: [
+    { name: "title", label: "Title", component: "text", required: true },
+  ],
+})
+
+export default withPlugin(MasterLayout, CreatePostButton)
+
+export const Site = styled.div`
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+
+  ${Header} {
+    flex: 0 0 auto;
+  }
+  ${Main} {
+    flex: 1 0 auto;
+  }
+  ${Footer} {
+    flex: 0 0 auto;
+  }
+`
