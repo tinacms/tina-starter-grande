@@ -17,7 +17,8 @@
   },
   "header": {
     "overline": true,
-    "transparent": true
+    "transparent": true,
+    "height": "3.25rem"
   },
   "hero": {
     "image": "cafe.jpg",

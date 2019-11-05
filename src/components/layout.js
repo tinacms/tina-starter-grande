@@ -169,6 +169,11 @@ const ThemeForm = {
           name: "transparent",
           component: "toggle",
         },
+        {
+          label: "Height",
+          name: "height",
+          component: "text",
+        },
       ],
     },
     {

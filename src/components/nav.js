@@ -138,7 +138,7 @@ export const NavLink = styled(({ children, ...styleProps }) => (
   </Link>
 ))`
   flex: 1 0 auto;
-  line-height: 1;
+  line-height: ${props => props.theme.header.height};
   padding: 0 0.75rem;
   display: flex;
   align-items: center;
@@ -168,6 +168,15 @@ export const NavLink = styled(({ children, ...styleProps }) => (
   }
 
   &.active {
+  }
+
+  span {
+    display: block;
+    width: 100%;
+  }
+
+  @media (min-width: ${props => props.theme.breakpoints.small}) {
+    line-height: 1;
   }
 
   ${props =>

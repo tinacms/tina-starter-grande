@@ -100,6 +100,7 @@ export const globalThemeFragment = graphql`
     header {
       overline
       transparent
+      height
     }
     menu {
       style
