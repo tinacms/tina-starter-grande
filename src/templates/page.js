@@ -1,172 +1,49 @@
 import React from "react"
 import { graphql } from "gatsby"
-import {
-  Paper,
-  Headline,
-  Textline,
-  Actions,
-  Title,
-  Hero,
-  Wrapper,
-  Overlay,
-  LinkButton,
-  HeroBackground,
-} from "../components/style"
-import { SEO } from "../components/seo"
+import { Paper, Title } from "../components/style"
 import { Form, FormBlock } from "../blocks/form"
 import { Content, ContentBlock } from "../blocks/content"
-import { ThemeContext } from "../components/theme"
-import { removeNull } from "../components/helpers"
+import { Layout } from "../components/layout"
 
 import { useJsonForm } from "gatsby-tinacms-json"
 
-const merge = require("lodash.merge")
-
-function Page(props) {
-  const [page] = useJsonForm(props.data.page, PageForm)
-  const [nav] = useJsonForm(props.data.nav, NavForm)
-  const [globalTheme] = useJsonForm(props.data.theme, ThemeForm)
-
+export default function Page({ data }) {
+  const [page] = useJsonForm(data.page, PageForm)
   const blocks = page.blocks ? page.blocks : []
 
-  const themeContext = React.useContext(ThemeContext)
-  const theme = themeContext.theme
-  const hero = page.hero
-    ? merge({}, theme.hero, removeNull(page.hero))
-    : theme.hero
-
   return (
-    <>
-      <SEO title={page.title} />
-      <Hero large={hero.large}>
-        <Wrapper>
-          {hero.headline && <Headline>{hero.headline}</Headline>}
-          {hero.textline && <Textline>{hero.textline}</Textline>}
-          {hero.ctas && (
-            <Actions>
-              {Object.keys(hero.ctas).map(key => {
-                return (
-                  <LinkButton
-                    primary={hero.ctas[key].primary}
-                    to={hero.ctas[key].link}
-                  >
-                    {hero.ctas[key].label}
-                    {hero.ctas[key].arrow && <span>&nbsp;&nbsp;→</span>}
-                  </LinkButton>
-                )
-              })}
-            </Actions>
-          )}
-        </Wrapper>
-        {hero.overlay && <Overlay />}
-        {hero.image && (
-          <HeroBackground
-            fluid={hero.image.childImageSharp.fluid}
-          ></HeroBackground>
+    <Layout page={page}>
+      <Paper>
+        {page.title && page.displayTitle && (
+          <>
+            <Title>{page.title}</Title>
+            <hr />
+          </>
         )}
-      </Hero>
-      <Wrapper>
-        <Paper>
-          {page.title && page.displayTitle && (
-            <>
-              <Title>{page.title}</Title>
-              <hr />
-            </>
-          )}
-          {blocks &&
-            blocks.map(({ _template, ...data }, i) => {
-              switch (_template) {
-                case "FormBlock":
-                  return <Form form={data} />
-                case "ContentBlock":
-                  if (data.content)
-                    return (
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            page.childrenPagesJsonBlockMarkdown[i]
-                              .childMarkdownRemark.html,
-                        }}
-                      ></div>
-                    )
-                  break
-                default:
-                  return true
-              }
-            })}
-        </Paper>
-      </Wrapper>
-    </>
+        {blocks &&
+          blocks.map(({ _template, ...data }, i) => {
+            switch (_template) {
+              case "FormBlock":
+                return <Form form={data} />
+              case "ContentBlock":
+                if (data.content)
+                  return (
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          page.childrenPagesJsonBlockMarkdown[i]
+                            .childMarkdownRemark.html,
+                      }}
+                    ></div>
+                  )
+                break
+              default:
+                return true
+            }
+          })}
+      </Paper>
+    </Layout>
   )
-}
-
-const NavForm = {
-  label: "Main Menu",
-  fields: [
-    {
-      label: "Main Menu",
-      name: "rawJson.menuItems",
-      component: "group-list",
-      itemProps: item => ({
-        key: item.link,
-        label: item.label,
-      }),
-      fields: [
-        {
-          label: "Label",
-          name: "label",
-          component: "text",
-        },
-        {
-          label: "Link",
-          name: "link",
-          component: "text",
-        },
-        {
-          label: "Sub Menu",
-          name: "subMenu",
-          component: "group-list",
-          itemProps: item => ({
-            key: item.link,
-            label: item.label,
-          }),
-          fields: [
-            {
-              label: "Label",
-              name: "label",
-              component: "text",
-            },
-            {
-              label: "Link",
-              name: "link",
-              component: "text",
-            },
-            {
-              label: "Sub Menu",
-              name: "subMenu",
-              component: "group-list",
-              itemProps: item => ({
-                key: item.link,
-                label: item.label,
-              }),
-              fields: [
-                {
-                  label: "Label",
-                  name: "label",
-                  component: "text",
-                },
-                {
-                  label: "Link",
-                  name: "link",
-                  component: "text",
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  ],
 }
 
 const PageForm = {
@@ -264,105 +141,6 @@ const PageForm = {
   ],
 }
 
-const ThemeForm = {
-  label: "Global Theme",
-  fields: [
-    {
-      label: "Color",
-      name: "rawJson.color",
-      component: "group",
-      fields: [
-        {
-          label: "Black",
-          name: "black",
-          component: "text",
-        },
-        {
-          label: "White",
-          name: "white",
-          component: "text",
-        },
-        {
-          label: "Primary",
-          name: "primary",
-          component: "text",
-        },
-        {
-          label: "Secondary",
-          name: "secondary",
-          component: "text",
-        },
-      ],
-    },
-    {
-      label: "Header",
-      name: "rawJson.header",
-      component: "group",
-      fields: [
-        {
-          label: "Overline",
-          name: "overline",
-          component: "toggle",
-        },
-        {
-          label: "Transparent",
-          name: "transparent",
-          component: "toggle",
-        },
-      ],
-    },
-    {
-      label: "Menu",
-      name: "rawJson.menu",
-      component: "group",
-      fields: [
-        {
-          label: "Style",
-          description: "Options are 'pill' and 'glow'",
-          name: "style",
-          component: "text",
-        },
-      ],
-    },
-    {
-      label: "Hero",
-      name: "rawJson.hero",
-      component: "group",
-      fields: [
-        {
-          label: "Overlay",
-          name: "overlay",
-          component: "toggle",
-        },
-        {
-          label: "Large",
-          name: "large",
-          component: "toggle",
-        },
-        {
-          label: "Default Image",
-          name: "image",
-          component: "text",
-        },
-      ],
-    },
-    {
-      label: "Typography",
-      name: "rawJson.typography",
-      component: "group",
-      fields: [
-        {
-          label: "Uppercase H2",
-          name: "uppercaseH2",
-          component: "toggle",
-        },
-      ],
-    },
-  ],
-}
-
-export default Page
-
 export const pageQuery = graphql`
   query($path: String!) {
     page: pagesJson(path: { eq: $path }) {
@@ -404,21 +182,6 @@ export const pageQuery = graphql`
           html
         }
       }
-
-      rawJson
-      fileRelativePath
-    }
-    nav: dataJson(fileRelativePath: { eq: "/data/menu.json" }) {
-      menuItems {
-        link
-        label
-      }
-
-      rawJson
-      fileRelativePath
-    }
-    theme: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
-      ...globalTheme
 
       rawJson
       fileRelativePath

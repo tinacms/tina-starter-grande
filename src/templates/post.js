@@ -7,66 +7,38 @@ import {
   MetaActions,
   DraftBadge,
   Content,
-  Hero,
-  HeroBackground,
   Wrapper,
-  Overlay,
 } from "../components/style"
 import { Authors } from "../components/authors"
-import { SEO } from "../components/seo"
 import { Link } from "gatsby"
-import { ThemeContext } from "../components/theme"
-import { removeNull } from "../components/helpers"
+import { Layout } from "../components/layout"
 
-import { remarkForm } from "gatsby-tinacms-remark"
+import { useRemarkForm } from "gatsby-tinacms-remark"
 
-const merge = require("lodash.merge")
-
-const Post = ({ data }) => {
-  const { frontmatter, html } = data.markdownRemark
-
-  const themeContext = React.useContext(ThemeContext)
-  const theme = themeContext.theme
-  const hero = frontmatter.hero
-    ? merge({}, theme.hero, removeNull(frontmatter.hero))
-    : theme.hero
+export default function Post({ data }) {
+  const [page] = useRemarkForm(data.markdownRemark, PostForm)
 
   return (
-    <ThemeContext.Consumer>
-      {({ theme }) => (
-        <>
-          <SEO title={frontmatter.title} />
-          <Hero large={hero.large}>
-            {hero.overlay && <Overlay />}
-            {hero.image && (
-              <HeroBackground
-                fluid={hero.image.childImageSharp.fluid}
-              ></HeroBackground>
-            )}
-          </Hero>
-          <Wrapper>
-            <Paper>
-              <Meta>
-                <MetaSpan>{frontmatter.date}</MetaSpan>
-                {frontmatter.authors && (
-                  <MetaSpan>
-                    <em>By</em>&nbsp;
-                    <Authors authorSlugs={frontmatter.authors} />
-                  </MetaSpan>
-                )}
-                <MetaActions>
-                  <Link to="/blog">← Back to Blog</Link>
-                </MetaActions>
-              </Meta>
-              <h1>{frontmatter.title}</h1>
-              <hr />
-              <Content dangerouslySetInnerHTML={{ __html: html }}></Content>
-              {frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
-            </Paper>
-          </Wrapper>
-        </>
-      )}
-    </ThemeContext.Consumer>
+    <Layout page={page}>
+      <Paper>
+        <Meta>
+          <MetaSpan>{page.frontmatter.date}</MetaSpan>
+          {page.frontmatter.authors && (
+            <MetaSpan>
+              <em>By</em>&nbsp;
+              <Authors authorSlugs={page.frontmatter.authors} />
+            </MetaSpan>
+          )}
+          <MetaActions>
+            <Link to="/blog">← Back to Blog</Link>
+          </MetaActions>
+        </Meta>
+        <h1>{page.frontmatter.title}</h1>
+        <hr />
+        <Content dangerouslySetInnerHTML={{ __html: page.html }}></Content>
+        {page.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
+      </Paper>
+    </Layout>
   )
 }
 
@@ -110,9 +82,7 @@ const PostForm = {
   ],
 }
 
-export default remarkForm(Post, PostForm)
-
-export const pageQuery = graphql`
+export const postQuery = graphql`
   query($path: String!) {
     markdownRemark(
       published: { eq: true }
