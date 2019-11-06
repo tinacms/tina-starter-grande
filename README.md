@@ -1,6 +1,6 @@
 # ![Tina Grande](https://res.cloudinary.com/forestry-demo/image/upload/h_40/v1573060726/tina-grande-wordmark.png)
 
-**Tina Grande** is a Gatsby starter with full TinaCMS integration. You can use Tina to add and remove pages, customize the theme, write content and more! :tada:
+> **Tina Grande** is a Gatsby starter with full TinaCMS integration. You can use Tina to add and remove pages, customize the theme, write content and more! :tada:
 
 ## :sparkles: Features
 
@@ -22,8 +22,6 @@
 - Netlify deploy configuration
 - Styled Components
 
----
-
 ## :memo: Getting Started
 
 ```
@@ -34,8 +32,6 @@ cd tina-starter-grande
 yarn install && gatsby develop
 ```
 
----
-
 ## :octocat: Contributing
 
 We encourage you to report bugs, request features or submit improvements! We made this for you and would :heart: any feedback or contributions to make **Tina Grande** better for everyone.
@@ -45,8 +41,6 @@ We encourage you to report bugs, request features or submit improvements! We mad
 - Blog categories & tags
 - Theme setup wizard with presets that include images, content & theme settings
 - [Request something](https://github.com/tinacms/tina-starter-grande/issues/new)
-
----
 
 ## :clap: Thank You
 
