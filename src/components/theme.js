@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import { mix } from "polished"
+import { mix, getContrast } from "polished"
 import styled, { ThemeProvider } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import { GlobalStyles, Main } from "./style"
+import { GlobalStyles, Main, bestContrast } from "./style"
 
 export const ThemeContext = React.createContext()
 
@@ -38,15 +38,24 @@ export const Theme = ({ children }) => {
     color: {
       black: darkMode ? globalTheme.color.black : globalTheme.color.black,
       white: darkMode
-        ? mix(0.7, globalTheme.color.white, globalTheme.color.secondary)
+        ? mix(0.8, globalTheme.color.white, globalTheme.color.black)
         : globalTheme.color.white,
       primary: globalTheme.color.primary,
+      primaryContrast: bestContrast(
+        globalTheme.color.primary,
+        globalTheme.color.white,
+        globalTheme.color.black
+      ),
       secondary: globalTheme.color.secondary,
       foreground: darkMode
-        ? mix(0.7, globalTheme.color.white, globalTheme.color.secondary)
+        ? mix(0.8, globalTheme.color.white, globalTheme.color.black)
         : globalTheme.color.black,
       background: darkMode ? globalTheme.color.black : globalTheme.color.white,
-      link: globalTheme.color.primary,
+      link: bestContrast(
+        darkMode ? globalTheme.color.black : globalTheme.color.white,
+        globalTheme.color.primary,
+        globalTheme.color.secondary
+      ),
     },
     easing: globalTheme.easing,
     breakpoints: globalTheme.breakpoints,

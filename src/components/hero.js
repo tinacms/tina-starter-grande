@@ -42,6 +42,7 @@ export const Hero = ({ hero }) => {
 
 const HeroWrapper = styled.div`
   position: relative;
+  flex: 0 0 auto;
   top: 0;
   padding-top: ${props => props.theme.header.height};
   min-height: calc(

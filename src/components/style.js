@@ -1,8 +1,14 @@
 import React from "react"
 import styled, { createGlobalStyle, css } from "styled-components"
-import { mix, shade, transparentize } from "polished"
+import { mix, shade, transparentize, getContrast } from "polished"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
+
+export const bestContrast = (baseColor, optionOne, optionTwo) => {
+  const contrastOne = getContrast(baseColor, optionOne)
+  const contrastTwo = getContrast(baseColor, optionTwo)
+  return contrastOne > contrastTwo ? optionOne : optionTwo
+}
 
 export const Reset = css`
   /*! minireset.css v0.0.5 | MIT License | github.com/jgthms/minireset.css */
@@ -293,7 +299,7 @@ export const GlobalStyles = createGlobalStyle`
 
 
     @media (min-width: ${props => props.theme.breakpoints.huge}) {
-      font-size: 140%;
+      font-size: 145%;
     }
 
     ${props =>
@@ -461,10 +467,11 @@ export const Wrapper = styled.div`
   width: 100%;
   max-width: 896px;
   margin: 0 auto;
-  padding: 0 1em;
+  --wrapper-padding-x: 1rem;
+  padding: 0 var(--wrapper-padding-x);
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
-    padding: 0 2rem;
+    --wrapper-padding-x: 2rem;
   }
 
   @media (min-width: ${props => props.theme.breakpoints.large}) {
@@ -496,8 +503,11 @@ export const Paper = styled.div`
   border-radius: ${props => props.theme.radius.small};
   box-shadow: 0 0.5rem 1rem -0.5rem ${props =>
     transparentize(0.9, props.theme.color.black)};
-  padding: 2rem;
-  margin: 0 -1rem;
+  margin: 0 calc(var(--wrapper-padding-x) * -1);
+
+  --paper-padding-y: 2rem;
+  --paper-padding-x: 2rem;
+  padding: var(--paper-padding-y) var(--paper-padding-x);
 
   ${props =>
     props.article &&
@@ -520,41 +530,30 @@ export const Paper = styled.div`
   }
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
-    padding: 2.5rem 3rem;
+    --paper-padding-y: 2.5rem;
+    --paper-padding-x: 3rem;
     margin: 0;
   }
 
   @media (min-width: ${props => props.theme.breakpoints.large}) {
-    padding: 3.5rem 4rem;
+    --paper-padding-y: 3.5rem;
+    --paper-padding-x: 4rem;
   }
 
   pre[class*="language-"] {
     border-radius: 0;
-    padding-left: 2rem;
-    padding-right: 0rem;
+    padding-left: var(--paper-padding-x);
+    padding-right: 0;
 
     @media (min-width: ${props => props.theme.breakpoints.small}) {
-      margin: 2.5rem -3rem !important;
-      padding-left: 3rem;
-    }
-
-    @media (min-width: ${props => props.theme.breakpoints.large}) {
-      margin: 3.5rem -4rem !important;
-      padding-left: 4rem;
+      margin: var(--paper-padding-y)  -var(--paper-padding-x)  !important;
+      padding-left: var(--paper-padding-x);
     }
   }
 
   ${Image}, .gatsby-resp-image-wrapper, pre[class*="language-"] {
-    margin: 2rem -2rem !important;
-    overflow: hidden;
-
-    @media (min-width: ${props => props.theme.breakpoints.small}) {
-      margin: 2.5rem -3rem !important;
-    }
-
-    @media (min-width: ${props => props.theme.breakpoints.large}) {
-      margin: 3.5rem -4rem !important;
-    }
+    margin: var(--paper-padding-y)  calc(var(--paper-padding-x) * -1)!important;
+    overflow: hidden; 
   }
 
   /* > *:first-child {
@@ -611,8 +610,9 @@ const ButtonStyles = css`
   border-radius: ${props => props.theme.radius.small};
   border: none;
   transition: all 150ms ${props => props.theme.easing};
-  color: ${props => props.theme.color.white};
-  background-color: ${props => transparentize(0.5, props.theme.color.black)};
+  color: ${props => props.theme.color.foreground};
+  background-color: ${props =>
+    transparentize(0.5, props.theme.color.background)};
   border-bottom: 3px solid
     ${props => transparentize(0.8, props.theme.color.black)};
   cursor: pointer;
@@ -670,7 +670,7 @@ const ButtonStyles = css`
     p.primary &&
     css`
       background-color: ${props => props.theme.color.primary};
-      color: ${props => props.theme.color.white};
+      color: ${props => props.theme.color.primaryContrast};
     `};
 `
 
@@ -743,7 +743,7 @@ export const DraftBadge = styled.span`
   padding: 0.5rem 0.75rem;
   border-radius: 0 ${props => props.theme.radius.small} 0
     ${props => props.theme.radius.small};
-  color: ${props => props.theme.color.white};
+  color: ${props => props.theme.color.primaryContrast};
   background: ${props => props.theme.color.primary};
   position: absolute;
   top: 0;
