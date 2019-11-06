@@ -4,9 +4,6 @@
 
 - **Full [TinaCMS](http://tinacms.org) integration**
 - Easy Theme Customization
-  - Both global & per-page
-  - Preset logos/colors to choose from
-  - Use custom logo/colors if desired
 - Form Builder
   - Pre-defined fields
   - Custom fields
@@ -20,7 +17,6 @@
   - Draft mode
 - Netlify deploy configuration
 - Styled Components
-- Looks good
 
 ## Getting Started
 
