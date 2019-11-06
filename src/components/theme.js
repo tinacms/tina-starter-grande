@@ -2,15 +2,9 @@ import React, { useState } from "react"
 import { mix, getContrast } from "polished"
 import styled, { ThemeProvider } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import { GlobalStyles, Main } from "./style"
+import { GlobalStyles, Main, bestContrast } from "./style"
 
 export const ThemeContext = React.createContext()
-
-export const bestContrast = (baseColor, optionOne, optionTwo) => {
-  const contrastOne = getContrast(baseColor, optionOne)
-  const contrastTwo = getContrast(baseColor, optionTwo)
-  return contrastOne > contrastTwo ? optionOne : optionTwo
-}
 
 export const Theme = ({ children }) => {
   const data = useStaticQuery(graphql`

@@ -4,6 +4,12 @@ import { mix, shade, transparentize, getContrast } from "polished"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
 
+export const bestContrast = (baseColor, optionOne, optionTwo) => {
+  const contrastOne = getContrast(baseColor, optionOne)
+  const contrastTwo = getContrast(baseColor, optionTwo)
+  return contrastOne > contrastTwo ? optionOne : optionTwo
+}
+
 export const Reset = css`
   /*! minireset.css v0.0.5 | MIT License | github.com/jgthms/minireset.css */
   html,
