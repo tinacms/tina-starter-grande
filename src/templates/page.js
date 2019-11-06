@@ -5,6 +5,8 @@ import { Form, FormBlock } from "../blocks/form"
 import { Content, ContentBlock } from "../blocks/content"
 import { Layout } from "../components/layout"
 
+import get from "lodash.get"
+
 import { useJsonForm } from "gatsby-tinacms-json"
 
 export default function Page({ data }) {
@@ -55,20 +57,15 @@ const PageForm = {
       component: "text",
     },
     {
+      label: "Display Title",
+      name: "rawJson.displayTitle",
+      component: "toggle",
+    },
+    {
       label: "Hero",
       name: "rawJson.hero",
       component: "group",
       fields: [
-        {
-          label: "Large",
-          name: "large",
-          component: "toggle",
-        },
-        {
-          label: "Overlay",
-          name: "overlay",
-          component: "toggle",
-        },
         {
           label: "Headline",
           name: "headline",
@@ -82,7 +79,15 @@ const PageForm = {
         {
           label: "Image",
           name: "image",
-          component: "text",
+          component: "image",
+          parse: filename => `${filename}`,
+          uploadDir: () => `/content/pages/`,
+          previewSrc: formValues => {
+            console.log(formValues)
+            if (!formValues.jsonNode.hero || !formValues.jsonNode.hero.image)
+              return ""
+            return formValues.jsonNode.hero.image.childImageSharp.fluid.src
+          },
         },
         {
           label: "Actions",
@@ -115,6 +120,11 @@ const PageForm = {
             },
           ],
         },
+        {
+          label: "Large",
+          name: "large",
+          component: "toggle",
+        },
       ],
     },
     {
@@ -125,18 +135,6 @@ const PageForm = {
         FormBlock,
         ContentBlock,
       },
-    },
-    {
-      label: "Page Settings",
-      name: "rawJson",
-      component: "group",
-      fields: [
-        {
-          label: "Page Title",
-          name: "displayTitle",
-          component: "toggle",
-        },
-      ],
     },
   ],
 }

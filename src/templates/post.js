@@ -79,9 +79,17 @@ const PostForm = {
       component: "date",
     },
     {
-      name: "rawFrontmatter.hero.image",
-      component: "text",
       label: "Hero Image",
+      name: "rawFrontmatter.hero.image",
+      component: "image",
+      parse: filename => `${filename}`,
+      uploadDir: () => `/content/posts/`,
+      previewSrc: formValues => {
+        console.log(formValues)
+        if (!formValues.frontmatter.hero || !formValues.frontmatter.hero.image)
+          return ""
+        return formValues.frontmatter.hero.image.childImageSharp.fluid.src
+      },
     },
     {
       label: "Body",

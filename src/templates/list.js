@@ -162,16 +162,6 @@ const ListForm = {
       component: "group",
       fields: [
         {
-          label: "Large",
-          name: "large",
-          component: "toggle",
-        },
-        {
-          label: "Overlay",
-          name: "overlay",
-          component: "toggle",
-        },
-        {
           label: "Headline",
           name: "headline",
           component: "text",
@@ -184,7 +174,51 @@ const ListForm = {
         {
           label: "Image",
           name: "image",
-          component: "text",
+          component: "image",
+          parse: filename => `${filename}`,
+          uploadDir: () => `/content/pages/`,
+          previewSrc: formValues => {
+            console.log(formValues)
+            if (!formValues.jsonNode.hero || !formValues.jsonNode.hero.image)
+              return ""
+            return formValues.jsonNode.hero.image.childImageSharp.fluid.src
+          },
+        },
+        {
+          label: "Actions",
+          name: "ctas",
+          component: "group-list",
+          itemProps: item => ({
+            key: item.link,
+            label: item.label,
+          }),
+          fields: [
+            {
+              label: "Label",
+              name: "label",
+              component: "text",
+            },
+            {
+              label: "Link",
+              name: "link",
+              component: "text",
+            },
+            {
+              label: "Primary",
+              name: "primary",
+              component: "toggle",
+            },
+            {
+              label: "Arrow",
+              name: "arrow",
+              component: "toggle",
+            },
+          ],
+        },
+        {
+          label: "Large",
+          name: "large",
+          component: "toggle",
         },
       ],
     },
