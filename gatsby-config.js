@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Grande`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: `Tina Grande is a feature rich Gatsby starter with full TinaCMS integration.`,
+    author: `@tina_cms`,
   },
   plugins: [
     `gatsby-transformer-sharp`,
@@ -15,15 +15,15 @@ module.exports = {
         sidebar: {
           hidden: process.env.NODE_ENV === "production",
           position: "displace",
-          theme: {
-            color: {
-              primary: {
-                light: "#358156",
-                medium: "#007043",
-                dark: "#0A623B",
-              },
-            },
-          },
+          // theme: {
+          //   color: {
+          //     primary: {
+          //       light: "#358156",
+          //       medium: "#007043",
+          //       dark: "#0A623B",
+          //     },
+          //   },
+          // },
         },
         plugins: ["gatsby-tinacms-git", "gatsby-tinacms-remark"],
       },
