@@ -5,8 +5,6 @@ import { Form, FormBlock } from "../blocks/form"
 import { Content, ContentBlock } from "../blocks/content"
 import { Layout } from "../components/layout"
 
-import get from "lodash.get"
-
 import { useJsonForm } from "gatsby-tinacms-json"
 
 export default function Page({ data }) {
