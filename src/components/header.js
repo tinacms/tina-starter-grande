@@ -94,6 +94,7 @@ export const SiteTitle = styled.h1`
   flex: 0 0 auto;
   font-size: 1rem;
   align-self: stretch;
+  display: flex;
 `
 
 export const HeaderWrapper = styled(Wrapper)`
