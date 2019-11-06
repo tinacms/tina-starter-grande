@@ -137,22 +137,26 @@ const ThemeForm = {
         {
           label: "Black",
           name: "black",
-          component: "text",
+          component: "color",
+          colorFormat: "hex",
         },
         {
           label: "White",
           name: "white",
-          component: "text",
+          component: "color",
+          colorFormat: "hex",
         },
         {
           label: "Primary",
           name: "primary",
-          component: "text",
+          component: "color",
+          colorFormat: "hex",
         },
         {
           label: "Secondary",
           name: "secondary",
-          component: "text",
+          component: "color",
+          colorFormat: "hex",
         },
       ],
     },
@@ -197,6 +201,11 @@ const ThemeForm = {
       component: "group",
       fields: [
         {
+          label: "Default Image",
+          name: "image",
+          component: "text",
+        },
+        {
           label: "Overlay",
           name: "overlay",
           component: "toggle",
@@ -205,11 +214,6 @@ const ThemeForm = {
           label: "Large",
           name: "large",
           component: "toggle",
-        },
-        {
-          label: "Default Image",
-          name: "image",
-          component: "text",
         },
         {
           label: "Overlap",
