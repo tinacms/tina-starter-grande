@@ -91,9 +91,15 @@ export const Site = styled.div`
     props.theme.hero.parallax &&
     css`
       height: 100vh;
-      overflow-x: hidden;
       overflow-y: auto;
+      overflow-x: hidden;
       perspective: 1px;
       perspective-origin: top;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      ::-webkit-scrollbar {
+        display: none;
+      }
     `}
 `
