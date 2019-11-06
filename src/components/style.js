@@ -1,6 +1,6 @@
 import React from "react"
 import styled, { createGlobalStyle, css } from "styled-components"
-import { mix, shade, transparentize } from "polished"
+import { mix, shade, transparentize, getContrast } from "polished"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
 
@@ -670,7 +670,7 @@ const ButtonStyles = css`
     p.primary &&
     css`
       background-color: ${props => props.theme.color.primary};
-      color: ${props => props.theme.color.white};
+      color: ${props => props.theme.color.primaryContrast};
     `};
 `
 
@@ -743,7 +743,7 @@ export const DraftBadge = styled.span`
   padding: 0.5rem 0.75rem;
   border-radius: 0 ${props => props.theme.radius.small} 0
     ${props => props.theme.radius.small};
-  color: ${props => props.theme.color.white};
+  color: ${props => props.theme.color.primaryContrast};
   background: ${props => props.theme.color.primary};
   position: absolute;
   top: 0;
