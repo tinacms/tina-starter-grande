@@ -780,6 +780,11 @@ export const PlainInput = styled.input`
   outline: none;
   border: none;
   font-family: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  padding: 0;
+  margin: 0;
+  border-width: 0;
 `
 
 export const PlainText = props => {
