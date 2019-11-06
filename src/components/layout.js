@@ -28,11 +28,20 @@ export const Layout = ({ page, children }) => {
         rawJson
         fileRelativePath
       }
+      site: dataJson(fileRelativePath: { eq: "/data/site.json" }) {
+        title
+        description
+        author
+
+        rawJson
+        fileRelativePath
+      }
     }
   `)
 
   const [nav] = useJsonForm(data.nav, NavForm)
   const [globalTheme] = useJsonForm(data.theme, ThemeForm)
+  const [site] = useJsonForm(data.site, SiteForm)
 
   const themeContext = React.useContext(ThemeContext)
   const theme = themeContext.theme
@@ -57,8 +66,29 @@ export const Layout = ({ page, children }) => {
   )
 }
 
+const SiteForm = {
+  label: "Site",
+  fields: [
+    {
+      label: "Title",
+      name: "rawJson.title",
+      component: "text",
+    },
+    {
+      label: "Description",
+      name: "rawJson.description",
+      component: "text",
+    },
+    {
+      label: "Author",
+      name: "rawJson.author",
+      component: "text",
+    },
+  ],
+}
+
 const NavForm = {
-  label: "Main Menu",
+  label: "Menu",
   fields: [
     {
       label: "Main Menu",
@@ -127,7 +157,7 @@ const NavForm = {
 }
 
 const ThemeForm = {
-  label: "Global Theme",
+  label: "Theme",
   fields: [
     {
       label: "Color",
