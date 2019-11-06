@@ -299,7 +299,7 @@ export const GlobalStyles = createGlobalStyle`
 
 
     @media (min-width: ${props => props.theme.breakpoints.huge}) {
-      font-size: 140%;
+      font-size: 145%;
     }
 
     ${props =>
