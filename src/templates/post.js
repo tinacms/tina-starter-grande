@@ -6,17 +6,22 @@ import {
   MetaSpan,
   MetaActions,
   DraftBadge,
+  EditButton,
   Content,
   Wrapper,
+  PlainText,
 } from "../components/style"
 import { Authors } from "../components/authors"
 import { Link } from "gatsby"
 import { Layout } from "../components/layout"
 
-import { useRemarkForm } from "gatsby-tinacms-remark"
+import { TinaField } from "@tinacms/form-builder"
+import { Wysiwyg } from "@tinacms/fields"
+import { liveRemarkForm, DeleteAction } from "gatsby-tinacms-remark"
 
-export default function Post({ data }) {
-  const [page] = useRemarkForm(data.markdownRemark, PostForm)
+function Post(props) {
+  const page = props.data.markdownRemark
+  const { isEditing, setIsEditing } = props
 
   return (
     <Layout page={page}>
@@ -33,16 +38,30 @@ export default function Post({ data }) {
             <Link to="/blog">← Back to Blog</Link>
           </MetaActions>
         </Meta>
-        <h1>{page.frontmatter.title}</h1>
+        <h1>
+          <TinaField name="rawFrontmatter.title" Component={PlainText}>
+            {page.frontmatter.title}
+          </TinaField>
+        </h1>
         <hr />
-        <Content dangerouslySetInnerHTML={{ __html: page.html }}></Content>
+        <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: page.html,
+            }}
+          />
+        </TinaField>
         {page.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
+        <EditButton isEditing={isEditing} onClick={() => setIsEditing(p => !p)}>
+          {isEditing ? "Preview" : "Edit"}
+        </EditButton>
       </Paper>
     </Layout>
   )
 }
 
 const PostForm = {
+  actions: [DeleteAction],
   fields: [
     {
       label: "Title",
@@ -65,22 +84,14 @@ const PostForm = {
       label: "Hero Image",
     },
     {
-      label: "Hero Overlay",
-      name: "rawFrontmatter.hero.overlay",
-      component: "toggle",
-    },
-    {
-      name: "rawFrontmatter.hero.large",
-      component: "toggle",
-      label: "Large Hero",
-    },
-    {
       label: "Body",
       name: "rawMarkdownBody",
       component: "markdown",
     },
   ],
 }
+
+export default liveRemarkForm(Post, PostForm)
 
 export const postQuery = graphql`
   query($path: String!) {
@@ -89,6 +100,7 @@ export const postQuery = graphql`
       frontmatter: { path: { eq: $path } }
     ) {
       id
+      excerpt(pruneLength: 160)
       html
 
       frontmatter {

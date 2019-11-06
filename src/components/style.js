@@ -460,6 +460,10 @@ export const GlobalStyles = createGlobalStyle`
     margin: 1.6rem 0;
     border-top: 2px solid ${props => props.theme.color.secondary};
   }
+
+  [contenteditable]:focus {
+    outline: none;
+  }
 `
 
 export const Wrapper = styled.div`
@@ -495,8 +499,6 @@ export const Overlay = styled.div`
 
 export const Image = styled(Img)``
 
-export const Content = styled.div``
-
 export const Paper = styled.div`
   position: relative;
   background-color: ${props => props.theme.color.background};
@@ -525,7 +527,7 @@ export const Paper = styled.div`
         mix(0.95, props.theme.color.background, props.theme.color.foreground)};
     `};
 
-  > *:last-child, ${Content} > *:last-child {
+  > *:last-child, > div > *:last-child {
     margin-bottom: 0;
   }
 
@@ -749,6 +751,40 @@ export const DraftBadge = styled.span`
   top: 0;
   right: 0;
 `
+
+export const EditButton = styled.button`
+  outline: none;
+  border: none;
+  display: inline-block;
+  line-height: 1;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: ${props => props.theme.radius.small} 0
+    ${props => props.theme.radius.small} 0;
+  color: ${props => props.theme.color.primaryContrast};
+  background: ${props => props.theme.color.primary};
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+
+  ${props => props.isEditing && css``}
+`
+
+export const PlainInput = styled.input`
+  color: inherit;
+  font-size: inherit;
+  background: inherit;
+  line-height: inherit;
+  outline: none;
+  border: none;
+  font-family: inherit;
+`
+
+export const PlainText = props => {
+  return <PlainInput {...props.input} />
+}
 
 export const Title = styled.h2`
   font-size: 2.2em;

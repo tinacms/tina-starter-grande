@@ -8,10 +8,8 @@ hero:
   overlay: true
   large: false
 ---
-
 Nostris blandis iacuit Laertiadaeque est Tritona, [pectora si
-tantum](http://valens.io/haec.php) tantumque missus quoque plumis **Atlante da**
-generum meminitque exstat!
+tantum](http://valens.io/haec.php) tantumque missus quoque plumis **Atlante da** generum meminitque exstat!
 
 > Obstruat _manusque nunc_, est arces equum caelo, ore Lelex proceres **sit
 > stabit** limbo campis hoc. Clara utque Acheronta neque aer transcurrere
@@ -27,9 +25,9 @@ illius; verrit _fodiebant_ inproba. Fecit tenues Parnasos, aureus primus ante;
 causa in recenti? Rumpe corpore pennas hominum Indis pharetrae thalamoque vidit
 validi. Numina hos, mutua primo pariter est carinam mater, signa.
 
-- Ore pennas
-- Regnat et clamat retenta Insania
-- Dabit sospes discedunt sororis verba meorum timuere
+* Ore pennas
+* Regnat et clamat retenta Insania
+* Dabit sospes discedunt sororis verba meorum timuere
 
 ## Atque procul nullis date magni an incautus
 
@@ -49,12 +47,12 @@ Erat est; pennatis quoniam inde; illa pendet e Macareu? De nusquam Hectoreis
 tecum rarior. Cum [non](http://quamvis-vidit.io/verecundo) nivosos harundine
 inferius, me victor terras.
 
-- Est a
-- Perde securim rastrorumque orbem adunco pruniceum induco
-- Procul Hippasus veteris
-- Dubiam quoniam iunctura
-- Mea huic moriente vertuntur sermo
-- Est et oravit bello
+* Est a
+* Perde securim rastrorumque orbem adunco pruniceum induco
+* Procul Hippasus veteris
+* Dubiam quoniam iunctura
+* Mea huic moriente vertuntur sermo
+* Est et oravit bello
 
 Primique sum, quam videbar capitum; sede demisso quamvis pectora. O fessa, alter
 te latet, omnem sunt, sit toto, superiniecit! Iam sermone _certat_. Faces sola,
