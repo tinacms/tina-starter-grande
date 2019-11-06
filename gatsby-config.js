@@ -1,9 +1,4 @@
 module.exports = {
-  siteMetadata: {
-    title: `Grande`,
-    description: `Tina Grande is a feature rich Gatsby starter with full TinaCMS integration.`,
-    author: `@tina_cms`,
-  },
   plugins: [
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
