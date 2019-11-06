@@ -3,29 +3,26 @@
   "path": "/dummy",
   "displayTitle": true,
   "content": "## root",
-  "hero": {
-    "headline": "Dummy",
-    "textline": "Dummy",
-    "large": false,
-    "overlay": true,
-    "image": "cafe-2.jpg",
-    "ctas": [
-      {
-        "label": "Read The Blog",
-        "link": "/blog",
-        "primary": true,
-        "arrow": true
-      }
-    ]
-  },
   "blocks": [
     {
-      "_template": "ContentBlock",
-      "content": "## Thanks DJ\n\nThis is awesome"
+      "_template": "HeroBlock",
+      "headline": "Dummy",
+      "textline": "Dummy",
+      "large": false,
+      "overlay": true,
+      "image": "cafe-2.jpg",
+      "ctas": [
+        {
+          "label": "Read The Blog",
+          "link": "/blog",
+          "primary": true,
+          "arrow": true
+        }
+      ]
     },
     {
       "_template": "ContentBlock",
-      "content": "## block content",
+      "content": "## Thanks DJ\n\nThis is awesome",
       "name": "dummy",
       "recipient": "dummy",
       "fields": [

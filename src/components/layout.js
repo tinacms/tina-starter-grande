@@ -8,8 +8,6 @@ import { removeNull } from "../components/helpers"
 
 import { useJsonForm } from "gatsby-tinacms-json"
 
-const merge = require("lodash.merge")
-
 export const Layout = ({ page, children }) => {
   const data = useStaticQuery(graphql`
     query LayoutQuery {
@@ -36,23 +34,11 @@ export const Layout = ({ page, children }) => {
 
   const themeContext = React.useContext(ThemeContext)
   const theme = themeContext.theme
-  const pageTitle = page.title
-    ? page.title
-    : page.frontmatter.title
-    ? page.frontmatter.title
-    : false
-  const pageHero = page.frontmatter ? page.frontmatter.hero : page.hero
-  const hero = pageHero
-    ? merge({}, theme.hero, removeNull(pageHero))
-    : theme.hero
 
   return (
     <>
-      {pageTitle && <SEO title={pageTitle} />}
-      <Hero hero={hero} />
-      <Main>
-        <Wrapper>{children}</Wrapper>
-      </Main>
+      {page.title && <SEO title={page.title} />}
+      <Main>{children}</Main>
     </>
   )
 }
@@ -192,38 +178,6 @@ const ThemeForm = {
           description: "Options are 'pill' and 'glow'",
           name: "style",
           component: "text",
-        },
-      ],
-    },
-    {
-      label: "Hero",
-      name: "rawJson.hero",
-      component: "group",
-      fields: [
-        {
-          label: "Default Image",
-          name: "image",
-          component: "text",
-        },
-        {
-          label: "Overlay",
-          name: "overlay",
-          component: "toggle",
-        },
-        {
-          label: "Large",
-          name: "large",
-          component: "toggle",
-        },
-        {
-          label: "Overlap",
-          name: "overlap",
-          component: "text",
-        },
-        {
-          label: "Parallax",
-          name: "parallax",
-          component: "toggle",
         },
       ],
     },
