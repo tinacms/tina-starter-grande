@@ -24,7 +24,8 @@
     "image": "cafe.jpg",
     "large": false,
     "overlay": true,
-    "overlap": "8rem"
+    "overlap": "8rem",
+    "parallax": false
   },
   "typography": {
     "uppercaseH2": false

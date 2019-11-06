@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { Wrapper } from "../components/style"
+import { Wrapper, Main } from "../components/style"
 import { SEO } from "../components/seo"
 import { ThemeContext } from "../components/theme"
 import { Hero } from "../components/hero"
@@ -50,7 +50,9 @@ export const Layout = ({ page, children }) => {
     <>
       {pageTitle && <SEO title={pageTitle} />}
       <Hero hero={hero} />
-      <Wrapper>{children}</Wrapper>
+      <Main>
+        <Wrapper>{children}</Wrapper>
+      </Main>
     </>
   )
 }
@@ -213,6 +215,11 @@ const ThemeForm = {
           label: "Overlap",
           name: "overlap",
           component: "text",
+        },
+        {
+          label: "Parallax",
+          name: "parallax",
+          component: "toggle",
         },
       ],
     },

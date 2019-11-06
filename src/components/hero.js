@@ -42,6 +42,7 @@ export const Hero = ({ hero }) => {
 
 const HeroWrapper = styled.div`
   position: relative;
+  top: 0;
   padding-top: ${props => props.theme.header.height};
   min-height: calc(
     ${props => props.theme.header.height} +
@@ -76,6 +77,12 @@ const HeroBackground = styled.div`
   ${Overlay} {
     z-index: 1;
   }
+
+  ${props =>
+    props.theme.hero.parallax &&
+    css`
+      transform: translateZ(-1px) scale(2) translateY(25%);
+    `}
 `
 
 export const Headline = styled.h2`

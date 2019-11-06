@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { Main } from "./style"
 import { Header } from "./header"
 import { Footer } from "./footer"
@@ -30,7 +30,7 @@ const MasterLayout = ({ children }) => {
       <Theme>
         <Site>
           <Header siteTitle={data.site.siteMetadata.title} />
-          <Main>{children}</Main>
+          {children}
           <Footer />
         </Site>
       </Theme>
@@ -75,13 +75,25 @@ export const Site = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  ${Header} {
+  > ${Header} {
     flex: 0 0 auto;
   }
-  ${Main} {
+
+  > ${Footer} {
+    flex: 0 0 auto;
+  }
+
+  > * {
     flex: 1 0 auto;
   }
-  ${Footer} {
-    flex: 0 0 auto;
-  }
+
+  ${props =>
+    props.theme.hero.parallax &&
+    css`
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      perspective: 1px;
+      perspective-origin: top;
+    `}
 `
