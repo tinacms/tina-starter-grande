@@ -1,10 +1,10 @@
 ---
 path: /blog/introducing-tina-grande
-date: "2019-11-04T00:00:00.000Z"
+date: '2019-11-04T00:00:00.000Z'
 type: post
 authors:
   - scott-byrne
-draft: true
+draft: false
 hero:
   image: coffee-beans.jpg
   large: false
