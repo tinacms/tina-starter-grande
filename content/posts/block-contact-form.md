@@ -1,7 +1,6 @@
 ---
-title: Creating a Form Builder With Tina
 path: /blog/creating-a-form-builder-with-tina
-date: 2019-11-04T00:00:00.000Z
+date: '2019-11-04T00:00:00.000Z'
 type: post
 authors:
   - scott-byrne
@@ -10,19 +9,20 @@ hero:
   image: coffee-beans.jpg
   large: false
   overlay: true
+title: "Introducing Tina Grande \_\U0001F389"
 ---
+> **Tina Grande** is a Gatsby starter with full TinaCMS integration. You can use Tina to add and remove pages, customize the theme, write content and more!
 
-Draft outline:
+## Getting Started
 
-- Show initial contact form
-- Set up Tina (link to skip this step)
-- Set up page form
-- Add blocks to page form
-- Move form to `/blocks/form`
-- Create FormBlock, add basic input block
-- Switch to site, open Tina, add some fields
-- Add preset blocks
-- Add field for formspree and/or netlify integration
-- Switch to site, build original contact form using blocks
-- Send a test email, show that it works
-- Review
+    git clone https://github.com/tinacms/tina-starter-grande.git
+    
+    cd tina-starter-grande
+    
+    yarn install && gatsby develop
+
+## Contributing
+
+Contribute by reporting bugs, requesting features or submiting improvements! We made this for you and would ❤️ any feedback or contributions to make **Tina Grande** better for everyone.
+
+### 
