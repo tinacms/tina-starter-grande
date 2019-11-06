@@ -785,6 +785,8 @@ export const PlainInput = styled.input`
   padding: 0;
   margin: 0;
   border-width: 0;
+  display: block;
+  width: 100%;
 `
 
 export const PlainText = props => {
