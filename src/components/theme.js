@@ -37,9 +37,7 @@ export const Theme = ({ children }) => {
     isDarkMode: darkMode,
     color: {
       black: darkMode ? globalTheme.color.black : globalTheme.color.black,
-      white: darkMode
-        ? mix(0.8, globalTheme.color.white, globalTheme.color.black)
-        : globalTheme.color.white,
+      white: darkMode ? globalTheme.color.white : globalTheme.color.white,
       primary: globalTheme.color.primary,
       primaryContrast: bestContrast(
         globalTheme.color.primary,
@@ -47,6 +45,11 @@ export const Theme = ({ children }) => {
         globalTheme.color.black
       ),
       secondary: globalTheme.color.secondary,
+      secondaryContrast: bestContrast(
+        globalTheme.color.secondary,
+        globalTheme.color.white,
+        globalTheme.color.black
+      ),
       foreground: darkMode
         ? mix(0.8, globalTheme.color.white, globalTheme.color.black)
         : globalTheme.color.black,
