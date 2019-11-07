@@ -52,9 +52,14 @@ function Post(props) {
           />
         </TinaField>
         {page.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
-        <EditButton isEditing={isEditing} onClick={() => setIsEditing(p => !p)}>
-          {isEditing ? "Preview" : "Edit"}
-        </EditButton>
+        {process.env.NODE_ENV !== "production" && (
+          <EditButton
+            isEditing={isEditing}
+            onClick={() => setIsEditing(p => !p)}
+          >
+            {isEditing ? "Preview" : "Edit"}
+          </EditButton>
+        )}
       </Paper>
     </Layout>
   )
