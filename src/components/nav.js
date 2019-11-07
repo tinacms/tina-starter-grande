@@ -9,10 +9,7 @@ export const Nav = ({ toggleDarkMode, isDarkMode }) => {
   const data = useStaticQuery(graphql`
     query navQuery {
       dataJson(fileRelativePath: { eq: "/data/menu.json" }) {
-        menuItems {
-          link
-          label
-        }
+        ...nav
       }
     }
   `)
@@ -467,3 +464,81 @@ export const DarkModeToggle = styled(({ ...styleProps }) => {
       }
     `};
 `
+
+export const navFragment = graphql`
+  fragment nav on DataJson {
+    menuItems {
+      link
+      label
+    }
+  }
+`
+
+export const NavForm = {
+  label: "Menu",
+  fields: [
+    {
+      label: "Main Menu",
+      name: "rawJson.menuItems",
+      component: "group-list",
+      itemProps: item => ({
+        key: item.link,
+        label: item.label,
+      }),
+      fields: [
+        {
+          label: "Label",
+          name: "label",
+          component: "text",
+        },
+        {
+          label: "Link",
+          name: "link",
+          component: "text",
+        },
+        {
+          label: "Sub Menu",
+          name: "subMenu",
+          component: "group-list",
+          itemProps: item => ({
+            key: item.link,
+            label: item.label,
+          }),
+          fields: [
+            {
+              label: "Label",
+              name: "label",
+              component: "text",
+            },
+            {
+              label: "Link",
+              name: "link",
+              component: "text",
+            },
+            {
+              label: "Sub Menu",
+              name: "subMenu",
+              component: "group-list",
+              itemProps: item => ({
+                key: item.link,
+                label: item.label,
+              }),
+              fields: [
+                {
+                  label: "Label",
+                  name: "label",
+                  component: "text",
+                },
+                {
+                  label: "Link",
+                  name: "link",
+                  component: "text",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}

@@ -135,3 +135,119 @@ export const globalThemeFragment = graphql`
     }
   }
 `
+
+export const ThemeForm = {
+  label: "Theme",
+  fields: [
+    {
+      label: "Color",
+      name: "rawJson.color",
+      component: "group",
+      fields: [
+        {
+          label: "Black",
+          name: "black",
+          component: "color",
+          colorFormat: "hex",
+        },
+        {
+          label: "White",
+          name: "white",
+          component: "color",
+          colorFormat: "hex",
+        },
+        {
+          label: "Primary",
+          name: "primary",
+          component: "color",
+          colorFormat: "hex",
+        },
+        {
+          label: "Secondary",
+          name: "secondary",
+          component: "color",
+          colorFormat: "hex",
+        },
+      ],
+    },
+    {
+      label: "Header",
+      name: "rawJson.header",
+      component: "group",
+      fields: [
+        {
+          label: "Overline",
+          name: "overline",
+          component: "toggle",
+        },
+        {
+          label: "Transparent",
+          name: "transparent",
+          component: "toggle",
+        },
+        {
+          label: "Height",
+          name: "height",
+          component: "text",
+        },
+      ],
+    },
+    {
+      label: "Menu",
+      name: "rawJson.menu",
+      component: "group",
+      fields: [
+        {
+          label: "Style",
+          description: "Options are 'pill' and 'glow'",
+          name: "style",
+          component: "text",
+        },
+      ],
+    },
+    {
+      label: "Hero",
+      name: "rawJson.hero",
+      component: "group",
+      fields: [
+        {
+          label: "Default Image",
+          name: "image",
+          component: "text",
+        },
+        {
+          label: "Overlay",
+          name: "overlay",
+          component: "toggle",
+        },
+        {
+          label: "Large",
+          name: "large",
+          component: "toggle",
+        },
+        {
+          label: "Overlap",
+          name: "overlap",
+          component: "text",
+        },
+        {
+          label: "Parallax",
+          name: "parallax",
+          component: "toggle",
+        },
+      ],
+    },
+    {
+      label: "Typography",
+      name: "rawJson.typography",
+      component: "group",
+      fields: [
+        {
+          label: "Uppercase H2",
+          name: "uppercaseH2",
+          component: "toggle",
+        },
+      ],
+    },
+  ],
+}
