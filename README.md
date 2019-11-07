@@ -28,6 +28,8 @@
 - Netlify deploy configuration
 - Styled Components
 
+<br />
+
 ## :memo: Getting Started
 
 ```
@@ -38,16 +40,22 @@ cd tina-starter-grande
 yarn install && gatsby develop
 ```
 
+<br />
+
 ## :octocat: Contributing
 
 We encourage you to report bugs, request features or submit improvements! We made this for you and would :heart: any feedback or contributions to make **Tina Grande** better for everyone.
 
-### :crystal_ball: Planned Features
+<br />
+
+## :crystal_ball: Wishlist/Roadmap
 
 - Blog categories & tags
 - Additional blocks: map, image, hero, code
 - Theme setup wizard with presets that include images, content & theme settings
 - [Request something](https://github.com/tinacms/tina-starter-grande/issues/new)
+
+<br />
 
 ## :clap: Thank You
 
