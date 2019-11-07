@@ -10,6 +10,8 @@
 
 ## :sparkles: Features
 
+<img src="https://res.cloudinary.com/forestry-demo/image/upload/v1573156074/Tina%20Grande/colors.png" align="right" width="250px" />
+
 - **Full [TinaCMS](http://tinacms.org) integration**
 - Easy Theme Customization
 - Form Builder
