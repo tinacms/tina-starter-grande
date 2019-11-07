@@ -1,3 +1,6 @@
+const theme = require("./content/settings/theme.json")
+const site = require("./content/settings/theme.json")
+
 module.exports = {
   plugins: [
     `gatsby-transformer-sharp`,
@@ -13,9 +16,9 @@ module.exports = {
           theme: {
             color: {
               primary: {
-                light: "#358156",
-                medium: "#007043",
-                dark: "#0A623B",
+                light: theme.color.primary,
+                medium: theme.color.primary,
+                dark: theme.color.primary,
               },
             },
           },
@@ -48,11 +51,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Tina Starter Grande`,
-        short_name: `Tina Grande`,
+        name: site.title,
+        short_name: site.title,
         start_url: `/`,
-        background_color: `#007043`,
-        theme_color: `#007043`,
+        background_color: theme.color.primary,
+        theme_color: theme.color.primary,
         display: `minimal-ui`,
         icon: `content/images/icon.png`,
       },
