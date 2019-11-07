@@ -21,7 +21,7 @@
     "height": "3.25rem"
   },
   "hero": {
-    "image": "cafe.jpg",
+    "image": "../images/cafe.jpg",
     "large": false,
     "overlay": true,
     "overlap": "8rem",

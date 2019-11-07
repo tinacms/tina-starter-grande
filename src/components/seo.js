@@ -6,7 +6,9 @@ import { useStaticQuery, graphql } from "gatsby"
 export function SEO({ description, lang, meta, title }) {
   const data = useStaticQuery(graphql`
     query SeoQuery {
-      site: dataJson(fileRelativePath: { eq: "/data/site.json" }) {
+      site: settingsJson(
+        fileRelativePath: { eq: "/content/settings/site.json" }
+      ) {
         title
         description
       }

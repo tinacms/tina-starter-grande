@@ -9,7 +9,7 @@ export const ThemeContext = React.createContext()
 export const Theme = ({ children }) => {
   const data = useStaticQuery(graphql`
     query ThemeQuery {
-      dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
+      settingsJson(fileRelativePath: { eq: "/content/settings/theme.json" }) {
         ...globalTheme
       }
     }
@@ -31,7 +31,7 @@ export const Theme = ({ children }) => {
     }
   }
 
-  const globalTheme = data.dataJson
+  const globalTheme = data.settingsJson
 
   const theme = {
     isDarkMode: darkMode,
@@ -92,7 +92,7 @@ export const Theme = ({ children }) => {
 }
 
 export const globalThemeFragment = graphql`
-  fragment globalTheme on DataJson {
+  fragment globalTheme on SettingsJson {
     color {
       black
       white

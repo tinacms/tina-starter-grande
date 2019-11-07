@@ -8,7 +8,7 @@ import { Link } from "gatsby"
 export const Nav = ({ toggleDarkMode, isDarkMode }) => {
   const data = useStaticQuery(graphql`
     query navQuery {
-      dataJson(fileRelativePath: { eq: "/data/menu.json" }) {
+      settingsJson(fileRelativePath: { eq: "/content/settings/menu.json" }) {
         ...nav
       }
     }
@@ -19,7 +19,7 @@ export const Nav = ({ toggleDarkMode, isDarkMode }) => {
     setNavOpen(!navOpen)
   }
 
-  const menu = data.dataJson
+  const menu = data.settingsJson
 
   return (
     <>
@@ -466,7 +466,7 @@ export const DarkModeToggle = styled(({ ...styleProps }) => {
 `
 
 export const navFragment = graphql`
-  fragment nav on DataJson {
+  fragment nav on SettingsJson {
     menuItems {
       link
       label

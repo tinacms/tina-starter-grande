@@ -15,19 +15,26 @@ const merge = require("lodash.merge")
 export const Layout = ({ page, children }) => {
   const data = useStaticQuery(graphql`
     query LayoutQuery {
-      nav: dataJson(fileRelativePath: { eq: "/data/menu.json" }) {
+      nav: settingsJson(
+        fileRelativePath: { eq: "/content/settings/menu.json" }
+      ) {
         ...nav
 
         rawJson
         fileRelativePath
       }
-      theme: dataJson(fileRelativePath: { eq: "/data/theme.json" }) {
+      theme: settingsJson(
+        fileRelativePath: { eq: "/content/settings/theme.json" }
+      ) {
         ...globalTheme
 
         rawJson
         fileRelativePath
       }
-      site: dataJson(fileRelativePath: { eq: "/data/site.json" }) {
+      site: settingsJson(
+        fileRelativePath: { eq: "/content/settings/site.json" }
+      ) {
+        logo
         title
         description
         author
@@ -68,6 +75,11 @@ export const Layout = ({ page, children }) => {
 const SiteForm = {
   label: "Site",
   fields: [
+    {
+      label: "Logo",
+      name: "rawJson.logo",
+      component: "text",
+    },
     {
       label: "Title",
       name: "rawJson.title",

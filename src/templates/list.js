@@ -123,7 +123,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    authors: dataJson(fileRelativePath: { eq: "/data/authors.json" }) {
+    authors: settingsJson(
+      fileRelativePath: { eq: "/content/settings/authors.json" }
+    ) {
       authors {
         slug
         name

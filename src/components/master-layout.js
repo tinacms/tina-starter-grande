@@ -14,7 +14,9 @@ import { withPlugin } from "react-tinacms"
 const MasterLayout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query MasterLayoutQuery {
-      site: dataJson(fileRelativePath: { eq: "/data/site.json" }) {
+      site: settingsJson(
+        fileRelativePath: { eq: "/content/settings/site.json" }
+      ) {
         title
       }
     }

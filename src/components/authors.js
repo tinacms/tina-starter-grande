@@ -4,7 +4,9 @@ import { useStaticQuery, graphql } from "gatsby"
 export const Authors = ({ authorSlugs }) => {
   const data = useStaticQuery(graphql`
     query authorQuery {
-      authorsJson: dataJson(fileRelativePath: { eq: "/data/authors.json" }) {
+      authorsJson: settingsJson(
+        fileRelativePath: { eq: "/content/settings/authors.json" }
+      ) {
         authors {
           email
           name
