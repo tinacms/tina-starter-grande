@@ -2,7 +2,7 @@
 type: dummmy
 draft: true
 hero:
-  image: coffee-beans.jpg
+  image: ../images/coffee-beans.jpg
   large: false
   overlay: true
 ---

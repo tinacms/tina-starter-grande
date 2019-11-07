@@ -4,7 +4,7 @@
   "pageType": "list",
   "listType": "post",
   "hero": {
-    "image": "coffee-beans.jpg",
+    "image": "../images/coffee-beans.jpg",
     "large": true,
     "overlay": true
   }

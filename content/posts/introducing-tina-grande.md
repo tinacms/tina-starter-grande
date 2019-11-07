@@ -6,7 +6,7 @@ authors:
   - scott-byrne
 draft: false
 hero:
-  image: coffee-beans.jpg
+  image: ../images/coffee-beans.jpg
   large: false
   overlay: true
 title: "Introducing Tina Grande \_\U0001F389"

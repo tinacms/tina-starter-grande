@@ -23,7 +23,7 @@
         "primary": false
       }
     ],
-    "image": "cafe-2.jpg",
+    "image": "../images/cafe-2.jpg",
     "large": true
   },
   "title": "Home",
