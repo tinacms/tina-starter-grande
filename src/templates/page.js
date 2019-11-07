@@ -26,15 +26,14 @@ export default function Page({ data }) {
               case "FormBlock":
                 return <Form form={data} />
               case "ContentBlock":
-                if (data.content)
+                if (data.content && page.childrenPagesJsonBlockMarkdown[i])
                   return (
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          page.childrenPagesJsonBlockMarkdown[i]
-                            .childMarkdownRemark.html,
-                      }}
-                    ></div>
+                    <Content
+                      html={
+                        page.childrenPagesJsonBlockMarkdown[i]
+                          .childMarkdownRemark.html
+                      }
+                    />
                   )
                 break
               default:

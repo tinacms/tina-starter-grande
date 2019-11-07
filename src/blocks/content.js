@@ -1,6 +1,14 @@
 import React from "react"
 
-export function Content() {}
+export function Content({ html }) {
+  return (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: html,
+      }}
+    ></div>
+  )
+}
 
 export const ContentBlock = {
   label: "Content",
