@@ -10,15 +10,15 @@ module.exports = {
         sidebar: {
           hidden: process.env.NODE_ENV === "production",
           position: "displace",
-          // theme: {
-          //   color: {
-          //     primary: {
-          //       light: "#358156",
-          //       medium: "#007043",
-          //       dark: "#0A623B",
-          //     },
-          //   },
-          // },
+          theme: {
+            color: {
+              primary: {
+                light: "#358156",
+                medium: "#007043",
+                dark: "#0A623B",
+              },
+            },
+          },
         },
         plugins: ["gatsby-tinacms-git", "gatsby-tinacms-remark"],
       },
@@ -62,8 +62,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Tina Grande Gatsby Starter`,
-        short_name: `Tina Grandee`,
+        name: `Tina Starter Grande`,
+        short_name: `Tina Grande`,
         start_url: `/`,
         background_color: `#007043`,
         theme_color: `#007043`,
