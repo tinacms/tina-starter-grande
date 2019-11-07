@@ -23,8 +23,8 @@
         "primary": false
       }
     ],
-    "image": "../images/cafe-2.jpg",
-    "large": true
+    "large": true,
+    "image": "../images/cafe-2.jpg"
   },
   "title": "Home",
   "displayTitle": false

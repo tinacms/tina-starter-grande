@@ -87,8 +87,8 @@ const PostForm = {
       label: "Hero Image",
       name: "rawFrontmatter.hero.image",
       component: "image",
-      parse: filename => `${filename}`,
-      uploadDir: () => `/content/posts/`,
+      parse: filename => `../images/${filename}`,
+      uploadDir: () => `/content/images/`,
       previewSrc: formValues => {
         console.log(formValues)
         if (!formValues.frontmatter.hero || !formValues.frontmatter.hero.image)
