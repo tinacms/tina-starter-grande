@@ -26,6 +26,6 @@
     "image": "../images/cafe-2.jpg",
     "large": true
   },
-  "title": "Home",
-  "displayTitle": false
+  "displayTitle": false,
+  "title": "Home"
 }

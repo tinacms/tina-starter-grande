@@ -51,11 +51,12 @@ export const Layout = ({ page, children }) => {
 
   const themeContext = React.useContext(ThemeContext)
   const theme = themeContext.theme
-  const pageTitle = page.title
-    ? page.title
-    : page.frontmatter.title
-    ? page.frontmatter.title
-    : false
+  const pageTitle =
+    page && page.title
+      ? page.title
+      : page && page.frontmatter && page.frontmatter.title
+      ? page.frontmatter.title
+      : ""
   const pageHero = page.frontmatter ? page.frontmatter.hero : page.hero
   const hero = pageHero
     ? merge({}, theme.hero, removeNull(pageHero))
