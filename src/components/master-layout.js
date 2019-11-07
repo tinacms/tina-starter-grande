@@ -96,10 +96,6 @@ export const Site = styled.div`
       scrollbar-width: none;
       -ms-overflow-style: none;
 
-      * {
-        transform-style: preserve-3d;
-      }
-
       ::-webkit-scrollbar {
         display: none;
       }

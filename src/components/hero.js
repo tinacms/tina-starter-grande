@@ -49,6 +49,12 @@ const HeroWrapper = styled.div`
     ${props => props.theme.header.height} +
       ${props => props.theme.header.height}
   );
+
+  ${props =>
+    props.theme.hero.parallax &&
+    css`
+      transform-style: preserve-3d;
+    `}
 `
 
 const HeroContent = styled.div`
@@ -82,6 +88,7 @@ const HeroBackground = styled.div`
   ${props =>
     props.theme.hero.parallax &&
     css`
+      transform-style: preserve-3d;
       transform: translateZ(-1px) scale(2) translateY(25%);
     `}
 `
