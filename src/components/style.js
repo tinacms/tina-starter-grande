@@ -793,7 +793,7 @@ export const PlainText = props => {
   return <PlainInput {...props.input} />
 }
 
-export const Title = styled.h2`
+export const PageTitle = styled.h2`
   font-size: 2.2em;
   line-height: 1.2;
   word-spacing: 1px;

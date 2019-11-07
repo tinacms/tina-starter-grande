@@ -15,7 +15,8 @@ export const ContentBlock = {
   name: "content",
   key: "test",
   defaultItem: {
-    content: "## Test",
+    _template: "ContentBlock",
+    content: "",
   },
   fields: [{ name: "content", label: "Content", component: "markdown" }],
 }

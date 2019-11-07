@@ -120,7 +120,7 @@ export const FormBlock = {
   name: "form",
   component: "group",
   defaultItem: {
-    _template: "formBlock",
+    _template: "FormBlock",
     name: "Form",
     recipient: "email",
     fields: [],

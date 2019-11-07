@@ -27,6 +27,8 @@
       "_template": "ContentBlock",
       "content": "## block content",
       "name": "dummy",
+      "title": "dummy",
+      "underline": true,
       "recipient": "dummy",
       "fields": [
         {

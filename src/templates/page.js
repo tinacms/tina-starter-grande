@@ -1,7 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Paper, Title } from "../components/style"
+import { Paper } from "../components/style"
 import { Form, FormBlock } from "../blocks/form"
+import { Title, TitleBlock } from "../blocks/title"
 import { Content, ContentBlock } from "../blocks/content"
 import { Layout } from "../components/layout"
 
@@ -14,15 +15,11 @@ export default function Page({ data }) {
   return (
     <Layout page={page}>
       <Paper>
-        {page.title && page.displayTitle && (
-          <>
-            <Title>{page.title}</Title>
-            <hr />
-          </>
-        )}
         {blocks &&
           blocks.map(({ _template, ...data }, i) => {
             switch (_template) {
+              case "TitleBlock":
+                return <Title page={page} data={data} />
               case "FormBlock":
                 return <Form form={data} />
               case "ContentBlock":
@@ -52,11 +49,6 @@ const PageForm = {
       label: "Title",
       name: "rawJson.title",
       component: "text",
-    },
-    {
-      label: "Display Title",
-      name: "rawJson.displayTitle",
-      component: "toggle",
     },
     {
       label: "Hero",
@@ -129,6 +121,7 @@ const PageForm = {
       name: "rawJson.blocks",
       component: "blocks",
       templates: {
+        TitleBlock,
         FormBlock,
         ContentBlock,
       },
@@ -164,6 +157,8 @@ export const pageQuery = graphql`
         _template
         content
         name
+        title
+        underline
         recipient
         fields {
           label
