@@ -32,8 +32,6 @@ export const Header = styled(({ siteTitle, ...styleProps }) => {
   height: ${props => props.theme.header.height};
   top: 0;
   background-color: ${props => props.theme.color.background};
-  box-shadow: inset 0 -1px 0 ${props => transparentize(0.9, props.theme.color.white)},
-    0 1px 0 ${props => transparentize(0.9, props.theme.color.black)};
   color: ${props => props.theme.color.foreground};
 
   ${props =>
@@ -43,10 +41,17 @@ export const Header = styled(({ siteTitle, ...styleProps }) => {
     `};
 
   ${props =>
+    props.theme.header.underline &&
+    css`
+      box-shadow: inset 0 -1px 0 ${props => transparentize(0.9, props.theme.color.white)},
+        0 1px 0 ${props => transparentize(0.9, props.theme.color.black)};
+    `};
+
+  ${props =>
     props.theme.header.transparent &&
     css`
       background-color: ${props =>
-        transparentize(0.95, props.theme.color.black)};
+        transparentize(0.9, props.theme.color.black)};
       color: ${props => props.theme.color.white};
     `};
 `

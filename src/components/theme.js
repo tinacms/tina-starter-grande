@@ -111,6 +111,7 @@ export const globalThemeFragment = graphql`
     }
     header {
       overline
+      underline
       transparent
       height
     }
@@ -178,6 +179,11 @@ export const ThemeForm = {
         {
           label: "Overline",
           name: "overline",
+          component: "toggle",
+        },
+        {
+          label: "Underline",
+          name: "underline",
           component: "toggle",
         },
         {
