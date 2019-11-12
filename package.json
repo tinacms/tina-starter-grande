@@ -7,6 +7,8 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
+    "@tinacms/fields": "^0.1.12",
+    "@tinacms/form-builder": "^0.2.4",
     "babel-plugin-styled-components": "^1.10.6",
     "focus-visible": "^5.0.2",
     "g": "^2.0.1",
