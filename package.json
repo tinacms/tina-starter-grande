@@ -46,6 +46,7 @@
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
     "react-slugify": "^2.0.1",
+    "react-tinacms": "^0.8.0",
     "styled-components": ">=4.1",
     "styled-icons": "^8.6.0"
   },
