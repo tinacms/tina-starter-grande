@@ -3,6 +3,12 @@
   "path": "/contact",
   "blocks": [
     {
+      "_template": "TitleBlock",
+      "title": "",
+      "underline": true,
+      "content": ""
+    },
+    {
       "_template": "FormBlock",
       "name": "Contact Form",
       "recipient": "scott.byrne@forestry.io",
