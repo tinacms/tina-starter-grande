@@ -6,10 +6,10 @@ import { Title, TitleBlock } from "../blocks/title"
 import { Content, ContentBlock } from "../blocks/content"
 import { Layout } from "../components/layout"
 
-import { useJsonForm } from "gatsby-tinacms-json"
+import { useLocalJsonForm } from "gatsby-tinacms-json"
 
 export default function Page({ data }) {
-  const [page] = useJsonForm(data.page, PageForm)
+  const [page] = useLocalJsonForm(data.page, PageForm)
   const blocks = page.blocks ? page.blocks : []
 
   return (

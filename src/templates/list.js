@@ -12,11 +12,11 @@ import { Authors } from "../components/authors"
 import { Link } from "gatsby"
 import { Layout } from "../components/layout"
 
-import { useJsonForm } from "gatsby-tinacms-json"
+import { useLocalJsonForm } from "gatsby-tinacms-json"
 
 export default function List({ data, pageContext }) {
-  const [page] = useJsonForm(data.page, ListForm)
-  const [authors] = useJsonForm(data.authors, AuthorsForm)
+  const [page] = useLocalJsonForm(data.page, ListForm)
+  const [authors] = useLocalJsonForm(data.authors, AuthorsForm)
 
   const { slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1
