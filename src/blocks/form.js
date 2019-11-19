@@ -130,8 +130,7 @@ export const FormBlock = {
     {
       name: "recipient",
       label: "Recipient",
-      description:
-        "Form is sent via formspree.io. The first time the form is used it will require confirmation.",
+      description: "Form is sent via formspree.io.",
       component: "text",
     },
     {
