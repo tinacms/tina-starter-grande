@@ -90,7 +90,6 @@ const PostForm = {
       parse: filename => `../images/${filename}`,
       uploadDir: () => `/content/images/`,
       previewSrc: formValues => {
-        console.log(formValues)
         if (!formValues.frontmatter.hero || !formValues.frontmatter.hero.image)
           return ""
         return formValues.frontmatter.hero.image.childImageSharp.fluid.src
