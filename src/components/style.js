@@ -613,8 +613,7 @@ const ButtonStyles = css`
   border: none;
   transition: all 150ms ${props => props.theme.easing};
   color: ${props => props.theme.color.foreground};
-  background-color: ${props =>
-    transparentize(0.5, props.theme.color.background)};
+  background-color: ${props => props.theme.color.background};
   border-bottom: 3px solid
     ${props => transparentize(0.8, props.theme.color.black)};
   cursor: pointer;
