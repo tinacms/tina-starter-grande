@@ -1,10 +1,10 @@
 # [![Tina Grande](https://res.cloudinary.com/forestry-demo/image/upload/h_40/v1573060726/tina-grande-wordmark.png)](https://tina-starter-grande.netlify.com/)
 
-**Tina Grande** is a Gatsby starter with full TinaCMS integration. You can use Tina to add and remove pages, customize the theme, write content and more! :tada:
+**Tina Grande** is a Gatsby starter with full TinaCMS integration. You can use Tina to add and remove posts, customize the theme, write content and more! :tada:
 
 <br />
 
-<img src="https://res.cloudinary.com/forestry-demo/video/upload/w_700,e_loop/v1573145194/Tina_Grande_Alpha_Demo_1_-_Encoded.gif" align="center" />
+<a href="https://tina-starter-grande.netlify.com/" title="Tina Grande - Netlify Preview"><img src="https://res.cloudinary.com/forestry-demo/video/upload/w_700,e_loop/v1573145194/Tina_Grande_Alpha_Demo_1_-_Encoded.gif" align="center" /></a>
 
 <br />
 
