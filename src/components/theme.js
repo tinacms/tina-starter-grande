@@ -195,6 +195,9 @@ export const ThemeForm = {
           label: "Height",
           name: "height",
           component: "text",
+          parse(value) {
+            return value || ""
+          },
         },
       ],
     },
@@ -208,6 +211,9 @@ export const ThemeForm = {
           description: "Options are 'pill' and 'glow'",
           name: "style",
           component: "text",
+          parse(value) {
+            return value || ""
+          },
         },
       ],
     },
@@ -220,6 +226,9 @@ export const ThemeForm = {
           label: "Default Image",
           name: "image",
           component: "text",
+          parse(value) {
+            return value || ""
+          },
         },
         {
           label: "Overlay",
@@ -235,6 +244,9 @@ export const ThemeForm = {
           label: "Overlap",
           name: "overlap",
           component: "text",
+          parse(value) {
+            return value || ""
+          },
         },
         {
           label: "Parallax",
