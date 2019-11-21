@@ -180,16 +180,25 @@ export const ThemeForm = {
           label: "Overline",
           name: "overline",
           component: "toggle",
+          parse(value) {
+            return value || false
+          },
         },
         {
           label: "Underline",
           name: "underline",
           component: "toggle",
+          parse(value) {
+            return value || false
+          },
         },
         {
           label: "Transparent",
           name: "transparent",
           component: "toggle",
+          parse(value) {
+            return value || false
+          },
         },
         {
           label: "Height",
@@ -234,11 +243,17 @@ export const ThemeForm = {
           label: "Overlay",
           name: "overlay",
           component: "toggle",
+          parse(value) {
+            return value || false
+          },
         },
         {
           label: "Large",
           name: "large",
           component: "toggle",
+          parse(value) {
+            return value || false
+          },
         },
         {
           label: "Overlap",
@@ -252,6 +267,9 @@ export const ThemeForm = {
           label: "Parallax",
           name: "parallax",
           component: "toggle",
+          parse(value) {
+            return value || false
+          },
         },
       ],
     },
@@ -264,6 +282,9 @@ export const ThemeForm = {
           label: "Uppercase H2",
           name: "uppercaseH2",
           component: "toggle",
+          parse(value) {
+            return value || false
+          },
         },
       ],
     },
