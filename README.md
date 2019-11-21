@@ -17,7 +17,7 @@
 - Form Builder
   - Pre-defined fields
   - Custom fields
-  - Netlify and Formspree Integration
+  - Formspree Integration
 - Page Builder
 - Dark mode
 - Parallax hero _(css powered, optional)_
