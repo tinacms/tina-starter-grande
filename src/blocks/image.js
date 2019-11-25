@@ -35,7 +35,6 @@ export const ImageBlock = {
       previewSrc: (formValues, fieldProps) => {
         const pathName = fieldProps.input.name.replace("rawJson", "jsonNode")
         const imageNode = get(formValues, pathName)
-        console.log(formValues, pathName)
         if (!imageNode || !imageNode.childImageSharp) return ""
         return imageNode.childImageSharp.fluid.src
       },
