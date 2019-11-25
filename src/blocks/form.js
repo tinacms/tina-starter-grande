@@ -39,11 +39,13 @@ export function Form({ form }) {
           )
         }
       })}
-      <FormField wide>
-        <Button primary type="submit" value="Submit">
-          Submit
-        </Button>
-      </FormField>
+      {form.fields.length > 0 && (
+        <FormField wide>
+          <Button primary type="submit" value="Submit">
+            Submit
+          </Button>
+        </FormField>
+      )}
     </StyledForm>
   )
 }
