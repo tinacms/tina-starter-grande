@@ -11,7 +11,6 @@
     {
       "_template": "FormBlock",
       "name": "Contact Form",
-      "recipient": "scott.byrne@forestry.io",
       "fields": [
         {
           "label": "Name",
