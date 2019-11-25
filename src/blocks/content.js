@@ -1,14 +1,25 @@
 import React from "react"
+import styled, { css } from "styled-components"
 
-export function Content({ html }) {
+export function Content({ data, html }) {
+  const centered = data.center ? data.center : false
   return (
-    <div
+    <StyledContent
+      center={centered}
       dangerouslySetInnerHTML={{
         __html: html,
       }}
-    ></div>
+    ></StyledContent>
   )
 }
+
+const StyledContent = styled.div`
+  ${props =>
+    props.center &&
+    css`
+      text-align: center;
+    `};
+`
 
 export const ContentBlock = {
   label: "Content",
@@ -18,5 +29,8 @@ export const ContentBlock = {
     _template: "ContentBlock",
     content: "",
   },
-  fields: [{ name: "content", label: "Content", component: "markdown" }],
+  fields: [
+    { name: "content", label: "Content", component: "markdown" },
+    { name: "center", label: "Center", component: "toggle" },
+  ],
 }

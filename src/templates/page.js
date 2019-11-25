@@ -29,6 +29,7 @@ export default function Page({ data }) {
                 if (data.content && page.childrenPagesJsonBlockMarkdown[i])
                   return (
                     <Content
+                      data={data}
                       html={
                         page.childrenPagesJsonBlockMarkdown[i]
                           .childMarkdownRemark.html
@@ -163,6 +164,7 @@ export const pageQuery = graphql`
         name
         title
         underline
+        center
         recipient
         fields {
           label

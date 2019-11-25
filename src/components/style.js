@@ -502,13 +502,10 @@ export const Image = styled(Img)``
 export const Paper = styled.div`
   position: relative;
   background-color: ${props => props.theme.color.background};
-  border-radius: ${props => props.theme.radius.small};
-  box-shadow: 0 0.5rem 1rem -0.5rem ${props =>
-    transparentize(0.9, props.theme.color.black)};
-  margin: 0 calc(var(--wrapper-padding-x) * -1);
+  box-shadow: 0 0.5rem 1rem -0.5rem ${props => transparentize(0.9, props.theme.color.black)};
 
-  --paper-padding-y: 2rem;
-  --paper-padding-x: 2rem;
+  --paper-padding-y: 2.5rem;
+  --paper-padding-x: 2.5rem;
   padding: var(--paper-padding-y) var(--paper-padding-x);
 
   ${props =>
@@ -521,19 +518,24 @@ export const Paper = styled.div`
     `};
 
   ${props =>
+    props.center &&
+    css`
+      text-align: center;
+    `};
+
+  ${props =>
     props.theme.isDarkMode &&
     css`
       background-color: ${props =>
-        mix(0.95, props.theme.color.background, props.theme.color.foreground)};
+        mix(0.92, props.theme.color.background, props.theme.color.foreground)};
     `};
 
-  > *:last-child, > div > *:last-child {
+  > *:last-child,
+  > div > *:last-child {
     margin-bottom: 0;
   }
 
   @media (min-width: ${props => props.theme.breakpoints.small}) {
-    --paper-padding-y: 2.5rem;
-    --paper-padding-x: 3rem;
     margin: 0;
   }
 
@@ -548,35 +550,15 @@ export const Paper = styled.div`
     padding-right: 0;
 
     @media (min-width: ${props => props.theme.breakpoints.small}) {
-      margin: var(--paper-padding-y)  -var(--paper-padding-x)  !important;
+      margin: var(--paper-padding-y) -var(--paper-padding-x) !important;
       padding-left: var(--paper-padding-x);
     }
   }
 
   ${Image}, .gatsby-resp-image-wrapper, pre[class*="language-"] {
-    margin: var(--paper-padding-y)  calc(var(--paper-padding-x) * -1)!important;
-    overflow: hidden; 
+    margin: var(--paper-padding-y) calc(var(--paper-padding-x) * -1) !important;
+    overflow: hidden;
   }
-
-  /* > *:first-child {
-    ${Image}, .gatsby-resp-image-wrapper {
-      margin-top: -1.5rem !important;
-      border-radius: ${props => props.theme.radius.small}
-        ${props => props.theme.radius.small} 0 0;
-
-      @media (min-width: ${props => props.theme.breakpoints.small}) {
-        margin-top: -2.5rem !important;
-        border-radius: ${props => props.theme.radius.small}
-          ${props => props.theme.radius.small} 0 0;
-      }
-
-      @media (min-width: ${props => props.theme.breakpoints.large}) {
-        margin-top: -3.5rem !important;
-        border-radius: ${props => props.theme.radius.small}
-          ${props => props.theme.radius.small} 0 0;
-      }
-    }
-  } */
 `
 
 export const Main = styled.main`
@@ -791,14 +773,3 @@ export const PlainInput = styled.input`
 export const PlainText = props => {
   return <PlainInput {...props.input} />
 }
-
-export const PageTitle = styled.h2`
-  font-size: 2.2em;
-  line-height: 1.2;
-  word-spacing: 1px;
-  font-weight: 700;
-
-  + hr {
-    margin: 2.2rem 0;
-  }
-`
