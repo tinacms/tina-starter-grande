@@ -30,6 +30,7 @@
       "title": "dummy",
       "underline": true,
       "recipient": "dummy",
+      "image": "../images/dummy.jpg",
       "fields": [
         {
           "_template": "dummy",

@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import { Paper } from "../components/style"
 import { Form, FormBlock } from "../blocks/form"
 import { Title, TitleBlock } from "../blocks/title"
+import { Image, ImageBlock } from "../blocks/image"
 import { Content, ContentBlock } from "../blocks/content"
 import { Layout } from "../components/layout"
 
@@ -20,6 +21,8 @@ export default function Page({ data }) {
             switch (_template) {
               case "TitleBlock":
                 return <Title page={page} data={data} />
+              case "ImageBlock":
+                return <Image data={data} />
               case "FormBlock":
                 return <Form form={data} />
               case "ContentBlock":
@@ -122,6 +125,7 @@ const PageForm = {
       component: "blocks",
       templates: {
         TitleBlock,
+        ImageBlock,
         FormBlock,
         ContentBlock,
       },
@@ -164,6 +168,13 @@ export const pageQuery = graphql`
           label
           inputType
           autocomplete
+        }
+        image {
+          childImageSharp {
+            fluid(quality: 70, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
         }
       }
       childrenPagesJsonBlockMarkdown {
