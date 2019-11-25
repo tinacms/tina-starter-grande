@@ -503,6 +503,7 @@ export const Paper = styled.div`
   position: relative;
   background-color: ${props => props.theme.color.background};
   box-shadow: 0 0.5rem 1rem -0.5rem ${props => transparentize(0.9, props.theme.color.black)};
+  border-radius: ${props => props.theme.radius.small};
 
   --paper-padding-y: 2.5rem;
   --paper-padding-x: 2.5rem;
