@@ -41,8 +41,8 @@ export const TitleBlock = {
   label: "Title",
   name: "title",
   defaultItem: {
-    _template: "TitleBlock",
     title: "",
+    center: false,
     underline: true,
   },
   fields: [
