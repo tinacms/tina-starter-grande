@@ -8,7 +8,7 @@ import {
   MetaActions,
   DraftBadge,
 } from "../components/style"
-import { Authors } from "../components/authors"
+import { ListAuthors } from "../components/authors"
 import { Link } from "gatsby"
 import { Layout } from "../components/layout"
 
@@ -45,7 +45,9 @@ export default function List({ data, pageContext }) {
                   {item.node.frontmatter.authors && (
                     <MetaSpan>
                       <em>By</em>&nbsp;
-                      <Authors authorSlugs={item.node.frontmatter.authors} />
+                      <ListAuthors
+                        authorSlugs={item.node.frontmatter.authors}
+                      />
                     </MetaSpan>
                   )}
                   <MetaActions>

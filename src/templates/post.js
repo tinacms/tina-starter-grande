@@ -11,7 +11,7 @@ import {
   Wrapper,
   PlainText,
 } from "../components/style"
-import { Authors } from "../components/authors"
+import { ListAuthors } from "../components/authors"
 import { Link } from "gatsby"
 import { Layout } from "../components/layout"
 
@@ -31,7 +31,7 @@ function Post(props) {
           {page.frontmatter.authors && (
             <MetaSpan>
               <em>By</em>&nbsp;
-              <Authors authorSlugs={page.frontmatter.authors} />
+              <ListAuthors authorSlugs={page.frontmatter.authors} />
             </MetaSpan>
           )}
           <MetaActions>
@@ -137,6 +137,9 @@ export const postQuery = graphql`
       fileRelativePath
       rawFrontmatter
       rawMarkdownBody
+    }
+    settingsJson(fileRelativePath: { eq: "/content/settings/authors.json" }) {
+      ...authors
     }
   }
 `
