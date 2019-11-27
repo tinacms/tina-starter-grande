@@ -74,6 +74,11 @@ const PostForm = {
       component: "text",
     },
     {
+      label: "Authors",
+      name: "rawFrontmatter.authors",
+      component: "authors",
+    },
+    {
       name: "rawFrontmatter.draft",
       component: "toggle",
       label: "Draft",

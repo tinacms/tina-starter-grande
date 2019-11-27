@@ -1,26 +1,11 @@
 import React from "react"
 import styled, { css } from "styled-components"
-import { useStaticQuery, graphql } from "gatsby"
-
-export const useAuthors = () => {
-  const { settingsJson } = useStaticQuery(
-    graphql`
-      query authorsQuery {
-        settingsJson(
-          fileRelativePath: { eq: "/content/settings/authors.json" }
-        ) {
-          ...authors
-        }
-      }
-    `
-  )
-  return settingsJson.authors
-}
+import { useAuthors } from "./useAuthors"
 
 export const ListAuthors = ({ authorSlugs }) => {
-  const authorsJson = useAuthors()
+  const authors = useAuthors()
 
-  const postAuthors = authorsJson.filter(author => {
+  const postAuthors = authors.filter(author => {
     return authorSlugs.indexOf(author.slug) > -1 ? true : false
   })
 
@@ -32,13 +17,3 @@ export const ListAuthors = ({ authorSlugs }) => {
     }
   })
 }
-
-export const authorsFragment = graphql`
-  fragment authors on SettingsJson {
-    authors {
-      email
-      name
-      slug
-    }
-  }
-`
