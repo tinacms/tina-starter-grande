@@ -1,44 +1,60 @@
 import React from "react"
 import styled, { css } from "styled-components"
-import { useStaticQuery, graphql } from "gatsby"
+import { useAuthors } from "./useAuthors"
 
-export const useAuthors = () => {
-  const { settingsJson } = useStaticQuery(
-    graphql`
-      query authorsQuery {
-        settingsJson(
-          fileRelativePath: { eq: "/content/settings/authors.json" }
-        ) {
-          ...authors
-        }
-      }
-    `
-  )
-  return settingsJson.authors
-}
+export const ListAuthors = ({ authorIDs }) => {
+  const authors = useAuthors()
 
-export const ListAuthors = ({ authorSlugs }) => {
-  const authorsJson = useAuthors()
-
-  const postAuthors = authorsJson.filter(author => {
-    return authorSlugs.indexOf(author.slug) > -1 ? true : false
-  })
-
-  return postAuthors.map((author, i) => {
-    if (postAuthors.length === i + 1) {
-      return author.name
+  const authorList = authorIDs.map((authorID, index) => {
+    const author = authors.find(author => author.id === authorID)
+    const authorName = author && author.name ? author.name : ""
+    if (!author) return ""
+    if (authorIDs.length === index + 1) {
+      return authorName
     } else {
-      return author.name + ", "
+      return authorName + ", "
     }
   })
+
+  return authorList
 }
 
-export const authorsFragment = graphql`
-  fragment authors on SettingsJson {
-    authors {
-      email
-      name
-      slug
-    }
-  }
-`
+export const AuthorsForm = {
+  label: "Authors",
+  fields: [
+    {
+      label: "Authors",
+      name: "rawJson.authors",
+      component: "group-list",
+      itemProps: item => ({
+        key: item.id,
+        label: item.name,
+      }),
+      defaultItem: {
+        name: "",
+        id: Math.random()
+          .toString(36)
+          .substr(2, 9),
+        email: "",
+        link: "",
+      },
+      fields: [
+        {
+          label: "Name",
+          name: "name",
+          component: "text",
+        },
+        {
+          label: "Email",
+          name: "email",
+          component: "text",
+        },
+        {
+          label: "Link",
+          name: "link",
+          component: "text",
+        },
+      ],
+    },
+  ],
+}
