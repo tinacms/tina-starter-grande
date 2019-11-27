@@ -14,6 +14,9 @@ import {
 
 export const AuthorsField = props => {
   const { input, field, form } = props
+  const [visible, setVisible] = React.useState(false)
+  const authors = authorsJson.authors
+  const authorSlugs = input.value || []
 
   const addAuthor = React.useCallback(
     slug => {
@@ -21,10 +24,6 @@ export const AuthorsField = props => {
     },
     [field.name, form.mutators]
   )
-
-  const [visible, setVisible] = React.useState(false)
-  const authors = authorsJson.authors
-  const authorSlugs = input.value || []
 
   return (
     <>
@@ -171,7 +170,7 @@ const DeleteButton = styled.button`
   margin: 0;
   transition: all 85ms ease-out;
   &:hover {
-    background-color: #f6f6f9;
+    background-color: ${color.grey(2)};
   }
 `
 
@@ -206,13 +205,24 @@ const ListItem = styled.div`
   &:hover {
     background-color: #f6f6f9;
     cursor: grab;
-    svg {
-      fill: ${color.grey(8)};
-    }
+
     ${ItemLabel} {
       color: #0084ff;
     }
+    ${DeleteButton} {
+      svg {
+        fill: ${color.grey(4)};
+      }
+      &:hover {
+        svg {
+          fill: ${color.grey(8)};
+        }
+      }
+    }
     ${DragHandle} {
+      svg {
+        fill: ${color.grey(8)};
+      }
       svg:first-child {
         opacity: 0;
       }
