@@ -1,15 +1,8 @@
 import React, { useState } from "react"
 import styled, { css } from "styled-components"
-import { FieldMeta } from "tinacms"
 import authorsJson from "../../content/settings/authors"
 import { Droppable, Draggable } from "react-beautiful-dnd"
-import {
-  AddIcon,
-  DragIcon,
-  ReorderIcon,
-  TrashIcon,
-  LeftArrowIcon,
-} from "@tinacms/icons"
+import { AddIcon, DragIcon, ReorderIcon, TrashIcon } from "@tinacms/icons"
 import {
   padding,
   color,
@@ -20,7 +13,7 @@ import {
 } from "@tinacms/styles"
 
 export const AuthorsField = props => {
-  const { input, field, form, meta } = props
+  const { input, field, form } = props
 
   const addAuthor = React.useCallback(
     slug => {
@@ -36,7 +29,7 @@ export const AuthorsField = props => {
   return (
     <>
       <AuthorsHeader>
-        <FieldLabel htmlFor="">Authors</FieldLabel>
+        <FieldLabel>Authors</FieldLabel>
         <IconButton
           primary
           small
@@ -60,11 +53,10 @@ export const AuthorsField = props => {
           </AuthorMenuList>
         </AuthorMenu>
       </AuthorsHeader>
-      <AuthorsDescription></AuthorsDescription>
       <Droppable droppableId={field.name} type={field.name}>
         {provider => (
           <AuthorList ref={provider.innerRef}>
-            {authors.length === 0 && <EmptyState />}
+            {authorSlugs.length === 0 && <EmptyState />}
             {authorSlugs.map((authorSlug, index) => {
               const author = authors.find(author => author.slug === authorSlug)
               return (
@@ -83,10 +75,6 @@ export const AuthorsField = props => {
     </>
   )
 }
-
-const AuthorsDescription = styled.p`
-  margin: 0;
-`
 
 const AuthorList = styled.div`
   margin-bottom: 1.5rem;
@@ -122,6 +110,71 @@ const AuthorListItem = ({ author, form, field, index }) => {
   )
 }
 
+const ItemLabel = styled.label`
+  margin: 0;
+  font-size: ${font.size(2)};
+  font-weight: 500;
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  align-self: center;
+  color: inherit;
+  transition: all 85ms ease-out;
+  text-align: left;
+  padding: 0 0.5rem;
+  pointer-events: none;
+
+  ${props =>
+    props.error &&
+    css`
+      color: ${color.error()} !important;
+    `};
+`
+
+const DragHandle = styled(function DragHandle({ ...styleProps }) {
+  return (
+    <div {...styleProps}>
+      <DragIcon />
+      <ReorderIcon />
+    </div>
+  )
+})`
+  margin: 0;
+  flex: 0 0 auto;
+  width: 2rem;
+  position: relative;
+  fill: inherit;
+  padding: 0.75rem 0;
+  transition: all 85ms ease-out;
+  svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1.25rem;
+    height: 1.25rem;
+    transform: translate3d(-50%, -50%, 0);
+    transition: all 85ms ease-out;
+  }
+  svg:last-child {
+    opacity: 0;
+  }
+`
+
+const DeleteButton = styled.button`
+  text-align: center;
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.75rem 0.5rem;
+  margin: 0;
+  transition: all 85ms ease-out;
+  &:hover {
+    background-color: #f6f6f9;
+  }
+`
+
 const ListItem = styled.div`
   position: relative;
   cursor: pointer;
@@ -151,11 +204,21 @@ const ListItem = styled.div`
   }
 
   &:hover {
+    background-color: #f6f6f9;
+    cursor: grab;
     svg {
       fill: ${color.grey(8)};
     }
     ${ItemLabel} {
       color: #0084ff;
+    }
+    ${DragHandle} {
+      svg:first-child {
+        opacity: 0;
+      }
+      svg:last-child {
+        opacity: 1;
+      }
     }
   }
 
@@ -194,82 +257,18 @@ const ListItem = styled.div`
     `};
 `
 
-const ItemLabel = styled.label`
-  margin: 0;
+const EmptyState = () => <EmptyList>There's no authors</EmptyList>
+
+const EmptyList = styled.div`
+  text-align: center;
+  border-radius: ${radius("small")};
+  background-color: ${color.grey(2)};
+  color: ${color.grey(4)};
+  line-height: 1.35;
+  padding: 0.75rem 0;
   font-size: ${font.size(2)};
   font-weight: 500;
-  flex: 1 1 auto;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  align-self: center;
-  color: inherit;
-  transition: all 85ms ease-out;
-  text-align: left;
-
-  ${props =>
-    props.error &&
-    css`
-      color: ${color.error()} !important;
-    `};
 `
-
-const DragHandle = styled(function DragHandle({ ...styleProps }) {
-  return (
-    <div {...styleProps}>
-      <DragIcon />
-      <ReorderIcon />
-    </div>
-  )
-})`
-  margin: 0;
-  flex: 0 0 auto;
-  width: 2rem;
-  position: relative;
-  fill: inherit;
-  padding: 0.75rem 0;
-  transition: all 85ms ease-out;
-  &:hover {
-    background-color: #f6f6f9;
-    cursor: grab;
-  }
-  svg {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 1.25rem;
-    height: 1.25rem;
-    transform: translate3d(-50%, -50%, 0);
-    transition: all 85ms ease-out;
-  }
-  svg:last-child {
-    opacity: 0;
-  }
-  *:hover > & {
-    svg:first-child {
-      opacity: 0;
-    }
-    svg:last-child {
-      opacity: 1;
-    }
-  }
-`
-
-const DeleteButton = styled.button`
-  text-align: center;
-  flex: 0 0 auto;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  padding: 0.75rem 0.5rem;
-  margin: 0;
-  transition: all 85ms ease-out;
-  &:hover {
-    background-color: #f6f6f9;
-  }
-`
-
-const EmptyState = () => <p>There's no authors</p>
 
 const AuthorsHeader = styled.div`
   position: relative;
