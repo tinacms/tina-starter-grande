@@ -2,6 +2,22 @@ import React, { useState } from "react"
 import styled, { css } from "styled-components"
 import { FieldMeta } from "tinacms"
 import authorsJson from "../../content/settings/authors"
+import { Droppable, Draggable } from "react-beautiful-dnd"
+import {
+  AddIcon,
+  DragIcon,
+  ReorderIcon,
+  TrashIcon,
+  LeftArrowIcon,
+} from "@tinacms/icons"
+import {
+  padding,
+  color,
+  radius,
+  font,
+  IconButton,
+  shadow,
+} from "@tinacms/styles"
 
 export const AuthorsField = props => {
   const { input, field, form, meta } = props
@@ -20,48 +36,271 @@ export const AuthorsField = props => {
   return (
     <>
       <AuthorsHeader>
-        <button onClick={() => setVisible(!visible)} open={visible}>
-          Add Author
-        </button>
-        <BlockMenu open={visible}>
-          <BlockMenuList>
+        <FieldLabel htmlFor="">Authors</FieldLabel>
+        <IconButton
+          primary
+          small
+          onClick={() => setVisible(!visible)}
+          open={visible}
+        >
+          <AddIcon />
+        </IconButton>
+        <AuthorMenu open={visible}>
+          <AuthorMenuList>
             {authors.map(author => (
-              <BlockOption
+              <AuthorOption
                 onClick={() => {
                   addAuthor(author.slug)
                   setVisible(false)
                 }}
               >
                 {author.name}
-              </BlockOption>
+              </AuthorOption>
             ))}
-          </BlockMenuList>
-        </BlockMenu>
+          </AuthorMenuList>
+        </AuthorMenu>
       </AuthorsHeader>
-      <FieldMeta
-        name={input.name}
-        label={field.label}
-        description={field.description}
-        error={meta.error}
-      >
-        {authorSlugs.map(authorSlug => {
-          const author = authors.find(author => author.slug === authorSlug)
-          return <p>{author ? author.name : "error"}</p>
-        })}
-      </FieldMeta>
+      <AuthorsDescription></AuthorsDescription>
+      <Droppable droppableId={field.name} type={field.name}>
+        {provider => (
+          <AuthorList ref={provider.innerRef}>
+            {authors.length === 0 && <EmptyState />}
+            {authorSlugs.map((authorSlug, index) => {
+              const author = authors.find(author => author.slug === authorSlug)
+              return (
+                <AuthorListItem
+                  author={author}
+                  form={form}
+                  field={field}
+                  index={index}
+                ></AuthorListItem>
+              )
+            })}
+            {provider.placeholder}
+          </AuthorList>
+        )}
+      </Droppable>
     </>
   )
 }
+
+const AuthorsDescription = styled.p`
+  margin: 0;
+`
+
+const AuthorList = styled.div`
+  margin-bottom: 1.5rem;
+`
+
+const AuthorListItem = ({ author, form, field, index }) => {
+  const removeAuthor = React.useCallback(() => {
+    form.mutators.remove(field.name, index)
+  }, [form, field, index])
+
+  return (
+    <Draggable
+      key={index}
+      type={field.name}
+      draggableId={`${field.name}.${index}`}
+      index={index}
+    >
+      {(provider, snapshot) => (
+        <ListItem
+          ref={provider.innerRef}
+          isDragging={snapshot.isDragging}
+          {...provider.draggableProps}
+          {...provider.dragHandleProps}
+        >
+          <DragHandle />
+          <ItemLabel>{author.name}</ItemLabel>
+          <DeleteButton onClick={removeAuthor}>
+            <TrashIcon />
+          </DeleteButton>
+        </ListItem>
+      )}
+    </Draggable>
+  )
+}
+
+const ListItem = styled.div`
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  background-color: white;
+  border: 1px solid ${color.grey(2)};
+  margin: 0 0 -1px 0;
+  overflow: visible;
+  line-height: 1.35;
+  padding: 0;
+  font-size: ${font.size(2)};
+  font-weight: 500;
+
+  ${ItemLabel} {
+    color: #282828;
+    align-self: center;
+    max-width: 100%;
+  }
+
+  svg {
+    fill: ${color.grey(3)};
+    width: 1.25rem;
+    height: auto;
+    transition: fill 85ms ease-out;
+  }
+
+  &:hover {
+    svg {
+      fill: ${color.grey(8)};
+    }
+    ${ItemLabel} {
+      color: #0084ff;
+    }
+  }
+
+  &:first-child {
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+
+  &:nth-last-child(2) {
+    border-radius: 0 0 0.25rem 0.25rem;
+    &:first-child {
+      border-radius: ${radius("small")};
+    }
+  }
+
+  ${p =>
+    p.isDragging &&
+    css`
+      border-radius: ${radius("small")};
+      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12);
+
+      svg {
+        fill: ${color.grey(8)};
+      }
+      ${ItemLabel} {
+        color: #0084ff;
+      }
+
+      ${DragHandle} {
+        svg:first-child {
+          opacity: 0;
+        }
+        svg:last-child {
+          opacity: 1;
+        }
+      }
+    `};
+`
+
+const ItemLabel = styled.label`
+  margin: 0;
+  font-size: ${font.size(2)};
+  font-weight: 500;
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  align-self: center;
+  color: inherit;
+  transition: all 85ms ease-out;
+  text-align: left;
+
+  ${props =>
+    props.error &&
+    css`
+      color: ${color.error()} !important;
+    `};
+`
+
+const DragHandle = styled(function DragHandle({ ...styleProps }) {
+  return (
+    <div {...styleProps}>
+      <DragIcon />
+      <ReorderIcon />
+    </div>
+  )
+})`
+  margin: 0;
+  flex: 0 0 auto;
+  width: 2rem;
+  position: relative;
+  fill: inherit;
+  padding: 0.75rem 0;
+  transition: all 85ms ease-out;
+  &:hover {
+    background-color: #f6f6f9;
+    cursor: grab;
+  }
+  svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1.25rem;
+    height: 1.25rem;
+    transform: translate3d(-50%, -50%, 0);
+    transition: all 85ms ease-out;
+  }
+  svg:last-child {
+    opacity: 0;
+  }
+  *:hover > & {
+    svg:first-child {
+      opacity: 0;
+    }
+    svg:last-child {
+      opacity: 1;
+    }
+  }
+`
+
+const DeleteButton = styled.button`
+  text-align: center;
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.75rem 0.5rem;
+  margin: 0;
+  transition: all 85ms ease-out;
+  &:hover {
+    background-color: #f6f6f9;
+  }
+`
 
 const EmptyState = () => <p>There's no authors</p>
 
 const AuthorsHeader = styled.div`
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
 `
 
-const BlockMenu = styled.div`
+const FieldLabel = styled.label`
+  margin: 0;
+  font-size: ${font.size(2)};
+  font-weight: 500;
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: inherit;
+  transition: all 85ms ease-out;
+  text-align: left;
+
+  ${props =>
+    props.error &&
+    css`
+      color: ${color.error()} !important;
+    `};
+`
+
+const AuthorMenu = styled.div`
   min-width: 12rem;
-  border-radius: 0.25rem;
+  border-radius: ${radius()};
   border: 1px solid #efefef;
   display: block;
   position: absolute;
@@ -72,6 +311,7 @@ const BlockMenu = styled.div`
   pointer-events: none;
   transition: all 150ms ease-out;
   transform-origin: 100% 0;
+  box-shadow: ${shadow("big")};
   background-color: white;
   overflow: hidden;
   z-index: 100;
@@ -84,16 +324,16 @@ const BlockMenu = styled.div`
     `};
 `
 
-const BlockMenuList = styled.div`
+const AuthorMenuList = styled.div`
   display: flex;
   flex-direction: column;
 `
 
-const BlockOption = styled.button`
+const AuthorOption = styled.button`
   position: relative;
   text-align: center;
-  font-size: 0.8rem;
-  padding: 0.75rem;
+  font-size: ${font.size(0)};
+  padding: ${padding("small")};
   font-weight: 500;
   width: 100%;
   background: none;
@@ -102,6 +342,7 @@ const BlockOption = styled.button`
   border: 0;
   transition: all 85ms ease-out;
   &:hover {
+    color: ${color.primary()};
     background-color: #f6f6f9;
   }
   &:not(:last-child) {

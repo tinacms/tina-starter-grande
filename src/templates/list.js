@@ -128,12 +128,7 @@ export const pageQuery = graphql`
     authors: settingsJson(
       fileRelativePath: { eq: "/content/settings/authors.json" }
     ) {
-      authors {
-        slug
-        name
-        email
-        link
-      }
+      ...authors
 
       rawJson
       fileRelativePath
@@ -240,6 +235,12 @@ const AuthorsForm = {
         key: item.slug,
         label: item.name,
       }),
+      defaultItem: {
+        name: "",
+        slug: "",
+        email: "",
+        link: "",
+      },
       fields: [
         {
           label: "Name",

@@ -12,6 +12,8 @@ export const useAuthors = () => {
     `
   )
 
+  console.log(settingsJson)
+
   return settingsJson.authors
 }
 
@@ -21,6 +23,7 @@ export const authorsFragment = graphql`
       email
       name
       slug
+      link
     }
   }
 `

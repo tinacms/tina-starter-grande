@@ -5,15 +5,17 @@ import { useAuthors } from "./useAuthors"
 export const ListAuthors = ({ authorSlugs }) => {
   const authors = useAuthors()
 
-  const postAuthors = authors.filter(author => {
-    return authorSlugs.indexOf(author.slug) > -1 ? true : false
-  })
-
-  return postAuthors.map((author, i) => {
-    if (postAuthors.length === i + 1) {
-      return author.name
+  const authorList = authorSlugs.map((authorSlug, index) => {
+    const author = authors
+      ? authors.find(author => author.slug === authorSlug)
+      : authorSlug
+    const authorName = author.name ? author.name : author
+    if (authorSlugs.length === index + 1) {
+      return authorName
     } else {
-      return author.name + ", "
+      return authorName + ", "
     }
   })
+
+  return authorList
 }
