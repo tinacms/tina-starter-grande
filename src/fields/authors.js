@@ -98,7 +98,13 @@ const AuthorListItem = ({ author, form, field, index }) => {
           {...provider.dragHandleProps}
         >
           <DragHandle />
-          <ItemLabel>{author && author.name ? author.name : ""}</ItemLabel>
+          <ItemLabel>
+            {author && author.name ? (
+              author.name
+            ) : (
+              <Placeholder>Unknown Author</Placeholder>
+            )}
+          </ItemLabel>
           <DeleteButton onClick={removeAuthor}>
             <TrashIcon />
           </DeleteButton>
@@ -107,6 +113,11 @@ const AuthorListItem = ({ author, form, field, index }) => {
     </Draggable>
   )
 }
+
+const Placeholder = styled.span`
+  opacity: 0.3;
+  text-transform: italic;
+`
 
 const ItemLabel = styled.label`
   margin: 0;
