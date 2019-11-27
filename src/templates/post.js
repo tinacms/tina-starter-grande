@@ -35,7 +35,7 @@ function Post(props) {
           {page.frontmatter.authors.length > 0 && (
             <MetaSpan>
               <em>By</em>&nbsp;
-              <ListAuthors authorSlugs={page.frontmatter.authors} />
+              <ListAuthors authorIDs={page.frontmatter.authors} />
             </MetaSpan>
           )}
           <MetaActions>

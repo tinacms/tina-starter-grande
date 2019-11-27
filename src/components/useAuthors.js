@@ -22,7 +22,7 @@ export const authorsFragment = graphql`
     authors {
       email
       name
-      slug
+      id
       link
     }
   }

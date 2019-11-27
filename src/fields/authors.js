@@ -15,11 +15,11 @@ export const AuthorsField = props => {
   const { input, field, form } = props
   const [visible, setVisible] = React.useState(false)
   const authors = field.authors
-  const authorSlugs = input.value || []
+  const authorIDs = input.value || []
 
   const addAuthor = React.useCallback(
-    slug => {
-      form.mutators.insert(field.name, 0, slug)
+    authorID => {
+      form.mutators.insert(field.name, 0, authorID)
     },
     [field.name, form.mutators]
   )
@@ -41,7 +41,7 @@ export const AuthorsField = props => {
             {authors.map(author => (
               <AuthorOption
                 onClick={() => {
-                  addAuthor(author.slug)
+                  addAuthor(author.id)
                   setVisible(false)
                 }}
               >
@@ -54,9 +54,9 @@ export const AuthorsField = props => {
       <Droppable droppableId={field.name} type={field.name}>
         {provider => (
           <AuthorList ref={provider.innerRef}>
-            {authorSlugs.length === 0 && <EmptyState />}
-            {authorSlugs.map((authorSlug, index) => {
-              const author = authors.find(author => author.slug === authorSlug)
+            {authorIDs.length === 0 && <EmptyState />}
+            {authorIDs.map((authorID, index) => {
+              const author = authors.find(author => author.id === authorID)
               return (
                 <AuthorListItem
                   author={author}
@@ -98,7 +98,7 @@ const AuthorListItem = ({ author, form, field, index }) => {
           {...provider.dragHandleProps}
         >
           <DragHandle />
-          <ItemLabel>{author.name}</ItemLabel>
+          <ItemLabel>{author && author.name ? author.name : ""}</ItemLabel>
           <DeleteButton onClick={removeAuthor}>
             <TrashIcon />
           </DeleteButton>

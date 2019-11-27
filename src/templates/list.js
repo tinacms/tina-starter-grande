@@ -8,7 +8,7 @@ import {
   MetaActions,
   DraftBadge,
 } from "../components/style"
-import { ListAuthors } from "../components/authors"
+import { ListAuthors, AuthorsForm } from "../components/authors"
 import { Link } from "gatsby"
 import { Layout } from "../components/layout"
 
@@ -45,9 +45,7 @@ export default function List({ data, pageContext }) {
                   {item.node.frontmatter.authors && (
                     <MetaSpan>
                       <em>By</em>&nbsp;
-                      <ListAuthors
-                        authorSlugs={item.node.frontmatter.authors}
-                      />
+                      <ListAuthors authorIDs={item.node.frontmatter.authors} />
                     </MetaSpan>
                   )}
                   <MetaActions>
@@ -217,49 +215,6 @@ const ListForm = {
           label: "Large",
           name: "large",
           component: "toggle",
-        },
-      ],
-    },
-  ],
-}
-
-const AuthorsForm = {
-  label: "Authors",
-  fields: [
-    {
-      label: "Authors",
-      name: "rawJson.authors",
-      component: "group-list",
-      itemProps: item => ({
-        key: item.slug,
-        label: item.name,
-      }),
-      defaultItem: {
-        name: "",
-        slug: "",
-        email: "",
-        link: "",
-      },
-      fields: [
-        {
-          label: "Name",
-          name: "name",
-          component: "text",
-        },
-        {
-          label: "Slug",
-          name: "slug",
-          component: "text",
-        },
-        {
-          label: "Email",
-          name: "email",
-          component: "text",
-        },
-        {
-          label: "Link",
-          name: "link",
-          component: "text",
         },
       ],
     },
