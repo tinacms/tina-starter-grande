@@ -54,7 +54,9 @@ export const AuthorsField = props => {
       <Droppable droppableId={field.name} type={field.name}>
         {provider => (
           <AuthorList ref={provider.innerRef}>
-            {authorIDs.length === 0 && <EmptyState />}
+            {authorIDs.length === 0 && (
+              <EmptyList>There's no authors</EmptyList>
+            )}
             {authorIDs.map((authorID, index) => {
               const author = authors.find(author => author.id === authorID)
               return (
@@ -73,10 +75,6 @@ export const AuthorsField = props => {
     </>
   )
 }
-
-const AuthorList = styled.div`
-  margin-bottom: 1.5rem;
-`
 
 const AuthorListItem = ({ author, form, field, index }) => {
   const removeAuthor = React.useCallback(() => {
@@ -113,6 +111,10 @@ const AuthorListItem = ({ author, form, field, index }) => {
     </Draggable>
   )
 }
+
+const AuthorList = styled.div`
+  margin-bottom: 1.5rem;
+`
 
 const Placeholder = styled.span`
   opacity: 0.3;
@@ -276,8 +278,6 @@ const ListItem = styled.div`
       }
     `};
 `
-
-const EmptyState = () => <EmptyList>There's no authors</EmptyList>
 
 const EmptyList = styled.div`
   text-align: center;
