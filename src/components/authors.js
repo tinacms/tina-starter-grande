@@ -3,16 +3,15 @@ import styled, { css } from "styled-components"
 import { useAuthors } from "./useAuthors"
 
 export const ListAuthors = ({ authorIDs }) => {
-  const authors = useAuthors()
+  const authors = useAuthors().filter(author =>
+    authorIDs.find(id => id === author.id)
+  )
 
-  const authorList = authorIDs.map((authorID, index) => {
-    const author = authors.find(author => author.id === authorID)
-    const authorName = author && author.name ? author.name : ""
-    if (!author) return ""
-    if (authorIDs.length === index + 1) {
-      return authorName
+  const authorList = authors.map((author, index) => {
+    if (authors.length === index + 1) {
+      return author.name
     } else {
-      return authorName + ", "
+      return author.name + ", "
     }
   })
 
@@ -30,14 +29,14 @@ export const AuthorsForm = {
         key: item.id,
         label: item.name,
       }),
-      defaultItem: {
-        name: "",
+      defaultItem: () => ({
+        name: "New Author",
         id: Math.random()
           .toString(36)
           .substr(2, 9),
         email: "",
         link: "",
-      },
+      }),
       fields: [
         {
           label: "Name",
