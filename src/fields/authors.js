@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import styled, { css } from "styled-components"
 import { Droppable, Draggable } from "react-beautiful-dnd"
 import { AddIcon, DragIcon, ReorderIcon, TrashIcon } from "@tinacms/icons"
