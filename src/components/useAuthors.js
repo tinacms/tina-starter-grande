@@ -5,14 +5,14 @@ export const useAuthors = () => {
   const { settingsJson } = useStaticQuery(
     graphql`
       query authorsQuery {
-        settingsJson {
+        settingsJson(
+          fileRelativePath: { eq: "/content/settings/authors.json" }
+        ) {
           ...authors
         }
       }
     `
   )
-
-  console.log(settingsJson)
 
   return settingsJson.authors
 }

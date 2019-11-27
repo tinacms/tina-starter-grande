@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import styled, { css } from "styled-components"
-import authorsJson from "../../content/settings/authors"
 import { Droppable, Draggable } from "react-beautiful-dnd"
 import { AddIcon, DragIcon, ReorderIcon, TrashIcon } from "@tinacms/icons"
 import {
@@ -15,7 +14,7 @@ import {
 export const AuthorsField = props => {
   const { input, field, form } = props
   const [visible, setVisible] = React.useState(false)
-  const authors = authorsJson.authors
+  const authors = field.authors
   const authorSlugs = input.value || []
 
   const addAuthor = React.useCallback(
