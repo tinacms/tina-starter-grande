@@ -13,7 +13,7 @@ import {
 } from "../components/style"
 import { ListAuthors } from "../components/authors"
 import { Link } from "gatsby"
-import { Layout } from "../components/layout"
+import { PageLayout } from "../components/pageLayout"
 import { TinaField, TinaForm } from "@tinacms/form-builder"
 import { Wysiwyg } from "@tinacms/fields"
 import {
@@ -28,7 +28,7 @@ function Post(props) {
   const { isEditing, setIsEditing } = props
 
   return (
-    <Layout page={page}>
+    <PageLayout page={page}>
       <Paper>
         <Meta>
           <MetaSpan>{page.frontmatter.date}</MetaSpan>
@@ -65,7 +65,7 @@ function Post(props) {
           </EditButton>
         )}
       </Paper>
-    </Layout>
+    </PageLayout>
   )
 }
 

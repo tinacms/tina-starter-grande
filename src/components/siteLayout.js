@@ -66,7 +66,38 @@ const CreatePostButton = createRemarkButton({
   ],
 })
 
-export default withPlugin(MasterLayout, CreatePostButton)
+const CreatePageButton = createRemarkButton({
+  label: "New Post",
+  filename(form) {
+    let slug = slugify(form.title.toLowerCase())
+    return `content/posts/${slug}.md`
+  },
+  frontmatter(form) {
+    let slug = slugify(form.title.toLowerCase())
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          title: form.title,
+          date: new Date(),
+          type: "post",
+          path: `/blog/${slug}`,
+          draft: true,
+        })
+      }, 1000)
+    })
+  },
+  body({ title }) {
+    return `## ${title}`
+  },
+  fields: [
+    { name: "title", label: "Title", component: "text", required: true },
+  ],
+})
+
+export default withPlugin(
+  withPlugin(MasterLayout, CreatePostButton),
+  CreatePageButton
+)
 
 export const Site = styled.div`
   position: relative;

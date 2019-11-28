@@ -5,7 +5,7 @@ import { Form, FormBlock } from "../blocks/form"
 import { Title, TitleBlock } from "../blocks/title"
 import { Image, ImageBlock } from "../blocks/image"
 import { Content, ContentBlock } from "../blocks/content"
-import { Layout } from "../components/layout"
+import { PageLayout } from "../components/pageLayout"
 
 import { useLocalJsonForm } from "gatsby-tinacms-json"
 
@@ -14,7 +14,7 @@ export default function Page({ data }) {
   const blocks = page.blocks ? page.blocks : []
 
   return (
-    <Layout page={page}>
+    <PageLayout page={page}>
       <Paper>
         {blocks &&
           blocks.map(({ _template, ...data }, i) => {
@@ -42,7 +42,7 @@ export default function Page({ data }) {
             }
           })}
       </Paper>
-    </Layout>
+    </PageLayout>
   )
 }
 

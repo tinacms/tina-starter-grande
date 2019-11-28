@@ -10,7 +10,7 @@ import {
 } from "../components/style"
 import { ListAuthors, AuthorsForm } from "../components/authors"
 import { Link } from "gatsby"
-import { Layout } from "../components/layout"
+import { PageLayout } from "../components/pageLayout"
 
 import { useLocalJsonForm } from "gatsby-tinacms-json"
 
@@ -27,7 +27,7 @@ export default function List({ data, pageContext }) {
   page.title = isFirst ? page.title : page.title + " - " + currentPage
 
   return (
-    <Layout page={page}>
+    <PageLayout page={page}>
       <>
         {data.posts &&
           data.posts.edges.map(item => {
@@ -68,7 +68,7 @@ export default function List({ data, pageContext }) {
           )}
         </ListNav>
       </>
-    </Layout>
+    </PageLayout>
   )
 }
 
