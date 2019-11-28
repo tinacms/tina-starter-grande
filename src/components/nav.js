@@ -8,8 +8,11 @@ import { Link } from "gatsby"
 export const Nav = ({ toggleDarkMode, isDarkMode }) => {
   const data = useStaticQuery(graphql`
     query navQuery {
-      settingsJson(fileRelativePath: { eq: "/content/settings/menu.json" }) {
-        ...nav
+      settingsJson(menuItems: { elemMatch: { label: { ne: null } } }) {
+        menuItems {
+          label
+          link
+        }
       }
     }
   `)

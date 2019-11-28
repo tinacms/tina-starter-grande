@@ -8,15 +8,13 @@ import {
   MetaActions,
   DraftBadge,
 } from "../components/style"
-import { ListAuthors, AuthorsForm } from "../components/authors"
+import { ListAuthors } from "../components/authors"
 import { Link } from "gatsby"
 import { PageLayout } from "../components/pageLayout"
 
-import { useLocalJsonForm } from "gatsby-tinacms-json"
-
 export default function List({ data, pageContext }) {
-  const [page] = useLocalJsonForm(data.page, ListForm)
-  const [authors] = useLocalJsonForm(data.authors, AuthorsForm)
+  const page = data.page
+  const authors = data.authors
 
   const { slug, limit, skip, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1
@@ -97,8 +95,6 @@ export const pageQuery = graphql`
         }
       }
       listType
-      rawJson
-      fileRelativePath
     }
     posts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
@@ -123,13 +119,8 @@ export const pageQuery = graphql`
         }
       }
     }
-    authors: settingsJson(
-      fileRelativePath: { eq: "/content/settings/authors.json" }
-    ) {
+    authors: settingsJson {
       ...authors
-
-      rawJson
-      fileRelativePath
     }
   }
 `
@@ -144,79 +135,3 @@ export const ListNav = styled.div`
     padding: 0.5rem 1rem;
   }
 `
-
-const ListForm = {
-  label: "Page",
-  fields: [
-    {
-      label: "Title",
-      name: "rawJson.title",
-      component: "text",
-    },
-    {
-      label: "Hero",
-      name: "rawJson.hero",
-      component: "group",
-      fields: [
-        {
-          label: "Headline",
-          name: "headline",
-          component: "text",
-        },
-        {
-          label: "Textline",
-          name: "textline",
-          component: "text",
-        },
-        {
-          label: "Image",
-          name: "image",
-          component: "image",
-          parse: filename => `../images/${filename}`,
-          uploadDir: () => `/content/images/`,
-          previewSrc: formValues => {
-            if (!formValues.jsonNode.hero || !formValues.jsonNode.hero.image)
-              return ""
-            return formValues.jsonNode.hero.image.childImageSharp.fluid.src
-          },
-        },
-        {
-          label: "Actions",
-          name: "ctas",
-          component: "group-list",
-          itemProps: item => ({
-            key: item.link,
-            label: item.label,
-          }),
-          fields: [
-            {
-              label: "Label",
-              name: "label",
-              component: "text",
-            },
-            {
-              label: "Link",
-              name: "link",
-              component: "text",
-            },
-            {
-              label: "Primary",
-              name: "primary",
-              component: "toggle",
-            },
-            {
-              label: "Arrow",
-              name: "arrow",
-              component: "toggle",
-            },
-          ],
-        },
-        {
-          label: "Large",
-          name: "large",
-          component: "toggle",
-        },
-      ],
-    },
-  ],
-}

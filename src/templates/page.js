@@ -7,10 +7,8 @@ import { Image, ImageBlock } from "../blocks/image"
 import { Content, ContentBlock } from "../blocks/content"
 import { PageLayout } from "../components/pageLayout"
 
-import { useLocalJsonForm } from "gatsby-tinacms-json"
-
 export default function Page({ data }) {
-  const [page] = useLocalJsonForm(data.page, PageForm)
+  const page = data.page
   const blocks = page.blocks ? page.blocks : []
 
   return (
@@ -44,93 +42,6 @@ export default function Page({ data }) {
       </Paper>
     </PageLayout>
   )
-}
-
-const PageForm = {
-  label: "Page",
-  fields: [
-    {
-      label: "Title",
-      name: "rawJson.title",
-      component: "text",
-    },
-    {
-      label: "Hero",
-      name: "rawJson.hero",
-      component: "group",
-      fields: [
-        {
-          label: "Headline",
-          name: "headline",
-          component: "text",
-        },
-        {
-          label: "Textline",
-          name: "textline",
-          component: "text",
-        },
-        {
-          label: "Image",
-          name: "image",
-          component: "image",
-          parse: filename => `../images/${filename}`,
-          uploadDir: () => `/content/images/`,
-          previewSrc: formValues => {
-            if (!formValues.jsonNode.hero || !formValues.jsonNode.hero.image)
-              return ""
-            return formValues.jsonNode.hero.image.childImageSharp.fluid.src
-          },
-        },
-        {
-          label: "Actions",
-          name: "ctas",
-          component: "group-list",
-          itemProps: item => ({
-            key: item.link,
-            label: item.label,
-          }),
-          fields: [
-            {
-              label: "Label",
-              name: "label",
-              component: "text",
-            },
-            {
-              label: "Link",
-              name: "link",
-              component: "text",
-            },
-            {
-              label: "Primary",
-              name: "primary",
-              component: "toggle",
-            },
-            {
-              label: "Arrow",
-              name: "arrow",
-              component: "toggle",
-            },
-          ],
-        },
-        {
-          label: "Large",
-          name: "large",
-          component: "toggle",
-        },
-      ],
-    },
-    {
-      label: "Page Sections",
-      name: "rawJson.blocks",
-      component: "blocks",
-      templates: {
-        TitleBlock,
-        ImageBlock,
-        FormBlock,
-        ContentBlock,
-      },
-    },
-  ],
 }
 
 export const pageQuery = graphql`
@@ -183,9 +94,6 @@ export const pageQuery = graphql`
           html
         }
       }
-
-      rawJson
-      fileRelativePath
     }
   }
 `

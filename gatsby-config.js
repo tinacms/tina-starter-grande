@@ -5,27 +5,7 @@ module.exports = {
   plugins: [
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-tinacms-json`,
     `gatsby-transformer-json`,
-    {
-      resolve: "gatsby-plugin-tinacms",
-      options: {
-        sidebar: {
-          hidden: process.env.NODE_ENV === "production",
-          position: "displace",
-          theme: {
-            color: {
-              primary: {
-                light: theme.color.primary,
-                medium: theme.color.primary,
-                dark: theme.color.primary,
-              },
-            },
-          },
-        },
-        plugins: ["gatsby-tinacms-git", "gatsby-tinacms-remark"],
-      },
-    },
     {
       resolve: "gatsby-source-filesystem",
       options: {

@@ -9,8 +9,52 @@ export const ThemeContext = React.createContext()
 export const Theme = ({ children }) => {
   const data = useStaticQuery(graphql`
     query ThemeQuery {
-      settingsJson(fileRelativePath: { eq: "/content/settings/theme.json" }) {
-        ...globalTheme
+      allSettingsJson(filter: { color: { black: { ne: null } } }) {
+        edges {
+          node {
+            color {
+              black
+              white
+              primary
+              secondary
+            }
+            easing
+            breakpoints {
+              small
+              medium
+              large
+              huge
+            }
+            radius {
+              small
+            }
+            header {
+              overline
+              underline
+              transparent
+              height
+            }
+            menu {
+              style
+            }
+            hero {
+              image {
+                childImageSharp {
+                  fluid(quality: 70, maxWidth: 1920) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+              }
+              large
+              overlay
+              overlap
+              parallax
+            }
+            typography {
+              uppercaseH2
+            }
+          }
+        }
       }
     }
   `)
@@ -31,7 +75,7 @@ export const Theme = ({ children }) => {
     }
   }
 
-  const globalTheme = data.settingsJson
+  const globalTheme = data.allSettingsJson.edges[0].node
 
   const theme = {
     isDarkMode: darkMode,
