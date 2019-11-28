@@ -32,7 +32,7 @@ function Post(props) {
       <Paper>
         <Meta>
           <MetaSpan>{page.frontmatter.date}</MetaSpan>
-          {page.frontmatter.authors.length > 0 && (
+          {page.frontmatter.authors && page.frontmatter.authors.length > 0 && (
             <MetaSpan>
               <em>By</em>&nbsp;
               <ListAuthors authorIDs={page.frontmatter.authors} />
