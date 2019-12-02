@@ -78,14 +78,10 @@ const CreatePageButton = new JsonCreatorPlugin({
     { name: "path", label: "Path", component: "text", required: true },
   ],
   data(form) {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve({
-          title: form.title,
-          path: form.path,
-        })
-      }, 1000)
-    })
+    return {
+      title: form.title,
+      path: form.path,
+    }
   },
 })
 
