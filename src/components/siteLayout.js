@@ -10,7 +10,7 @@ import slugify from "react-slugify"
 
 import { createRemarkButton } from "gatsby-tinacms-remark"
 import { JsonCreatorPlugin } from "gatsby-tinacms-json"
-import { withPlugin } from "react-tinacms"
+import { withPlugin } from "tinacms"
 
 const MasterLayout = ({ children }) => {
   const data = useStaticQuery(graphql`
