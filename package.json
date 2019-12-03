@@ -61,6 +61,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "clean": "rm -rf ./cache",
+    "dev": "npm run clean && npm run develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
