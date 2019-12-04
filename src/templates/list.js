@@ -8,9 +8,9 @@ import {
   MetaActions,
   DraftBadge,
 } from "../components/style"
-import { Authors } from "../components/authors"
+import { ListAuthors, AuthorsForm } from "../components/authors"
 import { Link } from "gatsby"
-import { Layout } from "../components/layout"
+import { PageLayout } from "../components/pageLayout"
 
 import { useLocalJsonForm } from "gatsby-tinacms-json"
 
@@ -27,7 +27,7 @@ export default function List({ data, pageContext }) {
   page.title = isFirst ? page.title : page.title + " - " + currentPage
 
   return (
-    <Layout page={page}>
+    <PageLayout page={page}>
       <>
         {data.posts &&
           data.posts.edges.map(item => {
@@ -45,7 +45,7 @@ export default function List({ data, pageContext }) {
                   {item.node.frontmatter.authors && (
                     <MetaSpan>
                       <em>By</em>&nbsp;
-                      <Authors authorSlugs={item.node.frontmatter.authors} />
+                      <ListAuthors authorIDs={item.node.frontmatter.authors} />
                     </MetaSpan>
                   )}
                   <MetaActions>
@@ -68,7 +68,7 @@ export default function List({ data, pageContext }) {
           )}
         </ListNav>
       </>
-    </Layout>
+    </PageLayout>
   )
 }
 
@@ -126,12 +126,7 @@ export const pageQuery = graphql`
     authors: settingsJson(
       fileRelativePath: { eq: "/content/settings/authors.json" }
     ) {
-      authors {
-        slug
-        name
-        email
-        link
-      }
+      ...authors
 
       rawJson
       fileRelativePath
@@ -180,7 +175,6 @@ const ListForm = {
           parse: filename => `../images/${filename}`,
           uploadDir: () => `/content/images/`,
           previewSrc: formValues => {
-            console.log(formValues)
             if (!formValues.jsonNode.hero || !formValues.jsonNode.hero.image)
               return ""
             return formValues.jsonNode.hero.image.childImageSharp.fluid.src
@@ -221,43 +215,6 @@ const ListForm = {
           label: "Large",
           name: "large",
           component: "toggle",
-        },
-      ],
-    },
-  ],
-}
-
-const AuthorsForm = {
-  label: "Authors",
-  fields: [
-    {
-      label: "Authors",
-      name: "rawJson.authors",
-      component: "group-list",
-      itemProps: item => ({
-        key: item.slug,
-        label: item.name,
-      }),
-      fields: [
-        {
-          label: "Name",
-          name: "name",
-          component: "text",
-        },
-        {
-          label: "Slug",
-          name: "slug",
-          component: "text",
-        },
-        {
-          label: "Email",
-          name: "email",
-          component: "text",
-        },
-        {
-          label: "Link",
-          name: "link",
-          component: "text",
         },
       ],
     },

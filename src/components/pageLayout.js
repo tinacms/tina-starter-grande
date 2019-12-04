@@ -1,20 +1,20 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { Wrapper, Main } from "../components/style"
-import { SEO } from "../components/seo"
-import { ThemeContext } from "../components/theme"
-import { Hero } from "../components/hero"
-import { removeNull } from "../components/helpers"
-import { NavForm } from "../components/nav"
-import { ThemeForm } from "../components/theme"
+import { Wrapper, Main } from "./style"
+import { SEO } from "./seo"
+import { ThemeContext } from "./theme"
+import { Hero } from "./hero"
+import { removeNull } from "./helpers"
+import { NavForm } from "./nav"
+import { ThemeForm } from "./theme"
 
 import { useLocalJsonForm, useGlobalJsonForm } from "gatsby-tinacms-json"
 
 const merge = require("lodash.merge")
 
-export const Layout = ({ page, children }) => {
+export const PageLayout = ({ page, children }) => {
   const data = useStaticQuery(graphql`
-    query LayoutQuery {
+    query PageLayoutQuery {
       nav: settingsJson(
         fileRelativePath: { eq: "/content/settings/menu.json" }
       ) {

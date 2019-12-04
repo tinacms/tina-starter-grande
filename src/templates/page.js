@@ -3,8 +3,9 @@ import { graphql } from "gatsby"
 import { Paper } from "../components/style"
 import { Form, FormBlock } from "../blocks/form"
 import { Title, TitleBlock } from "../blocks/title"
+import { Image, ImageBlock } from "../blocks/image"
 import { Content, ContentBlock } from "../blocks/content"
-import { Layout } from "../components/layout"
+import { PageLayout } from "../components/pageLayout"
 
 import { useLocalJsonForm } from "gatsby-tinacms-json"
 
@@ -13,19 +14,22 @@ export default function Page({ data }) {
   const blocks = page.blocks ? page.blocks : []
 
   return (
-    <Layout page={page}>
+    <PageLayout page={page}>
       <Paper>
         {blocks &&
           blocks.map(({ _template, ...data }, i) => {
             switch (_template) {
               case "TitleBlock":
                 return <Title page={page} data={data} />
+              case "ImageBlock":
+                return <Image data={data} />
               case "FormBlock":
                 return <Form form={data} />
               case "ContentBlock":
                 if (data.content && page.childrenPagesJsonBlockMarkdown[i])
                   return (
                     <Content
+                      data={data}
                       html={
                         page.childrenPagesJsonBlockMarkdown[i]
                           .childMarkdownRemark.html
@@ -38,7 +42,7 @@ export default function Page({ data }) {
             }
           })}
       </Paper>
-    </Layout>
+    </PageLayout>
   )
 }
 
@@ -72,7 +76,6 @@ const PageForm = {
           parse: filename => `../images/${filename}`,
           uploadDir: () => `/content/images/`,
           previewSrc: formValues => {
-            console.log(formValues)
             if (!formValues.jsonNode.hero || !formValues.jsonNode.hero.image)
               return ""
             return formValues.jsonNode.hero.image.childImageSharp.fluid.src
@@ -122,6 +125,7 @@ const PageForm = {
       component: "blocks",
       templates: {
         TitleBlock,
+        ImageBlock,
         FormBlock,
         ContentBlock,
       },
@@ -159,11 +163,19 @@ export const pageQuery = graphql`
         name
         title
         underline
+        center
         recipient
         fields {
           label
           inputType
           autocomplete
+        }
+        image {
+          childImageSharp {
+            fluid(quality: 70, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
         }
       }
       childrenPagesJsonBlockMarkdown {

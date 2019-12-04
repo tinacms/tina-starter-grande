@@ -28,8 +28,10 @@
       "content": "## block content",
       "name": "dummy",
       "title": "dummy",
+      "center": false,
       "underline": true,
       "recipient": "dummy",
+      "image": "../images/dummy.jpg",
       "fields": [
         {
           "_template": "dummy",
