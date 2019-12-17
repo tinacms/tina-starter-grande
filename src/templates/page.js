@@ -1,12 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Paper } from "../components/style"
-import { Form, FormBlock } from "../blocks/form"
-import { Title, TitleBlock } from "../blocks/title"
-import { Image, ImageBlock } from "../blocks/image"
-import { Content, ContentBlock } from "../blocks/content"
+import { FormForm } from "../blocks/form"
+import { TitleForm } from "../blocks/title"
+import { ImageForm } from "../blocks/image"
+import { ContentForm } from "../blocks/content"
 import { PageLayout } from "../components/pageLayout"
-
 import { useLocalJsonForm } from "gatsby-tinacms-json"
 
 export default function Page({ data }) {
@@ -16,7 +15,8 @@ export default function Page({ data }) {
   return (
     <PageLayout page={page}>
       <Paper>
-        {blocks &&
+        <PageBlocks form={form} data={blocks} />
+        {/* {blocks &&
           blocks.map(({ _template, ...data }, i) => {
             switch (_template) {
               case "TitleBlock":
@@ -40,7 +40,7 @@ export default function Page({ data }) {
               default:
                 return true
             }
-          })}
+          })} */}
       </Paper>
     </PageLayout>
   )
@@ -124,10 +124,10 @@ const PageForm = {
       name: "rawJson.blocks",
       component: "blocks",
       templates: {
-        TitleBlock,
-        ImageBlock,
-        FormBlock,
-        ContentBlock,
+        TitleForm,
+        ImageForm,
+        FormForm,
+        ContentForm,
       },
     },
   ],

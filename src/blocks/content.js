@@ -1,15 +1,18 @@
 import React from "react"
 import styled, { css } from "styled-components"
+import { BlockWrapper } from "react-tinacms-blocks"
 
-export function Content({ data, html }) {
+export function ContentBlock(props) {
   const centered = data.center ? data.center : false
   return (
-    <StyledContent
-      center={centered}
-      dangerouslySetInnerHTML={{
-        __html: html,
-      }}
-    ></StyledContent>
+    <BlockWrapper {...props}>
+      <StyledContent
+        center={centered}
+        dangerouslySetInnerHTML={{
+          __html: html,
+        }}
+      ></StyledContent>
+    </BlockWrapper>
   )
 }
 
@@ -21,7 +24,7 @@ const StyledContent = styled.div`
     `};
 `
 
-export const ContentBlock = {
+export const ContentForm = {
   label: "Content",
   name: "content",
   key: "test",

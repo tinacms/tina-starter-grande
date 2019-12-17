@@ -3,50 +3,53 @@ import { Button } from "../components/style"
 import styled, { css } from "styled-components"
 import { mix } from "polished"
 import slugify from "react-slugify"
+import { BlockWrapper } from "react-tinacms-blocks"
 
-export function Form({ form }) {
+export function FormBlock({ form }) {
   return (
-    <StyledForm
-      name="contact"
-      action={`https://formspree.io/${form.recipient}`}
-      method="POST"
-    >
-      {form.fields.map(field => {
-        if (field.inputType === "textarea") {
-          return (
-            <FormField wide>
-              <label for={slugify(field.label)}>{field.label}</label>
-              <textarea
-                cols="40"
-                rows="5"
-                name={slugify(field.label)}
-                id={slugify(field.label)}
-              ></textarea>
-            </FormField>
-          )
-        } else {
-          return (
-            <FormField>
-              <label for={slugify(field.label)}>{field.label}</label>
-              <input
-                id={slugify(field.label)}
-                name={slugify(field.label)}
-                type={field.inputType}
-                autocorrect="off"
-                autocomplete={field.autocomplete | ``}
-              />
-            </FormField>
-          )
-        }
-      })}
-      {form.fields.length > 0 && (
-        <FormField wide>
-          <Button primary type="submit" value="Submit">
-            Submit
-          </Button>
-        </FormField>
-      )}
-    </StyledForm>
+    <BlockWrapper {...props}>
+      <StyledForm
+        name="contact"
+        action={`https://formspree.io/${form.recipient}`}
+        method="POST"
+      >
+        {form.fields.map(field => {
+          if (field.inputType === "textarea") {
+            return (
+              <FormField wide>
+                <label for={slugify(field.label)}>{field.label}</label>
+                <textarea
+                  cols="40"
+                  rows="5"
+                  name={slugify(field.label)}
+                  id={slugify(field.label)}
+                ></textarea>
+              </FormField>
+            )
+          } else {
+            return (
+              <FormField>
+                <label for={slugify(field.label)}>{field.label}</label>
+                <input
+                  id={slugify(field.label)}
+                  name={slugify(field.label)}
+                  type={field.inputType}
+                  autocorrect="off"
+                  autocomplete={field.autocomplete | ``}
+                />
+              </FormField>
+            )
+          }
+        })}
+        {form.fields.length > 0 && (
+          <FormField wide>
+            <Button primary type="submit" value="Submit">
+              Submit
+            </Button>
+          </FormField>
+        )}
+      </StyledForm>
+    </BlockWrapper>
   )
 }
 
@@ -116,7 +119,7 @@ export const messageInputBlock = {
   ...base,
 }
 
-export const FormBlock = {
+export const FormForm = {
   label: "Form",
   key: "name",
   name: "form",

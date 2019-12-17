@@ -2,14 +2,17 @@ import React from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import get from "lodash.get"
+import { BlockWrapper } from "react-tinacms-blocks"
 
-export function Image({ data }) {
+export function ImageBlock({ data }) {
   return (
     data.image &&
     data.image.childImageSharp && (
-      <ImageWrapper>
-        <Img fluid={data.image.childImageSharp.fluid} />
-      </ImageWrapper>
+      <BlockWrapper {...props}>
+        <ImageWrapper>
+          <Img fluid={data.image.childImageSharp.fluid} />
+        </ImageWrapper>
+      </BlockWrapper>
     )
   )
 }
@@ -18,7 +21,7 @@ const ImageWrapper = styled.div`
   overflow: hidden;
 `
 
-export const ImageBlock = {
+export const ImageForm = {
   label: "Image",
   name: "image",
   key: "test",

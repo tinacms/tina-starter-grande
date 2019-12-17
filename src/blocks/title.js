@@ -1,15 +1,23 @@
 import React from "react"
 import styled, { css } from "styled-components"
+import { TinaField } from "tinacms"
+import { BlockWrapper } from "react-tinacms-blocks"
+import { PlainInput } from "../components/plainInput"
 
-export function Title({ page, data }) {
+export function TitleBlock({ page, data }) {
   const centered = data.center ? data.center : false
   return (
-    <>
+    <BlockWrapper {...props}>
       <StyledTitle center={centered}>
-        {data && data.title ? data.title : page.title ? page.title : ""}
+        <TinaField
+          name={`${props.name}.${props.index}.text`}
+          Component={PlainInput}
+        >
+          {data && data.title ? data.title : page.title ? page.title : ""}
+        </TinaField>
       </StyledTitle>
       {data && data.underline && <Hr center={centered} />}
-    </>
+    </BlockWrapper>
   )
 }
 
@@ -37,7 +45,7 @@ const Hr = styled.hr`
     `};
 `
 
-export const TitleBlock = {
+export const TitleForm = {
   label: "Title",
   name: "title",
   defaultItem: {
