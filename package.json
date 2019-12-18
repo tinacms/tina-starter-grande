@@ -7,6 +7,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
+    "autosize": "^4.0.2",
     "babel-plugin-styled-components": "^1.10.6",
     "focus-visible": "^5.0.2",
     "g": "^2.0.1",
@@ -40,6 +41,7 @@
     "lodash.clonedeep": "^4.5.0",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.2",
+    "moment": "^2.24.0",
     "polished": "^3.4.1",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
@@ -47,8 +49,11 @@
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
     "react-slugify": "^2.0.1",
+    "react-tinacms-blocks": "^0.2.0",
     "styled-components": ">=4.1",
-    "styled-icons": "^8.6.0"
+    "styled-icons": "^8.6.0",
+    "tinacms": "^0.11.0",
+    "typescript": "^3.7.3"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
