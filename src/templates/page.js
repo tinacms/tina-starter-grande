@@ -1,50 +1,65 @@
 import React from "react"
 import { graphql } from "gatsby"
+
 import { Paper } from "../components/style"
 import { Form, FormBlock } from "../blocks/form"
 import { Title, TitleBlock } from "../blocks/title"
 import { Image, ImageBlock } from "../blocks/image"
 import { Content, ContentBlock } from "../blocks/content"
 import { PageLayout } from "../components/pageLayout"
+import EditToggle from '../components/editToggle'
+import Blocks from '../components/inlineBlocks'
 
 import { useLocalJsonForm } from "gatsby-tinacms-json"
+import { TinaForm } from 'tinacms'
 
-export default function Page({ data }) {
-  const [page] = useLocalJsonForm(data.page, PageForm)
+// function liveJsonForm(Component, options) {
+//   return function JsonForm(props) {
+//     const [jsonData, form] = useLocalJsonForm(
+//       props.data.page,
+//       options
+//     )
+//     return (
+//       <TinaForm form={form}>
+//         {editingProps => {
+//           return (
+//             <Component
+//               {...props}
+//               data={{ ...props.data, jsonData }}
+//               {...editingProps}
+//               form={form}
+//             />
+//           )
+//         }}
+//       </TinaForm>
+//     )
+//   }
+// }
+
+function Page({ data, isEditing, setIsEditing, ...props }) {
+  const [page, form] = useLocalJsonForm(data.page, PageForm)
   const blocks = page.blocks ? page.blocks : []
 
   return (
-    <PageLayout page={page}>
-      <Paper>
-        {blocks &&
-          blocks.map(({ _template, ...data }, i) => {
-            switch (_template) {
-              case "TitleBlock":
-                return <Title page={page} data={data} />
-              case "ImageBlock":
-                return <Image data={data} />
-              case "FormBlock":
-                return <Form form={data} />
-              case "ContentBlock":
-                if (data.content && page.childrenPagesJsonBlockMarkdown[i])
-                  return (
-                    <Content
-                      data={data}
-                      html={
-                        page.childrenPagesJsonBlockMarkdown[i]
-                          .childMarkdownRemark.html
-                      }
-                    />
-                  )
-                break
-              default:
-                return true
-            }
-          })}
-      </Paper>
-    </PageLayout>
+    <TinaForm form={form}>
+      {
+        props => {
+          return (
+              <PageLayout page={page}>
+              <Paper>
+                <Blocks form={form} page={page} blocks={blocks} />
+              </Paper>
+              <EditToggle isEditing={props.isEditing} setIsEditing={props.setIsEditing} />
+            </PageLayout>
+          )
+        }
+      }
+    </TinaForm>
   )
 }
+
+// export default liveJsonForm(Page, PageForm)
+export default Page
 
 const PageForm = {
   label: "Page",
@@ -119,17 +134,17 @@ const PageForm = {
         },
       ],
     },
-    {
-      label: "Page Sections",
-      name: "rawJson.blocks",
-      component: "blocks",
-      templates: {
-        TitleBlock,
-        ImageBlock,
-        FormBlock,
-        ContentBlock,
-      },
-    },
+    // {
+    //   label: "Page Sections",
+    //   name: "rawJson.blocks",
+    //   component: "blocks",
+    //   templates: {
+    //     TitleBlock,
+    //     ImageBlock,
+    //     FormBlock,
+    //     ContentBlock,
+    //   },
+    // },
   ],
 }
 
