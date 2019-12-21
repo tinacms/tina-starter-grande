@@ -41,16 +41,25 @@ export const AuthorsForm = {
           label: "Name",
           name: "name",
           component: "text",
+          parse(value) {
+            return value || ""
+          },
         },
         {
           label: "Email",
           name: "email",
           component: "text",
+          parse(value) {
+            return value || ""
+          },
         },
         {
           label: "Link",
           name: "link",
           component: "text",
+          parse(value) {
+            return value || ""
+          },
         },
       ],
     },

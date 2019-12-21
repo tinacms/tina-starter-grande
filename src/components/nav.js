@@ -497,11 +497,17 @@ export const NavForm = {
           label: "Label",
           name: "label",
           component: "text",
+          parse(value) {
+            return value || ""
+          },
         },
         {
           label: "Link",
           name: "link",
           component: "text",
+          parse(value) {
+            return value || ""
+          },
         },
         {
           label: "Sub Menu",

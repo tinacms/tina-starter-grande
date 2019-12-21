@@ -80,21 +80,33 @@ const SiteForm = {
       label: "Logo",
       name: "rawJson.logo",
       component: "text",
+      parse(value) {
+        return value || ""
+      },
     },
     {
       label: "Title",
       name: "rawJson.title",
       component: "text",
+      parse(value) {
+        return value || ""
+      },
     },
     {
       label: "Description",
       name: "rawJson.description",
       component: "text",
+      parse(value) {
+        return value || ""
+      },
     },
     {
       label: "Author",
       name: "rawJson.author",
       component: "text",
+      parse(value) {
+        return value || ""
+      },
     },
   ],
 }
