@@ -490,7 +490,6 @@ export const NavForm = {
       name: "rawJson.menuItems",
       component: "group-list",
       itemProps: item => ({
-        key: item.link,
         label: item.label,
       }),
       fields: [
