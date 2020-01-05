@@ -32,7 +32,7 @@
     "uppercaseH2": false
   },
   "menu": {
-    "style": "glow"
+    "style": "pill"
   },
   "__gatsby_resolved": {
     "fileRelativePath": "/content/settings/theme.json"
