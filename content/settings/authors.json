@@ -4,18 +4,7 @@
       "name": "Ben Hurley",
       "id": "3ko5o4fqa",
       "email": "benfromtech@gmail.com",
-      "link": ""
-    },
-    {
-      "name": "Katie Graham",
-      "id": "katie-graham",
-      "email": "test@test.com"
-    },
-    {
-      "id": "scott-byrne",
-      "name": "Scott Byrne",
-      "email": "scott.byrne@forestry.io",
-      "link": "mailto:scott.byrne@forestry.io"
+      "link": "mailto:benfromtech@gmail.com"
     }
   ],
   "__gatsby_resolved": {
