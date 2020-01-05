@@ -9,8 +9,11 @@
     "large": true,
     "ctas": [
       {
-        "label": "Github"
+        "label": "Github",
+        "link": "https://github.com/benhurley",
+        "primary": true
       }
-    ]
+    ],
+    "textline": "Javascript, C++, ReactJS, SQL, AWS, and more..."
   }
 }
