@@ -11,16 +11,15 @@
     "textline": "If you're here, you're interested in something...",
     "ctas": [
       {
+        "label": "Skills",
+        "link": "/skills",
+        "primary": true
+      },
+      {
         "label": "Read My Blog",
         "link": "/blog",
         "primary": true,
         "arrow": false
-      },
-      {
-        "label": "Contact Me",
-        "link": "/contact",
-        "arrow": false,
-        "primary": true
       }
     ],
     "image": "../images/dev-setup.jpg",
