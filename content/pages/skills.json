@@ -1,13 +1,17 @@
 {
   "title": "Skills",
   "path": "/skills",
-  "blocks": [],
+  "blocks": [
+    {
+      "content": "",
+      "center": false,
+      "_template": "ContentBlock"
+    }
+  ],
   "displayTitle": true,
   "hero": {
-    "headline": "Skills",
     "image": "../images/dev-setup.jpg",
     "large": true,
-    "ctas": [],
-    "textline": "Javascript, C++, ReactJS, SQL, AWS, and more..."
+    "ctas": []
   }
 }
