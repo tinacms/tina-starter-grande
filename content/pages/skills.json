@@ -7,10 +7,6 @@
       "title": "",
       "underline": true,
       "content": ""
-    },
-    {
-      "_template": "ContentBlock",
-      "content": ""
     }
   ],
   "displayTitle": true,
