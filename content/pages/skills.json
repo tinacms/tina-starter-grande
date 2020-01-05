@@ -13,5 +13,15 @@
       "_template": "ContentBlock"
     }
   ],
-  "displayTitle": true
+  "displayTitle": true,
+  "hero": {
+    "headline": "Skills",
+    "image": "../images/dev-setup.jpg",
+    "large": true,
+    "ctas": [
+      {
+        "label": "Github"
+      }
+    ]
+  }
 }
