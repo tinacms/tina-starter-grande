@@ -13,14 +13,14 @@
       {
         "label": "Read My Blog",
         "link": "/blog",
-        "primary": false,
+        "primary": true,
         "arrow": false
       },
       {
-        "label": "Contact Us",
+        "label": "Contact Me",
         "link": "/contact",
         "arrow": false,
-        "primary": false
+        "primary": true
       }
     ],
     "image": "../images/dev-setup.jpg",
