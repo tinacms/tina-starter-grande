@@ -7,14 +7,14 @@
     }
   ],
   "hero": {
-    "headline": "Welcome to Tina Grande.",
-    "textline": "This template is filled with sample content to get you started.",
+    "headline": "Welcome to Ben Hurley's Website.",
+    "textline": "If you're here, you're interested in something...",
     "ctas": [
       {
-        "label": "Read The Blog",
+        "label": "Read My Blog",
         "link": "/blog",
-        "primary": true,
-        "arrow": true
+        "primary": false,
+        "arrow": false
       },
       {
         "label": "Contact Us",
