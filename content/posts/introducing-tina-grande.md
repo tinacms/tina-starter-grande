@@ -1,7 +1,7 @@
 ---
-title: Personal Finance Tips for 2020
+title: My Favorite Personal Finance Apps
 path: /blog/introducing-tina-grande
-date: 2020-01-06T00:00:00.000Z
+date: '2020-01-06T00:00:00.000Z'
 type: post
 authors:
   - 3ko5o4fqa
@@ -11,19 +11,4 @@ hero:
   large: false
   overlay: true
 ---
-
-> **Tina Grande** is a Gatsby starter with full TinaCMS integration. You can use Tina to add and remove pages, customize the theme, write content and more!
-
-## Getting Started
-
-```shell-session
-git clone https://github.com/tinacms/tina-starter-grande.git
-
-cd tina-starter-grande
-
-yarn install && gatsby develop
-```
-
-## Contributing
-
-Contribute by reporting bugs, requesting features or submiting improvements! We made this for you and would ❤️ any feedback or contributions to make **Tina Grande** better for everyone.
+## Coming soon!
