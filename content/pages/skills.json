@@ -1,0 +1,17 @@
+{
+  "title": "Skills",
+  "path": "/skills",
+  "blocks": [
+    {
+      "_template": "TitleBlock",
+      "title": "",
+      "underline": true,
+      "content": ""
+    },
+    {
+      "content": "### Links\n\n* [**Résumé**](https://drive.google.com/file/d/1VhTcNmNTQzlgQoHrwXaWNXNbIB6xZUaC/view?usp=sharing \"Ben Hurley's Résumé\")\n* [**Github**](https://www.github.com/benhurley \"Ben Hurley's Github\")\n* [**Linkedin**](https://www.linkedin.com/in/benjamin-hurley \"Ben Hurley's Linkedin\")\n\n### Certifications\n\n* [AWS Solutions Architect - Associate]()\n* AWS Certified Developer - Associate",
+      "_template": "ContentBlock"
+    }
+  ],
+  "displayTitle": true
+}
