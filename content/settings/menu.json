@@ -5,8 +5,8 @@
       "link": "/"
     },
     {
-      "label": "About",
-      "link": "/about"
+      "label": "Skills",
+      "link": "/skill"
     },
     {
       "label": "Blog",
@@ -16,5 +16,8 @@
       "label": "Contact",
       "link": "/contact"
     }
-  ]
+  ],
+  "__gatsby_resolved": {
+    "fileRelativePath": "/content/settings/menu.json"
+  }
 }
