@@ -1,6 +1,12 @@
 {
   "authors": [
     {
+      "name": "Ben Hurley",
+      "id": "3ko5o4fqa",
+      "email": "benfromtech@gmail.com",
+      "link": ""
+    },
+    {
       "name": "Katie Graham",
       "id": "katie-graham",
       "email": "test@test.com"
@@ -11,5 +17,8 @@
       "email": "scott.byrne@forestry.io",
       "link": "mailto:scott.byrne@forestry.io"
     }
-  ]
+  ],
+  "__gatsby_resolved": {
+    "fileRelativePath": "/content/settings/authors.json"
+  }
 }
