@@ -1,6 +1,6 @@
 {
-  "title": "About",
-  "path": "/about",
+  "title": "Skills",
+  "path": "/skills",
   "blocks": [
     {
       "_template": "TitleBlock",
