@@ -7,13 +7,7 @@
     "headline": "Skills",
     "image": "../images/dev-setup.jpg",
     "large": true,
-    "ctas": [
-      {
-        "label": "Github",
-        "link": "https://github.com/benhurley",
-        "primary": true
-      }
-    ],
+    "ctas": [],
     "textline": "Javascript, C++, ReactJS, SQL, AWS, and more..."
   }
 }
