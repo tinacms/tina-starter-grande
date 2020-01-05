@@ -1,14 +1,7 @@
 {
   "title": "Skills",
   "path": "/skills",
-  "blocks": [
-    {
-      "_template": "TitleBlock",
-      "title": "",
-      "underline": true,
-      "content": ""
-    }
-  ],
+  "blocks": [],
   "displayTitle": true,
   "hero": {
     "headline": "Skills",
