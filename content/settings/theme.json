@@ -19,7 +19,7 @@
     "overline": true,
     "transparent": true,
     "height": "3.25rem",
-    "underline": true
+    "underline": false
   },
   "hero": {
     "image": "../images/cafe.jpg",
