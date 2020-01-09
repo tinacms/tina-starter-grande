@@ -2,7 +2,7 @@
   "menuItems": [
     {
       "label": "Home",
-      "link": "/"
+      "link": "/about"
     },
     {
       "label": "About",
@@ -16,5 +16,8 @@
       "label": "Contact",
       "link": "/contact"
     }
-  ]
+  ],
+  "__gatsby_resolved": {
+    "fileRelativePath": "/content/settings/menu.json"
+  }
 }
