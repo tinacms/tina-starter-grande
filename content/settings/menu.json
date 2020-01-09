@@ -2,7 +2,15 @@
   "menuItems": [
     {
       "label": "Home",
-      "link": "/"
+      "link": "/",
+      "subMenu": [
+        {
+          "label": "Test",
+          "link": "/"
+        },
+        {},
+        {}
+      ]
     },
     {
       "label": "About",
