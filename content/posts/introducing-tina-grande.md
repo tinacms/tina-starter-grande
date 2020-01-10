@@ -1,5 +1,5 @@
 ---
-title: My Favorite Personal Finance Apps
+title: Cash-Back Chaos
 path: /blog/introducing-tina-grande
 date: '2020-01-06T00:00:00.000Z'
 type: post
@@ -11,4 +11,3 @@ hero:
   large: false
   overlay: true
 ---
-## Coming soon!
