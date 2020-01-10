@@ -1,7 +1,7 @@
 ---
 title: Personal Finance Starter Pack
-path: /blog/nostris-blandis
-date: '2020-01-10T00:00:00.000Z'
+path: /blog/personal-finance-starter-pack
+date: '2020-01-09T00:00:00.000Z'
 type: post
 draft: false
 hero:
@@ -42,4 +42,4 @@ In the past few years, dozens of services have become available to help you try 
 7. A high-yield checking or savings account for on-hand funds (basically just to avoid inflation).
 8. An app to split expenses with friends and family members (no need to bring complicated receipt math into the next decade).
 
-I have an app, website, or service covering all of the above items and can vouch it has made me more confident in my financial decision-making. It has also helped pad my wallet a little bit over the last few years. Se
+I have an app, website, or service covering all of the above items and can vouch it has made me more confident in my financial decision-making. It has also helped pad my wallet a little bit over the last few years. S
