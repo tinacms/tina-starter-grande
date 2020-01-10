@@ -10,9 +10,9 @@ hero:
 authors:
   - 3ko5o4fqa
 ---
-"Is there anything I am missing out on right now?"
+_"Is there anything I am missing out on right now?"_
 
-I get this question a lot from friends and family members. Originally, I was going to use this as a re-write for my original article where I detail my favorite services and share my referral links (shameless). On second thought, I decided to do that here and also  give my take on what a good personal finance "stack" might look like more generically.
+I get this question a lot from friends and family members. Originally, I was going to use this as a re-write for my original article where I detail my favorite services and share my referral links (**shameless**). On second thought, I decided to do that here and also  give my take on what a good personal finance _stack_ might look like more generically.
 
 We'll start with covering all of the ways we usually spend money (in no particular order):
 
@@ -42,4 +42,4 @@ In the past few years, dozens of services have become available to help you try 
 7. An high-yield checking or savings account for on-hand funds (basically just to avoid inflation).
 8. An app to split expenses with friends and family members (no need to bring complicated receipt math into the next decade).
 
-I have an app, website, or service covering all of the above items, and can vouch it has made me more confident in my financial decision-making and has also helped pad my wallet a bit over the last few years. 
+I have an app, website, or service covering all of the above items, and can vouch it has made me more confident in my financial decision-making and has also helped pad my wallet a bit over the last few years.
