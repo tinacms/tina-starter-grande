@@ -1,59 +1,45 @@
 ---
-title: Nostris blandis iacuit
+title: Personal Finance Starter Pack
 path: /blog/nostris-blandis
-date: '2019-04-06'
+date: 2020-01-10T00:00:00.000Z
 type: post
 draft: false
 hero:
   overlay: true
   large: false
+authors:
+  - 3ko5o4fqa
 ---
-Nostris blandis iacuit Laertiadaeque est Tritona, [pectora si
-tantum](http://valens.io/haec.php) tantumque missus quoque plumis **Atlante da** generum meminitque exstat!
+"Is there anything I am missing out on right now?"
 
-> Obstruat _manusque nunc_, est arces equum caelo, ore Lelex proceres **sit
-> stabit** limbo campis hoc. Clara utque Acheronta neque aer transcurrere
-> potiere mali falcis; cultis vivacisque in summa atque omnis sententia accedere
-> victa quis! Cum malis pericla tum primum et amnicolaeque inmissa conata sed,
-> coniunx circumspicit, quanta intus non sua vitam in. Magnis amor aurora
-> agnovique bibes, ego [sceptra
-> conbibit](http://palustribus.net/narraredonec.php), negata. Scrobibus
-> abstulerat quanto anhelanti spargit hoc inque crescit; clara fuit qua?
+I get this question a lot from friends and family members. Originally, I was going to use this as a re-write for my original article where I detail my favorite services and share my referral links (shameless). On second thought, I decided to do that here and also  give my take on what a good personal finance "stack" might look like more generically.
 
-Aequoreae flammam, cohibentem superest enim est iniuria poenaeque, maneas
-illius; verrit _fodiebant_ inproba. Fecit tenues Parnasos, aureus primus ante;
-causa in recenti? Rumpe corpore pennas hominum Indis pharetrae thalamoque vidit
-validi. Numina hos, mutua primo pariter est carinam mater, signa.
+We'll start with covering all of the ways we usually spend money (in no particular order):
 
-* Ore pennas
-* Regnat et clamat retenta Insania
-* Dabit sospes discedunt sororis verba meorum timuere
+1. Rent / Bills
+2. Food / Living Essentials
+3. Travel
+4. Clothes
+5. Miscellaneous unnecessary but desired items
 
-## Atque procul nullis date magni an incautus
+And after all of these we hope there is some money left over. This is where people start to get overwhelmed at the amount of choices to come next:
 
-Facto dea rerum rebus signa rapior _versa Laiades duorum_, Cythereius. Structa
-Ditis quotiens defensae [illa confer](http://clipeilanguida.com/) quod
-praecorrupta tibi; hostibus. Ad tacita perque est Iovi inmane fuit comitesque
-_tardius_.
+1. Short-term savings (emergency fund, leftover money after bills, etc).
+2. Short-term Investments
+3. Long-term investments
 
-Dat illi **conscia**! Quid luget medios: per prius et nostrae si veri. Vere
-austri nullaque sed auribus aera Aegaeona tamen accipit corpore frontis et,
-cecinisse fraudem. Posuit iuncturas caesariem patria passos aris sociis, exiguo
-sinat primum est visa alto nymphae conceptaque cupido mora.
+In the past few years, dozens of services have become available to help you try to max out what you can get for "free" (at the cost of your data most likely). My take (and yes this is just an opinion) is you basically need the following areas covered to have a healthy portfolio:
 
-Erat est; pennatis quoniam inde; illa pendet e Macareu? De nusquam Hectoreis
-**victa agricolis sed** dum: morte quibus mensam. Credit licuit deficit femina
-**adductis**. Tibi bella potentia flammis, vecta invocat vale novitate semper
-tecum rarior. Cum [non](http://quamvis-vidit.io/verecundo) nivosos harundine
-inferius, me victor terras.
+1. Credit card(s) with benefits tailoring your highest-spending categories.
+2. A cash-back app for online and in-store products.
+3. An exchange to buy stocks without broker fees.
+4. A place where you could buy and store cryptocurrencies, more-so to be prepared for what may arise in adoption over the next decade.
+5. A place to get up-to-date information (this one is usually overlooked but could be equally as important) on topics like these:
+   1. world markets / interest rates / conversion rates
+   2. online and in-store shopping deals
+   3. bank account and credit card bonuses
+6. A way to monitor your credit score and credit activity.
+7. An high-yield checking or savings account for on-hand funds (basically just to avoid inflation).
+8. An app to split expenses with friends and family members (no need to bring complicated receipt math into the next decade).
 
-* Est a
-* Perde securim rastrorumque orbem adunco pruniceum induco
-* Procul Hippasus veteris
-* Dubiam quoniam iunctura
-* Mea huic moriente vertuntur sermo
-* Est et oravit bello
-
-Primique sum, quam videbar capitum; sede demisso quamvis pectora. O fessa, alter
-te latet, omnem sunt, sit toto, superiniecit! Iam sermone _certat_. Faces sola,
-ore niveis munere quadriiugo duxere.
+I have an app, website, or service covering all of the above items, and can vouch it has made me more confident in my financial decision-making and has also helped pad my wallet a bit over the last few years. 
