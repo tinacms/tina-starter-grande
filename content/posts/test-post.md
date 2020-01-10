@@ -34,12 +34,12 @@ In the past few years, dozens of services have become available to help you try 
 2. A cash-back app for online and in-store products.
 3. An exchange to buy stocks without broker fees.
 4. A place where you could buy and store cryptocurrencies, more-so to be prepared for what may arise in adoption over the next decade.
-5. A place to get up-to-date information (this one is usually overlooked but could be equally as important) on topics like these:
+5. A place to get up-to-date financial information (this one is usually overlooked but could be equally as important) on topics like these:
    1. world markets / interest rates / conversion rates
    2. online and in-store shopping deals
    3. bank account and credit card bonuses
 6. A way to monitor your credit score and credit activity.
-7. An high-yield checking or savings account for on-hand funds (basically just to avoid inflation).
+7. A high-yield checking or savings account for on-hand funds (basically just to avoid inflation).
 8. An app to split expenses with friends and family members (no need to bring complicated receipt math into the next decade).
 
-I have an app, website, or service covering all of the above items, and can vouch it has made me more confident in my financial decision-making and has also helped pad my wallet a bit over the last few years.
+I have an app, website, or service covering all of the above items and can vouch it has made me more confident in my financial decision-making. It has also helped pad my wallet a little bit over the last few years. Se
