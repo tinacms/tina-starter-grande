@@ -35,9 +35,8 @@ In the past few years, dozens of services have become available to help you try 
 3. An exchange to buy stocks without broker fees.
 4. A place where you could buy and store cryptocurrencies, more-so to be prepared for what may arise in adoption over the next decade.
 5. A place to get up-to-date financial information (this one is usually overlooked but could be equally as important) on topics like these:
-   * world markets / interest rates / conversion rates
-   * online and in-store shopping deals
-   * bank account and credit card bonuses
+   1. world markets / interest rates / conversion rates
+   2. online and in-store shopping dealsbank account and credit card bonuses
 6. A way to monitor your credit score and credit activity.
 7. A high-yield checking or savings account for on-hand funds (basically just to avoid inflation).
 8. An app to split expenses with friends and family members (no need to bring complicated receipt math into the next decade).
