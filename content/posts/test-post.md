@@ -28,7 +28,7 @@ And after all of these we hope there is some money left over. This is where peop
 2. Short-term Investments
 3. Long-term investments
 
-In the past few years, dozens of services have become available to help you try to max out what you can get for "free" (at the cost of your data most likely). My take (and yes this is just an opinion) is you basically need the following areas covered to have a healthy portfolio:
+In the past few years, dozens of services have become available to help you try to max out what you can get for "free" (usually at the cost of your data or the chance you'll carry d). My take (and yes this is just an opinion) is you basically need the following areas covered to have a healthy portfolio:
 
 1. Credit card(s) with benefits tailoring your highest-spending categories.
 2. A cash-back app for online and in-store products.
