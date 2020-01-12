@@ -1,12 +1,18 @@
 {
-  "title": "Subscribe To My Blog",
+  "title": "Subscribe",
   "path": "/subscribe",
   "blocks": [
     {
-      "_template": "TitleBlock",
       "title": "",
+      "center": false,
       "underline": true,
+      "_template": "TitleBlock",
       "content": ""
+    },
+    {
+      "center": false,
+      "_template": "ContentBlock",
+      "content": "#### Fill out the form below to subscribe to  upcoming blog posts. "
     },
     {
       "_template": "FormBlock",
@@ -31,6 +37,7 @@
   ],
   "displayTitle": true,
   "hero": {
-    "image": "../images/cafe-2.jpg"
+    "image": "../images/cafe-2.jpg",
+    "ctas": []
   }
 }
