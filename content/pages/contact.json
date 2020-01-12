@@ -34,5 +34,8 @@
       "content": ""
     }
   ],
-  "displayTitle": true
+  "displayTitle": true,
+  "hero": {
+    "image": "../images/cafe-2.jpg"
+  }
 }
