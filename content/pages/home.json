@@ -22,7 +22,7 @@
         "arrow": false
       },
       {
-        "label": "Subscribe to Blog",
+        "label": "Subscribe",
         "primary": true,
         "link": "/subscribe"
       }
