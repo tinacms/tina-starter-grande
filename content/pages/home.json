@@ -16,15 +16,15 @@
         "primary": true
       },
       {
-        "label": "Subscribe to Blog",
-        "primary": true,
-        "link": "/subscribe"
-      },
-      {
-        "label": "Read My Blog",
+        "label": "Blog",
         "link": "/blog",
         "primary": true,
         "arrow": false
+      },
+      {
+        "label": "Subscribe to Blog",
+        "primary": true,
+        "link": "/subscribe"
       }
     ],
     "image": "../images/dev-setup.jpg",
