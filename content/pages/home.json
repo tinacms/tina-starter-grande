@@ -2,27 +2,6 @@
   "path": "/",
   "blocks": [
     {
-      "title": "Subscribe to my blog!",
-      "center": false,
-      "underline": false,
-      "_template": "TitleBlock",
-      "content": ""
-    },
-    {
-      "name": "Subscribe to My Blog",
-      "recipient": "",
-      "fields": [
-        {
-          "label": "Email",
-          "inputType": "text",
-          "autocomplete": "email",
-          "_template": "emailInputBlock"
-        }
-      ],
-      "_template": "FormBlock",
-      "content": ""
-    },
-    {
       "_template": "ContentBlock",
       "content": "## About Me\n\nI'm Ben Hurley. Florida State grad. Golfer. Guitarist. Fascinated in everything tech and finance. Originally from Tampa, Florida. Moved to New York City in 2018. Currently working as a software engineer for [Pariveda Solutions](https://www.parivedasolutions.com \"Pariveda Solutions\"). \n\n## Side Gigs / Hobbies\n\nSince I have to be doing something at all times, I'm also...\n\n* A Forum Moderator for [Whizlabs ](https://www.whizlabs.com \"Whizlabs Inc.\")\n* Co-Founder of [Big Cigar Guy™](https://www.bigcigarguy.com \"Big Cigar Guy™\")\n* Founder of [NYC Restrooms](https://www.instagram.com/nyc_restrooms \"NYC Restrooms - Instagram\")\n* Freelancer for [Professional Resume & Linkedin Reviews](https://www.fiverr.com/s2/531f0ab3b9 \"Fiver - Ben's Professional Résumé Reviews\")"
     }
