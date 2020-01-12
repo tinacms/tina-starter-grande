@@ -343,8 +343,8 @@ export const NavLink = styled(({ children, ...styleProps }) => (
 export const NavToggle = styled(({ menuOpen, ...styleProps }) => {
   return (
     <button {...styleProps}>
-      <span className="closed">Open Menu</span>
-      <span className="open">Close Menu</span>
+      <span className="closed">Menu</span>
+      <span className="open">Close</span>
     </button>
   )
 })`

@@ -12,7 +12,7 @@
     {
       "center": false,
       "_template": "ContentBlock",
-      "content": "#### Fill out the form below to subscribe to  upcoming blog posts. "
+      "content": "#### Fill out the form below to subscribe to upcoming blog posts. <br><br>"
     },
     {
       "_template": "FormBlock",

@@ -1,10 +1,6 @@
 {
   "menuItems": [
     {
-      "label": "Subscribe",
-      "link": "/subscri"
-    },
-    {
       "label": "Home",
       "link": "/"
     },
@@ -15,6 +11,10 @@
     {
       "label": "Blog",
       "link": "/blog"
+    },
+    {
+      "label": "Subscribe",
+      "link": "/subscribe"
     },
     {
       "label": "Contact",
