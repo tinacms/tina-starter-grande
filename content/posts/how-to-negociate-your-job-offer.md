@@ -1,7 +1,7 @@
 ---
-title: How to Negociate Your Job Offer
+title: How to Negotiate Your Job Offer
 path: /blog/how-to-negociate-your-job-offer
-date: 2020-01-11T00:00:00.000Z
+date: '2020-01-11T00:00:00.000Z'
 type: post
 draft: true
 authors:
