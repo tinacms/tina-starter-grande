@@ -7,6 +7,7 @@ draft: false
 hero:
   overlay: true
   large: false
+  image: ../images/money.jpg
 authors:
   - 3ko5o4fqa
 ---
