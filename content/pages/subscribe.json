@@ -25,7 +25,8 @@
           "_template": "emailInputBlock"
         }
       ],
-      "content": ""
+      "content": "",
+      "recipient": "benfromtech@gmail.com"
     }
   ],
   "displayTitle": true,
