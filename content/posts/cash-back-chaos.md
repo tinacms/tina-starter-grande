@@ -7,7 +7,8 @@ authors:
   - 3ko5o4fqa
 draft: true
 hero:
-  image: ../images/coffee-beans.jpg
+  image: ../images/money.jpg
   large: false
   overlay: true
 ---
+Coming soon!
