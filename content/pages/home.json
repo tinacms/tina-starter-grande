@@ -2,6 +2,13 @@
   "path": "/",
   "blocks": [
     {
+      "title": "Subscribe to my blog!",
+      "center": false,
+      "underline": false,
+      "_template": "TitleBlock",
+      "content": ""
+    },
+    {
       "name": "Subscribe to My Blog",
       "recipient": "",
       "fields": [
