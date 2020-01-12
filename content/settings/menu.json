@@ -1,6 +1,10 @@
 {
   "menuItems": [
     {
+      "label": "Subscribe",
+      "link": "/subscri"
+    },
+    {
       "label": "Home",
       "link": "/"
     },
