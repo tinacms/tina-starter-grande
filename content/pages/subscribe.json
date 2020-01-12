@@ -1,0 +1,35 @@
+{
+  "title": "Subscribe To My Blog!",
+  "path": "/subscribe",
+  "blocks": [
+    {
+      "_template": "TitleBlock",
+      "title": "",
+      "underline": true,
+      "content": ""
+    },
+    {
+      "_template": "FormBlock",
+      "name": "Contact Form",
+      "fields": [
+        {
+          "label": "Name",
+          "inputType": "text",
+          "autocomplete": "name",
+          "_template": "nameInputBlock"
+        },
+        {
+          "label": "Email",
+          "inputType": "text",
+          "autocomplete": "email",
+          "_template": "emailInputBlock"
+        }
+      ],
+      "content": ""
+    }
+  ],
+  "displayTitle": true,
+  "hero": {
+    "image": "../images/cafe-2.jpg"
+  }
+}
