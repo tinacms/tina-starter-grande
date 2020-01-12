@@ -11,11 +11,6 @@
     "textline": "If you're here, you're interested in something...",
     "ctas": [
       {
-        "label": "My Skills",
-        "link": "/skills",
-        "primary": true
-      },
-      {
         "label": "Blog",
         "link": "/blog",
         "primary": true,
