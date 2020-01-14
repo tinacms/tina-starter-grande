@@ -23,7 +23,7 @@
       }
     ],
     "image": "../images/dev-setup.jpg",
-    "large": true
+    "large": false
   },
   "displayTitle": false,
   "title": "Home"
