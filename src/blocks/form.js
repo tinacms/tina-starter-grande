@@ -10,7 +10,10 @@ export function Form({ form }) {
       name="contact"
       action={`https://formspree.io/${form.recipient}`}
       method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
     >
+    <input type="hidden" name="form-name" value="contact" />
       {form.fields.map(field => {
         if (field.inputType === "textarea") {
           return (
