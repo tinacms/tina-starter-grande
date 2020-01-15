@@ -23,7 +23,14 @@ module.exports = {
             },
           },
         },
-        plugins: ["gatsby-tinacms-git", "gatsby-tinacms-remark"],
+        plugins: ["gatsby-tinacms-remark",
+        {
+          resolve: 'gatsby-tinacms-git',
+            options: {
+              pushOnCommit: false,
+            },
+          },
+        ],
       },
     },
     {
