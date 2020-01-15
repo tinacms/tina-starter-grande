@@ -8,7 +8,7 @@ import {
   MetaActions,
   DraftBadge,
 } from "../components/style"
-import { ListAuthors, AuthorsForm } from "../components/authors"
+import { ListAuthors } from "../components/authors"
 import { Link } from "gatsby"
 import { PageLayout } from "../components/pageLayout"
 
@@ -16,9 +16,7 @@ import { useLocalJsonForm } from "gatsby-tinacms-json"
 
 export default function List({ data, pageContext }) {
   const [page] = useLocalJsonForm(data.page, ListForm)
-  const [authors] = useLocalJsonForm(data.authors, AuthorsForm)
-
-  const { slug, limit, skip, numPages, currentPage } = pageContext
+  const { slug, numPages, currentPage } = pageContext
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
   const prevPage =

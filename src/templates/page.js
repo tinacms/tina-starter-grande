@@ -36,7 +36,7 @@ export default function Page({ data }) {
                       }
                     />
                   )
-                break
+                return false
               default:
                 return true
             }

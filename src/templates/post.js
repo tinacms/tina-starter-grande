@@ -7,8 +7,6 @@ import {
   MetaActions,
   DraftBadge,
   EditButton,
-  Content,
-  Wrapper,
   PlainText,
 } from "../components/style"
 import { ListAuthors } from "../components/authors"
@@ -18,7 +16,6 @@ import { TinaField, TinaForm } from "@tinacms/form-builder"
 import { Wysiwyg } from "@tinacms/fields"
 import {
   useLocalRemarkForm,
-  useGlobalRemarkForm,
   DeleteAction,
 } from "gatsby-tinacms-remark"
 import { useAuthors } from "../components/useAuthors"
@@ -80,12 +77,12 @@ function RemarkForm(props) {
           name: "rawFrontmatter.title",
           component: "text",
         },
-        {
-          label: "Authors",
-          name: "rawFrontmatter.authors",
-          component: "authors",
-          authors: authors,
-        },
+        // {
+        //   label: "Authors",
+        //   name: "rawFrontmatter.authors",
+        //   component: "authors",
+        //   authors: authors,
+        // },
         {
           name: "rawFrontmatter.draft",
           component: "toggle",

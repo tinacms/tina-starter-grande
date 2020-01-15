@@ -1,7 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled, { css } from "styled-components"
-import { Main } from "./style"
 import { Header } from "./header"
 import { Footer } from "./footer"
 import { Theme } from "./theme"
