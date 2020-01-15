@@ -11,8 +11,7 @@ hero:
   large: false
   overlay: true
 ---
-
-> **Tina Grande** is a Gatsby starter with full TinaCMS integration. You can use Tina to add and remove pages, customize the theme, write content and more!
+> **Tina Grande** is a Gatsby starter with full TinaCMS integration. You can use Tina to edit inlineo add and remove pages, customize the theme, write content and more!
 
 ## Getting Started
 
