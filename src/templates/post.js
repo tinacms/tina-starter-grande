@@ -77,12 +77,6 @@ function RemarkForm(props) {
           name: "rawFrontmatter.title",
           component: "text",
         },
-        // {
-        //   label: "Authors",
-        //   name: "rawFrontmatter.authors",
-        //   component: "authors",
-        //   authors: authors,
-        // },
         {
           name: "rawFrontmatter.draft",
           component: "toggle",
