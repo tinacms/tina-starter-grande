@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/64fd9606-60b0-453d-a25d-3161f4d0418e/deploy-status)](https://app.netlify.com/sites/benhurley/deploys)
+
 # [![Tina Grande](https://res.cloudinary.com/forestry-demo/image/upload/h_40/v1573060726/tina-grande-wordmark.png)](https://tina-starter-grande.netlify.com/)
 
 **Tina Grande** is a Gatsby starter with full TinaCMS integration. You can use Tina to add and remove posts, customize the theme, write content and more! :tada:
