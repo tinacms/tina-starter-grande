@@ -13,15 +13,15 @@
       ]
     },
     {
-      "label": "About",
+      "label": "About the Kev",
       "link": "/about"
     },
     {
-      "label": "Blog",
+      "label": "Captain's Log ",
       "link": "/blog"
     },
     {
-      "label": "Contact",
+      "label": "Send a message in a bottle",
       "link": "/contact"
     }
   ],
