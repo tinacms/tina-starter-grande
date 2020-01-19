@@ -22,7 +22,7 @@
     "underline": true
   },
   "hero": {
-    "image": "../images/cafe.jpg",
+    "image": "../images/small-rock.jpg",
     "large": false,
     "overlay": true,
     "overlap": "8rem",
@@ -33,5 +33,8 @@
   },
   "menu": {
     "style": "glow"
+  },
+  "__gatsby_resolved": {
+    "fileRelativePath": "/content/settings/theme.json"
   }
 }
