@@ -45,16 +45,16 @@
   ],
   "hero": {
     "headline": "Welcome to Kev's Island 🌴",
-    "textline": "This template is filled with sample content to get you started.",
+    "textline": "Living the life of a Dev-Ops pirate, Aaarrrr.",
     "ctas": [
       {
-        "label": "Read The Blog",
+        "label": "Read The Captain's log",
         "link": "/blog",
         "primary": true,
         "arrow": true
       },
       {
-        "label": "Contact Us",
+        "label": "Send a Message in a Bottle",
         "link": "/contact",
         "arrow": false,
         "primary": false
