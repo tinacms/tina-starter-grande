@@ -23,7 +23,7 @@ export const Nav = ({ toggleDarkMode, isDarkMode }) => {
 
   return (
     <>
-      <StyledNavbar navOpen={navOpen}>
+      <StyledNavbar navOpen={navOpen} isDarkMode={isDarkMode}>
         {menu.menuItems.map(item => (
           <NavItem key={item.label}>
             <NavLink
@@ -65,8 +65,10 @@ export const StyledNavbar = styled.ul`
     align-items: stretch;
     opacity: 0;
     z-index: 1000;
-    background-color: ${props =>
-      mix(0.95, props.theme.color.black, props.theme.color.white)};
+    background-color: ${props => 
+      props.isDarkMode || props.theme.header.transparent
+        ? mix(0.95, props.theme.color.black, props.theme.color.white)
+        : mix(0.95, props.theme.color.white, props.theme.color.black)};
     box-shadow: 0 1rem 2rem -0.5rem ${props => transparentize(0.5, props.theme.color.black)};
     transition: all 150ms ${p => p.theme.easing};
     pointer-events: none;
