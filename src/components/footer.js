@@ -1,20 +1,21 @@
 import React from "react"
-import { Wrapper } from "./style"
+import {Wrapper} from "./style"
 import styled from "styled-components"
-import { transparentize } from "polished"
+import {transparentize} from "polished"
 
-export const Footer = styled(({ ...styleProps }) => {
-  return (
-    <footer {...styleProps}>
-      <Wrapper>
-        © {new Date().getFullYear()} – Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a> and{" "}
-        <a href="https://www.tinacms.org">Tina</a> <span>by </span>
-        <a href="https://www.forestry.io">Forestry.io</a>
-      </Wrapper>
-    </footer>
-  )
+export const Footer = styled(({...styleProps}) => {
+    return (
+        <footer {...styleProps}>
+            <Wrapper>
+                © {new Date().getFullYear()} – Built with
+                {` `}
+                <a href="https://www.gatsbyjs.org">Gatsby</a> and{" "}
+                <a href="https://www.tinacms.org">Tina</a> <span> and </span>
+                <a href="https://www.tinacms.org">Kevin</a>
+                {/*<a href="https://www.forestry.io">Forestry.io</a>*/}
+            </Wrapper>
+        </footer>
+    )
 })`
   font-size: 0.8rem;
   line-height: 3rem;
