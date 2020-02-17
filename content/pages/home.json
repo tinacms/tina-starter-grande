@@ -4,43 +4,6 @@
     {
       "_template": "ContentBlock",
       "content": "## Beware, this is a pirate island!\n\nFeel free to hang around the island as you please. For aspiring pirates, the job description is _[here](/about \"About the pirate\")_. If you are interested in learning about the adventures of an old DevOps pirate, then head right over to the _[Captain's log](/blog \"captains log\")_.  go  grab yourself a coconut or two from the trees on the island, but don't go looking for **treasure** now, my trusty parrot _Seamus_ will be quick to peck your eyeballs out, you greedy thieving scabby sea bass!!! Aaarrrrr"
-    },
-    {
-      "content": "***\n\n    \n    \n    \n    \n    Test\n\n***",
-      "center": true,
-      "_template": "ContentBlock"
-    },
-    {
-      "name": "Form",
-      "recipient": "",
-      "fields": [
-        {
-          "label": "Message",
-          "inputType": "textarea",
-          "autocomplete": "",
-          "_template": "messageInputBlock"
-        },
-        {
-          "label": "Phone",
-          "inputType": "text",
-          "autocomplete": "tel",
-          "_template": "phoneInputBlock"
-        },
-        {
-          "label": "Email",
-          "inputType": "text",
-          "autocomplete": "email",
-          "_template": "emailInputBlock"
-        },
-        {
-          "label": "Name",
-          "inputType": "text",
-          "autocomplete": "name",
-          "_template": "nameInputBlock"
-        }
-      ],
-      "_template": "FormBlock",
-      "content": ""
     }
   ],
   "hero": {
