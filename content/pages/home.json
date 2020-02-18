@@ -3,7 +3,7 @@
   "blocks": [
     {
       "_template": "ContentBlock",
-      "content": "## Beware, this is a pirate island!\n\nFeel free to hang around the island as you please. For aspiring pirates, the job description is _[here](/about \"About the pirate\")_. If you are interested in learning about the adventures of an old DevOps pirate, then head right over to the _[Captain's log](/blog \"captains log\")_. Go grab yourself a coconut or two from the trees on the island, but don't go looking for **treasure** now, my trusty parrot _Seamus_ will be quick to peck your eyeballs out, you greedy thieving scabby sea bass!!! Aaarrrrr\n\nThe parrot"
+      "content": "## Beware, this is a pirate island!\n\nFeel free to hang around the island as you please. For aspiring pirates, the job description is _[here](/about \"About the pirate\")_. If you are interested in learning about the adventures of an old DevOps pirate, then head right over to the _[Captain's log](/blog \"captains log\")_. Go ahead, grab yourself a coconut or two from the trees on the island, but don't go looking for **treasure** now, my trusty parrot _Seamus_ will be quick to peck your eyeballs out, you greedy thieving scabby sea bass!!! Aaarrrrr\n\nThe parrot"
     },
     {
       "image": "../images/Amazon-parrot.jpg",
