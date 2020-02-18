@@ -8,7 +8,8 @@ export function Form({ form }) {
   return (
     <StyledForm
       name="contact"
-      action={`https://formspree.io/${form.recipient}`}
+      // action={`https://formspree.io/${form.recipient}`}
+      action={`https://formspree.io/xvoaerky`}
       method="POST"
     >
       {form.fields.map(field => {
