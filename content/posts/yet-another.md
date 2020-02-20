@@ -1,15 +1,12 @@
 ---
-title: Vidit tum quis meoque
+title: 'How to start with '
 path: /blog/vidit-tum
 date: '2019-01-06'
 type: post
 draft: true
 ---
-
 Potest velit uti nataeque dicere stolidarum **nec tendebat** turba prodit
-sidera, [terunt Theron](http://est.io/vertice)! Ruit et cum venatibus factas
-conceperat liceret diriguit ad Daedalus superare sis Aurora inque. Ramumque
-tenet sidoniae, inania nescio catenis **currus**? Et inpavidus, e proterit
+sidera, [terunt Theron](http://est.io/vertice)! Rit et cum venatibus factas conceperat liceret diriguit ad Daedalus superare sis Aurora inque. Ramumque tenet sidoniae, inania nescio catenis **currus**? Et inpavidus, e proterit
 quoque Romane malorum cupidine lintea regnum fretumque orbi praestantes modum
 sic ante _simul_? E susurro silvis an fletibus cumque legem **Telamon**,
 moresque nec nati.
