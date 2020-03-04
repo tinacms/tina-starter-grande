@@ -8,7 +8,7 @@ import { removeNull } from "./helpers"
 import { NavForm } from "./nav"
 import { ThemeForm } from "./theme"
 
-import { useLocalJsonForm, useGlobalJsonForm } from "gatsby-tinacms-json"
+import { useGlobalJsonForm } from "gatsby-tinacms-json"
 
 const merge = require("lodash.merge")
 
@@ -45,9 +45,9 @@ export const PageLayout = ({ page, children }) => {
     }
   `)
 
-  const [nav] = useLocalJsonForm(data.nav, NavForm)
-  const [globalTheme] = useLocalJsonForm(data.theme, ThemeForm)
-  const [site] = useGlobalJsonForm(data.site, SiteForm)
+  useGlobalJsonForm(data.nav, NavForm)
+  useGlobalJsonForm(data.theme, ThemeForm)
+  useGlobalJsonForm(data.site, SiteForm)
 
   const themeContext = React.useContext(ThemeContext)
   const theme = themeContext.theme
