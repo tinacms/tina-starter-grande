@@ -9,7 +9,6 @@
     "@mdx-js/react": "^1.5.1",
     "babel-plugin-styled-components": "^1.10.6",
     "focus-visible": "^5.0.2",
-    "g": "^2.0.1",
     "gatsby": "^2.16.1",
     "gatsby-background-image": "^0.8.15",
     "gatsby-cli": "^2.8.5",
@@ -48,7 +47,8 @@
     "react-helmet": "^5.2.1",
     "react-slugify": "^2.0.1",
     "styled-components": ">=4.1",
-    "styled-icons": "^8.6.0"
+    "styled-icons": "^8.6.0",
+    "tinacms": "^0.15.0"
   },
   "devDependencies": {
     "prettier": "^1.18.2"

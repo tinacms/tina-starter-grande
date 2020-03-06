@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import { mix, getContrast } from "polished"
-import styled, { ThemeProvider } from "styled-components"
+import { mix } from "polished"
+import { ThemeProvider } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import { GlobalStyles, Main, bestContrast } from "./style"
+import { GlobalStyles, bestContrast } from "./style"
 
 export const ThemeContext = React.createContext()
 
