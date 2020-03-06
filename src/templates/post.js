@@ -7,8 +7,6 @@ import {
   MetaActions,
   DraftBadge,
   EditButton,
-  Content,
-  Wrapper,
   PlainText,
 } from "../components/style"
 import { ListAuthors } from "../components/authors"
@@ -16,11 +14,7 @@ import { Link } from "gatsby"
 import { PageLayout } from "../components/pageLayout"
 import { TinaField, TinaForm } from "@tinacms/form-builder"
 import { Wysiwyg } from "@tinacms/fields"
-import {
-  useLocalRemarkForm,
-  useGlobalRemarkForm,
-  DeleteAction,
-} from "gatsby-tinacms-remark"
+import { useLocalRemarkForm, DeleteAction } from "gatsby-tinacms-remark"
 import { useAuthors } from "../components/useAuthors"
 
 function Post(props) {
