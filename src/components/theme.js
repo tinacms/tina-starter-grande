@@ -3,6 +3,7 @@ import { mix } from "polished"
 import { ThemeProvider } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import { GlobalStyles, bestContrast } from "./style"
+import { createGlobalStyle } from "styled-components"
 
 export const ThemeContext = React.createContext()
 
@@ -81,6 +82,7 @@ export const Theme = ({ children }) => {
         {({ theme }) => (
           <ThemeProvider theme={theme}>
             <>
+              <TinaOverrideGlobalStyle primary={theme.color.primary} />
               <GlobalStyles />
               {children}
             </>
@@ -90,6 +92,14 @@ export const Theme = ({ children }) => {
     </ThemeContext.Provider>
   )
 }
+
+const TinaOverrideGlobalStyle = createGlobalStyle`
+  :root {
+    --tina-color-primary-light: ${props => props.primary};
+    --tina-color-primary: ${props => props.primary};
+    --tina-color-primary-dark: ${props => props.primary};
+  }
+`
 
 export const globalThemeFragment = graphql`
   fragment globalTheme on SettingsJson {

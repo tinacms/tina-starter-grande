@@ -48,7 +48,7 @@
     "react-slugify": "^2.0.1",
     "styled-components": ">=4.1",
     "styled-icons": "^8.6.0",
-    "tinacms": "^0.15.0"
+    "tinacms": "^0.18.4"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
