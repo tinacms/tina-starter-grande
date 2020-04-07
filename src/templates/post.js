@@ -112,7 +112,7 @@ function RemarkForm(props) {
         },
       ],
     }
-  }, [])
+  }, [authors])
   const [markdownRemark, form] = useLocalRemarkForm(
     props.data.markdownRemark,
     PostForm
