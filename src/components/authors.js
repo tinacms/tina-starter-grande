@@ -1,4 +1,3 @@
-import React from "react"
 import { useAuthors } from "./useAuthors"
 
 export const ListAuthors = ({ authorIDs }) => {
