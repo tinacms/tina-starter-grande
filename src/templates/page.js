@@ -180,11 +180,6 @@ export const pageQuery = graphql`
           }
         }
       }
-      childrenPagesJsonBlockMarkdown {
-        childMarkdownRemark {
-          html
-        }
-      }
 
       rawJson
       fileRelativePath
