@@ -14,7 +14,11 @@ import { PageLayout } from "../components/pageLayout"
 import { TinaField, TinaForm } from "@tinacms/form-builder"
 import { Wysiwyg } from "@tinacms/fields"
 import { useLocalRemarkForm, DeleteAction } from "gatsby-tinacms-remark"
-import { InlineForm, InlineTextField } from "react-tinacms-inline"
+import {
+  InlineForm,
+  InlineTextField,
+  InlineWysiwyg,
+} from "react-tinacms-inline"
 import { useAuthors } from "../components/useAuthors"
 
 function Post(props) {
@@ -59,114 +63,45 @@ function Post(props) {
           return formValues.frontmatter.hero.image.childImageSharp.fluid.src
         },
       },
-      {
-        label: "Body",
-        name: "rawMarkdownBody",
-        component: "markdown",
-      },
     ],
   }
 
   const [data, form] = useLocalRemarkForm(page, formOptions)
-  console.log(data, form)
+
   return (
-    <PageLayout page={data}>
-      <Paper>
-        <Meta>
-          <MetaSpan>{data.frontmatter.date}</MetaSpan>
-          {data.frontmatter.authors && data.frontmatter.authors.length > 0 && (
-            <MetaSpan>
-              <em>By</em>&nbsp;
-              <ListAuthors authorIDs={data.frontmatter.authors} />
-            </MetaSpan>
-          )}
-          <MetaActions>
-            <Link to="/blog">← Back to Blog</Link>
-          </MetaActions>
-        </Meta>
-        <h1>{data.frontmatter.title}</h1>
-        <hr />
-        <div
-          dangerouslySetInnerHTML={{
-            __html: data.html,
-          }}
-        />
-        {/* {page.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
-          {process.env.NODE_ENV !== "production" && <EditToggle />} */}
-      </Paper>
-    </PageLayout>
+    <InlineForm form={form}>
+      <PageLayout page={data}>
+        <Paper>
+          <Meta>
+            <MetaSpan>{data.frontmatter.date}</MetaSpan>
+            {data.frontmatter.authors && data.frontmatter.authors.length > 0 && (
+              <MetaSpan>
+                <em>By</em>&nbsp;
+                <ListAuthors authorIDs={data.frontmatter.authors} />
+              </MetaSpan>
+            )}
+            <MetaActions>
+              <Link to="/blog">← Back to Blog</Link>
+            </MetaActions>
+          </Meta>
+          <h1>
+            <InlineTextField name="rawFrontmatter.title" />
+          </h1>
+          <hr />
+          <InlineWysiwyg name="rawMarkdownBody" format="markdown">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: data.html,
+              }}
+            />
+          </InlineWysiwyg>
+          {data.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
+          {process.env.NODE_ENV !== "production" && <EditToggle />}
+        </Paper>
+      </PageLayout>
+    </InlineForm>
   )
 }
-
-// function RemarkForm(props) {
-//   const authors = useAuthors()
-//   const PostForm = useMemo(() => {
-//     return {
-//       actions: [DeleteAction],
-//       fields: [
-//         {
-//           label: "Title",
-//           name: "rawFrontmatter.title",
-//           component: "text",
-//         },
-//         {
-//           label: "Authors",
-//           name: "rawFrontmatter.authors",
-//           component: "authors",
-//           authors: authors,
-//         },
-//         {
-//           name: "rawFrontmatter.draft",
-//           component: "toggle",
-//           label: "Draft",
-//         },
-//         {
-//           label: "Date",
-//           name: "rawFrontmatter.date",
-//           component: "date",
-//         },
-//         {
-//           label: "Hero Image",
-//           name: "rawFrontmatter.hero.image",
-//           component: "image",
-//           parse: (filename) => `../images/${filename}`,
-//           uploadDir: () => `/content/images/`,
-//           previewSrc: (formValues) => {
-//             if (
-//               !formValues.frontmatter.hero ||
-//               !formValues.frontmatter.hero.image
-//             )
-//               return ""
-//             return formValues.frontmatter.hero.image.childImageSharp.fluid.src
-//           },
-//         },
-//         {
-//           label: "Body",
-//           name: "rawMarkdownBody",
-//           component: "markdown",
-//         },
-//       ],
-//     }
-//   }, [authors])
-//   const [markdownRemark, form] = useLocalRemarkForm(
-//     props.data.markdownRemark,
-//     PostForm
-//   )
-
-//   return (
-//     <TinaForm form={form}>
-//       {(editingProps) => {
-//         return (
-//           <Post
-//             {...props}
-//             data={{ ...props.data, markdownRemark }}
-//             {...editingProps}
-//           />
-//         )
-//       }}
-//     </TinaForm>
-//   )
-// }
 
 export default Post
 
