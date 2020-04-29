@@ -1,22 +1,17 @@
 {
   "title": "Dummy",
-  "titleHtml": "Dummy",
   "path": "/dummy",
   "displayTitle": true,
   "content": "## root",
-  "contentHtml": "## root",
   "hero": {
     "headline": "Dummy",
-    "headlineHtml": "Dummy",
     "textline": "Dummy",
-    "textlineHtml": "Dummy",
     "large": false,
     "overlay": true,
     "image": "../images/cafe-2.jpg",
     "ctas": [
       {
         "label": "Read The Blog",
-        "labelHtml": "Read The Blog",
         "link": "/blog",
         "primary": true,
         "arrow": true
@@ -26,16 +21,13 @@
   "blocks": [
     {
       "_template": "ContentBlock",
-      "content": "## Thanks DJ\n\nThis is awesome",
-      "contentHtml": "## Thanks DJ\n\nThis is awesome"
+      "content": "## Thanks DJ\n\nThis is awesome"
     },
     {
       "_template": "ContentBlock",
       "content": "## block content",
       "name": "dummy",
-      "nameHtml": "dummy",
       "title": "dummy",
-      "titleHtml": "dummy",
       "center": false,
       "underline": true,
       "recipient": "dummy",
