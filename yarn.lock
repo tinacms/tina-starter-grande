@@ -11558,7 +11558,7 @@ prompts@^2.3.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -12117,6 +12117,14 @@ react-slugify@^2.0.1:
   resolved "https://registry.yarnpkg.com/react-slugify/-/react-slugify-2.0.1.tgz#719410fc2f6cfeb77f731d57adae4f47649ebd15"
   integrity sha512-vy5dAh9puvno06cV1TgK/FoSviXErOYD5fSngR/qygJkwkI2V4YjF76mnhIIp2fUJyA0ox5Ab3ASH+efNzqaPQ==
 
+react-textarea-autosize@^7.1.2:
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-7.1.2.tgz#70fdb333ef86bcca72717e25e623e90c336e2cda"
+  integrity sha512-uH3ORCsCa3C6LHxExExhF4jHoXYCQwE5oECmrRsunlspaDAbS4mGKNlWZqjLfInWtFQcf0o1n1jC/NGXFdUBCg==
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    prop-types "^15.6.0"
+
 react-tinacms-editor@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/react-tinacms-editor/-/react-tinacms-editor-0.4.0.tgz#6f2d21c451877a8d608e1074bdf4f2dc0a6e3c7e"
@@ -12144,6 +12152,11 @@ react-tinacms-editor@^0.4.0:
     prosemirror-utils "^0.9.6"
     prosemirror-view "^1.11.3"
     react-dismissible "^1.1.5"
+
+react-tinacms-inline@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/react-tinacms-inline/-/react-tinacms-inline-0.4.4.tgz#724db6d3dfb235c69cdc4824e70f84434745b24e"
+  integrity sha512-Z1NyNmrHGDtZJqheBF9FtNobImfttSgij3cYW58byiR8G9u2y5pyfs/G0JRJ93s6NkBHD+PXgzQikRw7R4V6rw==
 
 react-transition-group@^2.5.0:
   version "2.9.0"
