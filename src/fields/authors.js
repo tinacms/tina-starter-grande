@@ -2,23 +2,16 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { Droppable, Draggable } from "react-beautiful-dnd"
 import { AddIcon, DragIcon, ReorderIcon, TrashIcon } from "@tinacms/icons"
-import {
-  padding,
-  color,
-  radius,
-  font,
-  IconButton,
-  shadow,
-} from "@tinacms/styles"
+import { IconButton } from "@tinacms/styles"
 
-export const AuthorsField = props => {
+export const AuthorsField = (props) => {
   const { input, field, form } = props
   const [visible, setVisible] = React.useState(false)
   const authors = field.authors
   const authorIDs = input.value || []
 
   const addAuthor = React.useCallback(
-    authorID => {
+    (authorID) => {
       form.mutators.insert(field.name, 0, authorID)
     },
     [field.name, form.mutators]
@@ -38,7 +31,7 @@ export const AuthorsField = props => {
         </IconButton>
         <AuthorMenu open={visible}>
           <AuthorMenuList>
-            {authors.map(author => (
+            {authors.map((author) => (
               <AuthorOption
                 onClick={() => {
                   addAuthor(author.id)
@@ -52,13 +45,13 @@ export const AuthorsField = props => {
         </AuthorMenu>
       </AuthorsHeader>
       <Droppable droppableId={field.name} type={field.name}>
-        {provider => (
+        {(provider) => (
           <AuthorList ref={provider.innerRef}>
             {authorIDs.length === 0 && (
               <EmptyList>There's no authors</EmptyList>
             )}
             {authorIDs.map((authorID, index) => {
-              const author = authors.find(author => author.id === authorID)
+              const author = authors.find((author) => author.id === authorID)
               return (
                 <AuthorListItem
                   author={author}
@@ -136,7 +129,7 @@ const ItemLabel = styled.label`
   padding: 0 0.5rem;
   pointer-events: none;
 
-  ${props =>
+  ${(props) =>
     props.error &&
     css`
       color: var(--tina-color-error) !important;
@@ -255,7 +248,7 @@ const ListItem = styled.div`
     }
   }
 
-  ${p =>
+  ${(p) =>
     p.isDragging &&
     css`
       border-radius: var(--tina-radius-small);
@@ -310,10 +303,10 @@ const FieldLabel = styled.label`
   transition: all 85ms ease-out;
   text-align: left;
 
-  ${props =>
+  ${(props) =>
     props.error &&
     css`
-      color: ${color.error()} !important;
+      color: var(--tina-color-error) !important;
     `};
 `
 
@@ -334,7 +327,7 @@ const AuthorMenu = styled.div`
   background-color: white;
   overflow: hidden;
   z-index: 100;
-  ${props =>
+  ${(props) =>
     props.open &&
     css`
       opacity: 1;
