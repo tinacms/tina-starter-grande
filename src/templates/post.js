@@ -11,8 +11,6 @@ import { EditToggle } from "../components/editToggle"
 import { ListAuthors } from "../components/authors"
 import { Link } from "gatsby"
 import { PageLayout } from "../components/pageLayout"
-import { TinaField, TinaForm } from "@tinacms/form-builder"
-import { Wysiwyg } from "@tinacms/fields"
 import { useLocalRemarkForm, DeleteAction } from "gatsby-tinacms-remark"
 import {
   InlineForm,
