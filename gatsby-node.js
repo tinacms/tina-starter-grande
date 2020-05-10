@@ -170,7 +170,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     const listPageTemplate = path.resolve(`src/templates/list.js`)
     const listType = node.listType
     const allPosts = result.data.posts.edges
-    const posts = allPosts.filter(post => post.type === listType)
+    const posts = allPosts.filter(
+      (post) => post.node.frontmatter.type === listType
+    )
     const postsPerPage = 5
     const numPages = Math.max(Math.ceil(posts.length / postsPerPage), 1)
     const slug = node.path
