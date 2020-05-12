@@ -5,16 +5,19 @@
       "link": "/"
     },
     {
-      "label": "About",
-      "link": "/about"
-    },
-    {
       "label": "Blog",
       "link": "/blog"
+    },
+    {
+      "label": "About",
+      "link": "/about"
     },
     {
       "label": "Contact",
       "link": "/contact"
     }
-  ]
+  ],
+  "__gatsby_resolved": {
+    "fileRelativePath": "/content/settings/menu.json"
+  }
 }
