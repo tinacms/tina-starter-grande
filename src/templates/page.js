@@ -70,9 +70,9 @@ const PageForm = {
           label: "Image",
           name: "image",
           component: "image",
-          parse: filename => `../images/${filename}`,
+          parse: (filename) => `../images/${filename}`,
           uploadDir: () => `/content/images/`,
-          previewSrc: formValues => {
+          previewSrc: (formValues) => {
             if (!formValues.jsonNode.hero || !formValues.jsonNode.hero.image)
               return ""
             return formValues.jsonNode.hero.image.childImageSharp.fluid.src
@@ -82,7 +82,7 @@ const PageForm = {
           label: "Actions",
           name: "ctas",
           component: "group-list",
-          itemProps: item => ({
+          itemProps: (item) => ({
             key: item.link,
             label: item.label,
           }),
