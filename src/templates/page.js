@@ -26,14 +26,11 @@ export default function Page({ data }) {
               case "FormBlock":
                 return <Form form={data} />
               case "ContentBlock":
-                if (data.content && page.childrenPagesJsonBlockMarkdown[i])
+                if (data.content)
                   return (
                     <Content
                       data={data}
-                      html={
-                        page.childrenPagesJsonBlockMarkdown[i]
-                          .childMarkdownRemark.html
-                      }
+                      html={data.contentHtml}
                     />
                   )
                 break
@@ -137,10 +134,13 @@ export const pageQuery = graphql`
   query($path: String!) {
     page: pagesJson(path: { eq: $path }) {
       title
+      titleHtml
       displayTitle
       hero {
         headline
+        headlineHtml
         textline
+        textlineHtml
         large
         overlay
         image {
@@ -152,6 +152,7 @@ export const pageQuery = graphql`
         }
         ctas {
           label
+          labelHtml
           link
           primary
           arrow
@@ -160,6 +161,7 @@ export const pageQuery = graphql`
       blocks {
         _template
         content
+        contentHtml
         name
         title
         underline
@@ -176,11 +178,6 @@ export const pageQuery = graphql`
               ...GatsbyImageSharpFluid_withWebp
             }
           }
-        }
-      }
-      childrenPagesJsonBlockMarkdown {
-        childMarkdownRemark {
-          html
         }
       }
 
