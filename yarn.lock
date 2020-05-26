@@ -6521,10 +6521,10 @@ gatsby-page-utils@^0.1.4:
     lodash "^4.17.15"
     micromatch "^3.1.10"
 
-gatsby-plugin-json-remark@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-json-remark/-/gatsby-plugin-json-remark-1.1.0.tgz#7c35c14cc162d5c8b87662bb8a014d5365c58b0f"
-  integrity sha512-sG4vXET8iQ6iDRKT8GH6W9UJYcoCtfCyOGWR8WEBIGOtV3DzlHOD47JZAJCbfYECuVjo/FVRIY9i4U0AOH6AyA==
+gatsby-plugin-json-remark@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-json-remark/-/gatsby-plugin-json-remark-1.1.4.tgz#6044603db2ac5997b15b73423e72128631ed506c"
+  integrity sha512-OrNY7SpwczWMvmZliREzAgDAzAIOuUyDId0B9OZZdkSVjox903tRefhx1tPkcUepNDO29PrHhLBgTkSupHF7mA==
   dependencies:
     immer "^6.0.3"
     lodash.clonedeep "^4.5.0"
@@ -6662,11 +6662,7 @@ gatsby-plugin-styled-components@^3.1.11:
   integrity sha512-utEcQJno6/eP6+LB21cUsgwW2fXMItvlOuw0vIRDXA8PnewEzhHSN2i4BuramQbBz3KTVUnxygtTC5Wo1lDcUA==
   dependencies:
     "@babel/runtime" "^7.8.7"
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> upstream/master
 gatsby-plugin-tinacms@^0.1.35:
   version "0.1.35"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-tinacms/-/gatsby-plugin-tinacms-0.1.35.tgz#d94a695af3ad18ee0f8aeb11198c902ac93fd9f6"
@@ -14696,11 +14692,7 @@ tinacms@^0.19.1:
     moment ">=2 <=3"
     react-datetime "^2.16.3"
     react-tinacms-editor "^0.5.1"
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> upstream/master
 tiny-emitter@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
