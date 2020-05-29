@@ -62,14 +62,6 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     {
-      resolve: `gatsby-plugin-json-remark`,
-      options: {
-        paths: [`${__dirname}/content/pages`], // Process all JSON files in these directories.
-        pathsExclude: [`${__dirname}/content/pages/contact.json`], // Process all files in the directories above, except `pages/contact.json`.
-        fieldNameBlacklist: ['id', 'children', 'parent', 'fields', 'internal', 'path', 'template'], // Ignore JSON keys with these names
-      },
-    },
-    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
