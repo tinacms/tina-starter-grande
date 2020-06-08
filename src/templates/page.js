@@ -76,7 +76,7 @@ const PageForm = {
           parse: (filename) => `../images/${filename}`,
           uploadDir: () => `/content/images/`,
           previewSrc: (formValues, input) => {
-            if (!formValues.jsonNode?.hero || !formValues.jsonNode?.hero.image)
+            if (!formValues.jsonNode.hero || !formValues.jsonNode.hero.image)
               return ""
             return formValues.jsonNode.hero.image.childImageSharp.fluid.src
           },
