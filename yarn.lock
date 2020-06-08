@@ -7951,17 +7951,17 @@ gatsby-tinacms-git@^0.5.2:
     "@tinacms/api-git" "^0.7.0"
     "@tinacms/git-client" "^0.6.7"
 
-gatsby-tinacms-json@^0.8.26:
-  version "0.8.26"
-  resolved "https://registry.yarnpkg.com/gatsby-tinacms-json/-/gatsby-tinacms-json-0.8.26.tgz#23f95b903dc5ce4a78132385163b47861f336089"
-  integrity sha512-Z39hJUSQrTouoTQa4dEk7JLCTGI8RIKEaYbc2d0AQbBagqGs6i8iKtZxu+wBsVqJ86Cec4Uh9shvSPxTZ44NVg==
+gatsby-tinacms-json@^0.8.27:
+  version "0.8.27"
+  resolved "https://registry.yarnpkg.com/gatsby-tinacms-json/-/gatsby-tinacms-json-0.8.27.tgz#25ea64c6b6c2d13069308c9e3a80889cb6dac336"
+  integrity sha512-HwV/nT/D4gm1KQyrv9GbzSTM2qZHTk36B7BJ6vZb4n89x7KFODVpVDdPxSPhoNMDg8cXzPjQ6FyZ8dV9E41S2w==
   dependencies:
     slash "^3.0.0"
 
-gatsby-tinacms-remark@^0.8.1:
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/gatsby-tinacms-remark/-/gatsby-tinacms-remark-0.8.1.tgz#cb5672e16848e61e5235efe560c4c3246aeb70c8"
-  integrity sha512-Ge/lnmw69LuZ99bajQJH0uFSWjP1D1/rf1tPQjwnsRJkot5x7fbJKbkFsrkemtyIUmGAuqXujVYt1XMWvoJOEA==
+gatsby-tinacms-remark@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/gatsby-tinacms-remark/-/gatsby-tinacms-remark-0.8.2.tgz#0d6be1407db4cd70d30e17c869a007713a50b970"
+  integrity sha512-udtyGZethfBA4lGilIIVwthLuue8L43fbQQLxB1YfFZ9FiDviSyven0RCKcx1vVCjEc59gMre9R8g0lpdUrl2Q==
   dependencies:
     "@types/js-yaml" "^3.12.3"
     gray-matter "^4.0.2"
