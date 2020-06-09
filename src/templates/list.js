@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
+import { useLocalJsonForm } from "gatsby-tinacms-json"
+
 import {
   Paper,
   Meta,
@@ -11,8 +13,6 @@ import {
 import { ListAuthors, AuthorsForm } from "../components/authors"
 import { Link } from "gatsby"
 import { PageLayout } from "../components/pageLayout"
-
-import { useLocalJsonForm } from "gatsby-tinacms-json"
 
 export default function List({ data, pageContext }) {
   const [page] = useLocalJsonForm(data.page, ListForm)
@@ -30,7 +30,7 @@ export default function List({ data, pageContext }) {
     <PageLayout page={page}>
       <>
         {data.posts &&
-          data.posts.edges.map(item => {
+          data.posts.edges.map((item) => {
             return (
               <Paper article key={item.node.id}>
                 {item.node.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
@@ -172,9 +172,9 @@ const ListForm = {
           label: "Image",
           name: "image",
           component: "image",
-          parse: filename => `../images/${filename}`,
+          parse: (filename) => `../images/${filename}`,
           uploadDir: () => `/content/images/`,
-          previewSrc: formValues => {
+          previewSrc: (formValues) => {
             if (!formValues.jsonNode.hero || !formValues.jsonNode.hero.image)
               return ""
             return formValues.jsonNode.hero.image.childImageSharp.fluid.src
@@ -184,7 +184,7 @@ const ListForm = {
           label: "Actions",
           name: "ctas",
           component: "group-list",
-          itemProps: item => ({
+          itemProps: (item) => ({
             key: item.link,
             label: item.label,
           }),
