@@ -14,20 +14,20 @@ export const Nav = ({ toggleDarkMode, isDarkMode }) => {
     }
   `)
 
-  const [navOpen, setNavOpen] = useState(false)
-  const toggleNavOpen = () => {
-    setNavOpen(!navOpen)
+  const [navopen, setnavopen] = useState(false)
+  const togglenavopen = () => {
+    setnavopen(!navopen)
   }
 
   const menu = data.settingsJson
 
   return (
     <>
-      <StyledNavbar navOpen={navOpen} isDarkMode={isDarkMode}>
+      <StyledNavbar navopen={navopen.toString()} isdarkmode={isDarkMode}>
         {menu.menuItems.map(item => (
           <NavItem key={item.label}>
             <NavLink
-              onClick={toggleNavOpen}
+              onClick={togglenavopen}
               partiallyActive={item.link === "/" ? false : true}
               to={item.link}
             >
@@ -35,18 +35,18 @@ export const Nav = ({ toggleDarkMode, isDarkMode }) => {
             </NavLink>
           </NavItem>
         ))}
-        <NavItem>
+        <NavItem key="toggle-dark">
           <DarkModeToggle
             aria-label="Toggle Dark Theme"
             onClick={toggleDarkMode}
-            isDarkMode={isDarkMode}
+            isdarkmode={isDarkMode}
           />
         </NavItem>
       </StyledNavbar>
       <NavToggle
         aria-label="Toggle Nav"
-        onClick={toggleNavOpen}
-        navOpen={navOpen}
+        onClick={togglenavopen}
+        navopen={navopen.toString()}
       ></NavToggle>
     </>
   )
@@ -73,7 +73,7 @@ export const StyledNavbar = styled.ul`
     transition: all 150ms ${p => p.theme.easing};
     pointer-events: none;
     ${props =>
-      props.navOpen &&
+      props.navopen &&
       css`
         opacity: 1;
         pointer-events: all;
@@ -132,7 +132,7 @@ export const NavItem = styled.li`
 `
 
 export const NavLink = styled(({ children, ...styleProps }) => (
-  <Link activeClassName="active" {...styleProps} isCurrent>
+  <Link activeClassName="active" {...styleProps} iscurrent="true">
     <span>{children}</span>
   </Link>
 ))`
@@ -387,7 +387,7 @@ export const NavToggle = styled(({ menuOpen, ...styleProps }) => {
   }
 
   ${props =>
-    props.navOpen &&
+    props.navopen &&
     css`
       .open {
         display: block;

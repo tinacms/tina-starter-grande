@@ -15,19 +15,19 @@
         {
           "label": "Name",
           "inputType": "text",
-          "autocomplete": "name",
+          "autoComplete": "name",
           "_template": "nameInputBlock"
         },
         {
           "label": "Email",
           "inputType": "text",
-          "autocomplete": "email",
+          "autoComplete": "email",
           "_template": "emailInputBlock"
         },
         {
           "label": "Message",
           "inputType": "textarea",
-          "autocomplete": "",
+          "autoComplete": "",
           "_template": "messageInputBlock"
         }
       ],

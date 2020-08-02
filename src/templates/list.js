@@ -10,15 +10,17 @@ import {
   MetaActions,
   DraftBadge,
 } from "../components/style"
-import { ListAuthors, AuthorsForm } from "../components/authors"
+import { ListAuthors } from "../components/authors"
+// import { ListAuthors, AuthorsForm } from "../components/authors" // currently unused AuthorsForm
 import { Link } from "gatsby"
 import { PageLayout } from "../components/pageLayout"
 
 export default function List({ data, pageContext }) {
   const [page] = useLocalJsonForm(data.page, ListForm)
-  const [authors] = useLocalJsonForm(data.authors, AuthorsForm)
+  // const [authors] = useLocalJsonForm(data.authors, AuthorsForm)  // currently unused
 
-  const { slug, limit, skip, numPages, currentPage } = pageContext
+  const { slug, numPages, currentPage } = pageContext
+  // const { slug, limit, skip, numPages, currentPage } = pageContext // some unused vars
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
   const prevPage =

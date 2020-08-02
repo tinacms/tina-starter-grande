@@ -82,7 +82,7 @@ export const Theme = ({ children }) => {
         {({ theme }) => (
           <ThemeProvider theme={theme}>
             <>
-              <TinaOverrideGlobalStyle primary={theme.color.primary} />
+              <TinaOverrideGlobalStyle primary={theme.color.primary.toString()} />
               <GlobalStyles />
               {children}
             </>
