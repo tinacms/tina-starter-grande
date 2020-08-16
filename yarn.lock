@@ -7342,7 +7342,7 @@ gatsby-plugin-styled-components@^3.1.11:
   dependencies:
     "@babel/runtime" "^7.10.3"
 
-gatsby-plugin-tinacms@^0.2.1:
+gatsby-plugin-tinacms@^0.2.5:
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-tinacms/-/gatsby-plugin-tinacms-0.2.5.tgz#6089788c6561eec827f55ddb50a8f0c8c2525b44"
   integrity sha512-fWfyTjwEQ1h1dx9FifpqAMpK0OrnVi9KVL31w6eqPEH2/U9PMDKPSLaSJmx4OZp1UjkkpisntYbffY0OtUBGqg==
@@ -7573,7 +7573,7 @@ gatsby-telemetry@^1.3.27:
     node-fetch "2.6.0"
     uuid "3.4.0"
 
-gatsby-tinacms-git@^0.5.2:
+gatsby-tinacms-git@^0.5.7:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/gatsby-tinacms-git/-/gatsby-tinacms-git-0.5.7.tgz#c850ea3b3ead4a1948d8e8576a661d23be3399ca"
   integrity sha512-8MT+4mjxbeEBNj/VZb3jyUjFbqOT5JIBX3HOk3roz9OdPhmfy8qz+Sp1QbjN96P5KXaHi9CXqcB122n77c29TA==
@@ -7581,14 +7581,14 @@ gatsby-tinacms-git@^0.5.2:
     "@tinacms/api-git" "^0.7.0"
     "@tinacms/git-client" "^0.6.7"
 
-gatsby-tinacms-json@^0.8.27:
+gatsby-tinacms-json@^0.8.31:
   version "0.8.31"
   resolved "https://registry.yarnpkg.com/gatsby-tinacms-json/-/gatsby-tinacms-json-0.8.31.tgz#4a478aaba393052569a93458f121fc29f9d8b697"
   integrity sha512-rolSaVxu8DbTFyCacK8cAFR43oTHdtRGuXKDTRfmPqNZyVb0Z43TFjUZxRX/W9j5+GyBQEOqDChHAy2vd5ebNg==
   dependencies:
     slash "^3.0.0"
 
-gatsby-tinacms-remark@^0.8.2:
+gatsby-tinacms-remark@^0.8.6:
   version "0.8.6"
   resolved "https://registry.yarnpkg.com/gatsby-tinacms-remark/-/gatsby-tinacms-remark-0.8.6.tgz#67dd1a8da5dd9ce12569c1ff8298bd60e53bfdb3"
   integrity sha512-Cfc1PZEbsahftn1xTyHkejaNi4b/ADHRnUIlyL9NmwPMS8X7p5c6TkSIVKR3o9NjY8rRAzpZDw4gB30vsrA0bw==
@@ -13234,7 +13234,7 @@ react-tinacms-inline@^0.10.1:
     react-dismissible "^1.3.0"
     react-textarea-autosize ">=7.1"
 
-react-tinacms-inline@^0.4.6:
+react-tinacms-inline@^0.4.9:
   version "0.4.9"
   resolved "https://registry.yarnpkg.com/react-tinacms-inline/-/react-tinacms-inline-0.4.9.tgz#d91299d9e44e57fdf95067ddd428d2c5fe9002a6"
   integrity sha512-OkdYL1cyzTIVHCkzcznQejw+dtbgY5yKV36OtNxucTjJX+7ocIvgQrY6rJBA4eS8uGAXhPiKHQtlwEE/pcjbeA==
@@ -15401,7 +15401,7 @@ timsort@^0.3.0:
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
 
-tinacms@^0.21.1:
+tinacms@^0.21.3:
   version "0.21.3"
   resolved "https://registry.yarnpkg.com/tinacms/-/tinacms-0.21.3.tgz#d166c3bd0c0771b3efe29b0b7b1c3770055a4a72"
   integrity sha512-05tZvDWi2ecCNWBs2MyYAUqsC/dXUA5GvZdLGL31ELNEbgUf3QC4QniJIqCskw/npqFHJ1MMyz6KL4LAYBGP4w==
