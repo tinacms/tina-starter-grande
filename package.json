@@ -47,7 +47,7 @@
     "react-helmet": "^6.1.0",
     "react-slugify": "^2.0.1",
     "react-textarea-autosize": "^8.2.0",
-    "react-tinacms-inline": "^0.26.0",
+    "react-tinacms-inline": "^0.27.3",
     "styled-components": ">=4.1",
     "styled-icons": "^10.16.0",
     "tinacms": "^0.22.1"
