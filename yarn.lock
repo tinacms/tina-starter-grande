@@ -12481,7 +12481,7 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-prettier@^2.0.4, prettier@^2.0.5:
+prettier@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.5.tgz#d6d56282455243f2f92cc1716692c08aa31522d4"
   integrity sha512-7PtVymN48hGcO4fGjybyBSIWDsLU4H4XlvOHfq91pz9kkGlonzwTfYkaIEwiRg/dAJF9YlbsduBAgtYLi+8cFg==
@@ -15098,7 +15098,7 @@ styled-components@>=4.1:
     shallowequal "^1.1.0"
     supports-color "^5.5.0"
 
-styled-icons@^10.2.1:
+styled-icons@^10.16.0:
   version "10.16.0"
   resolved "https://registry.yarnpkg.com/styled-icons/-/styled-icons-10.16.0.tgz#b1db00bfa503ec7bc76fd13670566905fe811eee"
   integrity sha512-+Xmzx7k2ew0w5fuAbYUhPv4n8HXKF+NMKZQN24FPfyeblqsazz/8W3qkcO7rtwgaHAwFWx5hr4lieE3vdzaQcA==

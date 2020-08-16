@@ -49,11 +49,11 @@
     "react-textarea-autosize": "^7.1.2",
     "react-tinacms-inline": "^0.4.9",
     "styled-components": ">=4.1",
-    "styled-icons": "^10.2.1",
+    "styled-icons": "^10.16.0",
     "tinacms": "^0.21.3"
   },
   "devDependencies": {
-    "prettier": "^2.0.4"
+    "prettier": "^2.0.5"
   },
   "keywords": [
     "gatsby"
