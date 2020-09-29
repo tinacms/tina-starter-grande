@@ -49,7 +49,10 @@ function Post(props) {
         label: "Hero Image",
         name: "rawFrontmatter.hero.image",
         component: "image",
-        parse: (media) => `../images/${media.filename}`,
+        parse: (media) => {
+          if (!media) return ""
+          return `../images/${media.filename}`
+        },
         uploadDir: () => `/content/images/`,
         previewSrc: (src, path, formValues) => {
           if (
