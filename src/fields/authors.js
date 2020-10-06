@@ -22,7 +22,7 @@ export const AuthorsField = (props) => {
       <AuthorsHeader>
         <FieldLabel>Authors</FieldLabel>
         <IconButton
-          primary
+          primary="true"
           small
           onClick={() => setVisible(!visible)}
           open={visible}
@@ -32,7 +32,7 @@ export const AuthorsField = (props) => {
         <AuthorMenu open={visible}>
           <AuthorMenuList>
             {authors.map((author) => (
-              <AuthorOption
+              <AuthorOption key={author.id}
                 onClick={() => {
                   addAuthor(author.id)
                   setVisible(false)
@@ -53,7 +53,7 @@ export const AuthorsField = (props) => {
             {authorIDs.map((authorID, index) => {
               const author = authors.find((author) => author.id === authorID)
               return (
-                <AuthorListItem
+                <AuthorListItem key={author.id}
                   author={author}
                   form={form}
                   field={field}

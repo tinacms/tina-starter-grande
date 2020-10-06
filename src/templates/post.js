@@ -15,7 +15,7 @@ import { useLocalRemarkForm, DeleteAction } from "gatsby-tinacms-remark"
 import {
   InlineForm,
   InlineTextField,
-  InlineWysiwyg,
+  // InlineWysiwyg,
 } from "react-tinacms-inline"
 import { useAuthors } from "../components/useAuthors"
 
@@ -86,13 +86,13 @@ function Post(props) {
             <InlineTextField name="rawFrontmatter.title" />
           </h1>
           <hr />
-          <InlineWysiwyg name="rawMarkdownBody" format="markdown">
-            <div
-              dangerouslySetInnerHTML={{
-                __html: data.html,
-              }}
-            />
-          </InlineWysiwyg>
+{/* <InlineWysiwyg name="rawMarkdownBody" format="markdown">
+  <div
+    dangerouslySetInnerHTML={{
+      __html: data.html,
+    }}
+  />
+</InlineWysiwyg> */}
           {data.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
           {process.env.NODE_ENV !== "production" && <EditToggle />}
         </Paper>

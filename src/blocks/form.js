@@ -14,8 +14,8 @@ export function Form({ form }) {
       {form.fields.map(field => {
         if (field.inputType === "textarea") {
           return (
-            <FormField wide>
-              <label for={slugify(field.label)}>{field.label}</label>
+            <FormField key={field.label} wide>
+              <label htmlFor={slugify(field.label)}>{field.label}</label>
               <textarea
                 cols="40"
                 rows="5"
@@ -26,22 +26,22 @@ export function Form({ form }) {
           )
         } else {
           return (
-            <FormField>
-              <label for={slugify(field.label)}>{field.label}</label>
+            <FormField key={field.label}>
+              <label htmlFor={slugify(field.label)}>{field.label}</label>
               <input
                 id={slugify(field.label)}
                 name={slugify(field.label)}
                 type={field.inputType}
-                autocorrect="off"
-                autocomplete={field.autocomplete | ``}
+                autoCorrect="off"
+                autoComplete={field.autoComplete | ``}
               />
             </FormField>
           )
         }
       })}
       {form.fields.length > 0 && (
-        <FormField wide>
-          <Button primary type="submit" value="Submit">
+        <FormField key="submit" wide>
+          <Button primary="true" type="submit" value="Submit">
             Submit
           </Button>
         </FormField>
@@ -57,7 +57,7 @@ const base = {
   fields: [
     { name: "label", label: "Label", component: "text" },
     { name: "inputType", label: "Input Type", component: "text" },
-    { name: "autocomplete", label: "Autocomplete", component: "text" },
+    { name: "autoComplete", label: "autoComplete", component: "text" },
   ],
 }
 
@@ -71,7 +71,7 @@ export const nameInputBlock = {
   defaultItem: {
     label: "Name",
     inputType: "text",
-    autocomplete: "name",
+    autoComplete: "name",
   },
   ...base,
 }
@@ -81,7 +81,7 @@ export const emailInputBlock = {
   defaultItem: {
     label: "Email",
     inputType: "text",
-    autocomplete: "email",
+    autoComplete: "email",
   },
   ...base,
 }
@@ -91,7 +91,7 @@ export const phoneInputBlock = {
   defaultItem: {
     label: "Phone",
     inputType: "text",
-    autocomplete: "tel",
+    autoComplete: "tel",
   },
   ...base,
 }
@@ -101,7 +101,7 @@ export const companyInputBlock = {
   defaultItem: {
     label: "Company",
     inputType: "text",
-    autocomplete: "organization",
+    autoComplete: "organization",
   },
   ...base,
 }
@@ -111,7 +111,7 @@ export const messageInputBlock = {
   defaultItem: {
     label: "Message",
     inputType: "textarea",
-    autocomplete: "",
+    autoComplete: "",
   },
   ...base,
 }

@@ -19,7 +19,7 @@ export const Header = styled(({ siteTitle, ...styleProps }) => {
                 {siteTitle}
               </SiteLink>
             </SiteTitle>
-            <Nav toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
+            <Nav toggleDarkMode={toggleDarkMode} isdarkmode={isDarkMode} />
           </HeaderWrapper>
         </header>
       )}

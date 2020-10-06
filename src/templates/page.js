@@ -20,15 +20,15 @@ export default function Page({ data }) {
           blocks.map(({ _template, ...data }, i) => {
             switch (_template) {
               case "TitleBlock":
-                return <Title page={page} data={data} />
+                return <Title key={i} page={page} data={data} />
               case "ImageBlock":
-                return <Image data={data} />
+                return <Image key={i} data={data} />
               case "FormBlock":
-                return <Form form={data} />
+                return <Form key={i} form={data} />
               case "ContentBlock":
                 if (data.content && page.childrenPagesJsonBlockMarkdown[i])
                   return (
-                    <Content
+                    <Content key={i}
                       data={data}
                       html={
                         page.childrenPagesJsonBlockMarkdown[i]
@@ -40,6 +40,7 @@ export default function Page({ data }) {
               default:
                 return true
             }
+            return true
           })}
       </Paper>
     </PageLayout>
@@ -168,7 +169,7 @@ export const pageQuery = graphql`
         fields {
           label
           inputType
-          autocomplete
+          autoComplete
         }
         image {
           childImageSharp {
