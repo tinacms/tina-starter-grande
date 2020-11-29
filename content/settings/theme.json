@@ -29,7 +29,7 @@
     "parallax": true
   },
   "typography": {
-    "uppercaseH2": false
+    "uppercaseH2": true
   },
   "menu": {
     "style": "glow"
