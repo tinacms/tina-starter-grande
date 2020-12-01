@@ -16,9 +16,11 @@ export const Theme = ({ children }) => {
     }
   `)
 
+  const globalTheme = data.settingsJson
+
   const isBrowser = typeof window !== "undefined"
   const userPrefDark = isBrowser ? localStorage.getItem("isDarkMode") : false
-  const initialDarkMode = userPrefDark === "true" ? true : false
+  const initialDarkMode = userPrefDark === "true" ? true : globalTheme.defaultDarkMode
 
   const [darkMode, setDarkMode] = useState(initialDarkMode)
 
@@ -31,8 +33,6 @@ export const Theme = ({ children }) => {
       localStorage.setItem("isDarkMode", newMode)
     }
   }
-
-  const globalTheme = data.settingsJson
 
   const theme = {
     isDarkMode: darkMode,
@@ -144,6 +144,7 @@ export const globalThemeFragment = graphql`
     typography {
       uppercaseH2
     }
+    defaultDarkMode
   }
 `
 
@@ -297,6 +298,12 @@ export const ThemeForm = {
           },
         },
       ],
+    },
+    {
+      name: 'rawJson.defaultDarkMode',
+      component: 'toggle',
+      label: 'Default Dark Mode',
+      description: 'Check to make dark mode the default.',
     },
   ],
 }
