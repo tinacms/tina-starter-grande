@@ -106,20 +106,6 @@ export const MenuItem = {
   ],
 }
 
-export const MenuForm = {
-  label: "Menu",
-  fields: [
-    {
-      label: "Menu Items",
-      name: "rawJson.menuItems",
-      component: "blocks",
-      templates: {
-        MenuItem,
-      },
-    },
-  ],
-}
-
 export const NavItem = styled.li`
   flex: 0 0 auto;
   display: flex;
