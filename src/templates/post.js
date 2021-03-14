@@ -15,12 +15,16 @@ import {
 } from "../components/style"
 import { EditToggle } from "../components/editToggle"
 import { ListAuthors } from "../components/authors"
+import { ListTags } from "../components/tags"
 import { PageLayout } from "../components/pageLayout"
 import { useAuthors } from "../components/useAuthors"
+import { useTags } from "../components/useTags"
 
 function Post(props) {
   const authors = useAuthors()
+  const tags = useTags()
   const page = props.data.markdownRemark
+
   const formOptions = {
     actions: [DeleteAction],
     fields: [
@@ -63,6 +67,12 @@ function Post(props) {
           return formValues.frontmatter.hero.image.childImageSharp.fluid.src
         },
       },
+      {
+        label: "Tags",
+        name: "rawFrontmatter.tags",
+        component: "tags",
+        tags: tags,
+      },
     ],
   }
 
@@ -99,6 +109,13 @@ function Post(props) {
           {data.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
           {process.env.NODE_ENV !== "production" && <EditToggle />}
         </Paper>
+        {data.frontmatter.tags && data.frontmatter.tags.length > 0 && (
+          <Meta>
+            <MetaSpan>
+              <ListTags tagIDs={data.frontmatter.tags} />
+            </MetaSpan>
+          </Meta>
+        )}
       </PageLayout>
     </InlineForm>
   )
@@ -133,6 +150,7 @@ export const postQuery = graphql`
             }
           }
         }
+        tags
       }
 
       fileRelativePath
