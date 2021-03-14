@@ -132,6 +132,14 @@ export const pageQuery = graphql`
       rawJson
       fileRelativePath
     }
+    tags: settingsJson(
+      fileRelativePath: { eq: "/content/settings/tags.json" }
+    ) {
+      ...tags
+
+      rawJson
+      fileRelativePath
+    }
   }
 `
 

@@ -157,8 +157,11 @@ export const postQuery = graphql`
       rawFrontmatter
       rawMarkdownBody
     }
-    settingsJson(fileRelativePath: { eq: "/content/settings/authors.json" }) {
+    authors: settingsJson(fileRelativePath: { eq: "/content/settings/authors.json" }) {
       ...authors
+    }
+    tags: settingsJson(fileRelativePath: { eq: "/content/settings/tags.json" }) {
+      ...tags
     }
   }
 `
