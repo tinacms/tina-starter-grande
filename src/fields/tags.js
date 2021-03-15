@@ -17,6 +17,17 @@ export const TagsField = (props) => {
     [field.name, form.mutators]
   )
 
+  // TODO: This is very non-idiomatic.
+  // Q: How do I add a new tag AND add it to the post?
+  function handleKeyPress(e){
+    console.log(e);
+    if(e.key === 'Enter' || e.keyCode === 13){
+      alert("Need to do something with this tag.");
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }
+
   return (
     <>
       <TagsHeader>
@@ -30,6 +41,10 @@ export const TagsField = (props) => {
           <AddIcon />
         </IconButton>
         <TagMenu open={visible}>
+          <NewTagContainer>
+            <label for="text">New Tag:</label>
+            <input type="text" name="text" onKeyPress={handleKeyPress} />
+          </NewTagContainer>
           <TagMenuList>
             {tags.map((tag) => (
               <TagOption
@@ -309,6 +324,15 @@ const FieldLabel = styled.label`
       color: var(--tina-color-error) !important;
     `};
 `
+
+// Q: Unsure of styling guidelines or defaults.
+const NewTagContainer = styled.div`
+  margin: var(--tina-padding-small);
+
+  label {
+    font-size: var(--tina-font-size-2);
+  }
+`;
 
 const TagMenu = styled.div`
   min-width: 12rem;
