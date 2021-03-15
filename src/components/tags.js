@@ -1,20 +1,26 @@
+import React from "react"
+import { Link } from "gatsby"
 import { useTags } from "./useTags"
 
-// Convert a list of tag IDs into a comma-delimited string.
 export const ListTags = ({ tagIDs }) => {
   const tags = useTags().filter(tag =>
     tagIDs.find(id => id === tag.id)
   )
 
   const tagList = tags.map((tag, index) => {
+    const slug = ConvertTagTextToSlug(tag.text);
     if (tags.length === index + 1) {
-      return tag.text
+      return <><Link to={`/blog/tag/${slug}`}>{tag.text}</Link></>
     } else {
-      return tag.text + ", "
+      return <><Link to={`/blog/tag/${slug}`}>{tag.text}</Link>, </>
     }
   })
 
   return tagList
+}
+
+export const ConvertTagTextToSlug = (text) => {
+  return text.toLowerCase().replace(" ", "-"); // TODO: Need more complex conversion from tag text to a URI slug.
 }
 
 export const TagsForm = {
