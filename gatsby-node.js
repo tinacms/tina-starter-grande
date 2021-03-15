@@ -136,8 +136,17 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             frontmatter {
               path
               type
+              tags
             }
           }
+        }
+      }
+      tags: settingsJson(
+        fileRelativePath: { eq: "/content/settings/tags.json" }
+      ) {
+        tags {
+          id
+          text
         }
       }
     }
@@ -193,6 +202,44 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           skip: i * postsPerPage,
           numPages: numPages,
           currentPage: currentPage,
+        },
+      })
+    })
+  })
+
+  // Create a list page at blog/tag/tag-text for each tag
+  result.data.tags.tags.forEach(({id, text}) => {
+    const tagListTemplate = path.resolve(`src/templates/tagList.js`)
+
+    // Filter down to posts that include this tag
+    const allPosts = result.data.posts.edges
+    const posts = allPosts.filter(
+      (post) => Array.isArray(post.node.frontmatter.tags) && post.node.frontmatter.tags.includes(id)
+    )
+
+    const postsPerPage = 5
+    const numPages = Math.max(Math.ceil(posts.length / postsPerPage), 1)
+    const slug = text.toLowerCase().replace(" ", "-") // TODO: Need more complex conversion from tag text to a URI slug.
+    const pagePath = `blog/tag/${slug}`
+
+    Array.from({ length: numPages }).forEach((_, i) => {
+      const currentPage = i + 1
+      const isFirstPage = i === 0
+
+      createPage({
+        path: isFirstPage
+          ? pagePath
+          : `${pagePath}/${String(currentPage)}`,
+        component: tagListTemplate,
+        context: {
+          listType: 'post',
+          slug: '/blog/tag', // The slug for the underlying page.
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages: numPages,
+          currentPage: currentPage,
+          tagID: id,
+          tagText: text,
         },
       })
     })
