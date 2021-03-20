@@ -10,7 +10,8 @@ import {
   MetaActions,
   DraftBadge,
 } from "../components/style"
-import { ListAuthors, AuthorsForm } from "../components/authors"
+import { ListAuthors } from "../components/authors"
+import { TagsForm } from "../components/tags"
 import { Link } from "gatsby"
 import { PageLayout } from "../components/pageLayout"
 
@@ -21,6 +22,7 @@ import { PageLayout } from "../components/pageLayout"
  */
 export default function TagList({ data, pageContext }) {
   const [page] = useLocalJsonForm(data.page, ListForm)
+  const [tags] = useLocalJsonForm(data.tags, TagsForm)
 
   const { slug, numPages, currentPage, tagText } = pageContext
   const isFirst = currentPage === 1
@@ -160,7 +162,6 @@ export const ListNav = styled.div`
     padding: 0.5rem 1rem;
   }
 `
-
 const ListForm = {
   label: "Page",
   fields: [
