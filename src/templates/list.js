@@ -11,10 +11,12 @@ import {
   DraftBadge,
 } from "../components/style"
 import { ListAuthors, AuthorsForm } from "../components/authors"
+import { TagsForm } from "../components/tags"
 import { Link } from "gatsby"
 import { PageLayout } from "../components/pageLayout"
 
 export default function List({ data, pageContext }) {
+  const [tags] = useLocalJsonForm(data.tags, TagsForm)
   const [page] = useLocalJsonForm(data.page, ListForm)
   const [authors] = useLocalJsonForm(data.authors, AuthorsForm)
 
