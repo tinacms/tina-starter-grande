@@ -14,7 +14,12 @@ import { ListAuthors, AuthorsForm } from "../components/authors"
 import { Link } from "gatsby"
 import { PageLayout } from "../components/pageLayout"
 
-export default function List({ data, pageContext }) {
+/**
+ * Template for list pages of posts with a tag.
+ * 
+ * Located by default at /blog/tag/tag-text
+ */
+export default function TagList({ data, pageContext }) {
   const [page] = useLocalJsonForm(data.page, ListForm)
 
   const { slug, numPages, currentPage, tagText } = pageContext
