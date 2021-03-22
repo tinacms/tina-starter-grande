@@ -1,5 +1,11 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
+
+import { usePlugin } from "tinacms"
+import { useRemarkForm, DeleteAction } from "gatsby-tinacms-remark"
+import { InlineForm, InlineTextField } from "react-tinacms-inline"
+import { InlineWysiwyg } from "react-tinacms-editor"
+
 import {
   Paper,
   Meta,
@@ -9,14 +15,7 @@ import {
 } from "../components/style"
 import { EditToggle } from "../components/editToggle"
 import { ListAuthors } from "../components/authors"
-import { Link } from "gatsby"
 import { PageLayout } from "../components/pageLayout"
-import { useLocalRemarkForm, DeleteAction } from "gatsby-tinacms-remark"
-import {
-  InlineForm,
-  InlineTextField,
-  // InlineWysiwyg,
-} from "react-tinacms-inline"
 import { useAuthors } from "../components/useAuthors"
 
 function Post(props) {
@@ -50,9 +49,12 @@ function Post(props) {
         label: "Hero Image",
         name: "rawFrontmatter.hero.image",
         component: "image",
-        parse: (filename) => `../images/${filename}`,
+        parse: (media) => {
+          if (!media) return ""
+          return `../images/${media.filename}`
+        },
         uploadDir: () => `/content/images/`,
-        previewSrc: (formValues) => {
+        previewSrc: (src, path, formValues) => {
           if (
             !formValues.frontmatter.hero ||
             !formValues.frontmatter.hero.image
@@ -64,7 +66,8 @@ function Post(props) {
     ],
   }
 
-  const [data, form] = useLocalRemarkForm(page, formOptions)
+  const [data, form] = useRemarkForm(page, formOptions)
+  usePlugin(form)
 
   return (
     <InlineForm form={form}>
@@ -86,13 +89,13 @@ function Post(props) {
             <InlineTextField name="rawFrontmatter.title" />
           </h1>
           <hr />
-{/* <InlineWysiwyg name="rawMarkdownBody" format="markdown">
-  <div
-    dangerouslySetInnerHTML={{
-      __html: data.html,
-    }}
-  />
-</InlineWysiwyg> */}
+          <InlineWysiwyg name="rawMarkdownBody" format="markdown">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: data.html,
+              }}
+            />
+          </InlineWysiwyg>
           {data.frontmatter.draft && <DraftBadge>Draft</DraftBadge>}
           {process.env.NODE_ENV !== "production" && <EditToggle />}
         </Paper>
