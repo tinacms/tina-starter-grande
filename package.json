@@ -35,7 +35,7 @@
     "gatsby-transformer-json": "^2.2.15",
     "gatsby-transformer-remark": "^2.6.30",
     "gatsby-transformer-sharp": "^2.2.23",
-    "gsap": "^3.2.6",
+    "gsap": "^3.6.0",
     "lodash.clonedeep": "^4.5.0",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.2",
