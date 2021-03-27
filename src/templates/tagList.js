@@ -10,23 +10,27 @@ import {
   MetaActions,
   DraftBadge,
 } from "../components/style"
-import { ListAuthors, AuthorsForm } from "../components/authors"
+import { ListAuthors } from "../components/authors"
 import { TagsForm } from "../components/tags"
 import { Link } from "gatsby"
 import { PageLayout } from "../components/pageLayout"
 
-export default function List({ data, pageContext }) {
-  const [tags] = useLocalJsonForm(data.tags, TagsForm)
+/**
+ * Template for list pages of posts with a tag.
+ * 
+ * Located by default at /blog/tag/tag-text
+ */
+export default function TagList({ data, pageContext }) {
   const [page] = useLocalJsonForm(data.page, ListForm)
-  const [authors] = useLocalJsonForm(data.authors, AuthorsForm)
+  const [tags] = useLocalJsonForm(data.tags, TagsForm)
 
-  const { slug, limit, skip, numPages, currentPage } = pageContext
+  const { slug, numPages, currentPage, tagText } = pageContext
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
   const prevPage =
     currentPage - 1 === 1 ? slug : slug + "/" + (currentPage - 1).toString()
   const nextPage = slug + "/" + (currentPage + 1).toString()
-  page.title = isFirst ? page.title : page.title + " - " + currentPage
+  page.title = tagText + " - " + currentPage
 
   return (
     <PageLayout page={page}>
@@ -75,7 +79,7 @@ export default function List({ data, pageContext }) {
 }
 
 export const pageQuery = graphql`
-  query($listType: String!, $slug: String!, $skip: Int!, $limit: Int!) {
+  query($listType: String!, $slug: String!, $skip: Int!, $limit: Int!, $tagID: String!) {
     page: pagesJson(path: { eq: $slug }) {
       path
       title
@@ -105,7 +109,10 @@ export const pageQuery = graphql`
     posts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: {
-        frontmatter: { type: { eq: $listType } }
+        frontmatter: { 
+          type: { eq: $listType },
+          tags: { eq: $tagID }
+        }
         published: { eq: true }
       }
       limit: $limit
@@ -155,7 +162,6 @@ export const ListNav = styled.div`
     padding: 0.5rem 1rem;
   }
 `
-
 const ListForm = {
   label: "Page",
   fields: [

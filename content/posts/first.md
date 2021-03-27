@@ -6,6 +6,8 @@ type: post
 authors:
   - scott-byrne
 draft: true
+tags:
+  - blog-post
 ---
 
 ## Arma dent suarum
