@@ -16,5 +16,8 @@
       "label": "Contact",
       "link": "/contact"
     }
-  ]
+  ],
+  "darkModeToggle": {
+    "enabled": true
+  }
 }
