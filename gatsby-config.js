@@ -27,6 +27,11 @@ module.exports = {
       },
     },
     {
+      {
+       resolve: "gatsby-tinacms-git",
+       options: {
+        sshKey: process.env.SSH_KEY
+      },
       resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/static/images`,
