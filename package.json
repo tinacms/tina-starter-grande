@@ -40,7 +40,7 @@
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.2",
     "polished": "^3.4.1",
-    "prismjs": "^1.23.0",
+    "prismjs": "^1.24.0",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
