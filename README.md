@@ -1,3 +1,9 @@
+**The Tina Grande project is archived (January, 2022). Tina integration examples in this project are outdated.**
+
+**Check out the [Getting Started](https://tina.io/docs/setup-overview/) page to quickly try improved methods for working with Tina!**
+
+<br />
+
 # [![Tina Grande](https://res.cloudinary.com/forestry-demo/image/upload/h_40/v1573060726/tina-grande-wordmark.png)](https://tina-starter-grande.netlify.com/)
 
 **Tina Grande** is a Gatsby starter with full TinaCMS integration. You can use Tina to add and remove posts, customize the theme, write content and more! :tada:
