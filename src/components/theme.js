@@ -124,6 +124,7 @@ export const globalThemeFragment = graphql`
       underline
       transparent
       height
+      showIcon
     }
     menu {
       style
@@ -218,6 +219,11 @@ export const ThemeForm = {
           parse(value) {
             return value || ""
           },
+        },
+        {
+          label: "Show Icon",
+          name: "showIcon",
+          component: "toggle",
         },
       ],
     },

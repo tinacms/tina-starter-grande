@@ -1,6 +1,6 @@
 import React from "react"
 import { Wrapper } from "./style"
-import { Coffee } from "styled-icons/boxicons-regular"
+import { Coffee } from "styled-icons/boxicons-regular" // To change the icon, change this import and the usage below.
 import styled, { css } from "styled-components"
 import { transparentize } from "polished"
 import { Nav } from "./nav"
@@ -15,7 +15,7 @@ export const Header = styled(({ siteTitle, ...styleProps }) => {
           <HeaderWrapper>
             <SiteTitle>
               <SiteLink to="/">
-                <Coffee />
+                {theme.header.showIcon && <Coffee />}
                 {siteTitle}
               </SiteLink>
             </SiteTitle>
