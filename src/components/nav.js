@@ -35,13 +35,15 @@ export const Nav = ({ toggleDarkMode, isDarkMode }) => {
             </NavLink>
           </NavItem>
         ))}
-        <NavItem>
-          <DarkModeToggle
-            aria-label="Toggle Dark Theme"
-            onClick={toggleDarkMode}
-            isDarkMode={isDarkMode}
-          />
-        </NavItem>
+        {menu.darkModeToggle.enabled && 
+          <NavItem>
+            <DarkModeToggle
+              aria-label="Toggle Dark Theme"
+              onClick={toggleDarkMode}
+              isDarkMode={isDarkMode}
+            />
+          </NavItem>
+        }
       </StyledNavbar>
       <NavToggle
         aria-label="Toggle Nav"
@@ -101,20 +103,6 @@ export const MenuItem = {
   fields: [
     { name: "label", label: "Label", component: "text" },
     { name: "link", label: "Path", component: "text" },
-  ],
-}
-
-export const MenuForm = {
-  label: "Menu",
-  fields: [
-    {
-      label: "Menu Items",
-      name: "rawJson.menuItems",
-      component: "blocks",
-      templates: {
-        MenuItem,
-      },
-    },
   ],
 }
 
@@ -481,6 +469,9 @@ export const navFragment = graphql`
       link
       label
     }
+    darkModeToggle {
+      enabled
+    }
   }
 `
 
@@ -555,5 +546,11 @@ export const NavForm = {
         },
       ],
     },
+    {
+      label: "Enable Dark Mode Toggle",
+      name: "rawJson.darkModeToggle.enabled",
+      component: "toggle",
+      description: "Enable or disable the dark mode toggle"
+    }
   ],
 }
